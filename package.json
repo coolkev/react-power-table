@@ -13,13 +13,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "css-loader": "^0.28.0",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-bootstrap-date-picker": "^5.0.0",
     "react-dom": "^15.4.2",
-    "react-select": "^1.0.0-rc.3",
-    "style-loader": "^0.13.2"
+    "react-select": "^1.0.0-rc.3"    
   },
   "devDependencies": {
     "@types/bootstrap": "^3.3.32",
