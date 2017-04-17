@@ -2,12 +2,6 @@
 
 var webpack = require('webpack');
 var path = require('path');
-//var isDevBuild = process.argv.indexOf('--env.prod') < 0 && process.argv.indexOf('-p') < 0;
-console.log('__dirname=' + __dirname);
-console.log('path.resolve ./examples/dist/ =' + path.resolve('./examples/dist/'));
-console.log('path.resolve ./dist/ =' + path.resolve('./dist/'));
-
-
 
 module.exports = {
    context: __dirname,
