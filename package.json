@@ -1,5 +1,6 @@
 {
   "name": "react-power-table",
+  "author": "Kevin Lewis",
   "version": "0.1.2",
   "description": "React Power Table",
   "repository": {
@@ -7,6 +8,8 @@
     "url": "git+https://github.com/coolkev/react-power-table.git"
   },
   "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./@types/react-power-table/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js",
     "build-examples": "webpack --config examples/webpack.config.js",
