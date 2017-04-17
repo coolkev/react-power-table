@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es2015",
+    "module": "es2015",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "alwaysStrict": true    ,
+    "declaration": true,
+    "declarationDir": "@types/react-power-table/lib"
+  },
+  "include": [
+    "src/**/*",
+    "@types/react-power-table/table",
+    "@types/react-power-table/filters"
+  ],
+  "exclude": [
+    "node_modules"
+  ],  
+  "awesomeTypescriptLoaderOptions": {
+    "silent": true
+  }
+}

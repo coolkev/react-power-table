@@ -1,0 +1,6 @@
+node_modules/
+.vs/
+obj/
+bin/
+*.user
+.awcache/

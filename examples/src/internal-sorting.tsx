@@ -1,0 +1,18 @@
+﻿import * as React from 'react';
+import { ReactPowerTable, withInternalSorting } from 'react-power-table';
+import { sampledata, defaultColumns } from './shared'
+
+
+
+const columns = [...defaultColumns];
+
+columns[2] = { ...columns[2], sortable: false, headerText: 'party (not sortable)' };
+
+const Table = withInternalSorting(ReactPowerTable);
+
+export const InternalSortingExample = () => {
+    console.log('examples.render()');
+
+    return <Table columns={columns} keyColumn="number" rows={sampledata} sorting={{ Column: 'number', Ascending: true, onSortChanging: s=>console.log('sort changing', s), onSortChanged: s=>console.log('sort changed', s)    }} />;
+
+}
