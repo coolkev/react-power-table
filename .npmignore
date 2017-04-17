@@ -1,0 +1,8 @@
+examples/
+node_modules/
+.vs/
+obj/
+bin/
+*.user
+.awcache/
+_config.yml
