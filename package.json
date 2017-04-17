@@ -1,6 +1,6 @@
 {
   "name": "react-power-table",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React Power Table",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "react-bootstrap": "^0.30.7",
     "react-bootstrap-date-picker": "^5.0.0",
     "react-dom": "^15.4.2",
-    "react-select": "^1.0.0-rc.3"    
+    "react-select": "^1.0.0-rc.3"
   },
   "devDependencies": {
     "@types/bootstrap": "^3.3.32",
