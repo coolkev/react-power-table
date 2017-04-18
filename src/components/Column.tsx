@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
 import { makePure, getColumnCore } from "../utils";
+import { HeaderComponentProps, CellProps, Column, GridProps, TransformedColumn } from "../ReactPowerTable";
 
 
 export const defaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => <div>{props.column.headerText}</div>);

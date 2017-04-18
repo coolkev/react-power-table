@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import * as React from 'react';
+import { Column, GridProps, ReactClass } from "../ReactPowerTable";
 export interface SortSettings {
     Column: string;
     Ascending: boolean;

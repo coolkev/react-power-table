@@ -2,6 +2,7 @@
 import * as React from 'react';
 import shallowEqual from 'fbjs/lib/shallowEqual';
 import { FilterDefinition } from "./filters/DataTypes/DataType";
+import { Column } from "./ReactPowerTable";
 export declare type GlobalDate = Date;
 export declare const GlobalDate: DateConstructor;
 export declare function numberWithCommas(x: any): any;

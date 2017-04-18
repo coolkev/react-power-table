@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import shallowEqual from 'fbjs/lib/shallowEqual';
 import { FilterDefinition } from "./filters/DataTypes/DataType";
+import { Column } from "./ReactPowerTable";
 
 export type GlobalDate = Date;
 export const GlobalDate = Date;

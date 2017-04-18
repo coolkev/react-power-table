@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import * as React from 'react';
+import { ReactClass } from "../ReactPowerTable";
 export interface InternalPagingProps {
     currentPage: number;
     pageSize: number;

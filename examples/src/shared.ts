@@ -1,4 +1,6 @@
-﻿export const defaultColumns: Column<President>[] = [
+﻿import { Column } from 'react-power-table';
+
+export const defaultColumns: Column<President>[] = [
     { field: m => m.number },
     { field: m => m.president },
     { field: m => m.party },

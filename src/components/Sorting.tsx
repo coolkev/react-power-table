@@ -3,6 +3,7 @@ import * as React from 'react';
 import { sortArray, getExpression, getComponentDisplayName, getColumnCore, makePure, debuglog } from '../utils';
 import { defaultCellComponent } from "./Column";
 import { InternalPagingProps } from "./Paging";
+import { Column, HeaderComponentProps, TransformedColumn, T, GridProps, ReactClass } from "../ReactPowerTable";
 
 
 
