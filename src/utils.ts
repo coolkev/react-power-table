@@ -183,14 +183,14 @@ export function serializeFilters(filters: AppliedFilter<any>[]) {
         //     return f.Column.Key + ' ' + f.Operation.key;
         // }
         //TODO: add serialize method to datatype
-        return filter.displayName + ' ' + operation.key + ' ' + value;
+        return filter.fieldName + ' ' + operation.key + ' ' + value;
 
 
     }).join(' and ');
 
 }
 
-export function deSerializeFilters(filters: string, availableFilters: FilterDefinition<any>): AppliedFilter<any>[] {
+export function deSerializeFilters(filters: string, availableFilters: KeyedMap<FilterDefinition<any>>): AppliedFilter<any>[] {
 
     console.log('deSerializeFilters', filters);
     var myregexp = /(?:(.+?)\s+(eq|ne|gt|lt|contains|notcontains|between|in|notin|daterange|notnull|null)(?:\s+"?(.*?)"?)?(?:\s*$|\s+(?:or|and|not)\s+))/ig;
@@ -209,7 +209,7 @@ export function deSerializeFilters(filters: string, availableFilters: FilterDefi
         const filter = availableFilters[m.key];
 
         if (filter) {
-            const operation = filter.dataType.operations[m.operation];
+            const operation = filter.operations[m.operation];
 
             if (operation) {
                 return { filter: filter, operation: operation, value: m.value };

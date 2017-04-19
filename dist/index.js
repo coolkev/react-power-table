@@ -69,7 +69,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "47b961b3a29bb4a58c8a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "37b650598af4c0952d41"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -2753,7 +2753,7 @@ function serializeFilters(filters) {
         // }
         //TODO: add serialize method to datatype
 
-        return filter.displayName + ' ' + operation.key + ' ' + value;
+        return filter.fieldName + ' ' + operation.key + ' ' + value;
     }).join(' and ');
 }
 function deSerializeFilters(filters, availableFilters) {
@@ -2768,7 +2768,7 @@ function deSerializeFilters(filters, availableFilters) {
     return result.map(function (m) {
         var filter = availableFilters[m.key];
         if (filter) {
-            var operation = filter.dataType.operations[m.operation];
+            var operation = filter.operations[m.operation];
             if (operation) {
                 return { filter: filter, operation: operation, value: m.value };
             }

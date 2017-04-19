@@ -25,7 +25,7 @@ export declare function sortArray<T, TKey>(array: T[], property: string, options
 export declare function sortArray<T, TKey>(array: T[], expression: (item: T) => TKey, options?: SortArrayOptions): T[];
 export declare function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((item: T) => TKey), options?: SortArrayOptions): T[];
 export declare function serializeFilters(filters: AppliedFilter<any>[]): string;
-export declare function deSerializeFilters(filters: string, availableFilters: FilterDefinition<any>): AppliedFilter<any>[];
+export declare function deSerializeFilters(filters: string, availableFilters: KeyedMap<FilterDefinition<any>>): AppliedFilter<any>[];
 export declare function groupBy<T, TKey>(items: T[], keyGen: (item: T, index?: number) => TKey): Group<T, TKey>[];
 export interface Group<T, TKey> {
     key: TKey;
