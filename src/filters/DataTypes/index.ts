@@ -5,6 +5,7 @@ import { Decimal } from './Decimal';
 import { Int } from './Int';
 import { List } from './List';
 import { FilterDefinition } from "./DataType";
+export { FilterDefinition } from "./DataType";
 
 const types = {
     'string': String,

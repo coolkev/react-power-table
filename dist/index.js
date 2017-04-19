@@ -69,7 +69,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0535898b2e5d034cb3f1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "47b961b3a29bb4a58c8a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -2258,7 +2258,10 @@ var BetweenApplyFilterTest = function BetweenApplyFilterTest(parseValue, filterV
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Decimal__ = __webpack_require__("./src/filters/DataTypes/Decimal.tsx");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Int__ = __webpack_require__("./src/filters/DataTypes/Int.tsx");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__List__ = __webpack_require__("./src/filters/DataTypes/List.tsx");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataTypes; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_6__DataType__["a"]; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return DataTypes; });
+
 
 
 
@@ -2524,7 +2527,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__filters_GridFilters__ = __webpack_require__("./src/filters/GridFilters.tsx");
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "GridFilters", function() { return __WEBPACK_IMPORTED_MODULE_3__filters_GridFilters__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__filters_DataTypes___ = __webpack_require__("./src/filters/DataTypes/index.ts");
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "DataTypes", function() { return __WEBPACK_IMPORTED_MODULE_4__filters_DataTypes___["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FilterDefinition", function() { return __WEBPACK_IMPORTED_MODULE_4__filters_DataTypes___["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "DataTypes", function() { return __WEBPACK_IMPORTED_MODULE_4__filters_DataTypes___["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils__ = __webpack_require__("./src/utils.ts");
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "GlobalDate", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "numberWithCommas", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["b"]; });
