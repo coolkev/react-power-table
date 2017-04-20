@@ -69,7 +69,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "88c9f9aa9c5818183d75"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d42feefa137ce77af9c4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1904,6 +1904,7 @@ var Boolean = function (_FilterDefinition) {
         _this.appliedLabel = function (props) {
             return props.operation.displayName;
         };
+        _this.defaultValue = true;
         return _this;
     }
 
@@ -2558,10 +2559,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-//export * from './filters/declarations';
 
-// type pt = PowerTable;
-//export type pt=pt;
 
 /***/ }),
 

@@ -74,7 +74,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4f1d1de2ac898ba7ea05"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d42feefa137ce77af9c4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1909,6 +1909,7 @@ var Boolean = function (_FilterDefinition) {
         _this.appliedLabel = function (props) {
             return props.operation.displayName;
         };
+        _this.defaultValue = true;
         return _this;
     }
 
@@ -2504,7 +2505,10 @@ var BetweenApplyFilterTest = function BetweenApplyFilterTest(parseValue, filterV
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Decimal__ = __webpack_require__("./src/filters/definitions/Decimal.tsx");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Int__ = __webpack_require__("./src/filters/definitions/Int.tsx");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__List__ = __webpack_require__("./src/filters/definitions/List.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_6__FilterDefinition__["a"]; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataTypes; });
+
 
 
 
@@ -2541,6 +2545,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "GridFilters", function() { return __WEBPACK_IMPORTED_MODULE_3__filters_GridFilters__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__filters_definitions___ = __webpack_require__("./src/filters/definitions/index.ts");
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "DataTypes", function() { return __WEBPACK_IMPORTED_MODULE_4__filters_definitions___["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FilterDefinition", function() { return __WEBPACK_IMPORTED_MODULE_4__filters_definitions___["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils__ = __webpack_require__("./src/utils.ts");
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "GlobalDate", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "numberWithCommas", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["b"]; });
@@ -2559,10 +2564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-//export * from './filters/declarations';
 
-// type pt = PowerTable;
-//export type pt=pt;
 
 /***/ }),
 
