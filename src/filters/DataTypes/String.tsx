@@ -25,6 +25,17 @@ export class String extends FilterDefinition<string>
     }
 
 
+    serializeValue(value: string) {
+        if (value && value.startsWith('"') && value.endsWith('"')) {
+            return value.substring(1, value.length - 2);
+        }
+        return value;
+    }    
+    
+    deSerializeValue(value: string): string {
+        return value as any;
+    }    
+    
     public applyFilter<TData>(data: TData[], field: string, operation: OperationDefinition<string>, value: string) {
 
         const valueLower = value.toLowerCase();

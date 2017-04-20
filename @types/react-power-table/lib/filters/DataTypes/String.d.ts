@@ -19,5 +19,7 @@ export declare class String extends FilterDefinition<string> {
             key: string;
         } & OperationDefinition<any>;
     };
+    serializeValue(value: string): string;
+    deSerializeValue(value: string): string;
     applyFilter<TData>(data: TData[], field: string, operation: OperationDefinition<string>, value: string): TData[];
 }

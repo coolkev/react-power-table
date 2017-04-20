@@ -7,6 +7,8 @@ export declare abstract class FilterDefinition<T> implements FilterDefinitionOpt
     filterComponent: (props: FilterComponentProps<T>) => JSX.Element;
     defaultValue: T;
     appliedFilterLabel?: (filter: AppliedFilter<T>) => string | Promise<string>;
+    serializeValue(value: T): string;
+    deSerializeValue(value: string): T;
     constructor(options: FilterDefinitionOptionsOrFieldName);
     protected abstract getOperations(): ObjectMap<OperationDefinition<T>>;
     readonly operations: KeyedMap<OperationDefinition<T>>;

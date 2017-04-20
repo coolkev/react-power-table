@@ -69,7 +69,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "37b650598af4c0952d41"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3cef7bb048d934899f53"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1739,7 +1739,7 @@ var defaultOperations = function defaultOperations() {
                 return source >= filterValue && source <= filterValue;
             } }
     };
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils__["m" /* createKeyedMap */])(result);
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils__["k" /* createKeyedMap */])(result);
 };
 // export interface IFilterDefinition<T> extends FilterDefinitionOptions {
 //     operations: KeyedMap<OperationDefinition<T>>;
@@ -1753,7 +1753,7 @@ var FilterDefinition = function () {
     function FilterDefinition(options) {
         _classCallCheck(this, FilterDefinition);
 
-        this._defaultOperations = new __WEBPACK_IMPORTED_MODULE_0__utils__["n" /* Lazy */](defaultOperations);
+        this._defaultOperations = new __WEBPACK_IMPORTED_MODULE_0__utils__["l" /* Lazy */](defaultOperations);
         if (typeof options === 'string') {
             this.fieldName = options;
             this.displayName = options;
@@ -1800,6 +1800,16 @@ var FilterDefinition = function () {
     }
 
     _createClass(FilterDefinition, [{
+        key: "serializeValue",
+        value: function serializeValue(value) {
+            return value.toString();
+        }
+    }, {
+        key: "deSerializeValue",
+        value: function deSerializeValue(value) {
+            return value;
+        }
+    }, {
         key: "applyFilter",
         value: function applyFilter(data, field, operation, filterValue) {
             var test = operation.test;
@@ -2188,6 +2198,19 @@ var String = function (_FilterDefinition) {
             };
         }
     }, {
+        key: 'serializeValue',
+        value: function serializeValue(value) {
+            if (value && value.startsWith('"') && value.endsWith('"')) {
+                return value.substring(1, value.length - 2);
+            }
+            return value;
+        }
+    }, {
+        key: 'deSerializeValue',
+        value: function deSerializeValue(value) {
+            return value;
+        }
+    }, {
         key: 'applyFilter',
         value: function applyFilter(data, field, operation, value) {
             var valueLower = value.toLowerCase();
@@ -2539,11 +2562,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "getComponentDisplayName", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["g"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "makePure", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["h"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "sortArray", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["i"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "serializeFilters", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["j"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "deSerializeFilters", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["k"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["l"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "createKeyedMap", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["m"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["n"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["j"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "createKeyedMap", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["k"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["l"]; });
 
 
 
@@ -2570,11 +2591,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["g"] = getComponentDisplayName;
 /* harmony export (immutable) */ __webpack_exports__["h"] = makePure;
 /* harmony export (immutable) */ __webpack_exports__["i"] = sortArray;
-/* harmony export (immutable) */ __webpack_exports__["j"] = serializeFilters;
-/* harmony export (immutable) */ __webpack_exports__["k"] = deSerializeFilters;
-/* harmony export (immutable) */ __webpack_exports__["l"] = groupBy;
-/* harmony export (immutable) */ __webpack_exports__["m"] = createKeyedMap;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Lazy; });
+/* harmony export (immutable) */ __webpack_exports__["j"] = groupBy;
+/* harmony export (immutable) */ __webpack_exports__["k"] = createKeyedMap;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return Lazy; });
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2739,43 +2758,6 @@ function sortArray(array, expressionOrProperty, options) {
         var av = expression(a);
         var bv = expression(b);
         return av < bv ? -sortDirNum : av > bv ? sortDirNum : 0;
-    });
-}
-function serializeFilters(filters) {
-    console.log('serializeFilters', filters);
-    return filters.map(function (f) {
-        var filter = f.filter,
-            operation = f.operation,
-            value = f.value;
-        // const value = filter.dataType.key == 'string' ? '"' + f.Value + '"' : f.Value;
-        // if (filter.canBeNull && (operation.key == 'null' || operation.key == 'notnull')) {
-        //     return f.Column.Key + ' ' + f.Operation.key;
-        // }
-        //TODO: add serialize method to datatype
-
-        return filter.fieldName + ' ' + operation.key + ' ' + value;
-    }).join(' and ');
-}
-function deSerializeFilters(filters, availableFilters) {
-    console.log('deSerializeFilters', filters);
-    var myregexp = /(?:(.+?)\s+(eq|ne|gt|lt|contains|notcontains|between|in|notin|daterange|notnull|null)(?:\s+"?(.*?)"?)?(?:\s*$|\s+(?:or|and|not)\s+))/ig;
-    var match = myregexp.exec(filters);
-    var result = [];
-    while (match != null) {
-        result.push({ key: match[1], operation: match[2], value: match[3] });
-        match = myregexp.exec(filters);
-    }
-    return result.map(function (m) {
-        var filter = availableFilters[m.key];
-        if (filter) {
-            var operation = filter.operations[m.operation];
-            if (operation) {
-                return { filter: filter, operation: operation, value: m.value };
-            }
-        }
-        return null;
-    }).filter(function (m) {
-        return m != null;
     });
 }
 function groupBy(items, keyGen) {

@@ -1,7 +1,6 @@
 /// <reference types="react" />
 import * as React from 'react';
 import shallowEqual from 'fbjs/lib/shallowEqual';
-import { FilterDefinition } from "./filters/DataTypes/DataType";
 import { Column } from "./ReactPowerTable";
 export declare type GlobalDate = Date;
 export declare const GlobalDate: DateConstructor;
@@ -24,8 +23,6 @@ export interface SortArrayOptions {
 export declare function sortArray<T, TKey>(array: T[], property: string, options?: SortArrayOptions): T[];
 export declare function sortArray<T, TKey>(array: T[], expression: (item: T) => TKey, options?: SortArrayOptions): T[];
 export declare function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((item: T) => TKey), options?: SortArrayOptions): T[];
-export declare function serializeFilters(filters: AppliedFilter<any>[]): string;
-export declare function deSerializeFilters(filters: string, availableFilters: KeyedMap<FilterDefinition<any>>): AppliedFilter<any>[];
 export declare function groupBy<T, TKey>(items: T[], keyGen: (item: T, index?: number) => TKey): Group<T, TKey>[];
 export interface Group<T, TKey> {
     key: TKey;

@@ -174,54 +174,6 @@ export function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((
 }
 
 
-export function serializeFilters(filters: AppliedFilter<any>[]) {
-    console.log('serializeFilters', filters);
-    return filters.map(f => {
-        const { filter, operation, value } = f;
-        // const value = filter.dataType.key == 'string' ? '"' + f.Value + '"' : f.Value;
-        // if (filter.canBeNull && (operation.key == 'null' || operation.key == 'notnull')) {
-        //     return f.Column.Key + ' ' + f.Operation.key;
-        // }
-        //TODO: add serialize method to datatype
-        return filter.fieldName + ' ' + operation.key + ' ' + value;
-
-
-    }).join(' and ');
-
-}
-
-export function deSerializeFilters(filters: string, availableFilters: KeyedMap<FilterDefinition<any>>): AppliedFilter<any>[] {
-
-    console.log('deSerializeFilters', filters);
-    var myregexp = /(?:(.+?)\s+(eq|ne|gt|lt|contains|notcontains|between|in|notin|daterange|notnull|null)(?:\s+"?(.*?)"?)?(?:\s*$|\s+(?:or|and|not)\s+))/ig;
-    var match = myregexp.exec(filters);
-
-    var result: AppliedFilterDTO[] = [];
-    while (match != null) {
-
-        result.push({ key: match[1], operation: match[2], value: match[3] });
-
-        match = myregexp.exec(filters);
-    }
-
-    return result.map(m => {
-
-        const filter = availableFilters[m.key];
-
-        if (filter) {
-            const operation = filter.operations[m.operation];
-
-            if (operation) {
-                return { filter: filter, operation: operation, value: m.value };
-
-            }
-        }
-
-        return null;
-    }).filter(m => m != null);
-
-}
-
 
 
 export function groupBy<T, TKey>(items: T[], keyGen: (item: T, index?: number) => TKey): Group<T, TKey>[] {

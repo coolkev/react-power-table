@@ -40,6 +40,14 @@ export abstract class FilterDefinition<T> implements FilterDefinitionOptions {
 
     appliedFilterLabel?: (filter: AppliedFilter<T>) => string | Promise<string>;
 
+    serializeValue(value: T) {
+        return value.toString();
+    }    
+    
+    deSerializeValue(value: string): T {
+        return value as any;
+    }    
+    
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 
         if (typeof options === 'string') {
