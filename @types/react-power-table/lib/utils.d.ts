@@ -1,6 +1,7 @@
 /// <reference types="react" />
 import * as React from 'react';
 import shallowEqual from 'fbjs/lib/shallowEqual';
+import * as PowerTable from "./filters/definitions/FilterDefinition";
 import { Column } from "./ReactPowerTable";
 export declare type GlobalDate = Date;
 export declare const GlobalDate: DateConstructor;
@@ -28,10 +29,10 @@ export interface Group<T, TKey> {
     key: TKey;
     items: T[];
 }
-export declare function createKeyedMap<T, TObj extends ObjectMap<T>>(map: TObj): KeyedMap<T> & TObj;
-export declare function createKeyedMap<T, TObj extends Keyed<T>[]>(array: Keyed<T>[]): KeyedMap<T>;
-export declare function createKeyedMap<T, TObj extends Keyed<T>[]>(array: T[], keyField: (row: T) => string): KeyedMap<T>;
-export declare function createKeyedMap<T, TObj>(map: KeyedMap<T>): KeyedMap<T>;
+export declare function createKeyedMap<T, TObj extends PowerTable.ObjectMap<T>>(map: TObj): PowerTable.KeyedMap<T> & TObj;
+export declare function createKeyedMap<T, TObj extends PowerTable.Keyed<T>[]>(array: PowerTable.Keyed<T>[]): PowerTable.KeyedMap<T>;
+export declare function createKeyedMap<T, TObj extends PowerTable.Keyed<T>[]>(array: T[], keyField: (row: T) => string): PowerTable.KeyedMap<T>;
+export declare function createKeyedMap<T, TObj>(map: PowerTable.KeyedMap<T>): PowerTable.KeyedMap<T>;
 export declare class Lazy<T> {
     private _value;
     private func;

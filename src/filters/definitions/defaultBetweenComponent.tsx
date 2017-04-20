@@ -1,7 +1,9 @@
 import * as React from 'react';
+import * as PowerTable from './FilterDefinition';
+
 const valueDelimiter = ' ';
 
-export const BetweenFilterComponent = (props: FilterComponentProps<any>) => {
+export const BetweenFilterComponent = (props: PowerTable.FilterComponentProps<any>) => {
 
     const { value, onValueChange, ...rest } = props;
 
@@ -30,7 +32,7 @@ export const BetweenFilterComponent = (props: FilterComponentProps<any>) => {
 
 }
 
-export const BetweenAppliedFilterLabel = (filter: AppliedFilter<any>) => filter.filter.displayName + ' ' + filter.operation.displayName + ' ' + filter.value.toString().split(valueDelimiter).join(' and ');
+export const BetweenAppliedFilterLabel = (filter: PowerTable.AppliedFilter<any>) => filter.filter.displayName + ' ' + filter.operation.displayName + ' ' + filter.value.toString().split(valueDelimiter).join(' and ');
 
 
 export const BetweenApplyFilterTest = (parseValue: (value:any)=> any, filterValue: string) => {

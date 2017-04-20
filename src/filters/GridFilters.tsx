@@ -1,113 +1,24 @@
 ﻿import * as React from 'react';
 import { AddEditFilter } from './AddEditFilter'
 import FormControl from 'react-bootstrap/lib/FormControl';
-import { FilterDefinition } from "./DataTypes/DataType";
-
-
-export type AvailableFiltersMap = KeyedMap<FilterDefinition<any>>;
-
-export type AppliedFilterType = AppliedFilter<any>;
+import * as PowerTable from "./definitions/FilterDefinition";
 
 
 export interface GridFiltersProps {
 
 
-    availableFilters: AvailableFiltersMap;
-    appliedFilters: AppliedFilterType[];
-    onFiltersChange: (newFilters: AppliedFilterType[]) => void;
-
-}
-
-
-//declare module "react-power-table" {
-
-//  declare global {
-
-
-
-
-
-declare global {
-    type ObjectMap<T> = {
-        [key: string]: T;
-    }
-    type Keyed<T> = T & { key: string };
-    type KeyedMap<T> = ObjectMap<Keyed<T>> & {
-        all: Keyed<T>[];
-    }
-
-    interface FilterDefinitionOptions {
-        fieldName: string;
-        displayName?: string;
-        canBeNull?: boolean;
-
-    }
-    type FilterDefinitionOptionsOrFieldName = FilterDefinitionOptions | string;
-
-    // const FilterDefinition: {
-    //     defaultAppliedFilterLabel<T>(filter: AppliedFilter<T>): string | Promise<string>
-    // };
-    // interface FilterDefinition<T> extends FilterDefinitionOptions {
-    //     operations: KeyedMap<OperationDefinition<T>>;
-    //     radioButtonLabel: (props: RadioButtonLabelProps<T>) => React.ReactType;
-    //     filterComponent: (props: FilterComponentProps<T>) => JSX.Element;
-    //     defaultValue: T;
-
-    //     appliedFilterLabel?: (filter: AppliedFilter<T>) => string | Promise<string>;
-
-    //     applyFilter<TData>(data: TData[], field: string, operation: OperationDefinition<T>, value: T);
-
-    // }
-    interface OperationDefinition<T> {
-        key: string;
-        displayName: string;
-        appliedFilterLabel?(filter: AppliedFilter<T>): string | Promise<string>;
-        filterComponent?: (props: FilterComponentProps<T>) => JSX.Element;
-
-        radioButtonLabel?: (props: RadioButtonLabelProps<T>) => JSX.Element;
-        test(source: any, filterValue: T): boolean;
-    }
-
-
-
-    interface AppliedFilter<T> {
-        filter: FilterDefinition<T>;
-        operation: OperationDefinition<T>;
-        value: T;
-
-    }
-    interface AppliedFilterDTO {
-        key: string;
-        operation: string;
-        value: string;
-    }
-
-    interface FilterComponentProps<T> extends AppliedFilter<T> {
-
-        onValueChange: (value: T) => void;
-
-        style?: React.CSSProperties;
-        className?: string;
-        autoFocus?: boolean;
-        disabled?: boolean;
-        placeholder?: string;
-        onEnterKeyPress: () => void;
-    }
-    interface RadioButtonLabelProps<T> {
-        filter: FilterDefinition<T>;
-        operation: OperationDefinition<T>;
-    }
+    availableFilters: PowerTable.AvailableFiltersMap;
+    appliedFilters: PowerTable.AppliedFilterType[];
+    onFiltersChange: (newFilters: PowerTable.AppliedFilterType[]) => void;
 
 }
 
 
 
-
-//}
 export interface GridFiltersState {
 
     addingFilter?: boolean;
-    editingFilter?: AppliedFilterType;
+    editingFilter?: PowerTable.AppliedFilterType;
 
 }
 
@@ -125,10 +36,10 @@ const BackLink = (props: BackLinkProps) => {
 
 
 export interface GridAppliedFiltersProps {
-    availableFilters: AvailableFiltersMap;
-    appliedFilters: AppliedFilterType[];
-    removeFilter: (filter: AppliedFilterType) => void;
-    editFilter: (filter: AppliedFilterType) => void;
+    availableFilters: PowerTable.AvailableFiltersMap;
+    appliedFilters: PowerTable.AppliedFilterType[];
+    removeFilter: (filter: PowerTable.AppliedFilterType) => void;
+    editFilter: (filter: PowerTable.AppliedFilterType) => void;
     onOptionLoaded: () => void;
 }
 
@@ -139,20 +50,24 @@ const GridAppliedFilters = (props: GridAppliedFiltersProps) => {
     return <div className="small">
         {props.appliedFilters.map(appliedFilter => {
 
-            const formatFunc = appliedFilter.operation.appliedFilterLabel || appliedFilter.filter.appliedFilterLabel || FilterDefinition.defaultAppliedFilterLabel;
+            let AppliedLabelComponent = appliedFilter.operation.appliedLabelComponent || appliedFilter.filter.appliedLabelComponent;
 
-            const formatResult = formatFunc(appliedFilter);
+            if (!AppliedLabelComponent) {
+                const appliedLabel = appliedFilter.operation.appliedLabel || appliedFilter.filter.appliedLabel || PowerTable.FilterDefinition.defaultAppliedFilterLabel;
+                AppliedLabelComponent = (props: PowerTable.AppliedFilter<any>) => <span>{appliedLabel(props)}</span>;
+            }
+            //const formatResult = formatFunc(appliedFilter);
 
-            let displayText: string;
+            {/*let displayText: string;
             if (typeof (formatResult) == 'string') {
                 displayText = formatResult
             } else {
                 formatResult.then(() => props.onOptionLoaded());
                 displayText = 'Loading...';
-            }
+            }*/}
             return <div className="well well-sm" style={{ marginBottom: 10 }} key={appliedFilter.filter.fieldName}>
                 <button type="button" className="close" aria-label="Remove" onClick={() => props.removeFilter(appliedFilter)}><span aria-hidden="true">×</span></button>
-                <a href="#" onClick={e => { e.preventDefault(); props.editFilter(appliedFilter); }}>{displayText}</a>
+                <a href="#" onClick={e => { e.preventDefault(); props.editFilter(appliedFilter); }}><AppliedLabelComponent {...appliedFilter}/></a>
             </div>;
         }
         )}
@@ -191,7 +106,7 @@ export class GridFilters extends React.Component<GridFiltersProps, GridFiltersSt
         })
     }
 
-    private applyNewfilter(filter: AppliedFilterType) {
+    private applyNewfilter(filter: PowerTable.AppliedFilterType) {
 
         const newFilters = [...this.props.appliedFilters, filter];
 
@@ -202,13 +117,13 @@ export class GridFilters extends React.Component<GridFiltersProps, GridFiltersSt
     }
 
 
-    private removeFilter(filter: AppliedFilterType) {
+    private removeFilter(filter: PowerTable.AppliedFilterType) {
         const newFilters = this.props.appliedFilters.filter(m => m.filter.fieldName != filter.filter.fieldName);
 
         this.props.onFiltersChange(newFilters);
     }
 
-    private editFilter(filter: AppliedFilterType) {
+    private editFilter(filter: PowerTable.AppliedFilterType) {
         this.setState({
             editingFilter: filter,
             addingFilter: false,
@@ -221,7 +136,7 @@ export class GridFilters extends React.Component<GridFiltersProps, GridFiltersSt
         })
     }
 
-    private applyEditFilter(filter: AppliedFilterType) {
+    private applyEditFilter(filter: PowerTable.AppliedFilterType) {
 
         const newFilters = this.props.appliedFilters.map(m => m.filter.fieldName != filter.filter.fieldName ? m : filter);
 
@@ -280,9 +195,9 @@ export class GridFilters extends React.Component<GridFiltersProps, GridFiltersSt
 interface AddFilterProps {
     cancelAddFilter: () => void;
 
-    availableFilters: AvailableFiltersMap;
-    appliedFilters: AppliedFilterType[];
-    onApplyFilter: (filter: AppliedFilterType) => void;
+    availableFilters: PowerTable.AvailableFiltersMap;
+    appliedFilters: PowerTable.AppliedFilterType[];
+    onApplyFilter: (filter: PowerTable.AppliedFilterType) => void;
 
 }
 
@@ -375,4 +290,7 @@ class AddFilter extends React.PureComponent<AddFilterProps, AddFilterState> {
         </div>;
     }
 }
+
+
+
 

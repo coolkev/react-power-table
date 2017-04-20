@@ -1,14 +1,14 @@
 /// <reference types="react" />
 import * as React from 'react';
-import { FilterDefinition } from "./DataTypes/DataType";
+import * as PowerTable from "./definitions/FilterDefinition";
 export interface AddEditFilterProps {
-    filter: FilterDefinition<any>;
-    initialOperation: OperationDefinition<any>;
+    filter: PowerTable.FilterDefinition<any>;
+    initialOperation: PowerTable.OperationDefinition<any>;
     initialValue?: any;
-    onApplyFilter: (filter: AppliedFilter<any>) => void;
+    onApplyFilter: (filter: PowerTable.AppliedFilter<any>) => void;
 }
 export interface AddEditFilterState {
-    operation: OperationDefinition<any>;
+    operation: PowerTable.OperationDefinition<any>;
     value: any;
 }
 export declare class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEditFilterState> {

@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
-import { FilterDefinition } from "./DataType";
 import * as DatePicker from 'react-bootstrap-date-picker';
 import { GlobalDate } from "../../utils";
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName } from "./FilterDefinition";
 
 export class Date extends FilterDefinition<string>
 {

@@ -1,16 +1,14 @@
 ﻿import * as React from 'react';
-import { FilterDefinition } from "./DataType";
+import * as PowerTable from "./FilterDefinition";
 import * as Select from 'react-select';
 import { CustomSelectValue } from '../../components/CustomSelectValue';
 
-//const valueDelimiter = ';';
 
-
-export class List extends FilterDefinition<string[]>
+export class List extends PowerTable.FilterDefinition<string[]>
 {
 
 
-    constructor(options: FilterDefinitionOptionsOrFieldName, items: Select.Option[]) {
+    constructor(options: PowerTable.FilterDefinitionOptionsOrFieldName, items: Select.Option[]) {
 
         super(options);
 
@@ -24,13 +22,13 @@ export class List extends FilterDefinition<string[]>
 
             //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
     }
-    protected getOperations(): ObjectMap<OperationDefinition<string[]>> {
+    protected getOperations(): PowerTable.ObjectMap<PowerTable.OperationDefinition<string[]>> {
         return {
             'in': {
                 key: 'in',
                 displayName: 'is any of',
                 test: (sourceValue: string, filterValue) => filterValue.indexOf(sourceValue) > -1,
-                appliedFilterLabel: (filter) => filter.filter.displayName + ' is ' + filter.value.join(' or ')
+                appliedLabel: (filter) => filter.filter.displayName + ' is ' + filter.value.join(' or ')
             }
         };
     }

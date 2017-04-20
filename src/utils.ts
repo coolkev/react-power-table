@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import shallowEqual from 'fbjs/lib/shallowEqual';
-import { FilterDefinition } from "./filters/DataTypes/DataType";
+import * as PowerTable from "./filters/definitions/FilterDefinition";
 import { Column } from "./ReactPowerTable";
 
 export type GlobalDate = Date;
@@ -199,14 +199,14 @@ export interface Group<T, TKey> {
 
 
 //export function createKeyedMap<T extends { key: string }, TObj extends ObjectMap<T>>(mapOrArray: TObj): KeyedMap<T> & TObj {
-export function createKeyedMap<T, TObj extends ObjectMap<T>>(map: TObj): KeyedMap<T> & TObj;
-export function createKeyedMap<T, TObj extends Keyed<T>[]>(array: Keyed<T>[]): KeyedMap<T>;
-export function createKeyedMap<T, TObj extends Keyed<T>[]>(array: T[], keyField:(row:T)=> string): KeyedMap<T>;
-export function createKeyedMap<T, TObj>(map: KeyedMap<T>): KeyedMap<T>;
-export function createKeyedMap<T, TObj extends ObjectMap<T> | Keyed<T>[] | KeyedMap<T>>(mapOrArray: TObj, keyField?:(row:T)=> string) {
+export function createKeyedMap<T, TObj extends PowerTable.ObjectMap<T>>(map: TObj): PowerTable.KeyedMap<T> & TObj;
+export function createKeyedMap<T, TObj extends PowerTable.Keyed<T>[]>(array: PowerTable.Keyed<T>[]): PowerTable.KeyedMap<T>;
+export function createKeyedMap<T, TObj extends PowerTable.Keyed<T>[]>(array: T[], keyField:(row:T)=> string): PowerTable.KeyedMap<T>;
+export function createKeyedMap<T, TObj>(map: PowerTable.KeyedMap<T>): PowerTable.KeyedMap<T>;
+export function createKeyedMap<T, TObj extends PowerTable.ObjectMap<T> | PowerTable.Keyed<T>[] | PowerTable.KeyedMap<T>>(mapOrArray: TObj, keyField?:(row:T)=> string) {
 
     if (Array.isArray(mapOrArray)) {
-        const newMap = { all: mapOrArray } as KeyedMap<T> & TObj;
+        const newMap = { all: mapOrArray } as PowerTable.KeyedMap<T> & TObj;
         mapOrArray.forEach(m => {
 
             const k = keyField && keyField(m) || m.key;
@@ -223,7 +223,7 @@ export function createKeyedMap<T, TObj extends ObjectMap<T> | Keyed<T>[] | Keyed
     //     return mapOrArray;
     // }
     const all = <any>Object.keys(mapOrArray).filter(m=>m!='all').map(m => {
-        const v = mapOrArray[m] as Keyed<T>;
+        const v = mapOrArray[m] as PowerTable.Keyed<T>;
         v.key = m;
         return v;
     });

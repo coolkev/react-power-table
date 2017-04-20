@@ -4,8 +4,8 @@ import { Date } from './Date';
 import { Decimal } from './Decimal';
 import { Int } from './Int';
 import { List } from './List';
-import { FilterDefinition } from "./DataType";
-export { FilterDefinition } from "./DataType";
+import { FilterDefinition } from "./FilterDefinition";
+export * from "./FilterDefinition";
 
 const types = {
     'string': String,
@@ -17,3 +17,4 @@ const types = {
 }
 type types = typeof types & { [key: string]: FilterDefinition<any> };
 export const DataTypes = types;
+

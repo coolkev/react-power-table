@@ -1,18 +1,18 @@
 ﻿import * as React from 'react';
-import { FilterDefinition } from "./DataType";
 import FormControl from 'react-bootstrap/lib/FormControl';
+import * as PowerTable from './FilterDefinition';
 
-export class String extends FilterDefinition<string>
+export class String extends PowerTable.FilterDefinition<string>
 {
 
-    constructor(options: FilterDefinitionOptionsOrFieldName) {
+    constructor(options: PowerTable.FilterDefinitionOptionsOrFieldName) {
 
         super(options);
 
         this.filterComponent = (props) => <FormControl value={props.value} autoFocus onChange={(e: React.FormEvent<FormControl & HTMLInputElement>) => props.onValueChange(e.currentTarget.value)}
         onKeyPress={(e) => { if (e.charCode==13) props.onEnterKeyPress()}}/>
 
-        this.appliedFilterLabel = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
+        this.appliedLabel = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
     }
 
     protected getOperations() {
@@ -36,7 +36,7 @@ export class String extends FilterDefinition<string>
         return value as any;
     }    
     
-    public applyFilter<TData>(data: TData[], field: string, operation: OperationDefinition<string>, value: string) {
+    public applyFilter<TData>(data: TData[], field: string, operation: PowerTable.OperationDefinition<string>, value: string) {
 
         const valueLower = value.toLowerCase();
         return super.applyFilter(data, field, operation, valueLower);

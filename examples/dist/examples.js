@@ -74,7 +74,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0535898b2e5d034cb3f1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4f1d1de2ac898ba7ea05"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -1630,7 +1630,7 @@ var AddEditFilter = function (_React$PureComponent) {
             var filter = this.props.filter;
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { style: { margin: '10px 0' } }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("b", null, filter.displayName)), filter.operations.all.map(function (op) {
                 var selectedFilterComponentProps = void 0;
-                var SelectedFilterComponent = null;
+                var SelectedFilterComponent = void 0;
                 if (op.key == _this2.state.operation.key) {
                     selectedFilterComponentProps = {
                         filter: _this2.props.filter,
@@ -1654,634 +1654,6 @@ var AddEditFilter = function (_React$PureComponent) {
 
 /***/ }),
 
-/***/ "./src/filters/DataTypes/Boolean.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Boolean; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-var verbs = [['is', 'is not'], ['has', 'does not have'], ['had', 'did not have'], ['can', 'cannot'], ['will', 'will not'], ['was', 'was not']];
-var Boolean = function (_FilterDefinition) {
-    _inherits(Boolean, _FilterDefinition);
-
-    function Boolean(options) {
-        _classCallCheck(this, Boolean);
-
-        var _this = _possibleConstructorReturn(this, (Boolean.__proto__ || Object.getPrototypeOf(Boolean)).call(this, options));
-
-        _this.appliedFilterLabel = function (props) {
-            return props.operation.displayName;
-        };
-        return _this;
-    }
-
-    _createClass(Boolean, [{
-        key: 'getOperations',
-        value: function getOperations() {
-            var _this2 = this;
-
-            var matchingVerb = verbs.find(function (m) {
-                var name = _this2.displayName.toLowerCase();
-                return m[0] == name || name.startsWith(m[0] + ' ');
-            });
-            var verb = matchingVerb || verbs[0];
-            var displayName = matchingVerb ? this.displayName.substring(matchingVerb[0].length + 1) : this.displayName;
-            var trueName = verb[0] + ' ' + displayName;
-            var falseName = verb[1] + ' ' + displayName;
-            return {
-                'eq': { key: 'eq', displayName: trueName, test: function test(source) {
-                        return source;
-                    } },
-                'ne': { key: 'ne', displayName: falseName, test: function test(source) {
-                        return !source;
-                    } }
-            };
-        }
-    }]);
-
-    return Boolean;
-}(__WEBPACK_IMPORTED_MODULE_0__DataType__["a" /* FilterDefinition */]);
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/DataType.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__("./src/utils.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__ = __webpack_require__("./src/filters/DataTypes/defaultBetweenComponent.tsx");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterDefinition; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var defaultOperations = function defaultOperations() {
-    var result = {
-        'eq': { key: 'eq', displayName: 'is equal to', test: function test(source, filterValue) {
-                return source == filterValue;
-            } },
-        'ne': { key: 'ne', displayName: 'is not equal to', test: function test(source, filterValue) {
-                return source == filterValue;
-            } },
-        'lt': { key: 'lt', displayName: 'is less than', test: function test(source, filterValue) {
-                return source < filterValue;
-            } },
-        'gt': { key: 'gt', displayName: 'is greater than', test: function test(source, filterValue) {
-                return source > filterValue;
-            } },
-        'between': { key: 'between', displayName: 'is between', filterComponent: __WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__["a" /* BetweenFilterComponent */], appliedFilterLabel: __WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__["b" /* BetweenAppliedFilterLabel */], test: function test(source, filterValue) {
-                return source >= filterValue && source <= filterValue;
-            } }
-    };
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils__["m" /* createKeyedMap */])(result);
-};
-// export interface IFilterDefinition<T> extends FilterDefinitionOptions {
-//     operations: KeyedMap<OperationDefinition<T>>;
-//     radioButtonLabel: (props: RadioButtonLabelProps<T>) => React.ReactType;
-//     filterComponent: (props: FilterComponentProps<T>) => JSX.Element;
-//     defaultValue: T;
-//     appliedFilterLabel?: (filter: AppliedFilter<T>) => string | Promise<string>;
-//     applyFilter<TData>(data: TData[], field: string, operation: OperationDefinition<T>, value: T);
-// }
-var FilterDefinition = function () {
-    function FilterDefinition(options) {
-        _classCallCheck(this, FilterDefinition);
-
-        this._defaultOperations = new __WEBPACK_IMPORTED_MODULE_0__utils__["n" /* Lazy */](defaultOperations);
-        if (typeof options === 'string') {
-            this.fieldName = options;
-            this.displayName = options;
-        } else {
-            this.fieldName = options.fieldName;
-            this.displayName = options.displayName || options.fieldName;
-            this.canBeNull = options.canBeNull;
-        }
-        var operations = this.getOperations();
-        if (this.canBeNull) {
-            operations.notnull = {
-                key: 'notnull',
-                displayName: 'has a value',
-                appliedFilterLabel: function appliedFilterLabel(filter) {
-                    return filter.filter.displayName + ' ' + filter.operation.displayName;
-                },
-                filterComponent: function filterComponent() {
-                    return null;
-                },
-                test: function test(source, _filterValue) {
-                    return source != null && source != undefined && source != '';
-                }
-            };
-            operations.null = {
-                key: 'null',
-                displayName: 'does not have a value',
-                appliedFilterLabel: function appliedFilterLabel(filter) {
-                    return filter.filter.displayName + ' ' + filter.operation.displayName;
-                },
-                filterComponent: function filterComponent() {
-                    return null;
-                },
-                test: function test(source, _filterValue) {
-                    return source == null || source == undefined || source == '';
-                }
-            };
-        }
-        operations.all = Object.keys(operations).filter(function (m) {
-            return m != 'all';
-        }).map(function (m) {
-            return operations[m];
-        });
-        this.operations = operations;
-    }
-
-    _createClass(FilterDefinition, [{
-        key: "applyFilter",
-        value: function applyFilter(data, field, operation, filterValue) {
-            var test = operation.test;
-
-            var parsedValue = this.parseValue(filterValue);
-            console.group('applyFilter ' + operation.displayName + ' ' + filterValue + ' parsedValue: ' + parsedValue);
-            if (operation.key == 'between') {
-                test = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__["c" /* BetweenApplyFilterTest */])(this.parseValue, filterValue);
-            }
-            var result = data.filter(function (d) {
-                var result = test(d[field], parsedValue);
-                console.log('test ' + d[field] + ' returned ' + result);
-                return result;
-            });
-            console.groupEnd();
-            return result;
-        }
-    }, {
-        key: "parseValue",
-        value: function parseValue(str) {
-            return str;
-        }
-    }, {
-        key: "defaultOperations",
-        get: function get() {
-            return this._defaultOperations.value;
-        }
-    }], [{
-        key: "defaultAppliedFilterLabel",
-        value: function defaultAppliedFilterLabel(filter) {
-            return filter.filter.displayName + ' ' + filter.operation.displayName + ' ' + filter.value;
-        }
-    }]);
-
-    return FilterDefinition;
-}();
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/Date.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_bootstrap_date_picker__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_bootstrap_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap_date_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__("./src/utils.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Date; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var __rest = this && this.__rest || function (s, e) {
-    var t = {};
-    for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
-    }return t;
-};
-
-
-
-
-var Date = function (_FilterDefinition) {
-    _inherits(Date, _FilterDefinition);
-
-    function Date(options) {
-        _classCallCheck(this, Date);
-
-        var _this = _possibleConstructorReturn(this, (Date.__proto__ || Object.getPrototypeOf(Date)).call(this, options));
-
-        _this.filterComponent = function (props) {
-            var value = props.value,
-                onValueChange = props.onValueChange,
-                filter = props.filter,
-                operation = props.operation,
-                rest = __rest(props, ["value", "onValueChange", "filter", "operation"]);
-
-            var dateValue = value ? new __WEBPACK_IMPORTED_MODULE_3__utils__["a" /* GlobalDate */](value).toISOString() : '';
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_bootstrap_date_picker__, Object.assign({ value: dateValue, onChange: function onChange(_value, formattedValue) {
-                    return props.onValueChange(formattedValue);
-                }, showClearButton: false }, rest));
-        };
-        return _this;
-    }
-
-    _createClass(Date, [{
-        key: "parseValue",
-        value: function parseValue(str) {
-            if (str) {
-                var d = new __WEBPACK_IMPORTED_MODULE_3__utils__["a" /* GlobalDate */](str);
-                if (!isNaN(d.getTime())) {
-                    return d.toISOString();
-                }
-            }
-            return '';
-        }
-    }, {
-        key: "getOperations",
-        value: function getOperations() {
-            return {
-                eq: this.defaultOperations.eq,
-                lt: Object.assign({}, this.defaultOperations.lt, { displayName: 'is before' }),
-                gt: Object.assign({}, this.defaultOperations.gt, { displayName: 'is after' }),
-                between: this.defaultOperations.between
-            };
-        }
-    }]);
-
-    return Date;
-}(__WEBPACK_IMPORTED_MODULE_1__DataType__["a" /* FilterDefinition */]);
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/Decimal.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_NumericInput__ = __webpack_require__("./src/components/NumericInput.tsx");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Decimal; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var __rest = this && this.__rest || function (s, e) {
-    var t = {};
-    for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
-    }return t;
-};
-
-
-
-var Decimal = function (_FilterDefinition) {
-    _inherits(Decimal, _FilterDefinition);
-
-    function Decimal(options) {
-        _classCallCheck(this, Decimal);
-
-        var _this = _possibleConstructorReturn(this, (Decimal.__proto__ || Object.getPrototypeOf(Decimal)).call(this, options));
-
-        _this.filterComponent = function (props) {
-            var value = props.value,
-                _onValueChange = props.onValueChange,
-                filter = props.filter,
-                operation = props.operation,
-                onEnterKeyPress = props.onEnterKeyPress,
-                rest = __rest(props, ["value", "onValueChange", "filter", "operation", "onEnterKeyPress"]);
-
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_NumericInput__["a" /* NumericInput */], Object.assign({ type: "number", initialValue: value, onValueChange: function onValueChange(v) {
-                    return _onValueChange(v);
-                }, autoFocus: true, className: "form-control input-sm", onKeyPress: function onKeyPress(e) {
-                    if (e.charCode == 13) onEnterKeyPress();
-                } }, rest));
-        };
-        return _this;
-    }
-
-    _createClass(Decimal, [{
-        key: "getOperations",
-        value: function getOperations() {
-            return this.defaultOperations;
-        }
-    }, {
-        key: "parseValue",
-        value: function parseValue(str) {
-            return parseFloat(str);
-        }
-    }]);
-
-    return Decimal;
-}(__WEBPACK_IMPORTED_MODULE_1__DataType__["a" /* FilterDefinition */]);
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/Int.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_NumericInput__ = __webpack_require__("./src/components/NumericInput.tsx");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Int; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var __rest = this && this.__rest || function (s, e) {
-    var t = {};
-    for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
-    }return t;
-};
-
-
-
-//const dataType = 'int';
-var Int = function (_FilterDefinition) {
-    _inherits(Int, _FilterDefinition);
-
-    //static readonly dataType = dataType;
-    function Int(options) {
-        _classCallCheck(this, Int);
-
-        var _this = _possibleConstructorReturn(this, (Int.__proto__ || Object.getPrototypeOf(Int)).call(this, options));
-
-        _this.filterComponent = function (props) {
-            var value = props.value,
-                _onValueChange = props.onValueChange,
-                filter = props.filter,
-                operation = props.operation,
-                onEnterKeyPress = props.onEnterKeyPress,
-                rest = __rest(props, ["value", "onValueChange", "filter", "operation", "onEnterKeyPress"]);
-
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_NumericInput__["a" /* NumericInput */], Object.assign({ type: "number", initialValue: value, onValueChange: function onValueChange(v) {
-                    return _onValueChange(v);
-                }, autoFocus: true, className: "form-control input-sm", onKeyPress: function onKeyPress(e) {
-                    if (e.charCode == 13) onEnterKeyPress();
-                } }, rest));
-        };
-        return _this;
-    }
-
-    _createClass(Int, [{
-        key: "getOperations",
-        value: function getOperations() {
-            return this.defaultOperations;
-        }
-    }, {
-        key: "parseValue",
-        value: function parseValue(str) {
-            return parseInt(str);
-        }
-    }]);
-
-    return Int;
-}(__WEBPACK_IMPORTED_MODULE_1__DataType__["a" /* FilterDefinition */]);
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/List.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_select__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_select__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_CustomSelectValue__ = __webpack_require__("./src/components/CustomSelectValue.tsx");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return List; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-//const valueDelimiter = ';';
-var List = function (_FilterDefinition) {
-    _inherits(List, _FilterDefinition);
-
-    function List(options, items) {
-        _classCallCheck(this, List);
-
-        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, options));
-
-        _this.filterComponent = function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_select__, { value: props.value ? props.value : [], multi: true, options: items, onChange: function onChange(e) {
-                    return props.onValueChange(e.map(function (m) {
-                        return m.value || m.label;
-                    }));
-                }, valueComponent: __WEBPACK_IMPORTED_MODULE_3__components_CustomSelectValue__["a" /* CustomSelectValue */], className: "small" });
-        };
-        //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
-        return _this;
-    }
-
-    _createClass(List, [{
-        key: 'getOperations',
-        value: function getOperations() {
-            return {
-                'in': {
-                    key: 'in',
-                    displayName: 'is any of',
-                    test: function test(sourceValue, filterValue) {
-                        return filterValue.indexOf(sourceValue) > -1;
-                    },
-                    appliedFilterLabel: function appliedFilterLabel(filter) {
-                        return filter.filter.displayName + ' is ' + filter.value.join(' or ');
-                    }
-                }
-            };
-        }
-    }]);
-
-    return List;
-}(__WEBPACK_IMPORTED_MODULE_1__DataType__["a" /* FilterDefinition */]);
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/String.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_bootstrap_lib_FormControl__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_bootstrap_lib_FormControl___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap_lib_FormControl__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return String; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var String = function (_FilterDefinition) {
-    _inherits(String, _FilterDefinition);
-
-    function String(options) {
-        _classCallCheck(this, String);
-
-        var _this = _possibleConstructorReturn(this, (String.__proto__ || Object.getPrototypeOf(String)).call(this, options));
-
-        _this.filterComponent = function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_bootstrap_lib_FormControl___default.a, { value: props.value, autoFocus: true, onChange: function onChange(e) {
-                    return props.onValueChange(e.currentTarget.value);
-                }, onKeyPress: function onKeyPress(e) {
-                    if (e.charCode == 13) props.onEnterKeyPress();
-                } });
-        };
-        _this.appliedFilterLabel = function (filter) {
-            return filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"';
-        };
-        return _this;
-    }
-
-    _createClass(String, [{
-        key: 'getOperations',
-        value: function getOperations() {
-            return {
-                'contains': { key: 'contains', displayName: 'contains', test: function test(source, value) {
-                        return source.indexOf && source.toLowerCase().indexOf(value) > -1;
-                    } },
-                'notcontains': { key: 'notcontains', displayName: 'does not contain', test: function test(source, value) {
-                        return source.indexOf && source.toLowerCase().indexOf(value) == -1;
-                    } },
-                'eq': this.defaultOperations.eq,
-                'ne': this.defaultOperations.ne
-            };
-        }
-    }, {
-        key: 'applyFilter',
-        value: function applyFilter(data, field, operation, value) {
-            var valueLower = value.toLowerCase();
-            return _get(String.prototype.__proto__ || Object.getPrototypeOf(String.prototype), 'applyFilter', this).call(this, data, field, operation, valueLower);
-        }
-    }]);
-
-    return String;
-}(__WEBPACK_IMPORTED_MODULE_1__DataType__["a" /* FilterDefinition */]);
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/defaultBetweenComponent.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BetweenFilterComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BetweenAppliedFilterLabel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BetweenApplyFilterTest; });
-var __rest = this && this.__rest || function (s, e) {
-    var t = {};
-    for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
-    }return t;
-};
-
-var valueDelimiter = ' ';
-var BetweenFilterComponent = function BetweenFilterComponent(props) {
-    var value = props.value,
-        _onValueChange = props.onValueChange,
-        rest = __rest(props, ["value", "onValueChange"]);
-
-    var values = value.toString().split(valueDelimiter);
-    var min = values[0];
-    var max = values.length >= 2 ? values[1] : '';
-    var FilterComponent = props.filter.filterComponent;
-    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("table", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tbody", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](FilterComponent, Object.assign({ value: min, onValueChange: function onValueChange(v) {
-            return _onValueChange(v + valueDelimiter + max);
-        }, placeholder: "min" }, rest))), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { style: { padding: '0 5px' } }, "and"), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](FilterComponent, Object.assign({ value: max, onValueChange: function onValueChange(v) {
-            return _onValueChange(min + valueDelimiter + v);
-        }, placeholder: "max" }, rest, { autoFocus: false })))))));
-};
-var BetweenAppliedFilterLabel = function BetweenAppliedFilterLabel(filter) {
-    return filter.filter.displayName + ' ' + filter.operation.displayName + ' ' + filter.value.toString().split(valueDelimiter).join(' and ');
-};
-var BetweenApplyFilterTest = function BetweenApplyFilterTest(parseValue, filterValue) {
-    var values = filterValue.split(valueDelimiter);
-    var min = parseValue(values[0]);
-    var max = parseValue(values[1]);
-    return function (source, _filterValue) {
-        return source >= min && source <= max;
-    };
-};
-
-/***/ }),
-
-/***/ "./src/filters/DataTypes/index.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__String__ = __webpack_require__("./src/filters/DataTypes/String.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Boolean__ = __webpack_require__("./src/filters/DataTypes/Boolean.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Date__ = __webpack_require__("./src/filters/DataTypes/Date.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Decimal__ = __webpack_require__("./src/filters/DataTypes/Decimal.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Int__ = __webpack_require__("./src/filters/DataTypes/Int.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__List__ = __webpack_require__("./src/filters/DataTypes/List.tsx");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataTypes; });
-
-
-
-
-
-
-var types = {
-    'string': __WEBPACK_IMPORTED_MODULE_0__String__["a" /* String */],
-    'boolean': __WEBPACK_IMPORTED_MODULE_1__Boolean__["a" /* Boolean */],
-    'date': __WEBPACK_IMPORTED_MODULE_2__Date__["a" /* Date */],
-    'decimal': __WEBPACK_IMPORTED_MODULE_3__Decimal__["a" /* Decimal */],
-    'int': __WEBPACK_IMPORTED_MODULE_4__Int__["a" /* Int */],
-    'list': __WEBPACK_IMPORTED_MODULE_5__List__["a" /* List */]
-};
-var DataTypes = types;
-
-/***/ }),
-
 /***/ "./src/filters/GridFilters.tsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2291,7 +1663,7 @@ var DataTypes = types;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AddEditFilter__ = __webpack_require__("./src/filters/AddEditFilter.tsx");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_bootstrap_lib_FormControl__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_bootstrap_lib_FormControl___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap_lib_FormControl__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__DataTypes_DataType__ = __webpack_require__("./src/filters/DataTypes/DataType.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__definitions_FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GridFilters; });
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -2315,22 +1687,20 @@ var BackLink = function BackLink(props) {
 };
 var GridAppliedFilters = function GridAppliedFilters(props) {
     return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "small" }, props.appliedFilters.map(function (appliedFilter) {
-        var formatFunc = appliedFilter.operation.appliedFilterLabel || appliedFilter.filter.appliedFilterLabel || __WEBPACK_IMPORTED_MODULE_3__DataTypes_DataType__["a" /* FilterDefinition */].defaultAppliedFilterLabel;
-        var formatResult = formatFunc(appliedFilter);
-        var displayText = void 0;
-        if (typeof formatResult == 'string') {
-            displayText = formatResult;
-        } else {
-            formatResult.then(function () {
-                return props.onOptionLoaded();
-            });
-            displayText = 'Loading...';
+        var AppliedLabelComponent = appliedFilter.operation.appliedLabelComponent || appliedFilter.filter.appliedLabelComponent;
+        if (!AppliedLabelComponent) {
+            var appliedLabel = appliedFilter.operation.appliedLabel || appliedFilter.filter.appliedLabel || __WEBPACK_IMPORTED_MODULE_3__definitions_FilterDefinition__["a" /* FilterDefinition */].defaultAppliedFilterLabel;
+            AppliedLabelComponent = function AppliedLabelComponent(props) {
+                return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, appliedLabel(props));
+            };
         }
+        //const formatResult = formatFunc(appliedFilter);
+        {}
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "well well-sm", style: { marginBottom: 10 }, key: appliedFilter.filter.fieldName }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "button", className: "close", "aria-label": "Remove", onClick: function onClick() {
                 return props.removeFilter(appliedFilter);
             } }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { "aria-hidden": "true" }, '\xD7')), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", { href: "#", onClick: function onClick(e) {
                 e.preventDefault();props.editFilter(appliedFilter);
-            } }, displayText));
+            } }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](AppliedLabelComponent, Object.assign({}, appliedFilter))));
     }));
 };
 var GridFilters = function (_React$Component) {
@@ -2512,6 +1882,647 @@ var AddFilter = function (_React$PureComponent) {
 
 /***/ }),
 
+/***/ "./src/filters/definitions/Boolean.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Boolean; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+var verbs = [['is', 'is not'], ['has', 'does not have'], ['had', 'did not have'], ['can', 'cannot'], ['will', 'will not'], ['was', 'was not']];
+var Boolean = function (_FilterDefinition) {
+    _inherits(Boolean, _FilterDefinition);
+
+    function Boolean(options) {
+        _classCallCheck(this, Boolean);
+
+        var _this = _possibleConstructorReturn(this, (Boolean.__proto__ || Object.getPrototypeOf(Boolean)).call(this, options));
+
+        _this.appliedLabel = function (props) {
+            return props.operation.displayName;
+        };
+        return _this;
+    }
+
+    _createClass(Boolean, [{
+        key: 'getOperations',
+        value: function getOperations() {
+            var _this2 = this;
+
+            var matchingVerb = verbs.find(function (m) {
+                var name = _this2.displayName.toLowerCase();
+                return m[0] == name || name.startsWith(m[0] + ' ');
+            });
+            var verb = matchingVerb || verbs[0];
+            var displayName = matchingVerb ? this.displayName.substring(matchingVerb[0].length + 1) : this.displayName;
+            var trueName = verb[0] + ' ' + displayName;
+            var falseName = verb[1] + ' ' + displayName;
+            return {
+                'eq': { key: 'eq', displayName: trueName, test: function test(source) {
+                        return source;
+                    } },
+                'ne': { key: 'ne', displayName: falseName, test: function test(source) {
+                        return !source;
+                    } }
+            };
+        }
+    }]);
+
+    return Boolean;
+}(__WEBPACK_IMPORTED_MODULE_0__FilterDefinition__["a" /* FilterDefinition */]);
+
+/***/ }),
+
+/***/ "./src/filters/definitions/Date.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap_date_picker__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap_date_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__("./src/utils.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Date; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __rest = this && this.__rest || function (s, e) {
+    var t = {};
+    for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
+    }return t;
+};
+
+
+
+
+var Date = function (_FilterDefinition) {
+    _inherits(Date, _FilterDefinition);
+
+    function Date(options) {
+        _classCallCheck(this, Date);
+
+        var _this = _possibleConstructorReturn(this, (Date.__proto__ || Object.getPrototypeOf(Date)).call(this, options));
+
+        _this.filterComponent = function (props) {
+            var value = props.value,
+                onValueChange = props.onValueChange,
+                filter = props.filter,
+                operation = props.operation,
+                rest = __rest(props, ["value", "onValueChange", "filter", "operation"]);
+
+            var dateValue = value ? new __WEBPACK_IMPORTED_MODULE_2__utils__["a" /* GlobalDate */](value).toISOString() : '';
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_bootstrap_date_picker__, Object.assign({ value: dateValue, onChange: function onChange(_value, formattedValue) {
+                    return props.onValueChange(formattedValue);
+                }, showClearButton: false }, rest));
+        };
+        return _this;
+    }
+
+    _createClass(Date, [{
+        key: 'parseValue',
+        value: function parseValue(str) {
+            if (str) {
+                var d = new __WEBPACK_IMPORTED_MODULE_2__utils__["a" /* GlobalDate */](str);
+                if (!isNaN(d.getTime())) {
+                    return d.toISOString();
+                }
+            }
+            return '';
+        }
+    }, {
+        key: 'getOperations',
+        value: function getOperations() {
+            return {
+                eq: this.defaultOperations.eq,
+                lt: Object.assign({}, this.defaultOperations.lt, { displayName: 'is before' }),
+                gt: Object.assign({}, this.defaultOperations.gt, { displayName: 'is after' }),
+                between: this.defaultOperations.between
+            };
+        }
+    }]);
+
+    return Date;
+}(__WEBPACK_IMPORTED_MODULE_3__FilterDefinition__["a" /* FilterDefinition */]);
+
+/***/ }),
+
+/***/ "./src/filters/definitions/Decimal.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_NumericInput__ = __webpack_require__("./src/components/NumericInput.tsx");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Decimal; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __rest = this && this.__rest || function (s, e) {
+    var t = {};
+    for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
+    }return t;
+};
+
+
+
+var Decimal = function (_FilterDefinition) {
+    _inherits(Decimal, _FilterDefinition);
+
+    function Decimal(options) {
+        _classCallCheck(this, Decimal);
+
+        var _this = _possibleConstructorReturn(this, (Decimal.__proto__ || Object.getPrototypeOf(Decimal)).call(this, options));
+
+        _this.filterComponent = function (props) {
+            var value = props.value,
+                _onValueChange = props.onValueChange,
+                filter = props.filter,
+                operation = props.operation,
+                onEnterKeyPress = props.onEnterKeyPress,
+                rest = __rest(props, ["value", "onValueChange", "filter", "operation", "onEnterKeyPress"]);
+
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_NumericInput__["a" /* NumericInput */], Object.assign({ type: "number", initialValue: value, onValueChange: function onValueChange(v) {
+                    return _onValueChange(v);
+                }, autoFocus: true, className: "form-control input-sm", onKeyPress: function onKeyPress(e) {
+                    if (e.charCode == 13) onEnterKeyPress();
+                } }, rest));
+        };
+        return _this;
+    }
+
+    _createClass(Decimal, [{
+        key: "getOperations",
+        value: function getOperations() {
+            return this.defaultOperations;
+        }
+    }, {
+        key: "parseValue",
+        value: function parseValue(str) {
+            return parseFloat(str);
+        }
+    }]);
+
+    return Decimal;
+}(__WEBPACK_IMPORTED_MODULE_1__FilterDefinition__["a" /* FilterDefinition */]);
+
+/***/ }),
+
+/***/ "./src/filters/definitions/FilterDefinition.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__("./src/utils.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__ = __webpack_require__("./src/filters/definitions/defaultBetweenComponent.tsx");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterDefinition; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var defaultOperations = function defaultOperations() {
+    var result = {
+        'eq': { key: 'eq', displayName: 'is equal to', test: function test(source, filterValue) {
+                return source == filterValue;
+            } },
+        'ne': { key: 'ne', displayName: 'is not equal to', test: function test(source, filterValue) {
+                return source == filterValue;
+            } },
+        'lt': { key: 'lt', displayName: 'is less than', test: function test(source, filterValue) {
+                return source < filterValue;
+            } },
+        'gt': { key: 'gt', displayName: 'is greater than', test: function test(source, filterValue) {
+                return source > filterValue;
+            } },
+        'between': { key: 'between', displayName: 'is between', filterComponent: __WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__["a" /* BetweenFilterComponent */], appliedLabel: __WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__["b" /* BetweenAppliedFilterLabel */], test: function test(source, filterValue) {
+                return source >= filterValue && source <= filterValue;
+            } }
+    };
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils__["k" /* createKeyedMap */])(result);
+};
+var FilterDefinition = function () {
+    function FilterDefinition(options) {
+        _classCallCheck(this, FilterDefinition);
+
+        this._defaultOperations = new __WEBPACK_IMPORTED_MODULE_0__utils__["l" /* Lazy */](defaultOperations);
+        if (typeof options === 'string') {
+            this.fieldName = options;
+            this.displayName = options;
+        } else {
+            this.fieldName = options.fieldName;
+            this.displayName = options.displayName || options.fieldName;
+            this.canBeNull = options.canBeNull;
+        }
+        var operations = this.getOperations();
+        if (this.canBeNull) {
+            operations.notnull = {
+                key: 'notnull',
+                displayName: 'has a value',
+                appliedLabel: function appliedLabel(filter) {
+                    return filter.filter.displayName + ' ' + filter.operation.displayName;
+                },
+                filterComponent: function filterComponent() {
+                    return null;
+                },
+                test: function test(source, _filterValue) {
+                    return source != null && source != undefined && source != '';
+                }
+            };
+            operations.null = {
+                key: 'null',
+                displayName: 'does not have a value',
+                appliedLabel: function appliedLabel(filter) {
+                    return filter.filter.displayName + ' ' + filter.operation.displayName;
+                },
+                filterComponent: function filterComponent() {
+                    return null;
+                },
+                test: function test(source, _filterValue) {
+                    return source == null || source == undefined || source == '';
+                }
+            };
+        }
+        operations.all = Object.keys(operations).filter(function (m) {
+            return m != 'all';
+        }).map(function (m) {
+            return operations[m];
+        });
+        this.operations = operations;
+    }
+
+    _createClass(FilterDefinition, [{
+        key: "serializeValue",
+        value: function serializeValue(value) {
+            return value.toString();
+        }
+    }, {
+        key: "deSerializeValue",
+        value: function deSerializeValue(value) {
+            return value;
+        }
+    }, {
+        key: "applyFilter",
+        value: function applyFilter(data, field, operation, filterValue) {
+            var test = operation.test;
+
+            var parsedValue = this.parseValue(filterValue);
+            console.group('applyFilter ' + operation.displayName + ' ' + filterValue + ' parsedValue: ' + parsedValue);
+            if (operation.key == 'between') {
+                test = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__defaultBetweenComponent__["c" /* BetweenApplyFilterTest */])(this.parseValue, filterValue);
+            }
+            var result = data.filter(function (d) {
+                var result = test(d[field], parsedValue);
+                console.log('test ' + d[field] + ' returned ' + result);
+                return result;
+            });
+            console.groupEnd();
+            return result;
+        }
+    }, {
+        key: "parseValue",
+        value: function parseValue(str) {
+            return str;
+        }
+    }, {
+        key: "defaultOperations",
+        get: function get() {
+            return this._defaultOperations.value;
+        }
+    }]);
+
+    return FilterDefinition;
+}();
+FilterDefinition.defaultAppliedFilterLabel = function (filter) {
+    return filter.filter.displayName + ' ' + filter.operation.displayName + ' ' + filter.value;
+};
+//}
+
+/***/ }),
+
+/***/ "./src/filters/definitions/Int.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_NumericInput__ = __webpack_require__("./src/components/NumericInput.tsx");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Int; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __rest = this && this.__rest || function (s, e) {
+    var t = {};
+    for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
+    }return t;
+};
+
+
+
+//const dataType = 'int';
+var Int = function (_FilterDefinition) {
+    _inherits(Int, _FilterDefinition);
+
+    //static readonly dataType = dataType;
+    function Int(options) {
+        _classCallCheck(this, Int);
+
+        var _this = _possibleConstructorReturn(this, (Int.__proto__ || Object.getPrototypeOf(Int)).call(this, options));
+
+        _this.filterComponent = function (props) {
+            var value = props.value,
+                _onValueChange = props.onValueChange,
+                filter = props.filter,
+                operation = props.operation,
+                onEnterKeyPress = props.onEnterKeyPress,
+                rest = __rest(props, ["value", "onValueChange", "filter", "operation", "onEnterKeyPress"]);
+
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_NumericInput__["a" /* NumericInput */], Object.assign({ type: "number", initialValue: value, onValueChange: function onValueChange(v) {
+                    return _onValueChange(v);
+                }, autoFocus: true, className: "form-control input-sm", onKeyPress: function onKeyPress(e) {
+                    if (e.charCode == 13) onEnterKeyPress();
+                } }, rest));
+        };
+        return _this;
+    }
+
+    _createClass(Int, [{
+        key: "getOperations",
+        value: function getOperations() {
+            return this.defaultOperations;
+        }
+    }, {
+        key: "parseValue",
+        value: function parseValue(str) {
+            return parseInt(str);
+        }
+    }]);
+
+    return Int;
+}(__WEBPACK_IMPORTED_MODULE_1__FilterDefinition__["a" /* FilterDefinition */]);
+
+/***/ }),
+
+/***/ "./src/filters/definitions/List.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_select__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_CustomSelectValue__ = __webpack_require__("./src/components/CustomSelectValue.tsx");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return List; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var List = function (_PowerTable$FilterDef) {
+    _inherits(List, _PowerTable$FilterDef);
+
+    function List(options, items) {
+        _classCallCheck(this, List);
+
+        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, options));
+
+        _this.filterComponent = function (props) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2_react_select__, { value: props.value ? props.value : [], multi: true, options: items, onChange: function onChange(e) {
+                    return props.onValueChange(e.map(function (m) {
+                        return m.value || m.label;
+                    }));
+                }, valueComponent: __WEBPACK_IMPORTED_MODULE_3__components_CustomSelectValue__["a" /* CustomSelectValue */], className: "small" });
+        };
+        //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
+        return _this;
+    }
+
+    _createClass(List, [{
+        key: 'getOperations',
+        value: function getOperations() {
+            return {
+                'in': {
+                    key: 'in',
+                    displayName: 'is any of',
+                    test: function test(sourceValue, filterValue) {
+                        return filterValue.indexOf(sourceValue) > -1;
+                    },
+                    appliedLabel: function appliedLabel(filter) {
+                        return filter.filter.displayName + ' is ' + filter.value.join(' or ');
+                    }
+                }
+            };
+        }
+    }]);
+
+    return List;
+}(__WEBPACK_IMPORTED_MODULE_1__FilterDefinition__["a" /* FilterDefinition */]);
+
+/***/ }),
+
+/***/ "./src/filters/definitions/String.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap_lib_FormControl__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap_lib_FormControl___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap_lib_FormControl__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FilterDefinition__ = __webpack_require__("./src/filters/definitions/FilterDefinition.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return String; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var String = function (_PowerTable$FilterDef) {
+    _inherits(String, _PowerTable$FilterDef);
+
+    function String(options) {
+        _classCallCheck(this, String);
+
+        var _this = _possibleConstructorReturn(this, (String.__proto__ || Object.getPrototypeOf(String)).call(this, options));
+
+        _this.filterComponent = function (props) {
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_bootstrap_lib_FormControl___default.a, { value: props.value, autoFocus: true, onChange: function onChange(e) {
+                    return props.onValueChange(e.currentTarget.value);
+                }, onKeyPress: function onKeyPress(e) {
+                    if (e.charCode == 13) props.onEnterKeyPress();
+                } });
+        };
+        _this.appliedLabel = function (filter) {
+            return filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"';
+        };
+        return _this;
+    }
+
+    _createClass(String, [{
+        key: 'getOperations',
+        value: function getOperations() {
+            return {
+                'contains': { key: 'contains', displayName: 'contains', test: function test(source, value) {
+                        return source.indexOf && source.toLowerCase().indexOf(value) > -1;
+                    } },
+                'notcontains': { key: 'notcontains', displayName: 'does not contain', test: function test(source, value) {
+                        return source.indexOf && source.toLowerCase().indexOf(value) == -1;
+                    } },
+                'eq': this.defaultOperations.eq,
+                'ne': this.defaultOperations.ne
+            };
+        }
+    }, {
+        key: 'serializeValue',
+        value: function serializeValue(value) {
+            if (value && value.startsWith('"') && value.endsWith('"')) {
+                return value.substring(1, value.length - 2);
+            }
+            return value;
+        }
+    }, {
+        key: 'deSerializeValue',
+        value: function deSerializeValue(value) {
+            return value;
+        }
+    }, {
+        key: 'applyFilter',
+        value: function applyFilter(data, field, operation, value) {
+            var valueLower = value.toLowerCase();
+            return _get(String.prototype.__proto__ || Object.getPrototypeOf(String.prototype), 'applyFilter', this).call(this, data, field, operation, valueLower);
+        }
+    }]);
+
+    return String;
+}(__WEBPACK_IMPORTED_MODULE_2__FilterDefinition__["a" /* FilterDefinition */]);
+
+/***/ }),
+
+/***/ "./src/filters/definitions/defaultBetweenComponent.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BetweenFilterComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BetweenAppliedFilterLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BetweenApplyFilterTest; });
+var __rest = this && this.__rest || function (s, e) {
+    var t = {};
+    for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+    }if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
+    }return t;
+};
+
+var valueDelimiter = ' ';
+var BetweenFilterComponent = function BetweenFilterComponent(props) {
+    var value = props.value,
+        _onValueChange = props.onValueChange,
+        rest = __rest(props, ["value", "onValueChange"]);
+
+    var values = value.toString().split(valueDelimiter);
+    var min = values[0];
+    var max = values.length >= 2 ? values[1] : '';
+    var FilterComponent = props.filter.filterComponent;
+    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("table", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tbody", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tr", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](FilterComponent, Object.assign({ value: min, onValueChange: function onValueChange(v) {
+            return _onValueChange(v + valueDelimiter + max);
+        }, placeholder: "min" }, rest))), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { style: { padding: '0 5px' } }, "and"), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](FilterComponent, Object.assign({ value: max, onValueChange: function onValueChange(v) {
+            return _onValueChange(min + valueDelimiter + v);
+        }, placeholder: "max" }, rest, { autoFocus: false })))))));
+};
+var BetweenAppliedFilterLabel = function BetweenAppliedFilterLabel(filter) {
+    return filter.filter.displayName + ' ' + filter.operation.displayName + ' ' + filter.value.toString().split(valueDelimiter).join(' and ');
+};
+var BetweenApplyFilterTest = function BetweenApplyFilterTest(parseValue, filterValue) {
+    var values = filterValue.split(valueDelimiter);
+    var min = parseValue(values[0]);
+    var max = parseValue(values[1]);
+    return function (source, _filterValue) {
+        return source >= min && source <= max;
+    };
+};
+
+/***/ }),
+
+/***/ "./src/filters/definitions/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__String__ = __webpack_require__("./src/filters/definitions/String.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Boolean__ = __webpack_require__("./src/filters/definitions/Boolean.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Date__ = __webpack_require__("./src/filters/definitions/Date.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Decimal__ = __webpack_require__("./src/filters/definitions/Decimal.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Int__ = __webpack_require__("./src/filters/definitions/Int.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__List__ = __webpack_require__("./src/filters/definitions/List.tsx");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataTypes; });
+
+
+
+
+
+
+var types = {
+    'string': __WEBPACK_IMPORTED_MODULE_0__String__["a" /* String */],
+    'boolean': __WEBPACK_IMPORTED_MODULE_1__Boolean__["a" /* Boolean */],
+    'date': __WEBPACK_IMPORTED_MODULE_2__Date__["a" /* Date */],
+    'decimal': __WEBPACK_IMPORTED_MODULE_3__Decimal__["a" /* Decimal */],
+    'int': __WEBPACK_IMPORTED_MODULE_4__Int__["a" /* Int */],
+    'list': __WEBPACK_IMPORTED_MODULE_5__List__["a" /* List */]
+};
+var DataTypes = types;
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2528,8 +2539,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "withSorting", function() { return __WEBPACK_IMPORTED_MODULE_2__components_Sorting__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__filters_GridFilters__ = __webpack_require__("./src/filters/GridFilters.tsx");
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "GridFilters", function() { return __WEBPACK_IMPORTED_MODULE_3__filters_GridFilters__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__filters_DataTypes___ = __webpack_require__("./src/filters/DataTypes/index.ts");
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "DataTypes", function() { return __WEBPACK_IMPORTED_MODULE_4__filters_DataTypes___["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__filters_definitions___ = __webpack_require__("./src/filters/definitions/index.ts");
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "DataTypes", function() { return __WEBPACK_IMPORTED_MODULE_4__filters_definitions___["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils__ = __webpack_require__("./src/utils.ts");
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "GlobalDate", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "numberWithCommas", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["b"]; });
@@ -2540,17 +2551,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "getComponentDisplayName", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["g"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "makePure", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["h"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "sortArray", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["i"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "serializeFilters", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["j"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "deSerializeFilters", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["k"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["l"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "createKeyedMap", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["m"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["n"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "groupBy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["j"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "createKeyedMap", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["k"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "Lazy", function() { return __WEBPACK_IMPORTED_MODULE_5__utils__["l"]; });
 
 
 
 
 
+//export * from './filters/declarations';
 
+// type pt = PowerTable;
+//export type pt=pt;
 
 /***/ }),
 
@@ -2571,11 +2583,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["g"] = getComponentDisplayName;
 /* harmony export (immutable) */ __webpack_exports__["h"] = makePure;
 /* harmony export (immutable) */ __webpack_exports__["i"] = sortArray;
-/* harmony export (immutable) */ __webpack_exports__["j"] = serializeFilters;
-/* harmony export (immutable) */ __webpack_exports__["k"] = deSerializeFilters;
-/* harmony export (immutable) */ __webpack_exports__["l"] = groupBy;
-/* harmony export (immutable) */ __webpack_exports__["m"] = createKeyedMap;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Lazy; });
+/* harmony export (immutable) */ __webpack_exports__["j"] = groupBy;
+/* harmony export (immutable) */ __webpack_exports__["k"] = createKeyedMap;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return Lazy; });
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2740,43 +2750,6 @@ function sortArray(array, expressionOrProperty, options) {
         var av = expression(a);
         var bv = expression(b);
         return av < bv ? -sortDirNum : av > bv ? sortDirNum : 0;
-    });
-}
-function serializeFilters(filters) {
-    console.log('serializeFilters', filters);
-    return filters.map(function (f) {
-        var filter = f.filter,
-            operation = f.operation,
-            value = f.value;
-        // const value = filter.dataType.key == 'string' ? '"' + f.Value + '"' : f.Value;
-        // if (filter.canBeNull && (operation.key == 'null' || operation.key == 'notnull')) {
-        //     return f.Column.Key + ' ' + f.Operation.key;
-        // }
-        //TODO: add serialize method to datatype
-
-        return filter.displayName + ' ' + operation.key + ' ' + value;
-    }).join(' and ');
-}
-function deSerializeFilters(filters, availableFilters) {
-    console.log('deSerializeFilters', filters);
-    var myregexp = /(?:(.+?)\s+(eq|ne|gt|lt|contains|notcontains|between|in|notin|daterange|notnull|null)(?:\s+"?(.*?)"?)?(?:\s*$|\s+(?:or|and|not)\s+))/ig;
-    var match = myregexp.exec(filters);
-    var result = [];
-    while (match != null) {
-        result.push({ key: match[1], operation: match[2], value: match[3] });
-        match = myregexp.exec(filters);
-    }
-    return result.map(function (m) {
-        var filter = availableFilters[m.key];
-        if (filter) {
-            var operation = filter.dataType.operations[m.operation];
-            if (operation) {
-                return { filter: filter, operation: operation, value: m.value };
-            }
-        }
-        return null;
-    }).filter(function (m) {
-        return m != null;
     });
 }
 function groupBy(items, keyGen) {

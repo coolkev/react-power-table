@@ -2,18 +2,18 @@
 import Radio from 'react-bootstrap/lib/Radio';
 import Button from 'react-bootstrap/lib/Button';
 import { debuglog } from "../utils";
-import { FilterDefinition } from "./DataTypes/DataType";
+import * as PowerTable from "./definitions/FilterDefinition";
 
 export interface AddEditFilterProps {
-    filter: FilterDefinition<any>;
-    initialOperation: OperationDefinition<any>;
+    filter: PowerTable.FilterDefinition<any>;
+    initialOperation: PowerTable.OperationDefinition<any>;
     initialValue?: any;
-    onApplyFilter: (filter: AppliedFilter<any>) => void;
+    onApplyFilter: (filter: PowerTable.AppliedFilter<any>) => void;
 }
 
 export interface AddEditFilterState {
 
-    operation: OperationDefinition<any>;
+    operation: PowerTable.OperationDefinition<any>;
     value: any;
 
 }
@@ -74,8 +74,8 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
             {filter.operations.all.map(op => {
                 
-                let selectedFilterComponentProps: FilterComponentProps<any>;
-                let SelectedFilterComponent: (props: FilterComponentProps<any>) => JSX.Element = null;
+                let selectedFilterComponentProps: PowerTable.FilterComponentProps<any>;
+                let SelectedFilterComponent: React.ComponentClass<PowerTable.FilterComponentProps<any>> | React.StatelessComponent<PowerTable.FilterComponentProps<any>>;
 
                 if (op.key == this.state.operation.key) {
                     selectedFilterComponentProps = {

@@ -1,4 +1,4 @@
-import { FilterDefinition } from "./DataType";
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName } from "./FilterDefinition";
 export declare class Boolean extends FilterDefinition<boolean> {
     constructor(options: FilterDefinitionOptionsOrFieldName);
     protected getOperations(): {

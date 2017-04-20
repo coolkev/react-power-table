@@ -4,7 +4,7 @@ import { Date } from './Date';
 import { Decimal } from './Decimal';
 import { Int } from './Int';
 import { List } from './List';
-export { FilterDefinition } from "./DataType";
+export * from "./FilterDefinition";
 export declare const DataTypes: {
     'string': typeof String;
     'boolean': typeof Boolean;

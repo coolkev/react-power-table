@@ -1,6 +1,6 @@
-import { FilterDefinition } from "./DataType";
-export declare class String extends FilterDefinition<string> {
-    constructor(options: FilterDefinitionOptionsOrFieldName);
+import * as PowerTable from './FilterDefinition';
+export declare class String extends PowerTable.FilterDefinition<string> {
+    constructor(options: PowerTable.FilterDefinitionOptionsOrFieldName);
     protected getOperations(): {
         'contains': {
             key: string;
@@ -14,12 +14,12 @@ export declare class String extends FilterDefinition<string> {
         };
         'eq': {} & {
             key: string;
-        } & OperationDefinition<any>;
+        } & PowerTable.OperationDefinition<any>;
         'ne': {} & {
             key: string;
-        } & OperationDefinition<any>;
+        } & PowerTable.OperationDefinition<any>;
     };
     serializeValue(value: string): string;
     deSerializeValue(value: string): string;
-    applyFilter<TData>(data: TData[], field: string, operation: OperationDefinition<string>, value: string): TData[];
+    applyFilter<TData>(data: TData[], field: string, operation: PowerTable.OperationDefinition<string>, value: string): TData[];
 }

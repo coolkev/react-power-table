@@ -1,4 +1,4 @@
-﻿import { FilterDefinition } from "./DataType";
+﻿import { FilterDefinition, FilterDefinitionOptionsOrFieldName } from "./FilterDefinition";
 
 const verbs = [
     ['is', 'is not'],
@@ -14,7 +14,7 @@ export class Boolean extends FilterDefinition<boolean>
 
         super(options);
 
-        this.appliedFilterLabel = (props) => props.operation.displayName;
+        this.appliedLabel = (props) => props.operation.displayName;
     }
 
     protected getOperations() {
