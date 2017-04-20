@@ -15,6 +15,8 @@ export class Boolean extends FilterDefinition<boolean>
         super(options);
 
         this.appliedLabel = (props) => props.operation.displayName;
+
+        this.defaultValue = true;
     }
 
     protected getOperations() {
