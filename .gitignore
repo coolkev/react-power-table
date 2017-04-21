@@ -6,3 +6,5 @@ bin/
 .awcache/
 .vscode/settings.json
 tests/coverage/
+/dist/
+/examples/dist/
