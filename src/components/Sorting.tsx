@@ -307,7 +307,7 @@ const sortableCellComponentWrapperStyle = { marginRight: 15 };
 const SortableCellComponentWrapper: React.StatelessComponent<never> = props => {
     return <div style={sortableCellComponentWrapperStyle}>{props.children}</div>
 }
-const defaultSortAscComponent = <span className="sort-asc2" style={{
+const defaultSortAscComponent = <span className="sort-asc" style={{
     width: 0,
     height: 0,
     borderLeft: '5px solid transparent',
