@@ -1,9 +1,12 @@
 language: node_js
-node_js: "node"
+node_js: node
 cache:
   directories:
-  - node_modules # NPM packages
-  - tests/__snapshots__
+  - node_modules
 after_script:
-  - 'cat ./tests/coverage/remapped/lcov.info | ./node_modules/.bin/coveralls'
-  
+  - cat ./tests/coverage/remapped/lcov.info | ./node_modules/.bin/coveralls
+deploy:
+  provider: npm
+  email: kevin@lewistech.com
+  api_key:
+    secure: k3TxttSZoHaptTXztQyAOKyu+HCM4e4IZ+TeTKBqnDlipv1t+11kH4cNqr4FS409oxXmwQ3l45EEgiovxrDCCcD6LfUp5k0lysJS30PXmF1u8CU60eQTyPOCzdz64bPreVXWFsMMIiQ1GbO3C2WwoeJv4Nh21hqXRhRhc9F5BtjSN/PCxoz+GxdTII+GYf5VMwCbWxcqI6IUvyWBFxg4LtrC462Pu64d5/QzxazTCHsbfWlHpQzyqixVf+lGCFnRcsM64VIv92aiqnuLulqaluK2121Qjuo5g85384bqVpAU/k46DdSHFV6g0FLUdTcaxBDIJfK2NuXX7w/G5Nw0yFWuUM+BE2RDNfGZinS/owKxutvZrjIc3l4w8tJKMVmfCOmyqlA/WObNop1H/oCKp0fwRZa7vHX616+LJLiukCa+Z5907B8tNIu7OatmL3loKGtOARRv5ut+duvs4oT/brVPMg5gg33IjHf2q5MYVePVGFLACBTeSORuiNmB32N4S00cwlXkGo+e0CVzzBrkSh/TJ337c5e03h+Peve5e1w3RNESEHiSMYWuSGA3sqnIkmEZm56a59mdyNb8q1DBz2wS9311AcpBmNGLfObv5zgbYSxjHGPlUpVB0siXSvZAyG4Dln84762vUu5iTQyc4zsJUH3aiJUZCHMJuwHOd1o=
