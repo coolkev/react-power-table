@@ -1,7 +1,11 @@
 ﻿import * as React from 'react';
-import shallowEqual from 'fbjs/lib/shallowEqual';
+import * as shallowEqual from 'fbjs/lib/shallowEqual';
 import * as PowerTable from "./filters/definitions/FilterDefinition";
 import { Column } from "./ReactPowerTable";
+
+
+const debugMode = false;
+
 
 export type GlobalDate = Date;
 export const GlobalDate = Date;
@@ -12,7 +16,6 @@ export function numberWithCommas(x) {
 
 export { shallowEqual };
 
-const debugMode = false;
 
 export const debuglog = debugMode ? console.log : () => { };
 
@@ -21,6 +24,7 @@ export interface ColumnCore<T> {
     key: string | number;
     field: (row: T) => any;
     fieldName: string;
+    headerText: string;
 }
 
 export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
@@ -33,6 +37,8 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
             key: col,
             field: row => row[col],
             fieldName: col,
+            headerText: col,
+        
         };
     }
 
@@ -42,7 +48,8 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
         return {
             key: key || fieldName,
             field: field,
-            fieldName: fieldName
+            fieldName: fieldName,
+            headerText: fieldName
         };
     }
     if (typeof (field) === "string") {
@@ -50,6 +57,7 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
             key: key || field,
             field: row => row[field],
             fieldName: field,
+            headerText: field
 
         };
     }
@@ -62,7 +70,9 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
     return {
         key: key,
         field: _row => null,
-        fieldName: null
+        fieldName: null,
+        headerText: null
+        
     };
 
 }

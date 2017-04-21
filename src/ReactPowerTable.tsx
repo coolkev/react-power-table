@@ -1,6 +1,8 @@
 ﻿import * as React from 'react';
-import { debuglog, shallowEqual } from './utils';
+import { debuglog, shallowEqual, makePure } from './utils';
 import { transformColumn } from "./components/Column";
+
+export type T = {};
 
 export class ReactPowerTable extends React.Component<GridProps<T>, never> {
 
@@ -93,7 +95,7 @@ interface HeaderRowProps<T> {
 
 }
 
-class HeaderRow<T> extends React.Component<HeaderRowProps<T>, never> {
+class HeaderRow extends React.Component<HeaderRowProps<T>, never> {
     constructor(props: any) {
         super(props);
         debuglog('HeaderRowComponent constructor');
@@ -123,7 +125,7 @@ class HeaderRow<T> extends React.Component<HeaderRowProps<T>, never> {
     }
 }
 
-class DataRow<T> extends React.PureComponent<DataRowProps<T>, never> {
+class DataRow extends React.PureComponent<DataRowProps<T>, never> {
 
     constructor(props: DataRowProps<T>) {
         super(props);
@@ -152,12 +154,11 @@ class DataRow<T> extends React.PureComponent<DataRowProps<T>, never> {
 
     }
 }
-
+//const DataRow = makePure((props: DataRowProps<T>) => <DataRowInternal {...props}/>);
 
 
 export type ReactClass<T> = React.ComponentClass<T> | React.StatelessComponent<T>
 
-export type T = any;
 
 
 export interface GridProps<T> {

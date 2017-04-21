@@ -12,6 +12,7 @@ export interface ColumnCore<T> {
     key: string | number;
     field: (row: T) => any;
     fieldName: string;
+    headerText: string;
 }
 export declare function getColumnCore<T>(col: Column<T> | string): ColumnCore<T>;
 export declare function getExpression(func: Function): string;

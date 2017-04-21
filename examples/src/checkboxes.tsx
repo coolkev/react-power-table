@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { withInternalSorting, ReactPowerTable, withInternalPaging, SortableColumn } from 'react-power-table';
+import { withInternalSorting, ReactPowerTable, withInternalPaging, SortableColumn, debuglog } from 'react-power-table';
 import { sampledata, President, defaultColumns } from './shared'
 //import { debuglog } from ;
 
@@ -27,6 +27,7 @@ export class CheckboxExample extends React.Component<never, CheckboxExampleState
         this.columns = [
             {
                 field: m => m.checked, cellComponent: (row) => {
+                    debuglog('checkbox cell render', row);
                     return <input type="checkbox" checked={row.value || false} onChange={e => this.checkChange(row.row, e.currentTarget.checked)} />;
                 },
                 headerComponent: () => {

@@ -69,7 +69,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d42feefa137ce77af9c4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "500ab0aab85e468a8b9c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -853,19 +853,19 @@ var HeaderRow = function (_React$Component2) {
     return HeaderRow;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-var DataRow = function (_React$PureComponent) {
-    _inherits(DataRow, _React$PureComponent);
+var DataRowInternal = function (_React$Component3) {
+    _inherits(DataRowInternal, _React$Component3);
 
-    function DataRow(props) {
-        _classCallCheck(this, DataRow);
+    function DataRowInternal(props) {
+        _classCallCheck(this, DataRowInternal);
 
-        var _this4 = _possibleConstructorReturn(this, (DataRow.__proto__ || Object.getPrototypeOf(DataRow)).call(this, props));
+        var _this4 = _possibleConstructorReturn(this, (DataRowInternal.__proto__ || Object.getPrototypeOf(DataRowInternal)).call(this, props));
 
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["d" /* debuglog */])('DataRowComponent constructor');
         return _this4;
     }
 
-    _createClass(DataRow, [{
+    _createClass(DataRowInternal, [{
         key: 'render',
         value: function render() {
             var _a = this.props,
@@ -885,8 +885,12 @@ var DataRow = function (_React$PureComponent) {
         }
     }]);
 
-    return DataRow;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["PureComponent"]);
+    return DataRowInternal;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var DataRow = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["h" /* makePure */])(function (props) {
+    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](DataRowInternal, Object.assign({}, props));
+});
 
 /***/ }),
 
@@ -906,10 +910,11 @@ var defaultHeaderComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
     return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, props.column.headerText);
 });
 var defaultCellComponent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["h" /* makePure */])(function (props) {
-    //log('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["d" /* debuglog */])('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
     return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, props.value);
 });
 function transformColumn(options, gridProps) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["d" /* debuglog */])('transformColumn', options);
     if (typeof options === 'string') {
         options = { field: options };
     }
@@ -920,7 +925,7 @@ function transformColumn(options, gridProps) {
         cellProps = _getCellAndHeaderProp.cellProps,
         headerProps = _getCellAndHeaderProp.headerProps;
 
-    var result = Object.assign({ __transformed: true }, options, core, { headerText: options.headerText || core.fieldName, cellProps: cellProps, headerCellProps: headerProps, formatter: options.formatter || null });
+    var result = Object.assign({ __transformed: true }, options, core, { cellProps: cellProps, headerCellProps: headerProps, formatter: options.formatter || null });
     if (options.cellComponent) {
         result.cellComponent = options.cellComponent;
         result.cellComponentProps = options.cellComponentProps || function (props) {
@@ -973,6 +978,7 @@ function getCellAndHeaderProps(options) {
         cellStaticProps.style = Object.assign({}, cellStaticProps.style, { textAlign: options.textAlign });
         headerProps.style = Object.assign({}, headerProps.style, { textAlign: options.textAlign });
     }
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["d" /* debuglog */])('getCellAndHeaderProps', options);
     return { cellProps: cellProps, headerProps: headerProps };
 }
 
@@ -1375,11 +1381,20 @@ function transformColumn(options, changeSort, getCurrentSort) {
     if (col.textAlign == 'right' || cellProps && typeof cellProps != 'function' && cellProps.style && cellProps.style.textAlign == 'right') {
         //this is needed to pad right-aligned cells so they line up with header text right side and don't appear under the sort icon
         var CellComponent = col.cellComponent || __WEBPACK_IMPORTED_MODULE_2__Column__["a" /* defaultCellComponent */];
+        var cellComponentProps = col.cellComponentProps || function (props) {
+            return { column: props.column, value: props.value };
+        };
         col.cellComponent = function (props) {
-            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](SortableCellComponentWrapper, null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](CellComponent, Object.assign({}, props)));
+            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](SortableCellComponentWrapper, null, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](CellComponent, Object.assign({}, cellComponentProps(props))));
         };
     }
     return col;
+}
+function transformColumns(columns, changeSort, getCurrentSort, _prevColumns) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["d" /* debuglog */])('Sorting.transformColumns', columns);
+    return columns.map(function (c) {
+        return transformColumn(c, changeSort, getCurrentSort);
+    });
 }
 function withInternalSorting(WrappedComponent) {
     var WrappedPagingComponent = WrappedComponent.displayName && WrappedComponent.displayName.match(/^WithInternalPaging/) && WrappedComponent;
@@ -1395,10 +1410,8 @@ function withInternalSorting(WrappedComponent) {
 
             var currentSort = __rest(sorting, []);
             _this.changeSort = _this.changeSort.bind(_this);
-            _this.columns = props.columns.map(function (c) {
-                return transformColumn(c, _this.changeSort, function () {
-                    return _this.state.currentSort;
-                });
+            _this.columns = transformColumns(props.columns, _this.changeSort, function () {
+                return _this.state.currentSort;
             });
             var sortedRows = _this.performSort(props.rows, sorting);
             _this.state = {
@@ -1412,6 +1425,11 @@ function withInternalSorting(WrappedComponent) {
             value: function componentWillReceiveProps(nextProps) {
                 var _this2 = this;
 
+                if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["c" /* shallowEqual */])(nextProps.columns, this.props.columns)) {
+                    this.columns = transformColumns(nextProps.columns, this.changeSort, function () {
+                        return _this2.state.currentSort;
+                    }, this.props.columns);
+                }
                 if (this.props.rows != nextProps.rows) {
                     this.setState(function (prev) {
                         return {
@@ -1420,6 +1438,12 @@ function withInternalSorting(WrappedComponent) {
                     });
                 }
             }
+            // private transformColumns(props: T) {
+            //     debuglog('transforming Columns');
+            //     //TODO: need to reuse existing transformed column if one exists
+            //     this.columns = props.columns.map(c => transformColumn(c, this.changeSort, () => this.state.currentSort));
+            // }
+
         }, {
             key: 'performSort',
             value: function performSort(rows, sort) {
@@ -1500,17 +1524,28 @@ function withSorting(WrappedComponent) {
         function _a(props) {
             _classCallCheck(this, _a);
 
+            //this.transformColumns(props);
             var _this4 = _possibleConstructorReturn(this, (_a.__proto__ || Object.getPrototypeOf(_a)).call(this, props));
 
-            _this4.columns = props.columns.map(function (c) {
-                return transformColumn(c, _this4.props.sorting.changeSort, function () {
-                    return { Column: _this4.props.sorting.Column, Ascending: _this4.props.sorting.Ascending };
-                });
+            _this4.columns = transformColumns(props.columns, _this4.props.sorting.changeSort, function () {
+                return _this4.props.sorting;
             });
             return _this4;
         }
 
         _createClass(_a, [{
+            key: 'componentWillReceiveProps',
+            value: function componentWillReceiveProps(nextProps) {
+                var _this5 = this;
+
+                if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__utils__["c" /* shallowEqual */])(nextProps.columns, this.props.columns)) {
+                    //this.transformColumns(nextProps);
+                    this.columns = transformColumns(nextProps.columns, this.props.sorting.changeSort, function () {
+                        return _this5.props.sorting;
+                    }, this.props.columns);
+                }
+            }
+        }, {
             key: 'render',
             value: function render() {
                 var _a = this.props,
@@ -2597,12 +2632,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var debugMode = true;
 var GlobalDate = Date;
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-var debugMode = false;
 var debuglog = debugMode ? console.log : function () {};
 function getColumnCore(col) {
     //let fieldName: string;
@@ -2613,7 +2648,8 @@ function getColumnCore(col) {
             field: function field(row) {
                 return row[col];
             },
-            fieldName: col
+            fieldName: col,
+            headerText: col
         };
     }
     var _field = col.field,
@@ -2624,7 +2660,8 @@ function getColumnCore(col) {
         return {
             key: key || fieldName,
             field: _field,
-            fieldName: fieldName
+            fieldName: fieldName,
+            headerText: fieldName
         };
     }
     if (typeof _field === "string") {
@@ -2633,7 +2670,8 @@ function getColumnCore(col) {
             field: function field(row) {
                 return row[_field];
             },
-            fieldName: _field
+            fieldName: _field,
+            headerText: _field
         };
     }
     if (!key) {
@@ -2645,7 +2683,8 @@ function getColumnCore(col) {
         field: function field(_row) {
             return null;
         },
-        fieldName: null
+        fieldName: null,
+        headerText: null
     };
 }
 function getExpression(func) {

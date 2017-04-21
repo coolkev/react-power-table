@@ -13,23 +13,25 @@
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js",
     "build-examples": "webpack --config examples/webpack.config.js",
-    "test": "jest"
+    "test": "jest --colors"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-bootstrap": "^0.30.7",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.30.9",
     "react-bootstrap-date-picker": "^5.0.0",
-    "react-dom": "^15.4.2",
+    "react-dom": "^15.5.4",
     "react-select": "^1.0.0-rc.3"
   },
   "devDependencies": {
     "@types/bootstrap": "^3.3.32",
     "@types/classnames": "0.0.32",
+    "@types/enzyme": "^2.7.9",
+    "@types/jest": "^19.2.2",
     "@types/knockout": "^3.4.39",
     "@types/react": "^15.0.14",
-    "@types/react-bootstrap": "^0.0.45",
+    "@types/react-bootstrap": "^0.0.47",
     "@types/react-bootstrap-date-picker": "^4.0.1",
-    "@types/react-dom": "^0.14.23",
+    "@types/react-dom": "^15.5.0",
     "@types/react-select": "^1.0.45",
     "awesome-typescript-loader": "^3.0.8",
     "babel-loader": "^6.4.1",
@@ -38,16 +40,36 @@
     "babel-preset-react": "^6.24.1",
     "bootstrap": "3.3.7",
     "classnames": "^2.2.5",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
     "file-loader": "^0.10.1",
     "imports-loader": "^0.7.1",
     "jest": "^19.0.2",
+    "jest-enzyme": "^3.0.1",
+    "react-addons-test-utils": "^15.5.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.13.2",
-    "ts-jest": "^19.0.0",
+    "ts-jest": "^19.0.10",
     "typescript": "~2.2.2",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+    "coverageDirectory": "tests/coverage",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

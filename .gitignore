@@ -4,3 +4,4 @@ obj/
 bin/
 *.user
 .awcache/
+.vscode/settings.json

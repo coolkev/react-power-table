@@ -1,16 +1,18 @@
 ﻿import * as React from 'react';
-import { makePure, getColumnCore } from "../utils";
+import { makePure, getColumnCore, debuglog } from "../utils";
 import { HeaderComponentProps, CellProps, Column, GridProps, TransformedColumn } from "../ReactPowerTable";
 
 
 export const defaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => <div>{props.column.headerText}</div>);
 export const defaultCellComponent = makePure((props: CellProps<any>) => {
-    //log('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
+    debuglog('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
     return <span>{props.value}</span>;
 });
 
 
 export function transformColumn<T>(options: Column<T> | string, gridProps: GridProps<T>): TransformedColumn<T> {
+
+    debuglog('transformColumn', options);
 
     if (typeof options === 'string') {
         options = { field: options } as Column<T>;
@@ -25,7 +27,6 @@ export function transformColumn<T>(options: Column<T> | string, gridProps: GridP
         __transformed: true,
         ...options,
         ...core,
-        headerText: options.headerText || core.fieldName,
         cellProps: cellProps,
         headerCellProps: headerProps,
         formatter: options.formatter || null
@@ -97,7 +98,7 @@ function getCellAndHeaderProps(options: Column<any>) {
         headerProps.style = { ...headerProps.style, textAlign: options.textAlign };
     }
 
-
+    debuglog('getCellAndHeaderProps', options);
     return { cellProps, headerProps };
 
 }

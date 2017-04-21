@@ -11,6 +11,7 @@ import { ExternalPagingExample } from "./external-paging";
 import { ExternalPagingSortingExample } from "./external-paging-sorting";
 import { CheckboxExample } from "./checkboxes";
  import { FiltersExample } from "./filters";
+import { HideColumnsExample } from "./hideColumns";
 
 
 interface ExamplesProps {
@@ -30,7 +31,8 @@ const examples = {
     'External Paging': ExternalPagingExample,
     'External Paging/Sorting': ExternalPagingSortingExample,
     'Checkboxes': CheckboxExample,
-     'Filters': FiltersExample
+     'Filters': FiltersExample,
+     'Hide Columns': HideColumnsExample
     
 };
 ReactPowerTable.defaultProps = { tableProps: { className: 'table' } };

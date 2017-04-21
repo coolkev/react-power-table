@@ -40,7 +40,7 @@ module.exports = {
     extensions: ['.webpack.js', '.web.js', '.js', '.jsx', '.png', '.ts', '.tsx'],
 
     alias: {
-      'react-power-table': path.resolve(__dirname,'../dist/'),
+      'react-power-table': path.resolve(__dirname,'../src/'),
   
     }
   },
