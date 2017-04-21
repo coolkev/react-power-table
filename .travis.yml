@@ -3,6 +3,7 @@ node_js: "node"
 cache:
   directories:
   - node_modules # NPM packages
+  - tests/__snapshots__
 after_script:
   - 'cat ./tests/coverage/remapped/lcov.info | ./node_modules/.bin/coveralls'
   
