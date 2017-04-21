@@ -5,3 +5,4 @@ bin/
 *.user
 .awcache/
 .vscode/settings.json
+tests/coverage/
