@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "main": "./dist/index.js",
-  "types": "./@types/react-power-table/index.d.ts",
+  "types": "./@types/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js",
     "build": "webpack -w",
