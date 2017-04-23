@@ -12,6 +12,7 @@
   "types": "./@types/react-power-table/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js",
+    "build": "webpack -w",
     "build-examples": "webpack --config examples/webpack.config.js",
     "test": "jest --colors --coverage"
   },
