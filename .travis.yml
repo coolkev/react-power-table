@@ -6,6 +6,7 @@ cache:
 after_script:
   - cat ./tests/coverage/remapped/lcov.info | ./node_modules/.bin/coveralls
 deploy:
+  skip_cleanup: true
   provider: npm
   email: kevin@lewistech.com
   api_key:
