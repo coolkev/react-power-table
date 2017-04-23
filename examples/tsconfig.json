@@ -14,8 +14,8 @@
     "alwaysStrict": true,
     "baseUrl": "./",
     "paths": {
-        "react-power-table": ["../@types/"],
-      //"react-power-table": ["../src/"],
+        // "react-power-table": ["../@types/"],
+      "react-power-table": ["../src/"],
       "*" : ["node_modules/*"]
     }
   },

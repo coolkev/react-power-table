@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppliedFilters tests none applied 1`] = `
+<div
+  class="small"
+/>
+`;
+
+exports[`AppliedFilters tests one applied 1`] = `
+<div
+  class="small"
+>
+  <div
+    class="well well-sm"
+    style="margin-bottom: 10px;"
+  >
+    <button
+      aria-label="Remove"
+      class="close"
+      type="button"
+    >
+      <span
+        aria-hidden="true"
+      >
+        ×
+      </span>
+    </button>
+    <a
+      href="#"
+    >
+      <span>
+        president contains "george"
+      </span>
+    </a>
+  </div>
+</div>
+`;

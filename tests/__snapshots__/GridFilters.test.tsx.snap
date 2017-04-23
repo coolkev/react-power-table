@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddSelectFilter tests render gridfilters 1`] = `
+<div
+  class="flex-column"
+>
+  <div
+    class="small"
+  />
+  <div>
+    <a
+      href="#"
+    >
+      <span
+        class="glyphicon glyphicon-plus"
+        style="margin-right: 5px;"
+      />
+      Add Filter
+    </a>
+  </div>
+</div>
+`;
+
+exports[`AddSelectFilter tests render gridfilters 2`] = `
+<div
+  class="flex-column"
+>
+  <div
+    class="small"
+  />
+  <div
+    class="flex-column"
+  >
+    <div
+      style="margin-bottom: 10px;"
+    >
+      <a
+        href="#"
+      >
+        <span
+          aria-hidden="true"
+          class="glyphicon glyphicon-chevron-left"
+        />
+        Back
+      </a>
+    </div>
+    <div>
+      <input
+        class="form-control"
+        placeholder="Filter by"
+        value=""
+      />
+    </div>
+    <div
+      class="small flex-column"
+    >
+      <div
+        style="margin: 10px 0px;"
+      >
+        <b>
+          Available Filters
+        </b>
+      </div>
+      <div
+        class="available-filters"
+      >
+        <div
+          class="list-group"
+        >
+          <a
+            class="list-group-item"
+            href="#"
+          >
+            number
+          </a>
+          <a
+            class="list-group-item"
+            href="#"
+          >
+            president
+          </a>
+          <a
+            class="list-group-item"
+            href="#"
+          >
+            birth_year
+          </a>
+          <a
+            class="list-group-item"
+            href="#"
+          >
+            death_year
+          </a>
+          <a
+            class="list-group-item"
+            href="#"
+          >
+            took_office
+          </a>
+          <a
+            class="list-group-item"
+            href="#"
+          >
+            left_office
+          </a>
+          <a
+            class="list-group-item"
+            href="#"
+          >
+            was assasinated
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

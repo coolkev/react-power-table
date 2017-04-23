@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import FormControl from 'react-bootstrap/lib/FormControl';
+import * as FormControl from 'react-bootstrap/lib/FormControl';
 import * as PowerTable from './FilterDefinition';
 
 export class String extends PowerTable.FilterDefinition<string>
@@ -36,10 +36,10 @@ export class String extends PowerTable.FilterDefinition<string>
         return value as any;
     }    
     
-    public applyFilter<TData>(data: TData[], field: string, operation: PowerTable.OperationDefinition<string>, value: string) {
+    public applyFilter<TData>(data: TData[],  operation: PowerTable.OperationDefinition<string>, value: string) {
 
         const valueLower = value.toLowerCase();
-        return super.applyFilter(data, field, operation, valueLower);
+        return super.applyFilter(data, operation, valueLower);
     }
 
 }

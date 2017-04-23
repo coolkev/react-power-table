@@ -98,24 +98,27 @@ export abstract class FilterDefinition<T> implements FilterDefinitionOptions {
     protected abstract getOperations(): ObjectMap<OperationDefinition<T>>;
     public readonly operations: KeyedMap<OperationDefinition<T>>;
 
-    public applyFilter<TData>(data: TData[], field: string, operation: OperationDefinition<T>, filterValue: T) {
+    public applyFilter<TData>(data: TData[], operation: OperationDefinition<T>, filterValue: T) {
 
         let { test } = operation;
 
         const parsedValue = this.parseValue(filterValue as any);
-
-        console.group('applyFilter ' + operation.displayName + ' ' + filterValue + ' parsedValue: ' + parsedValue);
-
+        if (console.group) {
+            console.group('applyFilter ' + operation.displayName + ' ' + filterValue + ' parsedValue: ' + parsedValue);
+        }
         if (operation.key == 'between') {
             test = BetweenApplyFilterTest(this.parseValue, filterValue as any as string);
         }
 
         const result = data.filter(d => {
-            const result = test(d[field], parsedValue);
-            console.log('test ' + d[field] + ' returned ' + result);
+            const result = test(d[this.fieldName], parsedValue);
+            console.log('test ' + d[this.fieldName] + ' returned ' + result);
             return result;
         });
-        console.groupEnd();
+        if (console.groupEnd) {
+
+            console.groupEnd();
+        }    
         return result;
     }
 

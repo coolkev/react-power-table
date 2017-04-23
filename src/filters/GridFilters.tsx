@@ -118,7 +118,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         return <div className="flex-column">
 
 
-            <AppliedFilters appliedFilters={appliedFilters} availableFilters={availableFilters} removeFilter={this.removeFilter} editFilter={this.editFilter} onOptionLoaded={() => this.forceUpdate()} />
+            <AppliedFilters appliedFilters={appliedFilters} availableFilters={availableFilters} removeFilter={this.removeFilter} editFilter={this.editFilter} />
 
 
             {this.state.addingFilter

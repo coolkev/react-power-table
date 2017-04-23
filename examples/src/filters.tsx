@@ -1,8 +1,7 @@
 ﻿import * as React from 'react';
 import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes,groupBy, sortArray, createKeyedMap, numberWithCommas, AppliedFilter, GridFilters } from 'react-power-table';
-import { sampledata, defaultColumns } from './shared'
+import { sampledata, defaultColumns, partyList } from './shared'
 
-const partyList = sortArray(groupBy(sampledata, m => m.party).map(m => ({ label: m.key, value: m.key })), m => m.label, { caseInsensitive: true });
 
 // //if coming in from DTO
 // const availDTO = [
@@ -28,7 +27,7 @@ const availableFilters = [
     new DataTypes.int({ fieldName: 'death_year', canBeNull: true }),
     new DataTypes.date({ fieldName: 'took_office'}),
     new DataTypes.date({ fieldName: 'left_office', canBeNull: true }),
-    new DataTypes.list('party', partyList),
+    new DataTypes.list('party', partyList()),
     new DataTypes.boolean({ fieldName: 'assasinated', displayName: 'was assasinated'}),
 
 ];
@@ -68,7 +67,7 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
         let filteredData = data;
 
         this.state.appliedFilters.forEach(m => {
-            filteredData = m.filter.applyFilter(filteredData, m.filter.fieldName, m.operation, m.value);
+            filteredData = m.filter.applyFilter(filteredData, m.operation, m.value);
         })
 
 

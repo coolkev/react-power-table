@@ -1,0 +1,860 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditFilter tests add filter assasinated 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      was assasinated
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        was assasinated
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="ne"
+        />
+        was not assasinated
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter birth_year 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      birth_year
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        is equal to
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <span
+        class="has-error"
+      >
+        <input
+          class="form-control input-sm"
+          type="number"
+          value=""
+        />
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="ne"
+        />
+        is not equal to
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="lt"
+        />
+        is less than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="gt"
+        />
+        is greater than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="between"
+        />
+        is between
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter death_year 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      death_year
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        is equal to
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <span
+        class="has-error"
+      >
+        <input
+          class="form-control input-sm"
+          type="number"
+          value=""
+        />
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="ne"
+        />
+        is not equal to
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="lt"
+        />
+        is less than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="gt"
+        />
+        is greater than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="between"
+        />
+        is between
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="notnull"
+        />
+        has a value
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="null"
+        />
+        does not have a value
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter empty 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      empty
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        is equal to
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <span
+        class="has-error"
+      >
+        <input
+          class="form-control input-sm"
+          type="number"
+          value=""
+        />
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="ne"
+        />
+        is not equal to
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="lt"
+        />
+        is less than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="gt"
+        />
+        is greater than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="between"
+        />
+        is between
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter left_office 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      left_office
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        is equal to
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <span
+        class=""
+      >
+        <input
+          autocomplete="on"
+          class="form-control"
+          placeholder="MM/DD/YYYY"
+          style="width: 100%;"
+          type="text"
+          value=""
+        />
+        <div
+          style="position: relative;"
+        />
+        <input
+          data-formattedvalue=""
+          type="hidden"
+          value=""
+        />
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="lt"
+        />
+        is before
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="gt"
+        />
+        is after
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="between"
+        />
+        is between
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="notnull"
+        />
+        has a value
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="null"
+        />
+        does not have a value
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter number 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      number
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        is equal to
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <span
+        class="has-error"
+      >
+        <input
+          class="form-control input-sm"
+          type="number"
+          value=""
+        />
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="ne"
+        />
+        is not equal to
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="lt"
+        />
+        is less than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="gt"
+        />
+        is greater than
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="between"
+        />
+        is between
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter party 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      party
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="in"
+        />
+        is any of
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <div
+        class="Select small Select--multi is-searchable"
+      >
+        <div
+          class="Select-control"
+        >
+          <span
+            class="Select-multi-value-wrapper"
+            id="react-select-2--value"
+          >
+            <div
+              class="Select-placeholder"
+            >
+              Select...
+            </div>
+            <div
+              class="Select-input"
+              style="display: inline-block;"
+            >
+              <input
+                aria-activedescendant="react-select-2--value"
+                aria-expanded="false"
+                aria-haspopup="false"
+                aria-owns=""
+                role="combobox"
+                style="width: 5px; box-sizing: content-box;"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal;"
+              />
+            </div>
+          </span>
+          <span
+            class="Select-arrow-zone"
+          >
+            <span
+              class="Select-arrow"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter president 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      president
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="contains"
+        />
+        contains
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <input
+        class="form-control"
+        value=""
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="notcontains"
+        />
+        does not contain
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        is equal to
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="ne"
+        />
+        is not equal to
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter took_office 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      took_office
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="eq"
+        />
+        is equal to
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <span
+        class=""
+      >
+        <input
+          autocomplete="on"
+          class="form-control"
+          placeholder="MM/DD/YYYY"
+          style="width: 100%;"
+          type="text"
+          value=""
+        />
+        <div
+          style="position: relative;"
+        />
+        <input
+          data-formattedvalue=""
+          type="hidden"
+          value=""
+        />
+      </span>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="lt"
+        />
+        is before
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="gt"
+        />
+        is after
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="between"
+        />
+        is between
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
