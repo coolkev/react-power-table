@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName } from "./FilterDefinition";
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition } from "./FilterDefinition";
 import { NumericInput } from "../../components/NumericInput";
 
 export class Decimal extends FilterDefinition<number>
@@ -20,7 +20,7 @@ export class Decimal extends FilterDefinition<number>
     }
 
 
-    protected getOperations() {
+    protected getOperations(): ObjectMap<OperationDefinition<number>> {
         return this.defaultOperations;
     }
 

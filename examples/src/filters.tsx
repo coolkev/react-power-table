@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting, withInternalPaging, GridFilters,DataTypes,groupBy, sortArray, createKeyedMap, numberWithCommas, AppliedFilter  } from 'react-power-table';
+import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes,groupBy, sortArray, createKeyedMap, numberWithCommas, AppliedFilter, GridFilters } from 'react-power-table';
 import { sampledata, defaultColumns } from './shared'
 
 const partyList = sortArray(groupBy(sampledata, m => m.party).map(m => ({ label: m.key, value: m.key })), m => m.label, { caseInsensitive: true });

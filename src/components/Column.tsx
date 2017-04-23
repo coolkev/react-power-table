@@ -3,7 +3,7 @@ import { makePure, getColumnCore, debuglog } from "../utils";
 import { HeaderComponentProps, CellProps, Column, GridProps, TransformedColumn } from "../ReactPowerTable";
 
 
-export const defaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => <div>{props.column.headerText}</div>);
+const defaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => <div>{props.column.headerText}</div>);
 export const defaultCellComponent = makePure((props: CellProps<any>) => {
     debuglog('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
     return <span>{props.value}</span>;

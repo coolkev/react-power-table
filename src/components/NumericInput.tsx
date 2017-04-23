@@ -1,15 +1,21 @@
 ﻿import * as React from 'react';
 
+
 export interface NumericInputProps extends React.HTMLProps<HTMLInputElement> {
+    
     initialValue: number | string;
     onValueChange: (newValue: number) => void;
     allowDecimal?: boolean;
 }
 
+
+/**
+  * @internal
+  */
 export interface NumericInputState {
     value: string;
 }
-export class NumericInput extends React.Component<NumericInputProps, NumericInputState> {
+export const NumericInput : React.ComponentClass<NumericInputProps> = class NumericInput extends React.Component<NumericInputProps, NumericInputState> {
 
     constructor(props: NumericInputProps & React.HTMLProps<HTMLInputElement>) {
         super(props);

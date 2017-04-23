@@ -3,6 +3,9 @@ import * as SelectValue from 'react-select/lib/Value';
 import * as classNames from 'classnames';
 
 
+/**
+  * @internal
+  */
 export class CustomSelectValue extends SelectValue {
 
     render() {

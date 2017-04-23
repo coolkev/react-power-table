@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import * as DatePicker from 'react-bootstrap-date-picker';
 import { GlobalDate } from "../../utils";
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName } from "./FilterDefinition";
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefinition, ObjectMap } from "./FilterDefinition";
 
 export class Date extends FilterDefinition<string>
 {
@@ -38,7 +38,7 @@ export class Date extends FilterDefinition<string>
 
 
 
-    protected getOperations() {
+    protected getOperations(): ObjectMap<OperationDefinition<string>> {
         return {
             eq: this.defaultOperations.eq,
             lt: { ...this.defaultOperations.lt, displayName: 'is before' },

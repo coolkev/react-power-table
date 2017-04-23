@@ -32,6 +32,8 @@ const defaultOperations = () => {
 
 export type FilterDefinitionOptionsOrFieldName = FilterDefinitionOptions | string;
 
+//export type FilterDefinitionOptionsOrFieldName = FilterDefinitionOptions | string;
+
 export abstract class FilterDefinition<T> implements FilterDefinitionOptions {
     fieldName: string;
     displayName?: string;

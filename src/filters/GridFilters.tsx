@@ -2,6 +2,9 @@
 import { AddEditFilter } from './AddEditFilter'
 import FormControl from 'react-bootstrap/lib/FormControl';
 import * as PowerTable from "./definitions/FilterDefinition";
+import { BackLink } from "./BackLink";
+import { AddSelectFilter } from "./AddSelectFilter";
+import {AppliedFilters} from './AppliedFilters'
 
 
 export interface GridFiltersProps {
@@ -15,72 +18,16 @@ export interface GridFiltersProps {
 
 
 
-export interface GridFiltersState {
+interface GridFiltersState {
 
     addingFilter?: boolean;
     editingFilter?: PowerTable.AppliedFilterType;
 
 }
 
-interface BackLinkProps {
-    onClick: () => void;
-}
-const BackLink = (props: BackLinkProps) => {
-    return <div style={{ marginBottom: 10 }}><a href="#" onClick={e => {
-        e.preventDefault();
-        props.onClick()
-    }}><span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a>
-    </div>;
-}
 
 
-
-export interface GridAppliedFiltersProps {
-    availableFilters: PowerTable.AvailableFiltersMap;
-    appliedFilters: PowerTable.AppliedFilterType[];
-    removeFilter: (filter: PowerTable.AppliedFilterType) => void;
-    editFilter: (filter: PowerTable.AppliedFilterType) => void;
-    onOptionLoaded: () => void;
-}
-
-
-
-const GridAppliedFilters = (props: GridAppliedFiltersProps) => {
-
-    return <div className="small">
-        {props.appliedFilters.map(appliedFilter => {
-
-            let AppliedLabelComponent = appliedFilter.operation.appliedLabelComponent || appliedFilter.filter.appliedLabelComponent;
-
-            if (!AppliedLabelComponent) {
-                const appliedLabel = appliedFilter.operation.appliedLabel || appliedFilter.filter.appliedLabel || PowerTable.FilterDefinition.defaultAppliedFilterLabel;
-                AppliedLabelComponent = (props: PowerTable.AppliedFilter<any>) => <span>{appliedLabel(props)}</span>;
-            }
-            //const formatResult = formatFunc(appliedFilter);
-
-            {/*let displayText: string;
-            if (typeof (formatResult) == 'string') {
-                displayText = formatResult
-            } else {
-                formatResult.then(() => props.onOptionLoaded());
-                displayText = 'Loading...';
-            }*/}
-            return <div className="well well-sm" style={{ marginBottom: 10 }} key={appliedFilter.filter.fieldName}>
-                <button type="button" className="close" aria-label="Remove" onClick={() => props.removeFilter(appliedFilter)}><span aria-hidden="true">×</span></button>
-                <a href="#" onClick={e => { e.preventDefault(); props.editFilter(appliedFilter); }}><AppliedLabelComponent {...appliedFilter}/></a>
-            </div>;
-        }
-        )}
-
-
-
-    </div>
-
-};
-
-
-
-export class GridFilters extends React.Component<GridFiltersProps, GridFiltersState> {
+class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersState> {
 
     constructor(props: GridFiltersProps) {
         super(props);
@@ -171,11 +118,11 @@ export class GridFilters extends React.Component<GridFiltersProps, GridFiltersSt
         return <div className="flex-column">
 
 
-            <GridAppliedFilters appliedFilters={appliedFilters} availableFilters={availableFilters} removeFilter={this.removeFilter} editFilter={this.editFilter} onOptionLoaded={() => this.forceUpdate()} />
+            <AppliedFilters appliedFilters={appliedFilters} availableFilters={availableFilters} removeFilter={this.removeFilter} editFilter={this.editFilter} onOptionLoaded={() => this.forceUpdate()} />
 
 
             {this.state.addingFilter
-                ? <AddFilter cancelAddFilter={this.hideAddFilter} appliedFilters={appliedFilters} availableFilters={availableFilters} onApplyFilter={this
+                ? <AddSelectFilter cancelAddFilter={this.hideAddFilter} appliedFilters={appliedFilters} availableFilters={availableFilters} onApplyFilter={this
                     .applyNewfilter} />
                 : <div><a href="#" onClick={e => {
                     e.preventDefault();
@@ -192,105 +139,4 @@ export class GridFilters extends React.Component<GridFiltersProps, GridFiltersSt
 
 
 
-interface AddFilterProps {
-    cancelAddFilter: () => void;
-
-    availableFilters: PowerTable.AvailableFiltersMap;
-    appliedFilters: PowerTable.AppliedFilterType[];
-    onApplyFilter: (filter: PowerTable.AppliedFilterType) => void;
-
-}
-
-interface AddFilterState {
-    searchText: string;
-    selectedFilterKey?: string;
-}
-
-class AddFilter extends React.PureComponent<AddFilterProps, AddFilterState> {
-
-    constructor(props: AddFilterProps) {
-        super(props);
-        this.state = { searchText: '' };
-        this.onSearchTextChanged = this.onSearchTextChanged.bind(this);
-        this.backToPrev = this.backToPrev.bind(this);
-
-    }
-
-
-    private onSearchTextChanged(e: React.FormEvent<FormControl & HTMLInputElement>) {
-        this.setState({
-            searchText: e.currentTarget.value
-        });
-
-    }
-
-    private newFilterSelected(key: string) {
-        this.setState({
-            selectedFilterKey: key
-        });
-
-    }
-
-    private backToPrev() {
-        if (this.state.selectedFilterKey) {
-            this.setState({ selectedFilterKey: null });
-        } else {
-            this.props.cancelAddFilter();
-        }
-    }
-    render() {
-
-        const props = this.props;
-
-        const { searchText, selectedFilterKey } = this.state;
-
-        if (selectedFilterKey) {
-
-            const filter = props.availableFilters[selectedFilterKey];
-
-            const initialOperation = filter.operations.all[0];
-
-            return <div>
-                <BackLink onClick={this.backToPrev} />
-
-                <div>
-
-                    <AddEditFilter filter={filter} initialOperation={initialOperation} onApplyFilter={this.props.onApplyFilter} />
-
-                </div>
-            </div>;
-
-        }
-
-        const unusedFilters = props.availableFilters.all.filter(m => props.appliedFilters.every(c => c.filter.fieldName != m.fieldName));
-
-        const regex = new RegExp(searchText, 'i');
-        const availableFilters = searchText ? unusedFilters.filter(m => m.displayName.match(regex)) : unusedFilters;
-
-
-        return <div className="flex-column">
-            <BackLink onClick={this.backToPrev} />
-
-
-            <div><FormControl placeholder="Filter by" value={searchText} onChange={this.onSearchTextChanged} autoFocus /></div>
-
-            <div className="small flex-column">
-                <div style={{ margin: '10px 0' }}><b>Available Filters</b></div>
-                <div className="available-filters">
-                    <div className="list-group">
-                        {availableFilters.map(m => <a href="#" onClick={e => {
-                            e.preventDefault();
-                            this.newFilterSelected(m.fieldName);
-                        }} className="list-group-item" key={m.fieldName}>{m.displayName}</a>)}
-                    </div>
-                </div>
-
-            </div>
-
-        </div>;
-    }
-}
-
-
-
-
+export const GridFilters: React.ComponentClass<GridFiltersProps> = GridFiltersInternal;

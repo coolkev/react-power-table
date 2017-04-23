@@ -4,6 +4,10 @@ import Button from 'react-bootstrap/lib/Button';
 import { debuglog } from "../utils";
 import * as PowerTable from "./definitions/FilterDefinition";
 
+
+/**
+  * @internal
+  */
 export interface AddEditFilterProps {
     filter: PowerTable.FilterDefinition<any>;
     initialOperation: PowerTable.OperationDefinition<any>;
@@ -11,6 +15,10 @@ export interface AddEditFilterProps {
     onApplyFilter: (filter: PowerTable.AppliedFilter<any>) => void;
 }
 
+
+/**
+  * @internal
+  */
 export interface AddEditFilterState {
 
     operation: PowerTable.OperationDefinition<any>;
@@ -18,7 +26,9 @@ export interface AddEditFilterState {
 
 }
 
-
+/**
+  * @internal
+  */
 export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEditFilterState> {
 
     constructor(props: AddEditFilterProps) {
@@ -116,3 +126,10 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         </div>;
     }
 }
+
+
+
+/**
+  * @internal
+  */
+//export const AddEditFilter : React.ComponentClass<AddEditFilterProps>= AddEditFilterInternal;
