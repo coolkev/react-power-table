@@ -17,10 +17,10 @@
     "test": "jest --colors --coverage"
   },
   "dependencies": {
-    "react": "^15.5.4",
+    "react": "^15.4.2",
     "react-bootstrap": "^0.30.9",
     "react-bootstrap-date-picker": "^5.0.0",
-    "react-dom": "^15.5.4",
+    "react-dom": "^15.4.2",
     "react-select": "^1.0.0-rc.3"
   },
   "devDependencies": {
