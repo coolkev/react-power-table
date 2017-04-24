@@ -27,7 +27,7 @@ const availableFilters = [
     new DataTypes.int({ fieldName: 'death_year', canBeNull: true }),
     new DataTypes.date({ fieldName: 'took_office'}),
     new DataTypes.date({ fieldName: 'left_office', canBeNull: true }),
-    new DataTypes.list('party', partyList()),
+    new DataTypes.list('party', partyList),
     new DataTypes.boolean({ fieldName: 'assasinated', displayName: 'was assasinated'}),
 
 ];

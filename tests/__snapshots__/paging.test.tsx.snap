@@ -15,7 +15,7 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
         style="text-align: left; white-space: nowrap;"
       >
         <div>
-          president
+          name
         </div>
       </th>
       <th
@@ -371,7 +371,7 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
         style="text-align: left; white-space: nowrap;"
       >
         <div>
-          president
+          name
         </div>
       </th>
       <th
@@ -727,7 +727,7 @@ exports[`withInternalPaging tests render paging 1`] = `
         style="text-align: left; white-space: nowrap;"
       >
         <div>
-          president
+          name
         </div>
       </th>
       <th

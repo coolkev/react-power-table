@@ -22,7 +22,7 @@ exports[`withInternalSorting tests change rows from props 1`] = `
         style="text-align: left; white-space: nowrap; cursor: pointer;"
       >
         <div>
-          president
+          name
         </div>
       </th>
       <th
@@ -263,7 +263,7 @@ exports[`withInternalSorting tests change sort from props 1`] = `
         style="text-align: left; white-space: nowrap; cursor: pointer;"
       >
         <div>
-          president
+          name
         </div>
       </th>
       <th
@@ -547,7 +547,7 @@ exports[`withInternalSorting tests change sort on th click 2`] = `
   style="text-align: left; white-space: nowrap; cursor: pointer;"
 >
   <div>
-    president
+    name
   </div>
 </th>
 `;
@@ -574,7 +574,7 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
         style="text-align: left; white-space: nowrap; cursor: pointer;"
       >
         <div>
-          president
+          name
         </div>
       </th>
       <th
@@ -855,7 +855,7 @@ exports[`withInternalSorting tests change sort on th click 5`] = `
   <div
     style="padding-right: 15px; position: relative;"
   >
-    president
+    name
      
     <span
       class="sort-asc"
@@ -884,7 +884,7 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         <div
           style="padding-right: 15px; position: relative;"
         >
-          president
+          name
            
           <span
             class="sort-asc"

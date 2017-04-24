@@ -1,8 +1,8 @@
-﻿import { Column, sortArray, groupBy } from 'react-power-table';
+﻿import { Column } from '../../src/';
 
 export const defaultColumns: Column<President>[] = [
     { field: m => m.number },
-    { field: m => m.president },
+    { field: m => m.president, headerText: 'name' },
     { field: m => m.party },
     { field: m => m.birth_year },
     'death_year',
@@ -69,4 +69,13 @@ export const sampledata : President[] = [
     { "number": 44, "president": "Barack Obama", "birth_year": 1961, "death_year": null, "took_office": "2009-01-20", "left_office": null, "party": "Democratic" }
 ]
 
-export const partyList = ()=> sortArray(groupBy(sampledata, m => m.party).map(m => ({ label: m.key, value: m.key })), m => m.label, { caseInsensitive: true });
+
+export const partyList = [{ label: 'Democratic', value: 'Democratic' },
+{
+    label: 'Democratic-Republican',
+    value: 'Democratic-Republican'
+},
+{ label: 'Federalist', value: 'Federalist' },
+{ label: 'No Party', value: 'No Party' },
+{ label: 'Republican', value: 'Republican' },
+{ label: 'Whig', value: 'Whig' }];

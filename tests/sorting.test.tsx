@@ -22,7 +22,7 @@ describe('withInternalSorting tests',
             const th = component.find('th');
 
             expect(th.at(0).text()).toEqual('number ');
-            expect(th.at(1).text()).toEqual('president');
+            expect(th.at(1).text()).toEqual('name');
             expect(th.at(0).render()).toMatchSnapshot();
             expect(th.at(1).render()).toMatchSnapshot();
 
@@ -33,7 +33,7 @@ describe('withInternalSorting tests',
 
             expect(component.state('currentSort').Column).toEqual('president');
             
-            expect(th.at(1).text()).toEqual('president ');
+            expect(th.at(1).text()).toEqual('name ');
             expect(th.at(0).render()).toMatchSnapshot();
             expect(th.at(1).render()).toMatchSnapshot();
 

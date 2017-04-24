@@ -107,7 +107,7 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
             key: key || fieldName,
             field: field,
             fieldName: fieldName,
-            headerText: fieldName
+            headerText: col.headerText || fieldName
         };
     }
     if (typeof (field) === "string") {
@@ -115,7 +115,7 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
             key: key || field,
             field: row => row[field],
             fieldName: field,
-            headerText: field
+            headerText: col.headerText || field
 
         };
     }
@@ -129,7 +129,7 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
         key: key,
         field: _row => null,
         fieldName: null,
-        headerText: null
+        headerText: col.headerText
         
     };
 

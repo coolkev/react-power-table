@@ -15,7 +15,7 @@ exports[`basic tests Render plain table 1`] = `
         style="text-align:left;white-space:nowrap;"
       >
         <div>
-          president
+          name
         </div>
       </th>
       <th
