@@ -8,7 +8,7 @@ var isDevBuild = process.argv.indexOf('--env.prod') < 0 && process.argv.indexOf(
 module.exports = {
   output: {
     path: path.resolve('./dist/'),        
-    filename: isDevBuild ? '[name].js' : '[name].min.js',
+    filename: '[name].js',
     //publicPath: '/dist/',
    // libraryTarget: "var",
     // name of the global var: "Foo"
