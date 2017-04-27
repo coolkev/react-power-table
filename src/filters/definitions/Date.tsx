@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import * as DatePicker from 'react-bootstrap-date-picker';
+import DatePicker from 'react-bootstrap-date-picker';
 import { GlobalDate } from "../../utils";
 import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefinition, ObjectMap } from "./FilterDefinition";
 
