@@ -1,7 +1,7 @@
 {
   "name": "react-power-table",
   "author": "Kevin Lewis",
-  "version": "0.1.19",
+  "version": "0.2.0",
   "description": "React Power Table",
   "repository": {
     "type": "git",
@@ -59,7 +59,7 @@
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.1",
     "typedoc": "file:C:\\_Git\\OpenSource\\typedoc",
-    "@types/isomorphic-fetch": "^0.0.34"    
+    "@types/isomorphic-fetch": "^0.0.34"
   },
   "jest": {
     "transform": {
