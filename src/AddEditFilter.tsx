@@ -1,18 +1,18 @@
 ﻿import * as React from 'react';
 import * as Radio from 'react-bootstrap/lib/Radio';
 import * as Button from 'react-bootstrap/lib/Button';
-import { debuglog } from "../utils";
-import * as PowerTable from "./definitions/FilterDefinition";
+import { debuglog } from "./utils";
+import * as filters from "./filters/FilterDefinition";
 
 
 /**
   * @internal
   */
 export interface AddEditFilterProps {
-    filter: PowerTable.FilterDefinition<any>;
-    initialOperation: PowerTable.OperationDefinition<any>;
+    filter: filters.FilterDefinition<any>;
+    initialOperation: filters.OperationDefinition<any>;
     initialValue?: any;
-    onApplyFilter: (filter: PowerTable.AppliedFilter<any>) => void;
+    onApplyFilter: (filter: filters.AppliedFilter<any>) => void;
 }
 
 
@@ -21,7 +21,7 @@ export interface AddEditFilterProps {
   */
 export interface AddEditFilterState {
 
-    operation: PowerTable.OperationDefinition<any>;
+    operationKey: string;
     value: any;
 
 }
@@ -37,7 +37,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
         const value = props.initialValue || props.filter.defaultValue || '';
 
-        this.state = { value: value, operation: props.initialOperation };
+        this.state = { value: value, operationKey: props.initialOperation.key };
 
         this.selectedOperationChange = this.selectedOperationChange.bind(this);
         this.handleFilterValueChange = this.handleFilterValueChange.bind(this);
@@ -47,13 +47,13 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
     private selectedOperationChange(e: React.FormEvent<Radio & HTMLInputElement>) {
 
-        const prevOperation = this.state.operation;
+        const prevOperationKey = this.state.operationKey;
         const operationKey = e.currentTarget.value;
-        const operation = this.props.filter.operations[operationKey];
+        //const operation = this.props.filter.operations[operationKey];
 
-        const newState: Partial<AddEditFilterState> = { operation: operation };
+        const newState: Partial<AddEditFilterState> = { operationKey: operationKey };
 
-        if (prevOperation.key == 'between' && operation.key != prevOperation.key && typeof this.state.value === 'string') {
+        if (prevOperationKey == 'between' && operationKey != prevOperationKey && typeof this.state.value === 'string') {
             newState.value = this.state.value.split(' ')[0];
         }
         this.setState(newState as any)
@@ -67,13 +67,14 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
     }
 
     private applyFilter() {
-        this.props.onApplyFilter({ filter: this.props.filter, operation: this.state.operation, value: this.state.value });
+        const operation = this.props.filter.operations[this.state.operationKey];
+
+        this.props.onApplyFilter({ filter: this.props.filter, operation: operation, value: this.state.value });
     }
     render() {
         debuglog('AddEditFilter.render', this.props);
 
         const filter = this.props.filter;
-
 
         return <div>
             <div style={{ margin: '10px 0' }}><b>{filter.displayName}</b>
@@ -82,15 +83,15 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
 
 
-            {filter.operations.all.map(op => {
-                
-                let selectedFilterComponentProps: PowerTable.FilterComponentProps<any>;
-                let SelectedFilterComponent: React.ComponentClass<PowerTable.FilterComponentProps<any>> | React.StatelessComponent<PowerTable.FilterComponentProps<any>>;
+            {Object.keys(filter.operations).map(opKey => {
+                const op = filter.operations[opKey];
+                let selectedFilterComponentProps: filters.FilterComponentProps<any>;
+                let SelectedFilterComponent: React.ComponentClass<filters.FilterComponentProps<any>> | React.StatelessComponent<filters.FilterComponentProps<any>>;
 
-                if (op.key == this.state.operation.key) {
+                if (op.key == this.state.operationKey) {
                     selectedFilterComponentProps = {
                         filter: this.props.filter,
-                        operation:op,
+                        operation: op,
                         value: this.state.value,
                         onValueChange: this.handleFilterValueChange,
                         onEnterKeyPress: this.applyFilter
@@ -103,7 +104,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
 
                 return <div key={op.key}>
-                    <Radio checked={op.key == this.state.operation.key} onChange={this.selectedOperationChange} value={op.key}>
+                    <Radio checked={op.key == this.state.operationKey} onChange={this.selectedOperationChange} value={op.key}>
                         {filter.radioButtonLabel ? filter.radioButtonLabel({
                             filter: this.props.filter,
                             operation: op

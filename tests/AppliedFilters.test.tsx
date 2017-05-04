@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
-import { GridFilters, DataTypes, createKeyedMap, AppliedFilter } from '../src/';
+import { GridFilters, DataTypes, AppliedFilter, FilterDefinition } from '../src/';
 import { defaultColumns, sampledata, President } from "./shared";
 import { mount } from 'enzyme';
-import { AppliedFilters } from "../src/filters/AppliedFilters";
+import { AppliedFilters } from "../src/AppliedFilters";
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
@@ -17,7 +17,7 @@ const availableFilters = [
     new DataTypes.boolean({ fieldName: 'assasinated', displayName: 'was assasinated' }),
 
 ];
-const availableFiltersMap = createKeyedMap(availableFilters, m => m.fieldName);
+//const availableFiltersMap = createKeyedMap(availableFilters, m => m.fieldName);
 describe('AppliedFilters tests',
     () => {
 
@@ -25,7 +25,7 @@ describe('AppliedFilters tests',
 
         test('none applied', () => {
 
-            const c = <AppliedFilters availableFilters={availableFiltersMap} appliedFilters={[]} editFilter={() => { }} removeFilter={() => { }} />;
+            const c = <AppliedFilters appliedFilters={[]} editFilter={() => { }} removeFilter={() => { }} />;
 
             const component = mount(c);
 
@@ -36,13 +36,15 @@ describe('AppliedFilters tests',
 
         test('one applied', () => {
 
+            const presidentFilter = availableFilters.find(m => m.fieldName == 'president') as FilterDefinition<string>;
+
             const applied: AppliedFilter<any> = {
-                filter: availableFiltersMap.president,
-                operation: availableFiltersMap.president.operations.contains,
+                filter: presidentFilter,
+                operation: presidentFilter.operations.contains,
                 value: 'george'
             };
 
-            const c = <AppliedFilters availableFilters={availableFiltersMap} appliedFilters={[applied]} editFilter={() => { }} removeFilter={() => { }} />;
+            const c = <AppliedFilters appliedFilters={[applied]} editFilter={() => { }} removeFilter={() => { }} />;
 
             const component = mount(c);
 

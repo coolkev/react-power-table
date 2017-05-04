@@ -14,6 +14,7 @@ export class String extends PowerTable.FilterDefinition<string>
 
         this.appliedLabel = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
     }
+    public readonly operations = this.getOperations();
 
     protected getOperations() {
         return {

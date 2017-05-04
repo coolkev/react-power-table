@@ -1,6 +1,11 @@
-﻿import * as React from 'react';
+﻿/**
+ * @module react-power-table
+ */ /** */
+
+import * as React from 'react';
 import { debuglog, shallowEqual, makePure } from './utils';
-import { transformColumn } from "./components/Column";
+import { transformColumn } from "./Column";
+
 
 //export type ReactClass<T> = React.ComponentClass<T> | React.StatelessComponent<T>
 
@@ -9,7 +14,7 @@ import { transformColumn } from "./components/Column";
  */
 export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
-    private columns: TransformedColumn<any>[];
+    private columns: StrictColumn<any>[];
     private getRowProps: (row: any) => React.HTMLProps<HTMLTableRowElement>;
     private getRowKey: (row: any) => string | number;
 
@@ -94,7 +99,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
 interface HeaderRowProps<T> {
 
-    columns: TransformedColumn<T>[];
+    columns: StrictColumn<T>[];
 
 }
 
@@ -119,7 +124,7 @@ class HeaderRow extends React.Component<HeaderRowProps<any>, never> {
 
                 const HeaderComponent = c.headerComponent;
 
-                const headerComponentProps = c.headerComponentPropsProvider && c.headerComponentPropsProvider({ column: c }) || { column: c };
+                const headerComponentProps = c.headerComponentPropsProvider();
                 return <th key={c.key} {...headerProps }><HeaderComponent {...headerComponentProps} />
 
                 </th>
@@ -144,8 +149,9 @@ class DataRow extends React.PureComponent<DataRowProps<any>, never> {
             {columns.map(col => {
                 const CellComponent = col.cellComponent as React.ComponentClass<CellProps<any>> | React.StatelessComponent<CellProps<any>>;
 
-                const value = col.formatter ? col.formatter(col.field(row), row) : col.field(row);
-                const rowValueProps: CellProps<any> = { row: row, column: col, value: value, ...extra };
+                const value = col.field(row);
+                const formattedValue = col.formatter ? col.formatter(col.field(row), row) : col.field(row);
+                const rowValueProps: CellProps = { row: row, column: col, value: formattedValue, rawValue: value, ...extra };
 
                 const cellProps = col.cellProps(rowValueProps);
 
@@ -168,7 +174,7 @@ export interface GridProps<T> {
      * Columns to display in table
      */
     columns: (Column<T> | string)[];
-    
+
     /**
      * Field name or function to provide unique key for each column
      */
@@ -186,30 +192,47 @@ export interface GridProps<T> {
     footerComponent?: React.ComponentClass<any> | React.StatelessComponent<any>;
 
     //headerRowComponent?: ReactClass<HeaderRowProps<T>>;
-    defaultHeaderComponent?: React.ComponentClass<HeaderComponentProps<T>> | React.StatelessComponent<HeaderComponentProps<T>>;
+    defaultHeaderComponent?: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>;
 }
 
 
-export interface TransformedColumn<T> extends BaseColumn<T> {
-    field: ((row: T) => any);
+export interface StrictColumn<TRow = any, TValue = any> {
 
-    cellProps?: ((props: CellProps<T>) => React.HTMLProps<HTMLTableDataCellElement>);
+    key: string | number;
+   
+    field: ((row: TRow) => TValue);
+    fieldName: string;
 
-    __transformed: boolean;
+    headerText: string;
+
+    cellProps?: ((props: CellProps<TRow, TValue>) => React.HTMLProps<HTMLTableDataCellElement>);
+
+    formatter: (value: any, row?: TRow) => string;
+    cellComponent?: React.ComponentClass<CellProps<TRow>> | React.StatelessComponent<CellProps<TRow>>;
+    cellComponentProps?: (props: CellProps<TRow>) => any;
+    headerComponent?: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>;
+    headerComponentPropsProvider?: () => HeaderComponentProps;
+
+    headerCellProps?: React.HTMLProps<HTMLTableHeaderCellElement>;
+
 }
 
 
 
 
-export interface HeaderComponentProps<T> {
-    column: TransformedColumn<T>;
+export interface HeaderComponentProps {
+    //column: StrictColumn<T>;
+    key: string | number;
+    headerText: string;
+    headerCellProps: React.HTMLProps<HTMLTableHeaderCellElement>;
+    
 }
 
 
 
- export interface DataRowProps<T> {
+export interface DataRowProps<T> {
 
-    columns: TransformedColumn<T>[];
+    columns: StrictColumn<T>[];
     row: T;
     rowProps: React.HTMLProps<HTMLTableRowElement>;
 }
@@ -217,38 +240,35 @@ export interface HeaderComponentProps<T> {
 
 
 
- export interface BaseColumn<T> {
-    key: string | number;
-    formatter: (value: any, row?: T) => string;
-    headerText: string;
-    cellComponent?: React.ComponentClass<CellProps<T>> | React.StatelessComponent<CellProps<T>>;
-    cellComponentProps?: (props: CellProps<T>) => any;
-    headerComponent?: React.ComponentClass<HeaderComponentProps<T>> | React.StatelessComponent<HeaderComponentProps<T>>;
-    headerComponentPropsProvider?: (props: HeaderComponentProps<T>) => HeaderComponentProps<T>;
+export interface Column<TRow = any, TValue = any> {
+    key?: string | number;
+    formatter?: (value: TValue, row?: TRow) => string;
+    cellComponent?: React.ComponentClass<CellProps<TRow,TValue>> | React.StatelessComponent<CellProps<TRow,TValue>>;
+    cellComponentProps?: (props: CellProps<TRow,TValue>) => any;
+    headerComponent?: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>;
+    headerComponentPropsProvider?: () => HeaderComponentProps;
 
     headerCellProps?: React.HTMLProps<HTMLTableHeaderCellElement>;
 
 
-}
-
-
-export interface Column<T> extends Partial<BaseColumn<T>> {
-    field?: ((row: T) => any) | string;
+    field?: ((row: TRow) => TValue) | string;
     headerText?: string;
-    cellProps?: React.HTMLProps<HTMLTableDataCellElement> | ((props: CellProps<T>) => React.HTMLProps<HTMLTableDataCellElement>);
+    cellProps?: React.HTMLProps<HTMLTableDataCellElement> | ((props: CellProps<TRow>) => React.HTMLProps<HTMLTableDataCellElement>);
 
     headerCssClass?: string;
     //cellProps?: React.HTMLProps<HTMLTableDataCellElement> | ((props: CellProps<T>) => React.HTMLProps<HTMLTableDataCellElement>);
-    cssClass?: ((props: CellProps<T>) => string) | string;
+    cssClass?: ((props: CellProps<TRow>) => string) | string;
     width?: number;
     maxWidth?: number;
     textAlign?: string;
 }
 
-export interface CellProps<T> {
-    row: T;
-    value: any;
-    column: TransformedColumn<T>;
+export interface CellProps<TRow = any, TValue = any> {
+    row: TRow;
+    column: Column<TRow>;
+
+    value: TValue | string;
+    rawValue: TValue | string;
 
 }
 

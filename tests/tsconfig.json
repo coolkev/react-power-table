@@ -6,7 +6,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": false,
     "removeComments": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "es2015",
     "module": "es2015",
     "jsx": "react",
@@ -16,7 +16,7 @@
   } ,
     "include": [
     "*"    ,
-    "../src/**/*",
+    "../src/*",
     "../examples/shared.ts"
   ],
   "exclude": [

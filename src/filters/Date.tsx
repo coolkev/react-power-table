@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
-import { GlobalDate } from "../../utils";
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefinition, ObjectMap } from "./FilterDefinition";
+import { GlobalDate } from "../utils";
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from "./FilterDefinition";
 
 export class Date extends FilterDefinition<string>
 {
@@ -21,7 +21,9 @@ export class Date extends FilterDefinition<string>
 
 
     }
+    //public readonly operations = { ...this.defaultOperations,...this.getNullableOperations() };
 
+    public readonly operations = this.getOperations();
     public parseValue(str: string): string {
         if (str) {
 
@@ -38,13 +40,18 @@ export class Date extends FilterDefinition<string>
 
 
 
-    protected getOperations(): ObjectMap<OperationDefinition<string>> {
-        return {
+    private getOperations() {
+        const result = {
             eq: this.defaultOperations.eq,
-            lt: { ...this.defaultOperations.lt, displayName: 'is before' },
-            gt: { ...this.defaultOperations.gt, displayName: 'is after' },
-            between: this.defaultOperations.between
+            lt: { ...this.defaultOperations.lt, displayName: 'is before' } as OperationDefinition<string>,
+            gt: { ...this.defaultOperations.gt, displayName: 'is after' } as OperationDefinition<string>,
+            between: this.defaultOperations.between            
         };
+
+        if (this.canBeNull) {
+            return { ...result,...nullableOperations() };
+}
+        return result;
     }
 
 

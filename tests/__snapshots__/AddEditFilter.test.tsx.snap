@@ -651,7 +651,7 @@ exports[`AddEditFilter tests add filter party 1`] = `
                 value=""
               />
               <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal;"
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre;"
               />
             </div>
           </span>

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { AddEditFilter } from './AddEditFilter'
 import FormControl from 'react-bootstrap/lib/FormControl';
-import * as PowerTable from "./definitions/FilterDefinition";
-import { BackLink } from "./BackLink";
+import * as filters from "./filters";
+import { BackLink } from "./components/BackLink";
 import { AddSelectFilter } from "./AddSelectFilter";
 
 
@@ -10,10 +10,10 @@ import { AddSelectFilter } from "./AddSelectFilter";
   * @internal
   */
 export interface AppliedFiltersProps {
-    availableFilters: PowerTable.AvailableFiltersMap;
-    appliedFilters: PowerTable.AppliedFilterType[];
-    removeFilter: (filter: PowerTable.AppliedFilterType) => void;
-    editFilter: (filter: PowerTable.AppliedFilterType) => void;
+    //availableFilters: PowerTable.AvailableFiltersMap;
+    appliedFilters: filters.AppliedFilter[];
+    removeFilter: (filter: filters.AppliedFilter) => void;
+    editFilter: (filter: filters.AppliedFilter) => void;
     
 }
 
@@ -30,8 +30,8 @@ export const AppliedFilters = (props: AppliedFiltersProps) => {
             let AppliedLabelComponent = appliedFilter.operation.appliedLabelComponent || appliedFilter.filter.appliedLabelComponent;
 
             if (!AppliedLabelComponent) {
-                const appliedLabel = appliedFilter.operation.appliedLabel || appliedFilter.filter.appliedLabel || PowerTable.FilterDefinition.defaultAppliedFilterLabel;
-                AppliedLabelComponent = (props: PowerTable.AppliedFilter<any>) => <span>{appliedLabel(props)}</span>;
+                const appliedLabel = appliedFilter.operation.appliedLabel || appliedFilter.filter.appliedLabel || filters.FilterDefinition.defaultAppliedFilterLabel;
+                AppliedLabelComponent = (props: filters.AppliedFilter<any>) => <span>{appliedLabel(props)}</span>;
             }
             
             return <div className="well well-sm" style={{ marginBottom: 10 }} key={appliedFilter.filter.fieldName}>

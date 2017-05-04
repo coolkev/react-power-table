@@ -7,6 +7,6 @@ const Table = withInternalSorting(withInternalPaging(ReactPowerTable));
 
 export const InternalPagingSortingExample = () => {
 
-    return <Table columns={defaultColumns} keyColumn="number" rows={sampledata} sorting={{Column: 'number', Ascending: true }}  />;
+    return <Table columns={defaultColumns} keyColumn="number" rows={sampledata} sorting={{column: 'number'}}  />;
 
 }

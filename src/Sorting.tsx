@@ -1,39 +1,45 @@
+/**
+ * @module react-power-table
+ */ /** */
+
 import * as React from 'react';
 //import { Paging, PagingProps } from './components/Paging';
-import { sortArray, getExpression, getComponentDisplayName, getColumnCore, makePure, debuglog, shallowEqual } from '../utils';
-import { defaultCellComponent } from "./Column";
+import { sortArray, getComponentDisplayName, makePure, debuglog, shallowEqual } from './utils';
+import { defaultCellComponent, getExpression, getColumnCore } from "./Column";
 import { InternalPagingProps } from "./Paging";
-import { Column, HeaderComponentProps, TransformedColumn, GridProps } from "../ReactPowerTable";
+import { Column, HeaderComponentProps, GridProps } from "./ReactPowerTable";
 
 
 export interface SortSettings {
 
-    Column: string;
-    Ascending: boolean;
+    column: string;
+    //Ascending?: boolean;
+    descending?: boolean;
 
 }
 
-export interface SortableColumn<T> extends Column<T> {
+export interface SortableColumn<TRow = any, TValue = any> extends Column<TRow, TValue> {
 
     sortable?: boolean;
-    sortExpression?: ((row: T) => any) | string;
+    sortExpression?: ((row: TRow) => any) | string;
     sortKey?: string;
 
-    sortAscComponent?: JSX.Element;
-    sortDescComponent?: JSX.Element;
+    //sortAscComponent?: JSX.Element;
+    //sortDescComponent?: JSX.Element;
 
 
 
 }
-
-interface InternalSortingState<T> {
+/** @internal */
+export interface InternalSortingState<T> {
     sortedRows?: T[];
     currentSort?: SortSettings;
 }
 
-export interface InternalSortingProps<T> {
 
-    columns: (SortableColumn<T> | string)[];
+export interface InternalSortingProps<TRow = any> {
+
+    columns: (SortableColumn<TRow> | string)[];
 
     sorting: SortSettings & {
 
@@ -43,35 +49,35 @@ export interface InternalSortingProps<T> {
     };
 }
 
-interface SortableHeaderComponentProps<T> extends HeaderComponentProps<T> {
-    column: SortableColumn<T> & TransformedColumn<T>;
+interface SortableHeaderComponentProps<T> extends HeaderComponentProps {
+
     sorting: boolean;
     sortAsc?: boolean;
 }
 
 const sortableHeaderComponent = makePure((props: SortableHeaderComponentProps<any>) => {
 
-    const col = props.column;
+    //const col = props.column;
 
     //console.log('sortableHeaderComponent render', props);
 
     if (props.sorting) {
 
-        const sortComponent = props.sortAsc ? col.sortAscComponent || defaultSortAscComponent : col.sortDescComponent || defaultSortDescComponent;
+        const sortComponent = props.sortAsc ? defaultSortAscComponent : defaultSortDescComponent;
 
-        return <div style={{ paddingRight: 15, position: 'relative' }}>{col.headerText} {sortComponent}</div>;
+        return <div style={{ paddingRight: 15, position: 'relative' }}>{props.headerText} {sortComponent}</div>;
 
     }
-    const divStyle = col.headerCellProps.style && col.headerCellProps.style.textAlign == 'right' ? { paddingRight: 15 } : null;
+    const divStyle = props.headerCellProps.style && props.headerCellProps.style.textAlign == 'right' ? { paddingRight: 15 } : null;
 
-    return <div style={divStyle}>{col.headerText}</div>;
+    return <div style={divStyle}>{props.headerText}</div>;
 
 });
 
 function transformColumn<T>(options: SortableColumn<T> | string, changeSort: (sort: SortSettings) => void, getCurrentSort: () => SortSettings) {
 
 
-    const col = typeof (options) == 'string' ? { field: options } : { ...options };
+    const col : SortableColumn = typeof (options) == 'string' ? { field: options, key: options } : { ...options };
 
     col.sortable = col.sortable || col.sortable == undefined;
 
@@ -103,19 +109,23 @@ function transformColumn<T>(options: SortableColumn<T> | string, changeSort: (so
         ...col.headerCellProps, onClick: () => {
             const sorting = getCurrentSort();
 
-            changeSort({ Column: col.sortKey, Ascending: sorting.Column != col.sortKey || !sorting.Ascending });
+            changeSort({ column: col.sortKey, descending: sorting.column == col.sortKey && !sorting.descending });
         }
     };
 
     headerProps.style = { ...headerProps.style, cursor: 'pointer' };
     col.headerCellProps = headerProps;
 
-    col.headerComponentPropsProvider = props => {
-        const currentSort = getCurrentSort();
-        const sorting = col.sortKey == currentSort.Column;
-        const sortAsc = sorting && currentSort.Ascending;
+    const originalHeaderComponentPropsProvider = col.headerComponentPropsProvider;
 
-        return { ...props, sorting, sortAsc };
+    col.headerComponentPropsProvider = () => {
+
+        const originalProps = originalHeaderComponentPropsProvider && originalHeaderComponentPropsProvider();
+        const currentSort = getCurrentSort();
+        const sorting = col.sortKey == currentSort.column;
+        const sortAsc = sorting && !currentSort.descending;
+
+        return { ...originalProps, sorting, sortAsc };
     }
 
     col.headerComponent = sortableHeaderComponent;
@@ -139,10 +149,12 @@ function transformColumns(columns: Column<any>[], changeSort: (sort: SortSetting
     return columns.map(c => transformColumn(c, changeSort, getCurrentSort));
 }
 
-export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.ComponentClass<T> | React.StatelessComponent<T>): React.ComponentClass<T & InternalSortingProps<TRow>> {
+export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & InternalSortingProps<TRow>>;
+export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & InternalSortingProps<TRow>>;
+export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.ComponentClass<GridProps<TRow>> | React.StatelessComponent<GridProps<TRow>>): React.ComponentClass<T & InternalSortingProps<TRow>> {
 
 
-    const WrappedPagingComponent = WrappedComponent.displayName && WrappedComponent.displayName.match(/^WithInternalPaging/) && WrappedComponent as React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
+    const WrappedPagingComponent = WrappedComponent.displayName && WrappedComponent.displayName.match(/^WithInternalPaging/) && WrappedComponent as React.ComponentClass<GridProps<TRow> & { paging?: Partial<InternalPagingProps> }>;
 
     return class extends React.Component<T & InternalSortingProps<TRow>, InternalSortingState<TRow>> {
 
@@ -163,7 +175,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
             const sortedRows = this.performSort(props.rows, sorting);
 
             this.state = {
-                sortedRows, currentSort: { Column: sorting.Column, Ascending: sorting.Ascending }
+                sortedRows, currentSort: { column: sorting.column, descending: sorting.descending }
             };
 
         }
@@ -176,9 +188,9 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
                 this.columns = transformColumns(nextProps.columns, this.changeSort, () => this.state.currentSort, this.props.columns);
             }
 
-            if (this.props.sorting.Column != nextProps.sorting.Column || this.props.sorting.Ascending != nextProps.sorting.Ascending) {
+            if (this.props.sorting.column != nextProps.sorting.column || this.props.sorting.descending != nextProps.sorting.descending) {
 
-                const newSort = { Column: nextProps.sorting.Column, Ascending: nextProps.sorting.Ascending };
+                const newSort: SortSettings = { column: nextProps.sorting.column, descending: nextProps.sorting.descending };
                 const sortedRows = this.performSort(nextProps.rows, newSort);
 
                 this.setState({ currentSort: newSort, sortedRows });
@@ -191,15 +203,28 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
             }
 
         }
+        componentWillMount() {
+            console.log('Sort.componentWillMount')
+
+        }
+        
+        componentDidMount() {
+            console.log('Sort.componentDidMount')
+
+        }
+        
+        componentWillUnmount() {
+            console.log('Sort.componentWillUnmount')
+        }
         private performSort(rows: TRow[], sort: SortSettings) {
 
-            const sortCol = this.columns.find(m => m.sortKey == sort.Column);
+            const sortCol = this.columns.find(m => m.sortKey == sort.column);
 
             if (!sortCol) {
-                throw new Error('Could not find a column with sortKey=' + sort.Column);
+                throw new Error('Could not find a column with sortKey=' + sort.column);
             }
 
-            return sortArray(rows, sortCol.sortExpression, { descending: !sort.Ascending, caseInsensitive: true });
+            return sortArray(rows, sortCol.sortExpression, { descending: sort.descending, caseInsensitive: true });
         }
         private changeSort(sort: SortSettings) {
 
@@ -224,6 +249,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
         }
 
         render() {
+            console.log('Sort.render')
 
             const { sorting, columns, rows, ...extra } = this.props as GridProps<TRow> & InternalSortingProps<T>;
 
@@ -260,7 +286,10 @@ export interface ExternalSortingProps {
     };
 }
 
-export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.ComponentClass<T> | React.StatelessComponent<T>): React.ComponentClass<T & ExternalSortingProps> {
+export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & ExternalSortingProps>;
+export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & ExternalSortingProps>;
+export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: React.ComponentClass<GridProps<TRow>> | React.StatelessComponent<GridProps<TRow>>): React.ComponentClass<T & ExternalSortingProps> {
+
 
 
     return class extends React.Component<T & ExternalSortingProps, never> {

@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import * as PowerTable from "./FilterDefinition";
 import * as Select from 'react-select';
-import { CustomSelectValue } from '../../components/CustomSelectValue';
+import { CustomSelectValue } from '../components/CustomSelectValue';
 
 
 export class List extends PowerTable.FilterDefinition<string[]>
@@ -17,12 +17,15 @@ export class List extends PowerTable.FilterDefinition<string[]>
             props.value ? props.value : []} multi
             options={items}
             onChange={(e: Select.Option[]) => props
-                .onValueChange(e.map(m => m.value as string || m.label  ))}
+                .onValueChange(e.map(m => m.value as string || m.label))}
             valueComponent={CustomSelectValue as any} className="small" />
 
-            //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
+        //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
     }
-    protected getOperations(): PowerTable.ObjectMap<PowerTable.OperationDefinition<string[]>> {
+
+    public readonly operations = this.getOperations();
+
+    private getOperations(): PowerTable.ObjectMap<PowerTable.OperationDefinition<string[]>> {
         return {
             'in': {
                 key: 'in',

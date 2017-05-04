@@ -1,4 +1,4 @@
-﻿import { FilterDefinition, FilterDefinitionOptionsOrFieldName } from "./FilterDefinition";
+﻿import { FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations } from "./FilterDefinition";
 
 const verbs = [
     ['is', 'is not'],
@@ -19,7 +19,8 @@ export class Boolean extends FilterDefinition<boolean>
         this.defaultValue = true;
     }
 
-    protected getOperations() {
+    public readonly operations = this.getOperations();
+    private getOperations() {
 
 
         const matchingVerb = verbs.find(m => {
@@ -34,7 +35,8 @@ export class Boolean extends FilterDefinition<boolean>
                 
         return {
             'eq': { key:'eq',displayName: trueName, test: (source)=> source  },
-            'ne': { key: 'ne', displayName: falseName , test: (source)=> !source }
+            'ne': { key: 'ne', displayName: falseName, test: (source) => !source },
+            ...(this.canBeNull && nullableOperations<boolean>())
         };
     }
 

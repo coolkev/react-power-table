@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes,groupBy, sortArray, createKeyedMap, numberWithCommas, AppliedFilter, GridFilters } from 'react-power-table';
+import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes,groupBy, sortArray, numberWithCommas, AppliedFilter, GridFilters } from 'react-power-table';
 import { sampledata, defaultColumns, partyList } from './shared'
 
 
@@ -37,10 +37,10 @@ const assasinatedPresidents = [16, 20, 25, 35];
 
 const data = sampledata.map(m => ({ ...m, assasinated: assasinatedPresidents.indexOf(m.number) > -1 }));
 
-const availableFiltersMap = createKeyedMap(availableFilters, m => m.fieldName);
+//const availableFiltersMap = createKeyedMap(availableFilters, m => m.fieldName);
 
 //availableFiltersMap.number.operations.gt.displayName = 'greater than TEST';
-availableFiltersMap.death_year.operations.null.displayName = 'still alive';
+availableFilters.find(m=>m.fieldName=='death_year').operations['null'].displayName = 'still alive';
 
 interface FiltersExampleState {
     appliedFilters: AppliedFilter<any>[];
@@ -86,12 +86,12 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
 
                     <div style={{ marginTop: 10 }}></div>
 
-                    <GridFilters availableFilters={availableFiltersMap} appliedFilters={this.state.appliedFilters} onFiltersChange={this.handleFiltersChange} />
+                    <GridFilters availableFilters={availableFilters} appliedFilters={this.state.appliedFilters} onFiltersChange={this.handleFiltersChange} />
                 </div>
 
             </div>
             <div className="col-md-9">
-                <Table columns={defaultColumns} keyColumn="number" rows={filteredData} sorting={{Column: 'number', Ascending: true}} />
+                <Table columns={defaultColumns} keyColumn="number" rows={filteredData} sorting={{column: 'number' }} />
             </div>
         </div>;
 

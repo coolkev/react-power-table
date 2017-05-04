@@ -18,7 +18,7 @@ export class ExternalPagingSortingExample extends React.Component<never, Externa
     constructor(props: never) {
         super(props);
 
-        this.state = { currentPage: 1, pageSize: 20, currentSort: { Column: 'number', Ascending: true }, data: sampledata };
+        this.state = { currentPage: 1, pageSize: 20, currentSort: { column: 'number'}, data: sampledata };
 
         this.changeSort = this.changeSort.bind(this);
 
@@ -28,7 +28,7 @@ export class ExternalPagingSortingExample extends React.Component<never, Externa
 
     changeSort(sort: SortSettings) {
 
-        this.setState(prev => ({ data: sortArray(prev.data, sort.Column, { descending: !sort.Ascending, caseInsensitive: true }), currentSort: sort }));
+        this.setState(prev => ({ data: sortArray(prev.data, sort.column, { descending: sort.descending, caseInsensitive: true }), currentSort: sort }));
     }
 
     gotoPage(currentPage: number, pageSize?: number) {

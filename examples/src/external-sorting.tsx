@@ -14,7 +14,7 @@ export class ExternalSortingExample extends React.Component<never, ExternalSorti
     constructor(props: never) {
         super(props);
 
-        this.state = { currentSort: { Column: 'number', Ascending: true }, data: sampledata };
+        this.state = { currentSort: { column: 'number'}, data: sampledata };
 
         this.changeSort = this.changeSort.bind(this);
 
@@ -22,7 +22,7 @@ export class ExternalSortingExample extends React.Component<never, ExternalSorti
 
     changeSort(sort: SortSettings) {
 
-        this.setState(prev => ({ data: sortArray(prev.data, sort.Column, { descending: !sort.Ascending, caseInsensitive: true }), currentSort:sort }));
+        this.setState(prev => ({ data: sortArray(prev.data, sort.column, { descending: sort.descending, caseInsensitive: true }), currentSort:sort }));
     }
 
     render() {

@@ -1,11 +1,10 @@
-﻿import { Column } from '../../src/';
-
-export const defaultColumns: Column<President>[] = [
+﻿
+export const defaultColumns: object[] = [
     { field: m => m.number },
     { field: m => m.president, headerText: 'name' },
     { field: m => m.party },
     { field: m => m.birth_year },
-    'death_year',
+    { field: m => m.death_year },
     { field: m => m.took_office, textAlign: 'right', width:140 },
     { field: m => m.left_office },
     

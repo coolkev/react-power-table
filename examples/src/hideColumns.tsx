@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import { sampledata, defaultColumns, President } from './shared'
-import { ReactPowerTable, getColumnCore, withInternalSorting, Column, withInternalPaging } from 'react-power-table';
+import { ReactPowerTable, withInternalSorting, Column, withInternalPaging } from 'react-power-table';
+import { getColumnCore } from 'react-power-table/Column';
 
 interface HideColumnsExampleState {
         visibleColumnNames: string[];
@@ -55,7 +56,7 @@ export class HideColumnsExample extends React.Component<never, HideColumnsExampl
                         </div>
 
 
-                        <Table columns={this.visibleColumns} keyColumn="number" rows={sampledata} sorting={{ Column: 'president', Ascending: true }} />
+                        <Table columns={this.visibleColumns} keyColumn="number" rows={sampledata} sorting={{ column: 'president'}} />
                 </div>;
         }
 }

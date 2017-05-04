@@ -1,18 +1,30 @@
 ﻿import * as React from 'react';
-//import * as shallowEqual from 'fbjs/lib/shallowEqual';
-import * as PowerTable from "./filters/definitions/FilterDefinition";
+import * as PowerTable from "./filters/FilterDefinition";
 import { Column } from "./ReactPowerTable";
+
+
+
+
+/**
+ * @module react-power-table/lib/utils
+ *  Utility functions
+ */
+
+/**
+ * Format a number with comma for thousands separator2
+ */
+export function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
 const debugMode = false;
 
-
+/** @internal */
 export type GlobalDate = Date;
+/** @internal */
 export const GlobalDate = Date;
 
-export function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 
 //export { shallowEqual };
 
@@ -35,7 +47,9 @@ function is(x, y) {
   }
 }
 
+
 /**
+ @internal
  * Performs equality by iterating through keys on an object and returning false
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
@@ -78,78 +92,11 @@ export function shallowEqual(objA, objB) {
 export const debuglog = debugMode ? console.log : () => { };
 
 
-export interface ColumnCore<T> {
-    key: string | number;
-    field: (row: T) => any;
-    fieldName: string;
-    headerText: string;
-}
-
-export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
-
-    //let fieldName: string;
-    //let field: (row) => any;
-
-    if (typeof (col) == 'string') {
-        return {
-            key: col,
-            field: row => row[col],
-            fieldName: col,
-            headerText: col,
-        
-        };
-    }
-
-    const { field, key } = col;
-    if (typeof field === 'function') {
-        const fieldName = getExpression(field);
-        return {
-            key: key || fieldName,
-            field: field,
-            fieldName: fieldName,
-            headerText: col.headerText || fieldName
-        };
-    }
-    if (typeof (field) === "string") {
-        return {
-            key: key || field,
-            field: row => row[field],
-            fieldName: field,
-            headerText: col.headerText || field
-
-        };
-    }
-
-    if (!key) {
-        throw new Error('Must specify value for "key" if field is not used')
-    }
-    //    field = _row => null;
-
-    return {
-        key: key,
-        field: _row => null,
-        fieldName: null,
-        headerText: col.headerText
-        
-    };
-
-}
-
-export function getExpression(func: Function): string {
-
-    const expr = func.toString();
-
-    let myregexp = /(?:return|\w+ => ).*\.(\w+);?/;
-    let match = myregexp.exec(expr);
-    if (match != null) {
-        return match[1];
-    }
-    return null;
-}
-
+/** @internal */
 export function getComponentDisplayName(WrappedComponent: React.ComponentClass<any> | React.StatelessComponent<any>) {
     return WrappedComponent.displayName || (<any>WrappedComponent).name || 'Component';
 }
+/** @internal */
 export function makePure<T>(factory: React.StatelessComponent<T>): React.ComponentClass<T> {
 
     if (debugMode) {
@@ -266,39 +213,13 @@ export interface Group<T, TKey> {
 };
 
 
-//export function createKeyedMap<T extends { key: string }, TObj extends ObjectMap<T>>(mapOrArray: TObj): KeyedMap<T> & TObj {
-export function createKeyedMap<T, TObj extends PowerTable.ObjectMap<T>>(map: TObj): PowerTable.KeyedMap<T> & TObj;
-export function createKeyedMap<T, TObj extends PowerTable.Keyed<T>[]>(array: PowerTable.Keyed<T>[]): PowerTable.KeyedMap<T>;
-export function createKeyedMap<T, TObj extends PowerTable.Keyed<T>[]>(array: T[], keyField:(row:T)=> string): PowerTable.KeyedMap<T>;
-export function createKeyedMap<T, TObj>(map: PowerTable.KeyedMap<T>): PowerTable.KeyedMap<T>;
-export function createKeyedMap<T, TObj extends PowerTable.ObjectMap<T> | PowerTable.Keyed<T>[] | PowerTable.KeyedMap<T>>(mapOrArray: TObj, keyField?:(row:T)=> string) {
+export function objectMapToArray<T>(mapOrArray: {[key:string]:T} | T[]): T[] {
 
     if (Array.isArray(mapOrArray)) {
-        const newMap = { all: mapOrArray } as PowerTable.KeyedMap<T> & TObj;
-        mapOrArray.forEach(m => {
-
-            const k = keyField && keyField(m) || m.key;
-            if (newMap[k]) {
-                throw new Error(`Duplicate key found '${k}'. Cannot create a keyed map with duplicate keys.`)
-            }
-            newMap[k] = m;
-        });
-
-        return newMap;
+        return mapOrArray;
     }
-    // if ((<KeyedMap<T>>mapOrArray).all) {
-    //     //already a map        
-    //     return mapOrArray;
-    // }
-    const all = <any>Object.keys(mapOrArray).filter(m=>m!='all').map(m => {
-        const v = mapOrArray[m] as PowerTable.Keyed<T>;
-        v.key = m;
-        return v;
-    });
-    return { ...<any>mapOrArray, all };
+    return Object.keys(mapOrArray).map(key => mapOrArray[key]);
 }
-
-
 
 
 export class Lazy<T> {

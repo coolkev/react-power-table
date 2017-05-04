@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, GridProps, withInternalSorting, InternalSortingProps, SortableColumn } from '../src/';
+import { ReactPowerTable, GridProps, withInternalSorting, InternalSortingProps, SortableColumn, InternalSortingState } from '../src/';
 import { defaultColumns, sampledata } from "./shared";
 import { mount } from 'enzyme';
 
@@ -14,10 +14,10 @@ describe('withInternalSorting tests',
 
             const Table = withInternalSorting(ReactPowerTable);
 
-            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ Column: 'number', Ascending: true }} />;
-            const component = mount(c);
+            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ column: 'number' }} />;
+            const component = mount<InternalSortingProps,InternalSortingState<any>>(c);
 
-            expect(component.state('currentSort').Column).toEqual('number');
+            expect(component.state('currentSort').column).toEqual('number');
             
             const th = component.find('th');
 
@@ -31,7 +31,7 @@ describe('withInternalSorting tests',
 
             th.at(1).simulate('click');
 
-            expect(component.state('currentSort').Column).toEqual('president');
+            expect(component.state('currentSort').column).toEqual('president');
             
             expect(th.at(1).text()).toEqual('name ');
             expect(th.at(0).render()).toMatchSnapshot();
@@ -47,13 +47,13 @@ describe('withInternalSorting tests',
 
             const Table = withInternalSorting(ReactPowerTable);
 
-            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ Column: 'number', Ascending: true }} />;
+            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ column: 'number'}} />;
 
             const component = mount(c);
-            expect(component.state('currentSort').Ascending).toEqual(true);
+            expect(component.state('currentSort').descending).toBeFalsy();
 
-            component.setProps({ sorting: { Column: 'number', Ascending: false } });
-            expect(component.state('currentSort').Ascending).toEqual(false);
+            component.setProps({ sorting: { column: 'number', descending: true } });
+            expect(component.state('currentSort').descending).toEqual(true);
 
             expect(component.render()).toMatchSnapshot();
 
@@ -65,7 +65,7 @@ describe('withInternalSorting tests',
 
             const Table = withInternalSorting(ReactPowerTable);
 
-            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ Column: 'number', Ascending: true }} />;
+            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ column: 'number'}} />;
 
             const component = mount(c);
             expect(component.find('tbody tr').length).toEqual(5);
@@ -88,7 +88,7 @@ describe('withInternalSorting tests',
             const onSortChanging = () => sortChangingCalled = true;
             const onSortChanged = () => sortChangedCalled = true;
 
-            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ Column: 'number', Ascending: true, onSortChanging: onSortChanging, onSortChanged: onSortChanged }} />;
+            const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ column: 'number', onSortChanging: onSortChanging, onSortChanged: onSortChanged }} />;
             const component = mount(c);
 
             const th = component.find('th');

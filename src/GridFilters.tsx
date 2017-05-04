@@ -1,18 +1,18 @@
 ﻿import * as React from 'react';
 import { AddEditFilter } from './AddEditFilter'
 import FormControl from 'react-bootstrap/lib/FormControl';
-import * as PowerTable from "./definitions/FilterDefinition";
-import { BackLink } from "./BackLink";
+import { FilterDefinition, AppliedFilter, AppliedFilterDTO } from "./filters/FilterDefinition";
+import { BackLink } from "./components/BackLink";
 import { AddSelectFilter } from "./AddSelectFilter";
-import {AppliedFilters} from './AppliedFilters'
+import { AppliedFilters } from './AppliedFilters'
 
 
 export interface GridFiltersProps {
 
 
-    availableFilters: PowerTable.AvailableFiltersMap;
-    appliedFilters: PowerTable.AppliedFilterType[];
-    onFiltersChange: (newFilters: PowerTable.AppliedFilterType[]) => void;
+    availableFilters: FilterDefinition[] | { [key: string]: FilterDefinition };
+    appliedFilters: AppliedFilter[];
+    onFiltersChange: (newFilters: AppliedFilter[]) => void;
 
 }
 
@@ -21,7 +21,7 @@ export interface GridFiltersProps {
 interface GridFiltersState {
 
     addingFilter?: boolean;
-    editingFilter?: PowerTable.AppliedFilterType;
+    editingFilter?: AppliedFilterDTO;
 
 }
 
@@ -53,7 +53,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         })
     }
 
-    private applyNewfilter(filter: PowerTable.AppliedFilterType) {
+    private applyNewfilter(filter: AppliedFilter) {
 
         const newFilters = [...this.props.appliedFilters, filter];
 
@@ -64,15 +64,22 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
     }
 
 
-    private removeFilter(filter: PowerTable.AppliedFilterType) {
+    private removeFilter(filter: AppliedFilter) {
         const newFilters = this.props.appliedFilters.filter(m => m.filter.fieldName != filter.filter.fieldName);
 
         this.props.onFiltersChange(newFilters);
     }
 
-    private editFilter(filter: PowerTable.AppliedFilterType) {
+    private editFilter(filter: AppliedFilter) {
+        
+        const filterDto: AppliedFilterDTO = {
+            columnKey: filter.filter.fieldName,
+            operationKey: filter.operation.key,
+            value: filter.value
+        };
+
         this.setState({
-            editingFilter: filter,
+            editingFilter: filterDto,
             addingFilter: false,
         })
     }
@@ -83,7 +90,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         })
     }
 
-    private applyEditFilter(filter: PowerTable.AppliedFilterType) {
+    private applyEditFilter(filter: AppliedFilter) {
 
         const newFilters = this.props.appliedFilters.map(m => m.filter.fieldName != filter.filter.fieldName ? m : filter);
 
@@ -98,9 +105,12 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
     render() {
 
         const { editingFilter } = this.state;
-        const { availableFilters, appliedFilters } = this.props;
+        const { appliedFilters, availableFilters } = this.props;
+
         if (editingFilter) {
-            const { filter, operation, value } = editingFilter;
+            const { columnKey, operationKey, value } = editingFilter;
+            const filter = Array.isArray(availableFilters) ? availableFilters.find(f => f.fieldName == columnKey) : availableFilters[columnKey];
+            const operation = filter.operations[operationKey];
 
             return <div>
                 <BackLink onClick={this.cancelEditFilter} />
@@ -118,7 +128,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         return <div className="flex-column">
 
 
-            <AppliedFilters appliedFilters={appliedFilters} availableFilters={availableFilters} removeFilter={this.removeFilter} editFilter={this.editFilter} />
+            <AppliedFilters appliedFilters={appliedFilters} removeFilter={this.removeFilter} editFilter={this.editFilter} />
 
 
             {this.state.addingFilter

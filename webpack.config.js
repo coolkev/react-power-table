@@ -18,7 +18,7 @@ module.exports = {
 
   cache: isDevBuild,
   //debug: isDevBuild,
-  devtool: isDevBuild ? 'source-map"' : false,
+  //devtool: isDevBuild ? 'source-map"' : false,
   //devtool: false,
   entry: { index: './src/index.ts' },
 
@@ -55,7 +55,7 @@ module.exports = {
       {
         test: /\.tsx?$/, exclude: /(node_modules)/, use: [
           { loader: 'babel-loader', query: { "presets": [["es2015", { "modules": false }]] } },
-          { loader: 'awesome-typescript-loader' }]
+          { loader: 'awesome-typescript-loader', options: {configFileName: './src/tsconfig.json'} }]
       },
 
       // { test: /\.css(\?|$)/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }] },

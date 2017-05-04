@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
-import { GridFilters, DataTypes, createKeyedMap, AppliedFilter, FilterDefinition } from '../src/';
+import { GridFilters, DataTypes, AppliedFilter, FilterDefinition } from '../src/';
 import { defaultColumns, sampledata, President, partyList } from "./shared";
 import { mount } from 'enzyme';
-import { AddEditFilter } from "../src/filters/AddEditFilter";
+import { AddEditFilter } from "../src/AddEditFilter";
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
@@ -32,7 +32,7 @@ const testSerializeValues = [
     1.03
 ];
 
-const availableFiltersMap = createKeyedMap(availableFilters, m => m.fieldName);
+
 describe('AddEditFilter tests',
     () => {
 
@@ -40,7 +40,7 @@ describe('AddEditFilter tests',
         availableFilters.forEach((filter: FilterDefinition<any>,i) => {
             test('add filter', () => {
 
-                const op = filter.operations.all[0];                
+                const op = filter.operations[Object.keys(filter.operations)[0]];                
                 const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
 
                 const component = mount(c);

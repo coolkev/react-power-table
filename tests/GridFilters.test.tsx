@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
-import { GridFilters, DataTypes, createKeyedMap, AppliedFilter } from '../src/';
+import { GridFilters, DataTypes, AppliedFilter } from '../src/';
 import { defaultColumns, sampledata, President } from "./shared";
 import { mount } from 'enzyme';
-import { AddSelectFilter } from "../src/filters/AddSelectFilter";
+import { AddSelectFilter } from "../src/AddSelectFilter";
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
@@ -17,7 +17,6 @@ const availableFilters = [
     new DataTypes.boolean({ fieldName: 'assasinated', displayName: 'was assasinated' }),
 
 ];
-const availableFiltersMap = createKeyedMap(availableFilters, m => m.fieldName);
 describe('AddSelectFilter tests',
     () => {
 
@@ -26,7 +25,7 @@ describe('AddSelectFilter tests',
             let filtersChanged = false;
 
             const onFiltersChange = (_newFilters: AppliedFilter<any>[]) => filtersChanged = true;
-            const c = <GridFilters availableFilters={availableFiltersMap} appliedFilters={[]} onFiltersChange={onFiltersChange} />;
+            const c = <GridFilters availableFilters={availableFilters} appliedFilters={[]} onFiltersChange={onFiltersChange} />;
             const component = mount(c);
 
             expect(component.render()).toMatchSnapshot();

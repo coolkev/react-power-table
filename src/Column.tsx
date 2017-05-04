@@ -1,16 +1,17 @@
 ﻿import * as React from 'react';
-import { makePure, getColumnCore, debuglog } from "../utils";
-import { HeaderComponentProps, CellProps, Column, GridProps, TransformedColumn } from "../ReactPowerTable";
+import { makePure, debuglog } from "./utils";
+import { HeaderComponentProps, CellProps, Column, GridProps, StrictColumn } from "./ReactPowerTable";
 
 
-const defaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => <div>{props.column.headerText}</div>);
+const defaultHeaderComponent = makePure((props: HeaderComponentProps) => <div>{props.headerText}</div>);
+/** @internal */
 export const defaultCellComponent = makePure((props: CellProps<any>) => {
     debuglog('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
     return <div>{props.value}</div>;
 });
 
-
-export function transformColumn<T>(options: Column<T> | string, gridProps: GridProps<T>): TransformedColumn<T> {
+/** @internal */
+export function transformColumn<T>(options: Column<T> | string, gridProps: GridProps<T>): StrictColumn<T> {
 
     debuglog('transformColumn', options);
 
@@ -23,8 +24,8 @@ export function transformColumn<T>(options: Column<T> | string, gridProps: GridP
     const { cellProps, headerProps } = getCellAndHeaderProps(options);
 
 
-    const result: TransformedColumn<T> = {
-        __transformed: true,
+    const result: StrictColumn<T> = {
+        //__transformed: true,
         ...options,
         ...core,
         cellProps: cellProps,
@@ -46,6 +47,16 @@ export function transformColumn<T>(options: Column<T> | string, gridProps: GridP
 
 
     result.headerComponent = options.headerComponent || gridProps.defaultHeaderComponent || defaultHeaderComponent;
+    //result.headerComponentPropsProvider = options.headerComponentPropsProvider || (()=> ({headerText:result.headerText, key: result.key , headerCellProps: result.headerCellProps}));
+
+    const originalHeaderComponentPropsProvider = options.headerComponentPropsProvider;
+
+    result.headerComponentPropsProvider = () => {
+
+        const originalProps = originalHeaderComponentPropsProvider && originalHeaderComponentPropsProvider();
+        
+        return { ...originalProps, headerText:result.headerText, key: result.key , headerCellProps: result.headerCellProps };
+    }
 
     return result;
 }
@@ -103,3 +114,72 @@ function getCellAndHeaderProps(options: Column<any>) {
 
 }
 
+
+export interface ColumnCore<T> {
+    key: string | number;
+    field: (row: T) => any;
+    fieldName: string;
+    headerText: string;
+}
+
+export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
+
+    //let fieldName: string;
+    //let field: (row) => any;
+
+    if (typeof (col) == 'string') {
+        return {
+            key: col,
+            field: row => row[col],
+            fieldName: col,
+            headerText: col,
+        
+        };
+    }
+
+    const { field, key } = col;
+    if (typeof field === 'function') {
+        const fieldName = getExpression(field);
+        return {
+            key: key || fieldName,
+            field: field,
+            fieldName: fieldName,
+            headerText: col.headerText || fieldName
+        };
+    }
+    if (typeof (field) === "string") {
+        return {
+            key: key || field,
+            field: row => row[field],
+            fieldName: field,
+            headerText: col.headerText || field
+
+        };
+    }
+
+    if (!key) {
+        throw new Error('Must specify value for "key" if field is not used')
+    }
+    //    field = _row => null;
+
+    return {
+        key: key,
+        field: _row => null,
+        fieldName: null,
+        headerText: col.headerText
+        
+    };
+
+}
+/** @internal */
+export function getExpression(func: Function): string {
+
+    const expr = func.toString();
+
+    let myregexp = /(?:return|\w+ => ).*\.(\w+);?/;
+    let match = myregexp.exec(expr);
+    if (match != null) {
+        return match[1];
+    }
+    return null;
+}

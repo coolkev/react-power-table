@@ -57,7 +57,7 @@ export class CheckboxExample extends React.Component<never, CheckboxExampleState
 
     render() {
         
-        return <Table columns={this.columns} keyColumn="number" rows={this.state.rows} sorting={{ Column: 'number', Ascending: true }} />;
+        return <Table columns={this.columns} keyColumn="number" rows={this.state.rows} sorting={{ column: 'number'}} />;
         
     }
 }

@@ -1,8 +1,9 @@
 ﻿import * as React from 'react';
 import { AddEditFilter } from './AddEditFilter'
 import * as FormControl from 'react-bootstrap/lib/FormControl';
-import * as PowerTable from "./definitions/FilterDefinition";
-import { BackLink } from "./BackLink";
+import * as PowerTable from "./filters/FilterDefinition";
+import { BackLink } from "./components/BackLink";
+import { objectMapToArray } from "./utils";
 
 
 /**
@@ -11,9 +12,11 @@ import { BackLink } from "./BackLink";
 export interface AddFilterProps {
     cancelAddFilter: () => void;
 
-    availableFilters: PowerTable.AvailableFiltersMap;
-    appliedFilters: PowerTable.AppliedFilterType[];
-    onApplyFilter: (filter: PowerTable.AppliedFilterType) => void;
+    availableFilters: PowerTable.FilterDefinition[] | { [key: string]: PowerTable.FilterDefinition };
+
+    //availableFilters: { [key: string]: PowerTable.FilterDefinition };
+    appliedFilters: PowerTable.AppliedFilter[];
+    onApplyFilter: (filter: PowerTable.AppliedFilter) => void;
 
 }
 
@@ -65,15 +68,17 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
     }
     render() {
 
-        const props = this.props;
+        const {availableFilters, appliedFilters } = this.props;
 
         const { searchText, selectedFilterKey } = this.state;
 
+
         if (selectedFilterKey) {
 
-            const filter = props.availableFilters[selectedFilterKey];
 
-            const initialOperation = filter.operations.all[0];
+            const filter = Array.isArray(availableFilters) ? availableFilters.find(f => f.fieldName == selectedFilterKey) : availableFilters[selectedFilterKey];
+
+            const initialOperation = objectMapToArray(filter.operations)[0];
 
             return <div>
                 <BackLink onClick={this.backToPrev} />
@@ -87,10 +92,12 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
 
         }
 
-        const unusedFilters = props.availableFilters.all.filter(m => props.appliedFilters.every(c => c.filter.fieldName != m.fieldName));
+        const filters = objectMapToArray(availableFilters);
+
+        const unusedFilters = filters.filter(m =>appliedFilters.every(c => c.filter.fieldName != m.fieldName));
 
         const regex = new RegExp(searchText, 'i');
-        const availableFilters = searchText ? unusedFilters.filter(m => m.displayName.match(regex)) : unusedFilters;
+        const showFilters = searchText ? unusedFilters.filter(m => m.displayName.match(regex)) : unusedFilters;
 
 
         return <div className="flex-column">
@@ -103,7 +110,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
                 <div style={{ margin: '10px 0' }}><b>Available Filters</b></div>
                 <div className="available-filters">
                     <div className="list-group">
-                        {availableFilters.map(m => <a href="#" onClick={e => {
+                        {showFilters.map(m => <a href="#" onClick={e => {
                             e.preventDefault();
                             this.newFilterSelected(m.fieldName);
                         }} className="list-group-item" key={m.fieldName}>{m.displayName}</a>)}

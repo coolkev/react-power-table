@@ -1,13 +1,14 @@
 ﻿import * as React from 'react';
-import { NumericInput } from './NumericInput';
-import { numberWithCommas, getComponentDisplayName, debuglog } from '../utils';
+import { NumericInput } from './components/NumericInput';
+import { numberWithCommas, getComponentDisplayName, debuglog } from './utils';
 
 
 const linkStyle = { textDecoration: 'none' };
 const disabledStyle = { ...linkStyle, color: 'silver', cursor: 'default' };
 
- 
+ /** @internal */
 interface InternalPagingState {
+    /** 1-based index of current page */
     currentPage: number;
     pageSize: number;
 }
@@ -16,6 +17,7 @@ interface InternalPagingState {
 
 
 export interface InternalPagingProps {
+    /** 1-based index of current page */
     currentPage: number;
     pageSize: number;
     pageSizes?: number[];
@@ -40,8 +42,10 @@ export interface PagingGridProps {
 
 
 
-export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent:React.ComponentClass<T> | React.StatelessComponent<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }> {
-
+export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
+export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
+export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentClass<InternalPagingGridProps> | React.StatelessComponent<InternalPagingGridProps>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }> {
+ 
     if (WrappedComponent.displayName && WrappedComponent.displayName.match(/^WithInternalSorting|WithSorting/)) {
         console.error('Warning: You are applying sorting after paging which will cause the sorting to only affect the current page. You should probably apply sorting first then paging');
     }
@@ -124,8 +128,10 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
 
 
 
-export function withPaging<T extends PagingGridProps>(WrappedComponent: React.ComponentClass<T> | React.StatelessComponent<T>): React.StatelessComponent<T & { paging: PagingProps }> {
-
+export function withPaging<T extends PagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.StatelessComponent<T & { paging: PagingProps }>;
+export function withPaging<T extends PagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.StatelessComponent<T & { paging: PagingProps }>;
+export function withPaging<T extends PagingGridProps>(WrappedComponent: React.StatelessComponent<PagingGridProps> | React.ComponentClass<PagingGridProps>): React.StatelessComponent<T & { paging: PagingProps }> {
+ 
     const WithPaging: React.StatelessComponent<T & { paging: PagingProps }> = props => {
 
 

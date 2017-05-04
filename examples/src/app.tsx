@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { ReactPowerTable } from "react-power-table";
 import { BasicExample } from "./basic";
@@ -9,10 +8,11 @@ import { InternalPagingExample } from "./internal-paging";
 import { InternalPagingSortingExample } from "./internal-paging-sorting";
 import { ExternalPagingExample } from "./external-paging";
 import { ExternalPagingSortingExample } from "./external-paging-sorting";
+
 import { CheckboxExample } from "./checkboxes";
  import { FiltersExample } from "./filters";
 import { HideColumnsExample } from "./hideColumns";
-
+import { ServerDataExample } from "./server-data";
 
 interface ExamplesProps {
     selected: string;
@@ -21,6 +21,9 @@ interface ExamplesProps {
 
 import 'react-select/dist/react-select.css';
 
+ReactPowerTable.defaultProps.tableProps =  { className: 'table' };
+//ReactPowerTable.defaultProps.testDefault = 'test123' ;
+//ReactPowerTable.defaultProps.testDefault = 'test123';
 
 const examples = {
     'Basic': BasicExample,
@@ -32,10 +35,10 @@ const examples = {
     'External Paging/Sorting': ExternalPagingSortingExample,
     'Checkboxes': CheckboxExample,
      'Filters': FiltersExample,
-     'Hide Columns': HideColumnsExample
+     'Hide Columns': HideColumnsExample,
+     'Server Data' : ServerDataExample
     
 };
-ReactPowerTable.defaultProps = { tableProps: { className: 'table' } };
 class Examples extends React.Component<ExamplesProps, never> {
    
     render() {
@@ -66,20 +69,27 @@ class Examples extends React.Component<ExamplesProps, never> {
     }
 }
 
-class ExamplesApp extends React.Component<never, never> {
+export class ExamplesApp extends React.Component<never, {}> {
     
+    constructor() {
+        super();
+        this.reload = this.reload.bind(this);
+    }
     handleSelect(name: any) {
         //this.setState({ selected: name });
         location.hash = '#' + name.replace(/ /g, '-');
         //this.forceUpdate();
     }
 
+    reload() {
+        this.setState({});
+    }    
     componentWillMount() {
-        window.addEventListener('hashchange', ()=> this.forceUpdate(), false);
+        window.addEventListener('hashchange', this.reload, false);
     }
     
     componentWillUnmount() {
-        window.removeEventListener('hashchange');
+        window.removeEventListener('hashchange',this.reload);
     }
     render() {
 
@@ -89,18 +99,4 @@ class ExamplesApp extends React.Component<never, never> {
         const selected = examples[name] && name;
         return <Examples selected={selected} onSelect={s => this.handleSelect(s)}/>
     }
-}
-
-ReactDOM.render(
-    <ExamplesApp />,
-    document.getElementById('root')
-);
-
-
-
-// Allow Hot Module Reloading
-declare var module: any;
-
-if (module.hot) {
-    module.hot.accept();
 }
