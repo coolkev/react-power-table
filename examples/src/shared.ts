@@ -4,7 +4,7 @@ export const defaultColumns: object[] = [
     { field: m => m.president, headerText: 'name' },
     { field: m => m.party },
     { field: m => m.birth_year },
-    { field: m => m.death_year },
+    { field: m => m.death_year, headerText:'test' },
     { field: m => m.took_office, textAlign: 'right', width:140 },
     { field: m => m.left_office },
     

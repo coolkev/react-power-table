@@ -3,7 +3,7 @@ var babel = require("gulp-babel"),
     gulp = require("gulp"),
     gutil = require('gulp-util'),
     //concat = require('gulp-concat'),
-    //sourcemaps = require("gulp-sourcemaps"),
+    sourcemaps = require("gulp-sourcemaps"),
     del = require('del'),
 
     typescript = require("gulp-typescript"),
@@ -15,18 +15,30 @@ var babel = require("gulp-babel"),
 
 
 
-gulp.task("typescript", function () {
+// const babelOptions = { "presets": [
+//     ["es2015", { "loose": true, "modules": false }],
+//     "stage-1",
+//     "react"
+//   ],
+//   "plugins": [
+//     "transform-runtime",
+//     "transform-es3-member-expression-literals",
+//     "transform-es3-property-literals"
+//   ]
+// };
+//const babelOptions = require('./.babelrc');
+   
+console.log('process.env.NODE_ENV=' + process.env.NODE_ENV);
 
-    let tsProject = typescript.createProject('./src/tsconfig.json', { declaration: true });
+gulp.task("build", function () {
+
+    let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: '@types' });
 
     let typescriptCompile = gulp.src(["./src/**/*.ts?(x)"])
         //.pipe(sourcemaps.init())
         .pipe(tsProject());
     return merge([typescriptCompile.js
-        .pipe(babel({
-            presets: ["es2015"],
-            moduleIds: false
-        }))
+        .pipe(babel())
         //.pipe(concat("Scripts/script.js"))
         //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
         .pipe(gulp.dest("./dist")),
@@ -34,11 +46,20 @@ gulp.task("typescript", function () {
 
     ]);
 });
+
+const buildFolders = ['dist', 'docs', 'examples/dist', '@types', 'tests-dist'];
+
+buildFolders.forEach(f => {
+    gulp.task('clean:' + f, function () {
+        return del([f]).then(paths => {
+            console.log('Deleted files and folders:\n', paths.join('\n'));
+        });
+    });
+
+});
+
 gulp.task('clean', function () {
-    return del([
-        'dist',
-        'docs', 'examples/dist', '@types'
-    ]).then(paths => {
+    return del(buildFolders).then(paths => {
         console.log('Deleted files and folders:\n', paths.join('\n'));
     });
 });
@@ -55,7 +76,7 @@ gulp.task("examples", function () {
 });
 
 gulp.task('webpack-dev-server', function (c) {
-    var myConfig =  require('./examples/webpack.config.js');
+    var myConfig = require('./examples/webpack.config.js');
 
     // Start a webpack-dev-server
     new WebpackDevServer(webpack(myConfig), myConfig.devServer).listen(myConfig.devServer.port, 'localhost', function (err) {
@@ -69,13 +90,71 @@ gulp.task('webpack-dev-server', function (c) {
 
 gulp.task('jest', function () {
 
-    var config =  require('./package.json');
-    
+    var config = require('./package.json');
+
     return gulp.src('tests').pipe(jest({ config: config.jest }));
 });
 
 
 
+gulp.task("build:tests", ['clean:tests-dist'], function () {
+
+    let tsProject = typescript.createProject('./tsconfig.json', { declaration: false });
+    var config = require('./package.json');
+
+    let typescriptCompile = gulp.src(["./**/*.ts?(x)", "!node_modules/**/*", '!examples/**/*.tsx', 'examples/src/shared.ts'])
+        .pipe(sourcemaps.init())
+        .pipe(tsProject());
+
+    process.env.NODE_ENV = 'test';
+
+    return typescriptCompile.js
+        .pipe(babel())
+        //.pipe(concat("Scripts/script.js"))
+        //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
+        .pipe(gulp.dest("./tests-dist"))
+
+        // .pipe(jest({
+        //     config: {
+        //         "transformIgnorePatterns": [
+        //             "<rootDir>/dist/", "<rootDir>/node_modules/"
+        //         ],
+        //         "automock": false
+        //     }
+        // }));
+        ;
+
+});
+
+
+gulp.task("test", function () {
+
+    // let tsProject = typescript.createProject('./tsconfig.json', { declaration: false, jsx:'react' });
+    // var config = require('./package.json');
+
+    // let typescriptCompile = gulp.src(["./**/*.ts?(x)"])
+    //     .pipe(sourcemaps.init())
+    //     .pipe(tsProject());
+
+    process.env.NODE_ENV = 'test';
+
+    return gulp.src(["./**/*.ts?(x)"])
+        //.pipe(babel())
+        //.pipe(concat("Scripts/script.js"))
+        //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
+        //.pipe(gulp.dest("./tests-dist"))
+
+        .pipe(jest({
+            config: {
+                "transformIgnorePatterns": [
+                    "<rootDir>/dist/", "<rootDir>/node_modules/"
+                ],
+                "automock": false
+            }
+        }));
+        
+
+});
 
 
 
@@ -92,4 +171,4 @@ gulp.task('watch', function () {
 
 
 
-gulp.task('default', ['typescript']);
+gulp.task('default', ['build']);

@@ -17,11 +17,11 @@
     "paths": {
       "react-power-table": [
         //"../@types/react-power-table/"
-                "../src/"
+        "../src/"
       ],
       "react-power-table/*": [
         //"../@types/react-power-table/*"
-                 "../src/*"
+        "../src/*"
       ],
       "*": [
         "node_modules/*"
@@ -42,6 +42,13 @@
     "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "silent": true
+    "useBabel": true,
+    "useTranspileModule": true,
+    "babelOptions": {
+      "presets": ["es2015", "stage-1", "react"],
+      "plugins": [         
+        "react-hot-loader/babel"
+      ]
+    }
   }
 }

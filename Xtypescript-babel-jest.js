@@ -21,11 +21,11 @@ module.exports = {
                 []
             );
         
-            // console.log('File Contents after TS transpile: ' + path, src);
-            // console.log('');
-            // console.log('');
-            // console.log('');
-            // console.log('');
+            console.log('File Contents after TS transpile: ' + path, src);
+            console.log('');
+            console.log('');
+            console.log('');
+            console.log('');
         }
 
         if (isJavaScript || isTypeScript) {
@@ -39,11 +39,11 @@ module.exports = {
                 fileName
             );
 
-            // console.log('File Contents after babelJest ' + path, src);
-            //  console.log('');
-            // console.log('');
-            // console.log('');
-            // console.log('');
+            console.log('File Contents after babelJest ' + path, src);
+             console.log('');
+            console.log('');
+            console.log('');
+            console.log('');
         }
 
         return src;

@@ -38,7 +38,7 @@ export interface InternalSortingState<T> {
 }
 
 
-export interface InternalSortingProps<TRow = any> {
+ export interface InternalSortingProps<TRow = any> {
 
     columns: (SortableColumn<TRow> | string)[];
 

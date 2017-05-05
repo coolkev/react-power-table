@@ -18,6 +18,7 @@
     "clean": "rimraf dist docs lib examples/dist @types"
   },
   "dependencies": {
+    "babel-runtime": "^6.23.0",
     "create-react-class": "^15.5.2",
     "gulp-jest": "^1.0.0",
     "react": "^15.4.2",
@@ -36,8 +37,15 @@
     "@types/react-bootstrap": "^0.0.49",
     "@types/react-dom": "^15.5.0",
     "awesome-typescript-loader": "^3.0.8",
-    "babel-loader": "^6.4.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
     "bootstrap": "3.3.7",
     "classnames": "^2.2.5",
     "coveralls": "^2.13.0",
@@ -59,7 +67,7 @@
     "react-test-renderer": "^15.5.4",
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.13.2",
-    "ts-jest": "^19.0.10",
+    "ts-jest": "^19.0.14",
     "typescript": "^2.3.2",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
@@ -67,18 +75,19 @@
   },
   "jest": {
     "transform": {
-      ".(ts|tsx)": "<rootDir>/typescript-babel-jest.js"
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "^.*\\.test\\.(ts|tsx)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
     ],
-    "testResultsProcessor": "ts-jest/coverageprocessor.js",
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
     "coverageDirectory": "tests/coverage",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
+    
   }
 }
