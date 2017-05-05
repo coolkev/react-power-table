@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
-import * as Radio from 'react-bootstrap/lib/Radio';
-import * as Button from 'react-bootstrap/lib/Button';
+import Radio from 'react-bootstrap/lib/Radio';
+import Button from 'react-bootstrap/lib/Button';
 import { debuglog } from "./utils";
 import * as filters from "./filters/FilterDefinition";
 

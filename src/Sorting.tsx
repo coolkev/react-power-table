@@ -10,6 +10,7 @@ import { InternalPagingProps } from "./Paging";
 import { Column, HeaderComponentProps, GridProps } from "./ReactPowerTable";
 
 
+
 export interface SortSettings {
 
     column: string;

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "es2015",
+    "module": "es2015",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "alwaysStrict": true    ,
+    "allowJs": false
+  }
+}

@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { AddEditFilter } from './AddEditFilter'
-import * as FormControl from 'react-bootstrap/lib/FormControl';
+import FormControl from 'react-bootstrap/lib/FormControl';
 import * as PowerTable from "./filters/FilterDefinition";
 import { BackLink } from "./components/BackLink";
 import { objectMapToArray } from "./utils";

@@ -18,7 +18,6 @@ import { sampledata, defaultColumns, partyList } from './shared'
 //availableFilters.party = new DataTypes.list(availableFilters.party, partyList);
 
 
-
 //if building in JS
 const availableFilters = [
     new DataTypes.int('number'),
@@ -69,7 +68,6 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
         this.state.appliedFilters.forEach(m => {
             filteredData = m.filter.applyFilter(filteredData, m.operation, m.value);
         })
-
 
         return <div className="row">
 

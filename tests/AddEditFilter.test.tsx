@@ -38,7 +38,7 @@ describe('AddEditFilter tests',
 
 
         availableFilters.forEach((filter: FilterDefinition<any>,i) => {
-            test('add filter', () => {
+            test('add filter ' + filter.fieldName, () => {
 
                 const op = filter.operations[Object.keys(filter.operations)[0]];                
                 const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
