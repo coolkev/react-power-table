@@ -14,8 +14,6 @@ deploy:
     skip_cleanup: true
     github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
     target_branch: gh-pages
-    local_dir: gh-pages
-    on:
-      branch: master      
+    local_dir: gh-pages   
 script:
   - gulp build examples coveralls gh-pages
