@@ -11,30 +11,27 @@ var babel = require("gulp-babel"),
     gulpWebpack = require('gulp-webpack'),
     webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server'),
-    jest = require('gulp-jest').default;
+    jestCli = require('jest-cli'),
+    coveralls = require('gulp-coveralls');
 
 
-
-const babelOptions = {
-    "presets": [
-        [
-            "latest", {
-                "es2015": {
-                    "modules": false
-                }
-            }
-        ]
-    ],
-    "plugins": [
-        "transform-es2015-modules-commonjs"
-    ]
-};
-//const babelOptions = require('./.babelrc');
-
-//console.log('process.env.NODE_ENV=' + process.env.NODE_ENV);
 
 gulp.task("build", function () {
 
+    const babelOptions = {
+        "presets": [
+            [
+                "latest", {
+                    "es2015": {
+                        "modules": false
+                    }
+                }
+            ]
+        ],
+        "plugins": [
+            "transform-es2015-modules-commonjs"
+        ]
+    };
     let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: '@types' });
 
     let typescriptCompile = gulp.src(["./src/**/*.ts?(x)"])
@@ -68,18 +65,25 @@ gulp.task('clean', function () {
 });
 
 gulp.task("examples", function () {
-    //let tsProject = typescript.createProject('./examples/tsconfig.json');
 
     return gulp.src(["./examples/src/boot.tsx"])
-        //.pipe(sourcemaps.init())
         .pipe(gulpWebpack(require('./examples/webpack.config.js'), webpack))
         .pipe(gulp.dest("./examples/dist"));
 
 
 });
 
-gulp.task('start', function (c) {
+gulp.task('start', function (cb) {
     var myConfig = require('./examples/webpack.config.js');
+
+    // jestCli.runCLI({ watch: true }, __dirname, function (result) {
+    //     gutil.log('[jestCli]', result);
+    //     cb();
+    //     // if (result.numFailedTests || result.numFailedTestSuites) {
+    //     //     return new gutil.PluginError('gulp-jest', { message: 'Tests Failed' });
+    //     // } 
+    // });
+
 
     // Start a webpack-dev-server
     new WebpackDevServer(webpack(myConfig), myConfig.devServer).listen(myConfig.devServer.port, 'localhost', function (err) {
@@ -87,115 +91,57 @@ gulp.task('start', function (c) {
             throw new gutil.PluginError('webpack-dev-server', err);
         }
         gutil.log('[webpack-dev-server]', 'http://localhost:8080/');
+        cb();
     });
 });
 
+gulp.task("test", function (cb) {
 
-// gulp.task('jest', function () {
-
-//     //var config = require('./package.json');
-//     //process.env.NODE_ENV = 'test';
-
-//     var config = {
-//         "globals": {
-//             "__TS_CONFIG__": {
-//                 "module": "commonjs",
-//                 "jsx": "react"
-//             }
-//         },
-//         "testMatch": ["**/?(*.)(spec|test).ts?(x)"],
-//         "testRegex": null,
-//         "moduleFileExtensions": [
-//             "ts",
-//             "tsx",
-//             "js"
-//         ],
-//         "transform": {
-//             ".(ts|tsx)": "ts-jest/preprocessor.js"
-//         },
-//         "snapshotSerializers": [
-//             "enzyme-to-json/serializer"
-//         ]
-//     }
-
-//     return gulp.src('tests').pipe(jest({
-//         config: config
-//     }));
-// });
+    //process.env.NODE_ENV = 'test';
+    jestCli.runCLI({  }, __dirname, function (result) {
 
 
+        if (result.numFailedTests || result.numFailedTestSuites) {
+            cb(new gutil.PluginError('gulp-jest', { message: 'Tests Failed' }));
+        }
+        else {
+            cb();
+        }
+    });
 
-// gulp.task("build:tests", ['clean:tests-dist'], function () {
+});
 
-//     let tsProject = typescript.createProject('./tsconfig.json', { declaration: false });
-//     var config = require('./package.json');
+gulp.task("test:coverage", function (cb) {
 
-//     let typescriptCompile = gulp.src(["./**/*.ts?(x)", "!node_modules/**/*", '!examples/**/*.tsx', 'examples/src/shared.ts'])
-//         .pipe(sourcemaps.init())
-//         .pipe(tsProject());
-
-//     process.env.NODE_ENV = 'test';
-
-//     return typescriptCompile.js
-//         .pipe(babel())
-//         //.pipe(concat("Scripts/script.js"))
-//         //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
-//         .pipe(gulp.dest("./tests-dist"))
-
-//         // .pipe(jest({
-//         //     config: {
-//         //         "transformIgnorePatterns": [
-//         //             "<rootDir>/dist/", "<rootDir>/node_modules/"
-//         //         ],
-//         //         "automock": false
-//         //     }
-//         // }));
-//         ;
-
-// });
+    //process.env.NODE_ENV = 'test';
+    jestCli.runCLI({ coverage: true }, __dirname, function (result) {
 
 
-// gulp.task("test", function () {
+        if (result.numFailedTests || result.numFailedTestSuites) {
+            cb(new gutil.PluginError('gulp-jest', { message: 'Tests Failed' }));
+        }
+        else {
+            cb();
+        }
+    });
 
-//     // let tsProject = typescript.createProject('./tsconfig.json', { declaration: false, jsx:'react' });
-//     // var config = require('./package.json');
-
-//     // let typescriptCompile = gulp.src(["./**/*.ts?(x)"])
-//     //     .pipe(sourcemaps.init())
-//     //     .pipe(tsProject());
-
-//     process.env.NODE_ENV = 'test';
-
-//     return gulp.src(["./**/*.ts?(x)"])
-//         //.pipe(babel())
-//         //.pipe(concat("Scripts/script.js"))
-//         //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
-//         //.pipe(gulp.dest("./tests-dist"))
-
-//         .pipe(jest({
-//             config: {
-//                 "transformIgnorePatterns": [
-//                     "<rootDir>/dist/", "<rootDir>/node_modules/"
-//                 ],
-//                 "automock": false
-//             }
-//         }));
-
-
-// });
-
-
-
-
-
-
-
-gulp.task('watch', function () {
-    gulp.watch('./src/**/*', './examples/**/*', ['typescript']);
 });
 
 
 
+gulp.task("coveralls", ['test:coverage'], function () {
+    return gulp.src('tests/coverage/remapped/**/lcov.info')
+        .pipe(coveralls());
+});
+
+
+
+// gulp.task('watch', function () {
+//     gulp.watch('./src/**/*', './examples/**/*', ['typescript']);
+// });
+
+
+//cat ./tests/coverage/remapped/lcov.info | ./node_modules/.bin/coveralls
 
 
 

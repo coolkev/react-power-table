@@ -28,7 +28,6 @@ describe('withInternalSorting tests',
 
             expect(component.render()).toMatchSnapshot();
 
-
             th.at(1).simulate('click');
 
             expect(component.state('currentSort').column).toEqual('president');
