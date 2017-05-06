@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { sampledata, defaultColumns, President } from './shared'
 import { ReactPowerTable, withInternalSorting, Column, withInternalPaging } from '../../src/'
-import { getColumnCore } from 'react-power-table/Column';
+import { getColumnCore } from "../../src/Column";
 
 interface HideColumnsExampleState {
         visibleColumnNames: string[];

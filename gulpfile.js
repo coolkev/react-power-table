@@ -21,15 +21,8 @@ gulp.task("build", function () {
     const babelOptions = {
         "presets": [
             [
-                "latest", {
-                    "es2015": {
-                        "modules": false
-                    }
-                }
+                "latest"
             ]
-        ],
-        "plugins": [
-            "transform-es2015-modules-commonjs"
         ]
     };
     let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: '@types' });
@@ -77,7 +70,10 @@ gulp.task("examples", function () {
 });
 
 gulp.task('start', function (cb) {
-    var myConfig = require('./examples/webpack.config.js');
+
+process.env.NODE_ENV = 'development';
+
+    var webpackConfig = require('./examples/webpack.config.js');
 
     // jestCli.runCLI({ watch: true }, __dirname, function (result) {
     //     gutil.log('[jestCli]', result);
@@ -89,7 +85,7 @@ gulp.task('start', function (cb) {
 
 
     // Start a webpack-dev-server
-    new WebpackDevServer(webpack(myConfig), myConfig.devServer).listen(myConfig.devServer.port, 'localhost', function (err) {
+    new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(webpackConfig.devServer.port, 'localhost', function (err) {
         if (err) {
             throw new gutil.PluginError('webpack-dev-server', err);
         }

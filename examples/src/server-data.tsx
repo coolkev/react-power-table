@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import { ReactPowerTable, DataTypes, getFilterDefinition, numberWithCommas, AppliedFilter, GridFilters, FilterDefinition, withPaging, withSorting, SortSettings, Column, ObjectMap, AppliedFilterDTO } from '../../src/'
-import { objectMapToArray } from "react-power-table/utils";
-
+import { objectMapToArray } from "../../src/utils";
 
 
 

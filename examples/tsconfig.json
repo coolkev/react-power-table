@@ -12,56 +12,12 @@
     "jsx": "react",
     "alwaysStrict": true,
     "noEmitOnError": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {
-      "react-power-table": [
-        //"../@types/react-power-table/"
-        "../src/"
-      ],
-      "react-power-table/*": [
-        //"../@types/react-power-table/*"
-        "../src/*"
-      ],
-      "*": [
-        "node_modules/*"
-      ]
-    }
-    //   // "react-power-table/Column": [
-    //   //   "../@types/react-power-table/Column"
-    //   //   //"../src/"
-    //   // ],
-    //   //"react-power-table": ["../src/"],
-    //   //"*" : ["node_modules/*"]
-    // },
+    "moduleResolution": "node"    
   },
   "include": [
     "src/"
   ],
   "exclude": [
     "node_modules"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": true,
-    "babelOptions": {
-      "presets": [
-        [
-          "latest",
-          {
-            "es2015": {
-              "modules": false
-            }
-          }
-        ]
-      ],
-      "env": {
-        "development": {
-          "plugins": [
-            "react-hot-loader/babel"
-          ]
-        }
-      }
-    }
-  }
+  ]
 }
