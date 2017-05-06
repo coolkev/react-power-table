@@ -25,6 +25,31 @@ function prependHotLoader(entry) {
 }
 
 
+var plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+    }
+  }),
+  new webpack.HotModuleReplacementPlugin(),
+
+  new webpack.NamedModulesPlugin(),
+  new webpack.optimize.CommonsChunkPlugin({
+    //name: 'vendor',
+    names: ['vendor'],
+    minChunks: function (module) {
+      // this assumes your vendor imports exist in the node_modules directory
+      return module.context && module.context.indexOf('node_modules') !== -1;
+    }
+  })];
+
+if (!isDevBuild) {
+  plugins = plugins.concat([
+    new webpack.optimize.UglifyJsPlugin({
+      //sourceMap: options.devtool && (options.devtool.indexOf("sourcemap") >= 0 || options.devtool.indexOf("source-map") >= 0)
+    })]);
+}
+
 module.exports = {
   context: __dirname,
   output: {
@@ -45,20 +70,7 @@ module.exports = {
     colors: true,
   },
 
-  plugins: [
-
-    new webpack.HotModuleReplacementPlugin(),
-
-    new webpack.NamedModulesPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      //name: 'vendor',
-      names: ['vendor'],
-      minChunks: function (module) {
-        // this assumes your vendor imports exist in the node_modules directory
-        return module.context && module.context.indexOf('node_modules') !== -1;
-      }
-    })
-  ],
+  plugins: plugins,
 
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.js', '.jsx', '.png', '.ts', '.tsx'],
@@ -106,6 +118,10 @@ module.exports = {
 
     proxy: {
       "/api": "http://localhost:57050/"
+    },
+
+    stats: {
+      colors: true
     }
   }
 };

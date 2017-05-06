@@ -12,9 +12,8 @@ var babel = require("gulp-babel"),
     webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server'),
     jestCli = require('jest-cli'),
-    coveralls = require('gulp-coveralls');
-
-
+    coveralls = require('gulp-coveralls'),
+    fs = require('fs');
 
 gulp.task("build", function () {
 
@@ -69,36 +68,9 @@ gulp.task("examples", function () {
 
 });
 
-gulp.task('start', function (cb) {
 
-process.env.NODE_ENV = 'development';
-
-    var webpackConfig = require('./examples/webpack.config.js');
-
-    // jestCli.runCLI({ watch: true }, __dirname, function (result) {
-    //     gutil.log('[jestCli]', result);
-    //     cb();
-    //     // if (result.numFailedTests || result.numFailedTestSuites) {
-    //     //     return new gutil.PluginError('gulp-jest', { message: 'Tests Failed' });
-    //     // } 
-    // });
-
-
-    // Start a webpack-dev-server
-    new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(webpackConfig.devServer.port, 'localhost', function (err) {
-        if (err) {
-            throw new gutil.PluginError('webpack-dev-server', err);
-        }
-        gutil.log('[webpack-dev-server]', 'http://localhost:8080/');
-        cb();
-    });
-});
-
-gulp.task("test", function (cb) {
-
-    //process.env.NODE_ENV = 'test';
-    jestCli.runCLI({  }, __dirname, function (result) {
-
+function runJest(options, cb) {
+    jestCli.runCLI(options, [__dirname], function (result) {
 
         if (result.numFailedTests || result.numFailedTestSuites) {
             cb(new gutil.PluginError('gulp-jest', { message: 'Tests Failed' }));
@@ -108,22 +80,74 @@ gulp.task("test", function (cb) {
         }
     });
 
+}
+
+
+
+gulp.task('start', (cb) => {
+
+    runJest({watch: true, silent: true}, cb);
+
+
+    var webpackConfig = require('./examples/webpack.config.js');
+    return new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(webpackConfig.devServer.port, 'localhost', function (err) {
+        if (err) {
+            cb(new gutil.PluginError('webpack-dev-server', err));
+        }
+        gutil.log('[webpack-dev-server]', 'http://localhost:8080/');
+    }).on('close', () => {
+        cb();
+    });
+
+
+});
+
+// });
+// this is not working because each time it reloads, it compiles an additional time
+// gulp.task('start', (cb)=> {
+
+//     process.env.NODE_ENV = 'development';
+
+//     function startDevServer() {
+
+//         var webpackConfig = require('./examples/webpack.config.js');
+
+//         return new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(webpackConfig.devServer.port, 'localhost', function (err) {
+//             if (err) {
+//                 cb(new gutil.PluginError('webpack-dev-server', err));
+//             }
+//             gutil.log('[webpack-dev-server]', 'http://localhost:8080/');
+//         });
+
+//     }
+
+//     var devServer = startDevServer();
+//     gulp.watch('./examples/webpack.config.js', function () {
+
+//         gutil.log('[webpack-dev-server]', 'webpack.config.js changed.... reloading webpack-dev-server');
+//         delete require.cache[require.resolve('./examples/webpack.config.js')]
+//         gutil.log('[webpack-dev-server]', 'stopping webpack-dev-server');
+//         devServer.close();
+//         gutil.log('[webpack-dev-server]', 'stopped webpack-dev-server');
+//         gutil.log('[webpack-dev-server]', 'starting webpack-dev-server');
+//         devServer = startDevServer();
+
+
+//     });
+
+// });
+
+gulp.task("test", function (cb) {
+
+    runJest({silent: true}, cb);
+    
 });
 
 gulp.task("test:coverage", function (cb) {
 
     //process.env.NODE_ENV = 'test';
-    jestCli.runCLI({ coverage: true }, __dirname, function (result) {
-
-
-        if (result.numFailedTests || result.numFailedTestSuites) {
-            cb(new gutil.PluginError('gulp-jest', { message: 'Tests Failed' }));
-        }
-        else {
-            cb();
-        }
-    });
-
+    runJest({silent: true, coverage: true}, cb);
+    
 });
 
 
@@ -136,8 +160,8 @@ gulp.task("coveralls", ['test:coverage'], function () {
 
 gulp.task("gh-pages", ['examples'], function () {
     return gulp
-    .src([ 'examples/index.html','examples/dist/*.js?(.map)'], { base: 'examples' })
-    .pipe(gulp.dest('gh-pages/'));
+        .src(['examples/index.html', 'examples/dist/*.js?(.map)'], { base: 'examples' })
+        .pipe(gulp.dest('gh-pages/'));
 });
 
 

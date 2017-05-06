@@ -15,6 +15,6 @@
     "allowJs": false,
     "declaration": false,
     "stripInternal": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": false
   }
 }
