@@ -153,7 +153,7 @@ gulp.task("test:coverage", function (cb) {
 
 
 gulp.task("coveralls", ['test:coverage'], function () {
-    return gulp.src('tests/coverage/remapped/**/lcov.info')
+    return gulp.src('tests/coverage/lcov.info')
         .pipe(coveralls());
 });
 
