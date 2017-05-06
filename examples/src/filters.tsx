@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes,groupBy, sortArray, numberWithCommas, AppliedFilter, GridFilters } from 'react-power-table';
+import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes,groupBy, sortArray, numberWithCommas, AppliedFilter, GridFilters } from '../../src/'
 import { sampledata, defaultColumns, partyList } from './shared'
 
 

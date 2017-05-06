@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { Nav, NavItem, Navbar } from "react-bootstrap";
-import { ReactPowerTable } from "react-power-table";
+import { ReactPowerTable } from '../../src/'
 import { BasicExample } from "./basic";
 import { InternalSortingExample } from "./internal-sorting";
 import { ExternalSortingExample } from "./external-sorting";

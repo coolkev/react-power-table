@@ -69,7 +69,7 @@ module.exports = {
 
     port: 8080,
 
-    contentBase: './examples/',
+    contentBase: './',
     // match the output path
 
     publicPath: '/dist/',

@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { sampledata, defaultColumns } from './shared'
-import { ReactPowerTable, withInternalPaging, withInternalSorting } from 'react-power-table';
+import { ReactPowerTable, withInternalPaging, withInternalSorting } from '../../src/'
 
 
 const Table = withInternalSorting(withInternalPaging(ReactPowerTable));

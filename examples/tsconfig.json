@@ -43,6 +43,7 @@
   ],
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
+    "useCache": true,
     "babelOptions": {
       "presets": [
         [

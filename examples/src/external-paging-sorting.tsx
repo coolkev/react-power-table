@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withPaging, withSorting, SortSettings, sortArray } from 'react-power-table';
+import { ReactPowerTable, withPaging, withSorting, SortSettings, sortArray } from '../../src/'
 import { sampledata, President, defaultColumns } from './shared'
 
 interface ExternalPagingSortingExampleState {

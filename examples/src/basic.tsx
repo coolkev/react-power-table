@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { sampledata, defaultColumns } from './shared'
-import {ReactPowerTable} from 'react-power-table';
+import {ReactPowerTable} from '../../src/'
 
 export const BasicExample = () => {
 

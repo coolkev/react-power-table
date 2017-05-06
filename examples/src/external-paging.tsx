@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withPaging } from 'react-power-table';
+import { ReactPowerTable, withPaging } from '../../src/'
 import { sampledata, defaultColumns } from './shared'
 
 

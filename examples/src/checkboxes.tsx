@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { withInternalSorting, ReactPowerTable, withInternalPaging, SortableColumn } from 'react-power-table';
+import { withInternalSorting, ReactPowerTable, withInternalPaging, SortableColumn } from '../../src/'
 import { sampledata, President, defaultColumns } from './shared'
 //import { debuglog } from ;
 
