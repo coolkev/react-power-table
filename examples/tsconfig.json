@@ -42,6 +42,21 @@
     "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "useBabel": true
+    "useBabel": true,
+    "babelOptions": {
+      "presets": [
+        [
+          "latest",
+          {
+            "es2015": {
+              "modules": false
+            }
+          }
+        ]
+      ],
+      "plugins": [
+        "react-hot-loader/babel"        
+      ]
+    }
   }
 }

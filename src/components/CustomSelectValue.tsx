@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
-import SelectValue from 'react-select/lib/Value';
-import classNames from 'classnames';
+import * as SelectValue from 'react-select/lib/Value';
+import * as classNames from 'classnames';
 
 
 /**

@@ -24,6 +24,7 @@ describe('withInternalPaging tests',
 
         });
 
+        
 
 
         test('change currentPage from click', () => {

@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import * as PowerTable from "./FilterDefinition";
-import Select from 'react-select';
-import { CustomSelectValue } from '../components/CustomSelectValue';
+import * as Select from 'react-select';
+//import { CustomSelectValue } from '../components/CustomSelectValue';
 
 
 export class List extends PowerTable.FilterDefinition<string[]>
@@ -18,7 +18,8 @@ export class List extends PowerTable.FilterDefinition<string[]>
             options={items}
             onChange={(e: Select.Option[]) => props
                 .onValueChange(e.map(m => m.value as string || m.label))}
-            valueComponent={CustomSelectValue as any} className="small" />
+            /*valueComponent={CustomSelectValue as any}  */
+            className="small" />
 
         //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
     }

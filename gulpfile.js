@@ -15,20 +15,23 @@ var babel = require("gulp-babel"),
 
 
 
-// const babelOptions = { "presets": [
-//     ["es2015", { "loose": true, "modules": false }],
-//     "stage-1",
-//     "react"
-//   ],
-//   "plugins": [
-//     "transform-runtime",
-//     "transform-es3-member-expression-literals",
-//     "transform-es3-property-literals"
-//   ]
-// };
+const babelOptions = {
+    "presets": [
+        [
+            "latest", {
+                "es2015": {
+                    "modules": false
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        "transform-es2015-modules-commonjs"
+    ]
+};
 //const babelOptions = require('./.babelrc');
-   
-console.log('process.env.NODE_ENV=' + process.env.NODE_ENV);
+
+//console.log('process.env.NODE_ENV=' + process.env.NODE_ENV);
 
 gulp.task("build", function () {
 
@@ -38,7 +41,7 @@ gulp.task("build", function () {
         //.pipe(sourcemaps.init())
         .pipe(tsProject());
     return merge([typescriptCompile.js
-        .pipe(babel())
+        .pipe(babel(babelOptions))
         //.pipe(concat("Scripts/script.js"))
         //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
         .pipe(gulp.dest("./dist")),
@@ -75,7 +78,7 @@ gulp.task("examples", function () {
 
 });
 
-gulp.task('webpack-dev-server', function (c) {
+gulp.task('start', function (c) {
     var myConfig = require('./examples/webpack.config.js');
 
     // Start a webpack-dev-server
@@ -88,73 +91,98 @@ gulp.task('webpack-dev-server', function (c) {
 });
 
 
-gulp.task('jest', function () {
+// gulp.task('jest', function () {
 
-    var config = require('./package.json');
+//     //var config = require('./package.json');
+//     //process.env.NODE_ENV = 'test';
 
-    return gulp.src('tests').pipe(jest({ config: config.jest }));
-});
+//     var config = {
+//         "globals": {
+//             "__TS_CONFIG__": {
+//                 "module": "commonjs",
+//                 "jsx": "react"
+//             }
+//         },
+//         "testMatch": ["**/?(*.)(spec|test).ts?(x)"],
+//         "testRegex": null,
+//         "moduleFileExtensions": [
+//             "ts",
+//             "tsx",
+//             "js"
+//         ],
+//         "transform": {
+//             ".(ts|tsx)": "ts-jest/preprocessor.js"
+//         },
+//         "snapshotSerializers": [
+//             "enzyme-to-json/serializer"
+//         ]
+//     }
 
-
-
-gulp.task("build:tests", ['clean:tests-dist'], function () {
-
-    let tsProject = typescript.createProject('./tsconfig.json', { declaration: false });
-    var config = require('./package.json');
-
-    let typescriptCompile = gulp.src(["./**/*.ts?(x)", "!node_modules/**/*", '!examples/**/*.tsx', 'examples/src/shared.ts'])
-        .pipe(sourcemaps.init())
-        .pipe(tsProject());
-
-    process.env.NODE_ENV = 'test';
-
-    return typescriptCompile.js
-        .pipe(babel())
-        //.pipe(concat("Scripts/script.js"))
-        //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
-        .pipe(gulp.dest("./tests-dist"))
-
-        // .pipe(jest({
-        //     config: {
-        //         "transformIgnorePatterns": [
-        //             "<rootDir>/dist/", "<rootDir>/node_modules/"
-        //         ],
-        //         "automock": false
-        //     }
-        // }));
-        ;
-
-});
+//     return gulp.src('tests').pipe(jest({
+//         config: config
+//     }));
+// });
 
 
-gulp.task("test", function () {
 
-    // let tsProject = typescript.createProject('./tsconfig.json', { declaration: false, jsx:'react' });
-    // var config = require('./package.json');
+// gulp.task("build:tests", ['clean:tests-dist'], function () {
 
-    // let typescriptCompile = gulp.src(["./**/*.ts?(x)"])
-    //     .pipe(sourcemaps.init())
-    //     .pipe(tsProject());
+//     let tsProject = typescript.createProject('./tsconfig.json', { declaration: false });
+//     var config = require('./package.json');
 
-    process.env.NODE_ENV = 'test';
+//     let typescriptCompile = gulp.src(["./**/*.ts?(x)", "!node_modules/**/*", '!examples/**/*.tsx', 'examples/src/shared.ts'])
+//         .pipe(sourcemaps.init())
+//         .pipe(tsProject());
 
-    return gulp.src(["./**/*.ts?(x)"])
-        //.pipe(babel())
-        //.pipe(concat("Scripts/script.js"))
-        //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
-        //.pipe(gulp.dest("./tests-dist"))
+//     process.env.NODE_ENV = 'test';
 
-        .pipe(jest({
-            config: {
-                "transformIgnorePatterns": [
-                    "<rootDir>/dist/", "<rootDir>/node_modules/"
-                ],
-                "automock": false
-            }
-        }));
-        
+//     return typescriptCompile.js
+//         .pipe(babel())
+//         //.pipe(concat("Scripts/script.js"))
+//         //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
+//         .pipe(gulp.dest("./tests-dist"))
 
-});
+//         // .pipe(jest({
+//         //     config: {
+//         //         "transformIgnorePatterns": [
+//         //             "<rootDir>/dist/", "<rootDir>/node_modules/"
+//         //         ],
+//         //         "automock": false
+//         //     }
+//         // }));
+//         ;
+
+// });
+
+
+// gulp.task("test", function () {
+
+//     // let tsProject = typescript.createProject('./tsconfig.json', { declaration: false, jsx:'react' });
+//     // var config = require('./package.json');
+
+//     // let typescriptCompile = gulp.src(["./**/*.ts?(x)"])
+//     //     .pipe(sourcemaps.init())
+//     //     .pipe(tsProject());
+
+//     process.env.NODE_ENV = 'test';
+
+//     return gulp.src(["./**/*.ts?(x)"])
+//         //.pipe(babel())
+//         //.pipe(concat("Scripts/script.js"))
+//         //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
+//         //.pipe(gulp.dest("./tests-dist"))
+
+//         .pipe(jest({
+//             config: {
+//                 "transformIgnorePatterns": [
+//                     "<rootDir>/dist/", "<rootDir>/node_modules/"
+//                 ],
+//                 "automock": false
+//             }
+//         }));
+
+
+// });
 
 
 
