@@ -1,7 +1,7 @@
 {
   "name": "react-power-table",
   "author": "Kevin Lewis",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "React Power Table",
   "repository": {
     "type": "git",
@@ -83,7 +83,7 @@
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-   "testMatch": [
+    "testMatch": [
       "**/?(*.)(spec|test).ts?(x)"
     ],
     "moduleFileExtensions": [
