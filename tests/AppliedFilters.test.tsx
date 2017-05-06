@@ -51,4 +51,24 @@ describe('AppliedFilters tests',
             expect(component.render()).toMatchSnapshot();
         });
 
+
+        test('between filter applied', () => {
+
+            const filter = availableFilters[0] as FilterDefinition<number>;
+
+
+            const applied: AppliedFilter<any> = {
+                filter: filter,
+                operation: filter.operations.between,
+                value: '20-30'
+            };
+
+            const c = <AppliedFilters appliedFilters={[applied]} editFilter={() => { }} removeFilter={() => { }} />;
+
+            const component = mount(c);
+
+            expect(component.render()).toMatchSnapshot();
+
+        });
+
     });

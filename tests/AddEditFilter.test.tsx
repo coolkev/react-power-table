@@ -37,27 +37,49 @@ describe('AddEditFilter tests',
     () => {
 
 
-        availableFilters.forEach((filter: FilterDefinition<any>,i) => {
-            test('add filter ' + filter.fieldName, () => {
+        availableFilters.forEach((filter: FilterDefinition<any>, i) => {
 
-                const op = filter.operations[Object.keys(filter.operations)[0]];                
-                const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
+            Object.keys(filter.operations).filter(m => m != 'between').forEach(opKey => {
+                const op = filter.operations[opKey];
 
-                const component = mount(c);
+                test('add filter ' + filter.fieldName + ' ' + opKey, () => {
 
-                expect(component.render()).toMatchSnapshot('AddEditFilter tests add filter ' + filter.fieldName);
+                    const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
 
+                    const component = mount(c);
 
-                const testValue = testSerializeValues[i];
+                    expect(component.render()).toMatchSnapshot('AddEditFilter tests add filter ' + filter.fieldName + ' ' + opKey);
 
-                expect(typeof(filter.serializeValue(testValue))).toBe('string');
+                    const testValue = testSerializeValues[i];
 
-                filter.applyFilter(sampledata, op, testValue);
-                
+                    expect(typeof (filter.serializeValue(testValue))).toBe('string');
+
+                    filter.applyFilter(sampledata, op, testValue);
+
+                });
+
             });
 
-        })
+        });
+
+        test('between filter', () => {
+
+            const filter = availableFilters[0] as FilterDefinition<number>;
+
+            const op = filter.operations["between"];
+            const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
+
+            const component = mount(c);
+
+            expect(component.render()).toMatchSnapshot();
 
 
+            const testValue = "20-30" as any;
+
+            //expect(typeof (filter.serializeValue(testValue))).toBe('string');
+
+            filter.applyFilter(sampledata, op, testValue);
+
+        });
 
     });

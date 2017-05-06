@@ -86,7 +86,7 @@ function runJest(options, cb) {
 
 gulp.task('start', (cb) => {
 
-    runJest({watch: true, silent: true}, cb);
+    runJest({watch: true, silent: true, coverage: true}, cb);
 
 
     var webpackConfig = require('./examples/webpack.config.js');
