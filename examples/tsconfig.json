@@ -42,13 +42,6 @@
     "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useTranspileModule": true,
-    "babelOptions": {
-      "presets": ["es2015", "stage-1", "react"],
-      "plugins": [         
-        "react-hot-loader/babel"
-      ]
-    }
+    "useBabel": true
   }
 }
