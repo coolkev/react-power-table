@@ -135,10 +135,10 @@ gulp.task("coveralls", ['test:coverage'], function () {
 });
 
 
-gulp.task("docs", function () {
+gulp.task("gh-pages", ['examples'], function () {
     return gulp
     .src([ 'examples/index.html','examples/dist/*.js?(.map)'], { base: 'examples' })
-    .pipe(gulp.dest('docs/'));
+    .pipe(gulp.dest('gh-pages/'));
 });
 
 
