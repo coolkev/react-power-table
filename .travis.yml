@@ -1,6 +1,9 @@
 language: node_js
 node_js: node
 cache: yarn
+branches:
+  only:
+  - /^v\d/
 deploy:
   skip_cleanup: true
   provider: npm
