@@ -76,8 +76,8 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         const columns = this.columns;
         //const HeaderRowComponent = headerRowComponent || HeaderRow;
         const FooterComponent = footerComponent;
-
-        return <table {...tableProps}>
+        const { children, ...actualTableProps } = tableProps || { children: undefined};
+        return <table {...actualTableProps}>
             <thead>
                 <HeaderRow columns={columns} />
             </thead>
@@ -125,7 +125,9 @@ class HeaderRow extends React.Component<HeaderRowProps<any>, never> {
                 const HeaderComponent = c.headerComponent;
 
                 const headerComponentProps = c.headerComponentPropsProvider();
-                return <th key={c.key} {...headerProps }><HeaderComponent {...headerComponentProps} />
+
+                const { children, ...actualHeaderProps } = headerProps || { children: undefined};
+                return <th key={c.key} {...actualHeaderProps }><HeaderComponent {...headerComponentProps} />
 
                 </th>
             })}
@@ -143,9 +145,10 @@ class DataRow extends React.PureComponent<DataRowProps<any>, never> {
 
         const { row, columns, rowProps, ...extra } = this.props;
         debuglog('DataRowComponent render', this.props);
+        const { children, ...actualRowProps } = rowProps || { children: undefined};
 
 
-        return <tr {...rowProps}>
+        return <tr {...actualRowProps}>
             {columns.map(col => {
                 const CellComponent = col.cellComponent as React.ComponentClass<CellProps<any>> | React.StatelessComponent<CellProps<any>>;
 
@@ -156,8 +159,9 @@ class DataRow extends React.PureComponent<DataRowProps<any>, never> {
                 const cellProps = col.cellProps(rowValueProps);
 
                 const cellComponentProps = col.cellComponentProps(rowValueProps);
+                const { children, ...actualCellProps } = cellProps || { children: undefined};
 
-                return <td key={col.key} {...cellProps }><CellComponent {...cellComponentProps} /></td>
+                return <td key={col.key} {...actualCellProps }><CellComponent {...cellComponentProps} /></td>
             })}
         </tr>;
 
@@ -199,7 +203,7 @@ export interface GridProps<T> {
 export interface StrictColumn<TRow = any, TValue = any> {
 
     key: string | number;
-   
+
     field: ((row: TRow) => TValue);
     fieldName: string;
 
@@ -225,7 +229,7 @@ export interface HeaderComponentProps {
     key: string | number;
     headerText: string;
     headerCellProps: React.HTMLProps<HTMLTableHeaderCellElement>;
-    
+
 }
 
 
@@ -243,8 +247,8 @@ export interface DataRowProps<T> {
 export interface Column<TRow = any, TValue = any> {
     key?: string | number;
     formatter?: (value: TValue, row?: TRow) => string;
-    cellComponent?: React.ComponentClass<CellProps<TRow,TValue>> | React.StatelessComponent<CellProps<TRow,TValue>>;
-    cellComponentProps?: (props: CellProps<TRow,TValue>) => any;
+    cellComponent?: React.ComponentClass<CellProps<TRow, TValue>> | React.StatelessComponent<CellProps<TRow, TValue>>;
+    cellComponentProps?: (props: CellProps<TRow, TValue>) => any;
     headerComponent?: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>;
     headerComponentPropsProvider?: () => HeaderComponentProps;
 
