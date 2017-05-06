@@ -135,6 +135,13 @@ gulp.task("coveralls", ['test:coverage'], function () {
 });
 
 
+gulp.task("docs", function () {
+    return gulp
+    .src([ 'examples/index.html','examples/dist/*.js?(.map)'], { base: 'examples' })
+    .pipe(gulp.dest('docs/'));
+});
+
+
 
 // gulp.task('watch', function () {
 //     gulp.watch('./src/**/*', './examples/**/*', ['typescript']);
