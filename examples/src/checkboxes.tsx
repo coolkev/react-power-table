@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import { withInternalSorting, ReactPowerTable, withInternalPaging, SortableColumn } from '../../src/'
 import { sampledata, President, defaultColumns } from './shared'
-//import { debuglog } from ;
 
 
 interface PresidentWithChecked extends President {
@@ -27,7 +26,6 @@ export class CheckboxExample extends React.Component<never, CheckboxExampleState
         this.columns = [
             {
                 field: m => m.checked, cellComponent: (row) => {
-                    console.log('checkbox cell render', row);
                     return <input type="checkbox" checked={row.value || false} onChange={e => this.checkChange(row.row, e.currentTarget.checked)} />;
                 },
                 headerComponent: () => {
@@ -42,7 +40,6 @@ export class CheckboxExample extends React.Component<never, CheckboxExampleState
 
     checkChange(row: President, checked: boolean) {
         
-        //debuglog('checkChange', row, checked);
         this.setState((prevState) => {
             return { rows: prevState.rows.map(m => m.number == row.number ? { ...row, checked } : m) };
         });

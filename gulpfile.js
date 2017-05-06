@@ -66,8 +66,11 @@ gulp.task('clean', function () {
 
 gulp.task("examples", function () {
 
+    process.env.NODE_ENV = 'production';
+    const webpackConfig = require('./examples/webpack.config.js');
+
     return gulp.src(["./examples/src/boot.tsx"])
-        .pipe(gulpWebpack(require('./examples/webpack.config.js'), webpack))
+        .pipe(gulpWebpack(webpackConfig, webpack))
         .pipe(gulp.dest("./examples/dist"));
 
 
