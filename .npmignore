@@ -7,3 +7,4 @@ bin/
 *.user
 .awcache/
 _config.yml
+gh-pages/

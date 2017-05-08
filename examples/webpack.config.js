@@ -88,12 +88,7 @@ module.exports = {
         test: /\.tsx?$/, exclude: /(node_modules)/, use: [
           {
             loader: 'babel-loader', query: {
-              "presets": [["latest",
-                {
-                  "es2015": {
-                    "modules": false
-                  }
-                }]], "plugins": ["react-hot-loader/babel"]
+              "plugins": ["react-hot-loader/babel"]
             }
           },
           { loader: 'awesome-typescript-loader', query: { "configFileName": path.resolve(__dirname, "tsconfig.json") } }

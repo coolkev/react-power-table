@@ -17,20 +17,25 @@ var babel = require("gulp-babel"),
 
 gulp.task("build", function () {
 
-    const babelOptions = {
-        "presets": [
-            [
-                "latest"
-            ]
-        ]
-    };
+    // const babelOptions = {
+    //     "presets": [
+    //         [
+    //             "latest",
+    //             {
+    //               "es2015": {
+    //                 "modules": false
+    //               }
+    //             }
+    //         ]
+    //     ]
+    // };
     let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: '@types' });
 
     let typescriptCompile = gulp.src(["./src/**/*.ts?(x)"])
         //.pipe(sourcemaps.init())
         .pipe(tsProject());
     return merge([typescriptCompile.js
-        .pipe(babel(babelOptions))
+        .pipe(babel())
         //.pipe(concat("Scripts/script.js"))
         //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
         .pipe(gulp.dest("./dist")),
