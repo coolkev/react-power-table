@@ -262,7 +262,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
     }
 }
 
-interface SortableHeaderComponentProps extends HeaderComponentProps {
+interface SortableHeaderComponentProps extends HeaderComponentProps<any> {
 
     sorting: boolean;
     sortAsc?: boolean;

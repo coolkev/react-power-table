@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "alwaysStrict": true,
     "allowJs": false,
-    "declaration": false,
+    "declaration": true,
     "stripInternal": true,
     "allowSyntheticDefaultImports": false
   }
