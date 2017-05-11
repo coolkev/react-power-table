@@ -22,7 +22,7 @@ interface ExamplesProps {
 import 'react-select/dist/react-select.css';
 import { CustomRowExample } from "./CustomRow";
 
-ReactPowerTable.defaultProps.components.table.props = { className: 'table' };
+ReactPowerTable.defaultProps.tableClassName = "table";
 //ReactPowerTable.defaultProps.testDefault = 'test123' ;
 //ReactPowerTable.defaultProps.testDefault = 'test123';
 
