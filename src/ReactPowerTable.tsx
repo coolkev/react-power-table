@@ -7,7 +7,52 @@ import { debuglog, shallowEqual, makePure } from './utils';
 import { transformColumn } from "./Column";
 
 
-//export type ReactClass<T> = React.ComponentClass<T> | React.StatelessComponent<T>
+function omitChildren(obj: React.HTMLProps<any>) {
+
+    if (obj && obj.children) {
+
+        const { children, ...rest } = obj;
+        return rest;
+    }
+    return obj;
+}
+
+const x: React.HTMLProps<any> = {};
+const y = omitChildren(x);
+type HTMLPropsWithoutChildren = typeof y;
+
+
+
+const DataRowComponent = makePure((props: DataRowProps<any> & { trComponent: React.ComponentClass<DataRowProps<any>> | React.StatelessComponent<DataRowProps<any>> }) => {
+
+
+    const { row, columns, trComponent, ...actualProps } = props;
+
+    debuglog('DataRowComponent render', props);
+
+    const TrComponent = props.trComponent;
+
+    return <TrComponent columns={columns} row={row}>
+        {columns.map(col => {
+            const CellComponent = col.cellComponent as React.ComponentClass<CellProps<any>> | React.StatelessComponent<CellProps<any>>;
+
+            const value = col.field(row);
+            const formattedValue = col.formatter ? col.formatter(col.field(row), row) : col.field(row);
+            const rowValueProps: CellProps = { row: row, column: col, value: formattedValue, rawValue: value };
+
+            const cellProps = col.cellProps(rowValueProps);
+
+            const cellComponentProps = col.cellComponentProps(rowValueProps);
+            //const { children, ...actualCellProps } = cellProps || { children: undefined };
+
+            return <td key={col.key} {...cellProps}><CellComponent {...cellComponentProps} /></td>
+        })}
+    </TrComponent>;
+
+
+});
+
+
 
 /**
  * Primary table component
@@ -15,11 +60,28 @@ import { transformColumn } from "./Column";
 export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
     private columns: StrictColumn<any>[];
-    private getRowProps: (row: any) => React.HTMLProps<HTMLTableRowElement>;
     private getRowKey: (row: any) => string | number;
 
     static defaultProps: Partial<GridProps<any>> = {
 
+        components: {
+            table: {
+                component: props => <table {...props}></table>
+            },
+            head: {
+                theadComponent: props => <thead {...props}></thead>,
+                trComponent: props => <tr {...props}></tr>,
+                thComponent: props => {
+                    const { children, column, ...rest } = props;
+                    debuglog('defaultProps thComponent render', props);
+                    return <th {...rest}>{children}</th>;
+                }
+            },
+            body: {
+                tbodyComponent: props => <tbody>{props.children}</tbody>,
+                trComponent: props => <tr>{props.children}</tr>
+            }
+        }
     };
 
     constructor(props: GridProps<any>) {
@@ -44,6 +106,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         return result;
     }
 
+
     transformProps(newProps: GridProps<any>, oldProps?: GridProps<any>) {
 
         debuglog('transformProps', { newProps, oldProps });
@@ -51,12 +114,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         if (!oldProps || !shallowEqual(newProps.columns, oldProps.columns)) {
             debuglog('transforming columns', newProps.columns);
 
-            this.columns = newProps.columns.map(c => transformColumn(c, newProps));
-        }
-
-        if (!oldProps || newProps.rowProps != oldProps.rowProps) {
-            debuglog('transforming getRowProps');
-            this.getRowProps = typeof newProps.rowProps == 'function' ? newProps.rowProps : () => newProps.rowProps;
+            this.columns = newProps.columns.map(c => transformColumn(c));
         }
 
         if (!oldProps || newProps.keyColumn != oldProps.keyColumn) {
@@ -71,109 +129,60 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
     render() {
 
-        const { tableProps, footerComponent, rows } = this.props;
+        const { rows, components } = this.props;
 
         const columns = this.columns;
-        //const HeaderRowComponent = headerRowComponent || HeaderRow;
-        const FooterComponent = footerComponent;
-        const { children, ...actualTableProps } = tableProps || { children: undefined};
-        return <table {...actualTableProps}>
-            <thead>
-                <HeaderRow columns={columns} />
-            </thead>
-            <tbody>
-                {rows.map((row) => {
-                    const rowProps = this.getRowProps(row);
-                    const key = this.getRowKey(row);
+        const defaultComponents = ReactPowerTable.defaultProps.components;
 
-                    debuglog('DataRow map');
-                    return <DataRow key={key} columns={columns} rowProps={rowProps} row={row} />
-                })}
-            </tbody>
+        const actualComponents = { ...defaultComponents, ...components };
+        const head = { ...defaultComponents.head, ...actualComponents.head };
+        const body = { ...defaultComponents.body, ...actualComponents.body };
 
-            {FooterComponent && <FooterComponent />}
-        </table>;
-    }
-}
+        debuglog('ReactPowerTable.render()', this.props);
+
+        const dataRows = rows.map((row) => {
+            //const rowProps = this.getRowProps(row);
+            const key = this.getRowKey(row);
+
+            debuglog('DataRow map');
+
+            return <DataRowComponent trComponent={body.trComponent} key={key} columns={columns} row={row} />;
+
+        });
 
 
-interface HeaderRowProps<T> {
+        const BodyComponent = body.tbodyComponent;
 
-    columns: StrictColumn<T>[];
+        const Table = actualComponents.table.component;
+        const tableProps = actualComponents.table.props;
+        const Head = head.theadComponent;
+        const HeadTr = head.trComponent;
+        const Body = body.tbodyComponent;
 
-}
-
-class HeaderRow extends React.Component<HeaderRowProps<any>, never> {
-    constructor(props: any) {
-        super(props);
-        debuglog('HeaderRowComponent constructor');
-    }
-    public render() {
+        const HeadTh = head.thComponent;
+        const Foot = actualComponents.foot;
 
 
-        const { columns } = this.props;
+        return <Table {...tableProps }>
+            <Head>
+                <HeadTr>
+                    {columns.map(c => <HeadTh key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></HeadTh>)}
+                </HeadTr>
+            </Head>
 
-        debuglog('HeaderRowComponent render', this.props);
+            {Body ? <Body>{dataRows}</Body> : dataRows}
 
-        return <tr>
-            {columns.map(c => {
-
-                const headerProps = { ...c.headerCellProps };
-
-                headerProps.style = { textAlign: 'left', whiteSpace: 'nowrap', ...headerProps.style };
-
-                const HeaderComponent = c.headerComponent;
-
-                const headerComponentProps = c.headerComponentPropsProvider();
-
-                const { children, ...actualHeaderProps } = headerProps || { children: undefined};
-                return <th key={c.key} {...actualHeaderProps }><HeaderComponent {...headerComponentProps} />
-
-                </th>
-            })}
-        </tr>
-    }
-}
-
-class DataRow extends React.PureComponent<DataRowProps<any>, never> {
-
-    constructor(props: DataRowProps<any>) {
-        super(props);
-        debuglog('DataRowComponent constructor');
-    }
-    public render() {
-
-        const { row, columns, rowProps, ...extra } = this.props;
-        debuglog('DataRowComponent render', this.props);
-        const { children, ...actualRowProps } = rowProps || { children: undefined};
-
-
-        return <tr {...actualRowProps}>
-            {columns.map(col => {
-                const CellComponent = col.cellComponent as React.ComponentClass<CellProps<any>> | React.StatelessComponent<CellProps<any>>;
-
-                const value = col.field(row);
-                const formattedValue = col.formatter ? col.formatter(col.field(row), row) : col.field(row);
-                const rowValueProps: CellProps = { row: row, column: col, value: formattedValue, rawValue: value, ...extra };
-
-                const cellProps = col.cellProps(rowValueProps);
-
-                const cellComponentProps = col.cellComponentProps(rowValueProps);
-                const { children, ...actualCellProps } = cellProps || { children: undefined};
-
-                return <td key={col.key} {...actualCellProps }><CellComponent {...cellComponentProps} /></td>
-            })}
-        </tr>;
+            {Foot && <Foot />}
+        </Table >;
 
     }
 }
-//const DataRow = makePure((props: DataRowProps<T>) => <DataRowInternal {...props}/>);
+const HeaderComponent = makePure((props: HeaderComponentProps) => {
+    //debuglog('defaultHeaderComponent render ' + props.column.headerText);
+    return <div>{props.column.headerText}</div>
+});
 
-
-
-
-
-export interface GridProps<T> {
+export interface GridProps<T = any> {
     /**
      * Columns to display in table
      */
@@ -188,16 +197,32 @@ export interface GridProps<T> {
      * Rows to display in table
      */
     rows: T[];
-    rowProps?: React.HTMLProps<HTMLTableRowElement> | ((row: T) => React.HTMLProps<HTMLTableRowElement>);
+    //rowProps?: React.HTMLProps<HTMLTableRowElement> | ((row: T) => React.HTMLProps<HTMLTableRowElement>);
 
     loading?: boolean;
-    tableProps?: React.HTMLAttributes<HTMLTableElement>;
-    rowComponentProps?: (props: DataRowProps<T>) => DataRowProps<T>;
-    footerComponent?: React.ComponentClass<any> | React.StatelessComponent<any>;
 
-    //headerRowComponent?: ReactClass<HeaderRowProps<T>>;
-    defaultHeaderComponent?: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>;
+    components?: GridComponents<T>
 }
+
+export interface GridComponents<T = any> {
+    table?: {
+        component?: React.ComponentClass<React.HTMLProps<HTMLTableElement>> | React.StatelessComponent<React.HTMLProps<HTMLTableElement>>;
+        props?: HTMLPropsWithoutChildren;
+    }
+    head?: {
+        theadComponent?: React.ComponentClass<never> | React.StatelessComponent<never>;
+        trComponent?: React.ComponentClass<never> | React.StatelessComponent<never>;
+        thComponent?: React.ComponentClass<HeaderComponentProps<T>> | React.StatelessComponent<HeaderComponentProps<T>>;
+    }
+
+    body?: {
+        tbodyComponent?: React.ComponentClass<never> | React.StatelessComponent<never>;
+        trComponent?: React.ComponentClass<DataRowProps<T>> | React.StatelessComponent<DataRowProps<T>>;
+    }
+
+    foot?: React.ComponentClass<never> | React.StatelessComponent<never>;
+}
+
 
 
 export interface StrictColumn<TRow = any, TValue = any> {
@@ -209,26 +234,21 @@ export interface StrictColumn<TRow = any, TValue = any> {
 
     headerText: string;
 
-    cellProps?: ((props: CellProps<TRow, TValue>) => React.HTMLProps<HTMLTableDataCellElement>);
+    cellProps?: ((props: CellProps<TRow, TValue>) => HTMLPropsWithoutChildren);
 
     formatter: (value: any, row?: TRow) => string;
     cellComponent?: React.ComponentClass<CellProps<TRow>> | React.StatelessComponent<CellProps<TRow>>;
     cellComponentProps?: (props: CellProps<TRow>) => any;
-    headerComponent?: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>;
-    headerComponentPropsProvider?: () => HeaderComponentProps;
 
-    headerCellProps?: React.HTMLProps<HTMLTableHeaderCellElement>;
+    headerCellProps?: HTMLPropsWithoutChildren;
 
 }
 
 
 
 
-export interface HeaderComponentProps {
-    //column: StrictColumn<T>;
-    key: string | number;
-    headerText: string;
-    headerCellProps: React.HTMLProps<HTMLTableHeaderCellElement>;
+export interface HeaderComponentProps<T = any> extends HTMLPropsWithoutChildren {
+    column: StrictColumn<T>;
 
 }
 
@@ -238,7 +258,6 @@ export interface DataRowProps<T> {
 
     columns: StrictColumn<T>[];
     row: T;
-    rowProps: React.HTMLProps<HTMLTableRowElement>;
 }
 
 
@@ -250,17 +269,15 @@ export interface Column<TRow = any, TValue = any> {
     cellComponent?: React.ComponentClass<CellProps<TRow, TValue>> | React.StatelessComponent<CellProps<TRow, TValue>>;
     cellComponentProps?: (props: CellProps<TRow, TValue>) => any;
     headerComponent?: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>;
-    headerComponentPropsProvider?: () => HeaderComponentProps;
 
-    headerCellProps?: React.HTMLProps<HTMLTableHeaderCellElement>;
+    headerCellProps?: HTMLPropsWithoutChildren;
 
 
     field?: ((row: TRow) => TValue) | string;
     headerText?: string;
-    cellProps?: React.HTMLProps<HTMLTableDataCellElement> | ((props: CellProps<TRow>) => React.HTMLProps<HTMLTableDataCellElement>);
+    cellProps?: HTMLPropsWithoutChildren | ((props: CellProps<TRow, TValue>) => HTMLPropsWithoutChildren);
 
     headerCssClass?: string;
-    //cellProps?: React.HTMLProps<HTMLTableDataCellElement> | ((props: CellProps<T>) => React.HTMLProps<HTMLTableDataCellElement>);
     cssClass?: ((props: CellProps<TRow>) => string) | string;
     width?: number;
     maxWidth?: number;

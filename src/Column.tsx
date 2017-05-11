@@ -3,7 +3,7 @@ import { makePure, debuglog } from "./utils";
 import { HeaderComponentProps, CellProps, Column, GridProps, StrictColumn } from "./ReactPowerTable";
 
 
-const defaultHeaderComponent = makePure((props: HeaderComponentProps) => <div>{props.headerText}</div>);
+
 /** @internal */
 export const defaultCellComponent = makePure((props: CellProps<any>) => {
     debuglog('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
@@ -11,7 +11,7 @@ export const defaultCellComponent = makePure((props: CellProps<any>) => {
 });
 
 /** @internal */
-export function transformColumn<T>(options: Column<T> | string, gridProps: GridProps<T>): StrictColumn<T> {
+export function transformColumn<T>(options: Column<T> | string): StrictColumn<T> {
 
     debuglog('transformColumn', options);
 
@@ -19,7 +19,6 @@ export function transformColumn<T>(options: Column<T> | string, gridProps: GridP
         options = { field: options } as Column<T>;
     }
 
-    //const { key, field } = getKeyAndField(options);
     const core = getColumnCore(options);
     const { cellProps, headerProps } = getCellAndHeaderProps(options);
 
@@ -30,6 +29,7 @@ export function transformColumn<T>(options: Column<T> | string, gridProps: GridP
         ...core,
         cellProps: cellProps,
         headerCellProps: headerProps,
+        headerComponent: options.headerComponent,
         formatter: options.formatter || null
     };
 
@@ -45,19 +45,6 @@ export function transformColumn<T>(options: Column<T> | string, gridProps: GridP
 
     }
 
-
-    result.headerComponent = options.headerComponent || gridProps.defaultHeaderComponent || defaultHeaderComponent;
-    //result.headerComponentPropsProvider = options.headerComponentPropsProvider || (()=> ({headerText:result.headerText, key: result.key , headerCellProps: result.headerCellProps}));
-
-    const originalHeaderComponentPropsProvider = options.headerComponentPropsProvider;
-
-    result.headerComponentPropsProvider = () => {
-
-        const originalProps = originalHeaderComponentPropsProvider && originalHeaderComponentPropsProvider();
-        
-        return { ...originalProps, headerText:result.headerText, key: result.key , headerCellProps: result.headerCellProps };
-    }
-
     return result;
 }
 
@@ -68,7 +55,7 @@ function getCellAndHeaderProps(options: Column<any>) {
 
     const cssClass = options.cssClass;
 
-    const headerProps = { ...options.headerCellProps };
+    const headerProps = { style: { textAlign: 'left',whiteSpace: 'nowrap', ...(options.headerCellProps && options.headerCellProps.style) }, ...options.headerCellProps };
     let cellProps: ((props: CellProps<any>) => React.HTMLProps<HTMLTableDataCellElement>);
 
     const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (options.cellProps) === 'function' ? {} : { ...options.cellProps };
@@ -78,7 +65,7 @@ function getCellAndHeaderProps(options: Column<any>) {
     //var cssClassFunc: (row: T) => string;
 
     if (options.width) {
-        cellStaticProps.style = { ...cellStaticProps.style, width: options.width };
+        cellStaticProps.style = {  ...cellStaticProps.style, width: options.width };
         headerProps.style = { ...headerProps.style, width: options.width };
 
     }
@@ -123,9 +110,6 @@ export interface ColumnCore<T> {
 }
 
 export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
-
-    //let fieldName: string;
-    //let field: (row) => any;
 
     if (typeof (col) == 'string') {
         return {

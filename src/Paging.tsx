@@ -6,7 +6,7 @@ import { numberWithCommas, getComponentDisplayName, debuglog } from './utils';
 const linkStyle = { textDecoration: 'none' };
 const disabledStyle = { ...linkStyle, color: 'silver', cursor: 'default' };
 
- /** @internal */
+/** @internal */
 interface InternalPagingState {
     /** 1-based index of current page */
     currentPage: number;
@@ -35,8 +35,10 @@ export interface InternalPagingGridProps extends PagingGridProps {
 
 export interface PagingGridProps {
     columns: any[];
-    footerComponent?: React.ComponentClass<any> | React.StatelessComponent<any>;
-
+    //footerComponent?: React.ComponentClass<any> | React.StatelessComponent<any>;
+    components?: {
+        foot?: React.ComponentClass<never> | React.StatelessComponent<never>;
+    }
 }
 
 
@@ -45,7 +47,7 @@ export interface PagingGridProps {
 export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
 export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
 export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentClass<InternalPagingGridProps> | React.StatelessComponent<InternalPagingGridProps>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }> {
- 
+
     if (WrappedComponent.displayName && WrappedComponent.displayName.match(/^WithInternalSorting|WithSorting/)) {
         console.error('Warning: You are applying sorting after paging which will cause the sorting to only affect the current page. You should probably apply sorting first then paging');
     }
@@ -70,14 +72,14 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
         componentWillReceiveProps(nextProps: T & { paging: Partial<InternalPagingProps> }) {
 
             debuglog('Paging componentWillReceiveProps', nextProps);
-            
-            if (nextProps.paging && nextProps.paging.currentPage && (nextProps.paging.currentPage!=this.state.currentPage)) {
-            
+
+            if (nextProps.paging && nextProps.paging.currentPage && (nextProps.paging.currentPage != this.state.currentPage)) {
+
                 debuglog('Paging setting state currentPage to ' + nextProps.paging.currentPage);
-                
+
                 this.setState({ currentPage: nextProps.paging.currentPage });
             }
-            if (nextProps.paging && nextProps.paging.pageSize && (nextProps.paging.pageSize!= this.state.pageSize)) {
+            if (nextProps.paging && nextProps.paging.pageSize && (nextProps.paging.pageSize != this.state.pageSize)) {
                 debuglog('Paging setting state pageSize to ' + nextProps.paging.pageSize);
                 this.setState({ pageSize: nextProps.paging.pageSize });
             }
@@ -112,16 +114,18 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
             const columnCount = this.props.columns.length;
             const pagingProps = { currentPage: currentPage, pageSize: pageSize, pageSizes: pageSizes, gotoPage: this.gotoPage, totalRowCount: rows.length };
 
-            debuglog('Paging render() currentPage is '+ currentPage );
-            
-            //return <PagingComponent rows={pageRows} {...extra} paging={{ currentPage: currentPage, pageSize: pageSize, pageSizes: pageSizes, gotoPage: this.gotoPage, totalRowCount: rows.length }} />
-            return <WrappedComponent rows={pageRows} {...extra} footerComponent={() => <tfoot>
+            debuglog('Paging render() currentPage is ' + currentPage);
+
+            const components = { ...extra.components, foot: () => <tfoot>
                 <tr>
                     <td colSpan={columnCount}>
                         <Paging {...pagingProps} />
                     </td>
                 </tr>
-            </tfoot>} />;
+            </tfoot> };
+            
+            //return <PagingComponent rows={pageRows} {...extra} paging={{ currentPage: currentPage, pageSize: pageSize, pageSizes: pageSizes, gotoPage: this.gotoPage, totalRowCount: rows.length }} />
+            return <WrappedComponent rows={pageRows} {...extra} components={components} />;
         }
     }
 }
@@ -131,7 +135,7 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
 export function withPaging<T extends PagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.StatelessComponent<T & { paging: PagingProps }>;
 export function withPaging<T extends PagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.StatelessComponent<T & { paging: PagingProps }>;
 export function withPaging<T extends PagingGridProps>(WrappedComponent: React.StatelessComponent<PagingGridProps> | React.ComponentClass<PagingGridProps>): React.StatelessComponent<T & { paging: PagingProps }> {
- 
+
     const WithPaging: React.StatelessComponent<T & { paging: PagingProps }> = props => {
 
 
@@ -139,13 +143,15 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.St
         const columnCount = props.columns.length;
         //const pagingProps = { ...paging };
 
-        return <WrappedComponent {...extra} footerComponent={() => <tfoot>
-            <tr>
-                <td colSpan={columnCount}>
-                    <Paging {...paging} />
-                </td>
-            </tr>
-        </tfoot>} />;
+            const components = { ...extra.components, foot: () => <tfoot>
+                <tr>
+                    <td colSpan={columnCount}>
+                        <Paging {...paging} />
+                    </td>
+                </tr>
+            </tfoot> };
+            
+        return <WrappedComponent {...extra} components={components}/>;
     };
 
     WithPaging.displayName = `WithPaging(${getComponentDisplayName(WrappedComponent)})`;

@@ -20,8 +20,9 @@ interface ExamplesProps {
 }
 
 import 'react-select/dist/react-select.css';
+import { CustomRowExample } from "./CustomRow";
 
-ReactPowerTable.defaultProps.tableProps = { className: 'table' };
+ReactPowerTable.defaultProps.components.table.props = { className: 'table' };
 //ReactPowerTable.defaultProps.testDefault = 'test123' ;
 //ReactPowerTable.defaultProps.testDefault = 'test123';
 
@@ -36,6 +37,7 @@ const examples = {
     'Checkboxes': CheckboxExample,
     'Filters': FiltersExample,
     'Hide Columns': HideColumnsExample,
+    'Custom Row': CustomRowExample,
     'Server Data': ServerDataExample
 
 };
