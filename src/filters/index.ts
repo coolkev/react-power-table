@@ -4,12 +4,13 @@ import { Date } from './Date';
 import { Decimal } from './Decimal';
 import { Int } from './Int';
 import { List } from './List';
+import { RemoteList,RemoteListOptionProvider } from './RemoteList';
 import { FilterDefinition, FilterDefinitionOptionsOrFieldName,OperationDefinition } from "./FilterDefinition";
 import * as Select from 'react-select';
 
 export * from "./FilterDefinition";
 
-type Types = 'string' | 'boolean' | 'date' | 'decimal' | 'int';
+//type Types = 'string' | 'boolean' | 'date' | 'decimal' | 'int';
 
 
 const types = {
@@ -18,7 +19,8 @@ const types = {
     'date': Date,
     'decimal': Decimal,
     'int': Int,
-    'list': List
+    'list': List,
+    'remotelist': RemoteList
 }
 type types = typeof types & { [key: string]: FilterDefinition<any> };
 
@@ -32,8 +34,9 @@ export function getFilterDefinition(type: 'decimal', options: FilterDefinitionOp
 export function getFilterDefinition(type: 'int', options: FilterDefinitionOptionsOrFieldName & { canBeNull: true }): Int & { operations: { "notnull": OperationDefinition<number>, "null": OperationDefinition<number> } };
 export function getFilterDefinition(type: 'int', options: FilterDefinitionOptionsOrFieldName): Int;
 export function getFilterDefinition(type: 'list', options: FilterDefinitionOptionsOrFieldName, items: Select.Option[]): List;
+export function getFilterDefinition(type: 'remotelist', options: FilterDefinitionOptionsOrFieldName, optionProvider: RemoteListOptionProvider): RemoteList;
 
-export function getFilterDefinition(type: string, options: FilterDefinitionOptionsOrFieldName, items?: Select.Option[]) {
+export function getFilterDefinition(type: string, options: FilterDefinitionOptionsOrFieldName, items?: Select.Option[] | RemoteListOptionProvider) {
     
     return new types[type](options, items);
 }

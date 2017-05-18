@@ -69,12 +69,11 @@ export const sampledata : President[] = [
 ]
 
 
-export const partyList = [{ label: 'Democratic', value: 'Democratic' },
+export const partyList = [{ label: 'Democratic' },
 {
-    label: 'Democratic-Republican',
-    value: 'Democratic-Republican'
+    label: 'Democratic-Republican'
 },
-{ label: 'Federalist', value: 'Federalist' },
-{ label: 'No Party', value: 'No Party' },
-{ label: 'Republican', value: 'Republican' },
-{ label: 'Whig', value: 'Whig' }];
+{ label: 'Federalist' },
+{ label: 'No Party' },
+{ label: 'Republican' },
+{ label: 'Whig' }];

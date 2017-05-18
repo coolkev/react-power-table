@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition } from "./FilterDefinition";
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefinition } from "./FilterDefinition";
 import { NumericInput } from "../components/NumericInput";
 
 

@@ -5,16 +5,15 @@
 import * as React from 'react';
 //import { Paging, PagingProps } from './components/Paging';
 import { sortArray, getComponentDisplayName, makePure, debuglog, shallowEqual } from './utils';
-import { defaultCellComponent, getExpression, getColumnCore } from "./Column";
+import { defaultCellComponent, getExpression, getColumnCore, columnsChanged } from "./Column";
 import { InternalPagingProps } from "./Paging";
-import { Column, HeaderComponentProps, GridProps, ReactPowerTable } from "./ReactPowerTable";
+import { Column, HeaderComponentProps, GridProps } from "./ReactPowerTable";
 
 
 
 export interface SortSettings {
 
     column: string;
-    //Ascending?: boolean;
     descending?: boolean;
 
 }
@@ -54,7 +53,7 @@ export interface InternalSortingProps<TRow = any> {
 function transformColumn<T>(options: SortableColumn<T> | string) {
 
 
-    const col: SortableColumn = typeof (options) == 'string' ? { field: options, key: options } : { ...options };
+    const col: SortableColumn = typeof (options) == 'string' ? { fieldName: options, key: options } : { ...options };
 
     col.sortable = col.sortable || col.sortable == undefined;
 
@@ -197,7 +196,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
 
         componentWillReceiveProps(nextProps: T & InternalSortingProps<T>) {
 
-            if (!shallowEqual(nextProps.columns, this.props.columns)) {
+            if (!shallowEqual(nextProps.columns, this.props.columns) || columnsChanged(nextProps.columns, this.columns, ['sortKey', 'fieldName', 'headerText'])) {
                 this.columns = transformColumns(nextProps.columns);
             }
             if (nextProps.tableHeaderCellComponent != this.props.tableHeaderCellComponent) {
@@ -269,7 +268,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
 
             const { sorting, columns, rows, ...extra } = this.props as GridProps<TRow> & InternalSortingProps<T>;
 
-            const { sortedRows, currentSort } = this.state;
+            const { sortedRows } = this.state;
 
 
             if (this.sortChangedSinceLastRender) {
@@ -344,6 +343,8 @@ const SortableHeaderComponent = makePure((props: SortableHeaderComponentProps) =
 
 export interface ExternalSortingProps {
 
+    columns: (SortableColumn | string)[];
+    
     sorting: SortSettings & {
 
         changeSort: (sort: SortSettings) => void;
@@ -375,7 +376,8 @@ export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: R
 
         componentWillReceiveProps(nextProps: T & ExternalSortingProps) {
 
-            if (!shallowEqual(nextProps.columns, this.props.columns)) {
+            console.log('withSorting componentWillReceiveProps', nextProps);
+            if (!shallowEqual(nextProps.columns, this.props.columns) || columnsChanged(nextProps.columns, this.columns, ['sortKey', 'fieldName', 'headerText'])) {
                 //this.transformColumns(nextProps);
                 this.columns = transformColumns(nextProps.columns);
             }

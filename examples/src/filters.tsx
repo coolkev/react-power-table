@@ -17,6 +17,7 @@ import { sampledata, defaultColumns, partyList } from './shared'
 // const availableFiltersMap = createKeyedMap(availDTO.map(m => new DataTypes[m.dataType](m)), m=>m.fieldName);
 //availableFilters.party = new DataTypes.list(availableFilters.party, partyList);
 
+const partyListOptions = partyList.map(m => ({ label: m.label, value: m.label }));
 
 //if building in JS
 const availableFilters = [
@@ -26,7 +27,7 @@ const availableFilters = [
     new DataTypes.int({ fieldName: 'death_year', canBeNull: true }),
     new DataTypes.date({ fieldName: 'took_office'}),
     new DataTypes.date({ fieldName: 'left_office', canBeNull: true }),
-    new DataTypes.list('party', partyList),
+    new DataTypes.list('party', partyListOptions),
     new DataTypes.boolean({ fieldName: 'assasinated', displayName: 'was assasinated'}),
 
 ];

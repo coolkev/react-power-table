@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import { debuglog, shallowEqual, makePure } from './utils';
-import { transformColumn } from "./Column";
+import { transformColumn, columnsChanged } from "./Column";
 
 
 // function omitChildren(obj: React.HTMLProps<any>) {
@@ -28,12 +28,12 @@ export interface DataRowComponentProps<T> extends TableRowComponentProps<T> {
 const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
 
 
-    const { row, columns, rowComponent, ...actualProps } = props;
+    const { row, columns, rowComponent: RowComponent, tdComponent: TdComponent } = props;
 
     debuglog('DataRowComponent render', props);
 
-    const RowComponent = props.rowComponent;
-    const TdComponent = props.tdComponent;
+    //const RowComponent = props.rowComponent;
+    //const TdComponent = props.tdComponent;
 
     return <RowComponent columns={columns} row={row}>
         {columns.map(col => {
@@ -54,8 +54,6 @@ const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
 
 
 });
-
-
 
 /**
  * Primary table component
@@ -129,7 +127,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
         debuglog('transformProps', { newProps, oldProps });
 
-        if (!oldProps || !shallowEqual(newProps.columns, oldProps.columns)) {
+        if (!oldProps || !shallowEqual(newProps.columns, oldProps.columns) || columnsChanged(newProps.columns, this.columns, ['key', 'fieldName', 'headerText'])) {
             debuglog('transforming columns', newProps.columns);
 
             this.columns = newProps.columns.map(c => transformColumn(c));
@@ -300,7 +298,8 @@ export interface Column<TRow = any, TValue = any> {
     headerCellProps?: HTMLPropsWithoutChildren<HTMLTableHeaderCellElement>;
 
 
-    field?: ((row: TRow) => TValue) | string;
+    field?: ((row: TRow) => TValue);
+    fieldName?: string;
     headerText?: string;
     cellProps?: HTMLPropsWithoutChildren<HTMLTableCellElement> | ((props: CellProps<TRow, TValue>) => HTMLPropsWithoutChildren<HTMLTableCellElement>);
 
@@ -315,8 +314,8 @@ export interface CellProps<TRow = any, TValue = any> {
     row: TRow;
     column: Column<TRow>;
 
-    value: TValue | string;
-    rawValue: TValue | string;
+    value: TValue;
+    rawValue: TValue;
 
 }
 

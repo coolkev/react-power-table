@@ -25,7 +25,7 @@ export function nullableOperations<T>() {
             appliedLabel: ((filter) => filter.filter.displayName + ' ' + filter.operation.displayName),
             filterComponent: () => null,
             test: (source, _filterValue) => source != null && source != undefined && source != ''
-        },
+        } as OperationDefinition<T>,
 
         "null": {
             key: 'null',
@@ -34,7 +34,7 @@ export function nullableOperations<T>() {
             filterComponent: () => null,
             test: (source, _filterValue) => source == null || source == undefined || source == ''
 
-        }
+        }as OperationDefinition<T>
     };
 }
 // export interface IFilterDefinition<T> extends FilterDefinitionOptions {
@@ -87,11 +87,11 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
         }
 
 
-        const operations = this.operations;
+        //const operations = this.operations;
 
         //operations.all = Object.keys(operations).filter(m => m != 'all').map(m => operations[m]);
 
-        this.operations = operations;
+        //this.operations = operations;
 
     }
 
@@ -205,13 +205,6 @@ export interface AppliedFilter<T = any> {
     value: T;
 
 }
-
-export interface AppliedFilterDTO {
-    columnKey: string;
-    operationKey: string;
-    value: string;
-}
-
 
 export interface FilterComponentProps<T> extends AppliedFilter<T> {
 

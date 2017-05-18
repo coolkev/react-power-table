@@ -1,6 +1,4 @@
 ﻿import * as React from 'react';
-import * as PowerTable from "./filters/FilterDefinition";
-import { Column } from "./ReactPowerTable";
 
 
 

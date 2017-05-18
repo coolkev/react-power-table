@@ -12,7 +12,8 @@
     "jsx": "react",
     "alwaysStrict": true,
     "noEmitOnError": true,
-    "moduleResolution": "node"    
+    "moduleResolution": "node"    ,
+    "declaration": false
   },
   "include": [
     "src/"

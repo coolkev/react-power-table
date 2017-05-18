@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import { AddEditFilter } from './AddEditFilter'
-import FormControl from 'react-bootstrap/lib/FormControl';
-import { FilterDefinition, AppliedFilter, AppliedFilterDTO } from "./filters/FilterDefinition";
+import { FilterDefinition, AppliedFilter } from "./filters/FilterDefinition";
 import { BackLink } from "./components/BackLink";
 import { AddSelectFilter } from "./AddSelectFilter";
 import { AppliedFilters } from './AppliedFilters'
@@ -14,6 +13,13 @@ export interface GridFiltersProps {
     appliedFilters: AppliedFilter[];
     onFiltersChange: (newFilters: AppliedFilter[]) => void;
 
+}
+
+
+interface AppliedFilterDTO {
+    columnKey: string;
+    operationKey: string;
+    value: string;
 }
 
 

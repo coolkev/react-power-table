@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿/*import * as React from 'react';
 import * as SelectValue from 'react-select/lib/Value';
 import * as classNames from 'classnames';
 
@@ -24,4 +24,4 @@ export class CustomSelectValue extends SelectValue {
             </div>
         );
     }
-}
+}*/

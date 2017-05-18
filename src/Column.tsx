@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { makePure, debuglog } from "./utils";
-import { HeaderComponentProps, CellProps, Column, GridProps, StrictColumn } from "./ReactPowerTable";
+import { CellProps, Column, StrictColumn } from "./ReactPowerTable";
 
 
 
@@ -16,7 +16,7 @@ export function transformColumn<T>(options: Column<T> | string): StrictColumn<T>
     debuglog('transformColumn', options);
 
     if (typeof options === 'string') {
-        options = { field: options } as Column<T>;
+        options = { fieldName: options } as Column<T>;
     }
 
     const core = getColumnCore(options);
@@ -55,7 +55,7 @@ function getCellAndHeaderProps(options: Column<any>) {
 
     const cssClass = options.cssClass;
 
-    const headerProps = { style: { textAlign: 'left',whiteSpace: 'nowrap', ...(options.headerCellProps && options.headerCellProps.style) }, ...options.headerCellProps };
+    const headerProps = { style: { textAlign: 'left', whiteSpace: 'nowrap', ...(options.headerCellProps && options.headerCellProps.style) }, ...options.headerCellProps };
     let cellProps: ((props: CellProps<any>) => React.HTMLProps<HTMLTableDataCellElement>);
 
     const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (options.cellProps) === 'function' ? {} : { ...options.cellProps };
@@ -65,7 +65,7 @@ function getCellAndHeaderProps(options: Column<any>) {
     //var cssClassFunc: (row: T) => string;
 
     if (options.width) {
-        cellStaticProps.style = {  ...cellStaticProps.style, width: options.width };
+        cellStaticProps.style = { ...cellStaticProps.style, width: options.width };
         headerProps.style = { ...headerProps.style, width: options.width };
 
     }
@@ -117,26 +117,28 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
             field: row => row[col],
             fieldName: col,
             headerText: col,
-        
+
         };
     }
 
-    const { field, key } = col;
+
+    const { field, fieldName, key } = col;
+
     if (typeof field === 'function') {
-        const fieldName = getExpression(field);
+        const actualFieldName = fieldName || getExpression(field);
         return {
-            key: key || fieldName,
+            key: key || actualFieldName,
             field: field,
-            fieldName: fieldName,
-            headerText: col.headerText || fieldName
+            fieldName: actualFieldName,
+            headerText: col.headerText || actualFieldName
         };
     }
-    if (typeof (field) === "string") {
+    if (fieldName) {
         return {
-            key: key || field,
-            field: row => row[field],
-            fieldName: field,
-            headerText: col.headerText || field
+            key: key || fieldName,
+            field: row => row[fieldName],
+            fieldName: fieldName,
+            headerText: col.headerText || fieldName
 
         };
     }
@@ -151,7 +153,7 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
         field: _row => null,
         fieldName: null,
         headerText: col.headerText
-        
+
     };
 
 }
@@ -166,4 +168,28 @@ export function getExpression(func: Function): string {
         return match[1];
     }
     return null;
+}
+
+export function columnsChanged(newColumns: (string | Column)[], prevColumns: Column[], compareKeys: string[]) {
+
+    if ((!newColumns && prevColumns) || (newColumns && !prevColumns) || newColumns.length != prevColumns.length) {
+        return true;
+    }
+
+    //const keys = ['key', 'fieldName', 'headerText'];
+
+    for (let i = 0; i < prevColumns.length; i++) {
+        const prevCol = prevColumns[i];
+        const newCol = getColumnCore(newColumns[i]);
+
+        for (let key of compareKeys) {
+            if (prevCol[key] !== newCol[key]) {
+                return true;
+            }
+        }
+
+        //if (!shallowEqual(newCol, {key:prevCol.key,field: prevCol.field, fieldName: prevCol.fieldName, headerText: prevCol.headerText}))
+    }
+
+    return false;
 }

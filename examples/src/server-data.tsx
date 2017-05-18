@@ -1,89 +1,27 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, DataTypes, getFilterDefinition, numberWithCommas, AppliedFilter, GridFilters, FilterDefinition, withPaging, withSorting, SortSettings, Column, ObjectMap, AppliedFilterDTO } from '../../src/'
+import { ReactPowerTable, numberWithCommas, AppliedFilter, GridFilters, FilterDefinition, withPaging, withSorting, SortSettings, Column, ObjectMap } from '../../src/'
 import { objectMapToArray } from "../../src/utils";
-
-
-
-
-    
-interface OrderViewModel {
-    "CustomerID": number;
-    "FirstName": string;
-    "LastName": string;
-    "Date": Date;
-    "OrderTotal": number;
-    "DateUpdated": Date;
-}
-interface Query {
-    appliedFilters: AppliedFilterDTO[];
-    sort: SortSettings;
-    currentPage: number;
-    pageSize: number;
-}
-
-interface QueryResult {
-    results: any[];
-    totalResultCount: number;
-    offset: number;
-}
-
-interface QueryDTO {
-    filters: AppliedFilterDTO[],
-    sort: SortSettings;
-
-    paging: {
-        skip: number;
-        take: number;
-        returnTotalCount?: boolean;
-    }
-
-}
+import { QueryDTO, QueryResult } from "./remote/interfaces";
+import { OrderController } from "./remote/";
 
 export const ServerDataExample = () => {
 
-
-
-const serverMetadata = {
-    "filters": {
-        "Details_ProductID": getFilterDefinition('int',{ fieldName: "Details_ProductID", displayName: "Details Product ID"}),
-        "OrderID": getFilterDefinition('int', { fieldName: "OrderID", displayName: "Order ID", canBeNull: false}),
-        "CustomerID": getFilterDefinition('int',{ fieldName: "CustomerID", displayName: "Customer ID"}),
-        "FirstName": getFilterDefinition('string',{ fieldName: "FirstName", displayName: "First Name"}),
-        "LastName": getFilterDefinition('string',{ fieldName: "LastName", displayName: "Last Name"}),
-        "Date": getFilterDefinition('date',{ fieldName: "Date", displayName: "Date"}),
-        "OrderTotal": getFilterDefinition('decimal',{ fieldName: "OrderTotal", displayName: "Order Total"}),
-        "DateUpdated": getFilterDefinition('date',{ fieldName: "DateUpdated", displayName: "Date Updated",canBeNull: true}),
-    },
-    "columns": {
-        "CustomerID": { field: "CustomerID", displayName: "Customer ID" } as Column<OrderViewModel,number>,
-        "FirstName": { field: "FirstName", displayName: "First Name" } as Column<OrderViewModel,string>,
-        "LastName": { field: "LastName", displayName: "Last Name" } as Column<OrderViewModel,string>,
-        "Date": { field: "Date", displayName: "Date" } as Column<OrderViewModel,Date>,
-        "OrderTotal": { field: "OrderTotal", displayName: "Order Total" } as Column<OrderViewModel,number>,
-        "DateUpdated": { field: "DateUpdated", displayName: "Date Updated" } as Column<OrderViewModel,Date>,
-    },
-    "keyColumn": "OrderID",
-    "defaultSort": { column: "Date", ascending: false }
-};
-
-    const availableFilters = serverMetadata.filters;
-    const columns = serverMetadata.columns;
-
-    columns.OrderTotal.formatter = (value, row) => "$" + value + " " + row.FirstName;
-    columns.CustomerID.cellComponent = props => <a href={"#" + props.value}>{props.value}</a>
-    availableFilters.FirstName.operations.notcontains.displayName = 'doesn\'t contain';
-    
-    
-//availableFilters.OrderID.operations.
-
-
-    return <ServerDataTable columns={columns} availableFilters={availableFilters} defaultSort={serverMetadata.defaultSort} keyColumn={serverMetadata.keyColumn} />;
+    return <ServerDataTable {...OrderController} />;
 }
 
 
+export interface ServerDataTableProps {
+    columns: ObjectMap<Column>;
+    filters: ObjectMap<FilterDefinition>;
+
+    defaultSort: SortSettings;
+    keyColumn: string;
+
+    executeQuery: (query: QueryDTO) => Promise<QueryResult>;
+}
 
 interface ServerDataTableState {
-    query: Query;
+    query: QueryDTO;
 
     loading: boolean;
     totalRowCount?: number;
@@ -93,13 +31,6 @@ interface ServerDataTableState {
 
 const Table = withSorting(withPaging(ReactPowerTable));
 
-interface ServerDataTableProps {
-    columns: ObjectMap<Column>;
-    availableFilters: ObjectMap<FilterDefinition>;
-
-    defaultSort: SortSettings;
-    keyColumn: string;
-}
 class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTableState> {
 
     constructor(props: ServerDataTableProps) {
@@ -107,7 +38,14 @@ class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTa
         this.state = {
             loading: false,
             rows: [],
-            query: { appliedFilters: [], currentPage: 1, pageSize: 20, sort: props.defaultSort },
+            query: {
+                filters: [],
+                paging: {
+                    currentPage: 1,
+                    pageSize: 20
+                },
+                sort: props.defaultSort
+            },
         };
 
         this.handleQueryData = this.handleQueryData.bind(this);
@@ -117,72 +55,11 @@ class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTa
         this.handleQueryData(this.state.query);
     }
 
-    // componentWillReceiveProps(nextProps: ServerDataTableProps) {
-    //     console.log('GridFiltersInternal.componentWillReceiveProps', { currentProps: this.props, nextProps });
-
-    //     //this.transformProps(nextProps, this.props);
-
-    //     if (nextProps.availableFilters != this.props.availableFilters) {
-    //         console.log('nextProps.availableFilters != this.props.availableFilters');
-
-    //         this.setState((prev: ServerDataTableState) => {
-    //             var result =  ({
-    //                 query: {
-    //                     ...prev.query, appliedFilters: prev.query.appliedFilters.map(f => {
-
-    //                         return { ...f, filter: nextProps.availableFilters[f.filter.fieldName] };
-    //                     })
-    //                 }
-    //             });
-    //             console.log('new State', result);
-
-    //             return result;
-    //         });
-
-    //     }
-    // }
-
-    handleQueryData(query: Query) {
+    handleQueryData(query: QueryDTO) {
 
         this.setState({ query: query, loading: true });
 
-        const dto: QueryDTO = {
-            filters: query.appliedFilters,
-            paging: {
-                skip: ((query.currentPage - 1) * query.pageSize),
-                take: query.pageSize,
-            },
-            sort: query.sort
-        };
-
-        var options: RequestInit = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dto),
-            //credentials: 'same-origin',
-
-        };
-
-
-        fetch('/api/Order/', options).then(response => {
-
-            if (response.ok) {
-                var contentType = response.headers.get('Content-Type');
-                if (!contentType.match(/application\/json/i)) {
-                    var msg = 'Invalid Content-Type received. Expected "application/json", was "' +
-                        contentType +
-                        '"';
-                    throw new Error(msg);
-                } else {
-                    return response.json() as any as QueryResult;
-                }
-            } else {
-                throw new Error('Error');
-            }
-        }).then(result => {
+        this.props.executeQuery(query).then(result => {
             console.log('fetch returned ', result)
             this.setState({ errorMessage: null, rows: result.results, totalRowCount: result.totalResultCount, loading: false });
 
@@ -195,7 +72,7 @@ class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTa
     }
 
     render() {
-        console.log('ServerDataTable.render', this.props.availableFilters);
+        console.log('ServerDataTable.render', this.props.filters);
 
         const { errorMessage, loading, ...extraState } = this.state;
 
@@ -214,16 +91,11 @@ class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTa
 
 
 
-interface TableWithExternalFiltersProps extends ServerDataTableProps {
-    query: Query;
-
-    //columns: { [key: string]: Column };
-    //availableFilters: { [key: string]: FilterDefinition };
-
+export interface TableWithExternalFiltersProps extends ServerDataTableProps {
+    query: QueryDTO;
     totalRowCount?: number;
     rows: any[];
-
-    onQueryData: (query: Query) => void;
+    onQueryData: (query: QueryDTO) => void;
 }
 
 
@@ -241,9 +113,9 @@ export class TableWithExternalFilters extends React.Component<TableWithExternalF
         console.log('onFiltersChange', newFilters)
 
         const filtersDto = newFilters.map(m => ({
-            columnKey: m.filter.fieldName, operationKey: m.operation.key, value: m.value
+            columnKey: m.filter.fieldName, operationKey: m.operation.key, value: m.filter.serializeValue(m.value),
         }));
-        this.props.onQueryData({ ...this.props.query, appliedFilters: filtersDto });
+        this.props.onQueryData({ ...this.props.query, filters: filtersDto });
 
     }
 
@@ -261,13 +133,13 @@ export class TableWithExternalFilters extends React.Component<TableWithExternalF
     render() {
 
 
-        const { query, rows, totalRowCount, availableFilters, keyColumn, columns } = this.props;
+        const { query, rows, totalRowCount, filters, keyColumn, columns } = this.props;
 
-        const appliedFilters = this.props.query.appliedFilters.map(m => {
+        const appliedFilters = this.props.query.filters.map(m => {
 
-            const filter = availableFilters[m.columnKey];
+            const filter = filters[m.columnKey];
 
-            return { filter: filter, operation: filter.operations[m.operationKey], value: m.value } as AppliedFilter;
+            return { filter: filter, operation: filter.operations[m.operationKey], value: filter.deSerializeValue(m.value) } as AppliedFilter;
         });
 
         console.log('TableWithExternalFilters.render', appliedFilters);
@@ -286,14 +158,14 @@ export class TableWithExternalFilters extends React.Component<TableWithExternalF
 
                     <div style={{ marginTop: 10 }}></div>
 
-                    <GridFilters availableFilters={availableFilters} appliedFilters={appliedFilters} onFiltersChange={this.handleFiltersChange} />
+                    <GridFilters availableFilters={filters} appliedFilters={appliedFilters} onFiltersChange={this.handleFiltersChange} />
                 </div>
 
             </div>
             <div className="col-md-9">
                 <Table columns={columnArray} keyColumn={keyColumn} rows={rows}
                     sorting={{ ...query.sort, changeSort: this.handleChangeSort }}
-                    paging={{ currentPage: query.currentPage, pageSize: query.pageSize, totalRowCount: totalRowCount, gotoPage: this.handleGotoPage }} />
+                    paging={{ currentPage: query.paging.currentPage, pageSize: query.paging.pageSize, totalRowCount: totalRowCount, gotoPage: this.handleGotoPage }} />
             </div>
         </div>;
 
