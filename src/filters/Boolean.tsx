@@ -1,4 +1,4 @@
-﻿import { FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations } from "./FilterDefinition";
+﻿import { FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from "./FilterDefinition";
 
 const verbs = [
     ['is', 'is not'],
