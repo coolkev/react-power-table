@@ -264,7 +264,6 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
         }
 
         render() {
-            console.log('Sort.render')
 
             const { sorting, columns, rows, ...extra } = this.props as GridProps<TRow> & InternalSortingProps<T>;
 
@@ -307,7 +306,6 @@ interface SortableHeaderComponentProps extends HeaderComponentProps<any> {
 
 const SortableHeaderComponent = makePure((props: SortableHeaderComponentProps) => {
 
-    console.log('Sorting thComponent render', props);
 
     const { thComponent, column, sorting, sortAsc, onChangeSort, ...rest } = props;
     const col = column as SortableColumn;
@@ -376,7 +374,6 @@ export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: R
 
         componentWillReceiveProps(nextProps: T & ExternalSortingProps) {
 
-            console.log('withSorting componentWillReceiveProps', nextProps);
             if (!shallowEqual(nextProps.columns, this.props.columns) || columnsChanged(nextProps.columns, this.columns, ['sortKey', 'fieldName', 'headerText'])) {
                 //this.transformColumns(nextProps);
                 this.columns = transformColumns(nextProps.columns);

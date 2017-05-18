@@ -61,7 +61,7 @@ class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTa
 
         this.props.executeQuery(query).then(result => {
             console.log('fetch returned ', result)
-            this.setState({ errorMessage: null, rows: result.results, totalRowCount: result.totalResultCount, loading: false });
+            this.setState({ errorMessage: null, rows: result.results, totalRowCount: result.totalResults, loading: false });
 
         }).catch((error: Error) => {
             this.setState({ errorMessage: error.message + ': ' + error.stack, loading: false });

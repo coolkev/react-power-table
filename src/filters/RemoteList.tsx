@@ -41,7 +41,6 @@ export class RemoteList extends FilterDefinition<number[]> {
         });
         this.filterComponent = props => {
 
-            console.log('filterComponent', props.value);
             return <Select.Async value={props.value && props.value.map(m => ({ label: this.cachedOptions[m], value: m })) || []} multi
                 loadOptions={loadOptions}
                 onChange={(e: SelectOption<any>[]) => props.onValueChange(e.map(m => m.value))}

@@ -1,8 +1,9 @@
-//export { DataTypes, Column } from '../../../src/';
+// THIS CODE IS GENERATED AUTOMATICALLY
+// ANY MANUAL EDITS TO THIS FILE MAY GET OVERWRITTEN
 
 export interface QueryResult {
     results: any[];
-    totalResultCount: number;
+    totalResults: number;
     offset: number;
 }
 

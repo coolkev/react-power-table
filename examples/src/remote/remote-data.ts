@@ -1,7 +1,10 @@
+// THIS CODE IS GENERATED AUTOMATICALLY
+// ANY MANUAL EDITS TO THIS FILE MAY GET OVERWRITTEN
+
 import { QueryOptions, SelectOption, QueryDTO, QueryResult } from './interfaces';
 export { Column, DataTypes } from '../../../src/';
 export { SelectOption };
-    
+
 export function getOptionProvider(url: string, key: string) {
 
     return (input: string | number[], maxOptions?: number) => {
