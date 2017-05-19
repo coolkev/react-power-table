@@ -5,11 +5,11 @@ import { CellProps, Column, StrictColumn } from "./ReactPowerTable";
 
 
 /** @internal */
-export const defaultCellComponent = makePure((props: CellProps<any>) => {
-    debuglog('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
-    return <div>{props.value}</div>;
-});
-defaultCellComponent.displayName = 'defaultCellComponent';
+// export const defaultCellComponent = makePure((props: CellProps<any>) => {
+//     debuglog('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
+//     return <div>{props.value}</div>;
+// });
+// defaultCellComponent.displayName = 'defaultCellComponent';
 
 /** @internal */
 export function transformColumn<T>(options: Column<T> | string): StrictColumn<T> {
@@ -38,7 +38,7 @@ export function transformColumn<T>(options: Column<T> | string): StrictColumn<T>
     }
     else {
 
-        result.cellComponent = defaultCellComponent;
+        //result.cellComponent = defaultCellComponent;
         result.cellComponentProps = col.cellComponentProps || (props => ({ column: props.column, value: props.value }));
 
     }

@@ -37,3 +37,8 @@ export interface SelectOption<T extends string | number> {
     label: string;
     value: T;
 }
+
+export interface DisplayValue<T> {
+    display: string;
+    value: T;
+}

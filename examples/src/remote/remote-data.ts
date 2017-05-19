@@ -1,9 +1,9 @@
 // THIS CODE IS GENERATED AUTOMATICALLY
 // ANY MANUAL EDITS TO THIS FILE MAY GET OVERWRITTEN
 
-import { QueryOptions, SelectOption, QueryDTO, QueryResult } from './interfaces';
+import { QueryOptions, SelectOption, QueryDTO, QueryResult, DisplayValue } from './interfaces';
 export { Column, DataTypes } from '../../../src/';
-export { SelectOption };
+export { SelectOption, DisplayValue };
 
 export function getOptionProvider(url: string, key: string) {
 
@@ -38,7 +38,7 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-ClrType': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(postData),
     };
@@ -46,9 +46,9 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
     return fetch(url, options).then(response => {
 
         if (response.ok) {
-            var contentType = response.headers.get('Content-ClrType');
+            var contentType = response.headers.get('Content-Type');
             if (!contentType.match(/application\/json/i)) {
-                var msg = `Invalid Content-ClrType received. Expected 'application/json', was '${contentType}'`;
+                var msg = `Invalid Content-Type received. Expected 'application/json', was '${contentType}'`;
                 throw new Error(msg);
             } else {
                 return response.json() as any as T;

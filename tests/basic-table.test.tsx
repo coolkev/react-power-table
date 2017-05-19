@@ -19,5 +19,16 @@ describe('basic tests',
 
         });
 
+        test('Render plain table with custom cellValueComponent', () => {
+            const component = render(
+                <ReactPowerTable columns={columns} rows={rows} keyColumn='number' tableCellValueComponent={(p) => <span>{p.value}</span> } />
+            );
+            
+            
+            expect(component).toMatchSnapshot();
+
+        });
+
+
 
     });

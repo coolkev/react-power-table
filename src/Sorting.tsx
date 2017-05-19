@@ -5,9 +5,9 @@
 import * as React from 'react';
 //import { Paging, PagingProps } from './components/Paging';
 import { sortArray, getComponentDisplayName, makePure, debuglog, shallowEqual } from './utils';
-import { defaultCellComponent, getExpression, getColumnCore } from "./Column";
+import { getExpression, getColumnCore } from "./Column";
 import { InternalPagingProps } from "./Paging";
-import { Column, HeaderComponentProps, GridProps } from "./ReactPowerTable";
+import { Column, HeaderComponentProps, GridProps, ReactPowerTable } from "./ReactPowerTable";
 
 
 
@@ -81,7 +81,7 @@ function transformColumn<T>(options: SortableColumn<T> | string) {
     if (col.textAlign == 'right' || (cellProps && typeof (cellProps) != 'function' && cellProps.style && cellProps.style.textAlign == 'right')) {
 
         //this is needed to pad right-aligned cells so they line up with header text right side and don't appear under the sort icon
-        const CellComponent = col.cellComponent || defaultCellComponent
+        const CellComponent = col.cellComponent || ReactPowerTable.defaultProps.tableCellValueComponent
         const cellComponentProps = col.cellComponentProps || (props => ({ column: props.column, value: props.value }));
 
         col.cellComponent = props => <SortableCellComponentWrapper><CellComponent {...cellComponentProps(props) } /></SortableCellComponentWrapper>

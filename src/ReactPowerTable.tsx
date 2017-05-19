@@ -21,14 +21,14 @@ export interface DataRowComponentProps<T> extends TableRowComponentProps<T> {
 
     rowComponent: React.ComponentClass<TableRowComponentProps<any>> | React.StatelessComponent<TableRowComponentProps<any>>;
     tdComponent: React.ComponentClass<HTMLPropsWithoutChildren<HTMLTableCellElement>> | React.StatelessComponent<HTMLPropsWithoutChildren<HTMLTableCellElement>>
-
+    tableCellValueComponent: React.ComponentClass<CellProps<T>> | React.StatelessComponent<CellProps<T>>
 }
 
 
 const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
 
 
-    const { row, columns, rowComponent: RowComponent, tdComponent: TdComponent } = props;
+    const { row, columns, rowComponent: RowComponent, tdComponent: TdComponent, tableCellValueComponent } = props;
 
     debuglog('DataRowComponent render', props);
     //console.log('DataRowComponent render', row);
@@ -39,7 +39,7 @@ const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
     return <RowComponent columns={columns} row={row}>
         {columns.filter(m => m.visible !== false).map(col => {
 
-            const CellComponent = col.cellComponent as React.ComponentClass<CellProps<any>> | React.StatelessComponent<CellProps<any>>;
+            const CellComponent = col.cellComponent || tableCellValueComponent;
 
             const value = col.field(row);
             const formattedValue = col.formatter ? col.formatter(col.field(row), row) : col.field(row);
@@ -84,7 +84,8 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
             const { row, columns, ...rest } = props;
             return <tr{...rest}></tr>;
         },
-        tableCellComponent: props => <td{...props}></td>
+        tableCellComponent: props => <td{...props}></td>,
+        tableCellValueComponent: props => <div>{props.value}</div>
 
     };
     constructor(props: GridProps<any>) {
@@ -174,6 +175,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
             tableBodyComponent: TableBody,
             tableRowComponent,
             tableCellComponent,
+            tableCellValueComponent,
             tableFooterComponent: TableFoot,
             tableClassName,
             tableProps
@@ -190,7 +192,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
             debuglog('DataRow map');
 
-            return <DataRowComponent rowComponent={tableRowComponent} tdComponent={tableCellComponent} key={key} columns={columns} row={row} />;
+            return <DataRowComponent rowComponent={tableRowComponent} tdComponent={tableCellComponent} tableCellValueComponent={tableCellValueComponent} key={key} columns={columns} row={row} />;
 
         });
 
@@ -264,9 +266,13 @@ export interface GridProps<T = any> {
     tableRowComponent?: React.ComponentClass<TableRowComponentProps> | React.StatelessComponent<TableRowComponentProps>;
 
     /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
-     * table cell can also be customize per column using Column.cellComponent  and Column.cellComponentProps  *
+     * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps  *
     */
     tableCellComponent?: React.ComponentClass<React.HTMLProps<HTMLTableCellElement>> | React.StatelessComponent<React.HTMLProps<HTMLTableCellElement>>;
+
+    /** This is the default cell value component that will be used if a column specific cellComponent
+    */
+    tableCellValueComponent?: React.ComponentClass<CellProps<T>> | React.StatelessComponent<CellProps<T>>;
 
 
     tableFooterComponent?: React.ComponentClass<React.HTMLProps<HTMLTableSectionElement>> | React.StatelessComponent<React.HTMLProps<HTMLTableSectionElement>>;

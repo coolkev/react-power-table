@@ -1,28 +1,34 @@
 // THIS FILE IS GENERATED AUTOMATICALLY
 // ANY MANUAL EDITS TO THIS FILE WILL GET OVERWRITTEN
 
-import { FieldDefinition, DataTypes, Column, SelectOption, getOptionProvider, executeQuery } from './remote-data';
+import { DisplayValue, FieldDefinition, DataTypes, Column, SelectOption, getOptionProvider, executeQuery } from './remote-data';
 
-interface OrderViewModel {
-    "OrderID": number;
+export interface OrderViewModel {
+    "OrderID": DisplayValue<number>;
     "Customer": CustomerEntityRef;
-    "Date": string;
-    "OrderTotal": number;
-    "DateUpdated": string;
-    "Type": OrderType;
+    "Date": DisplayValue<string>;
+    "OrderTotal": Decimal;
+    "DateUpdated": DisplayValue<string>;
+    "Type": DisplayValue<OrderType>;
 }
 
-interface CustomerEntityRef extends EntityRef {
+export interface CustomerEntityRef extends EntityRef {
 }
 
-enum OrderType {
+export interface Decimal extends ValueType {
+}
+
+export enum OrderType {
     OnlineOrder=0,
     PhoneOrder=1,
 }
 
-interface EntityRef {
-    "ID": number;
-    "Name": string;
+export interface EntityRef {
+    "ID": DisplayValue<number>;
+    "Name": { value: string };
+}
+
+export interface ValueType {
 }
 
 
@@ -64,12 +70,12 @@ export default {
         "Type": new DataTypes.list(fields.Type, filterOptions.Type),
     },
     "columns": {
-        "OrderID": {fieldName: fields.OrderID.fieldName, headerText: fields.OrderID.displayName } as Column<OrderViewModel,number>,
+        "OrderID": {fieldName: fields.OrderID.fieldName, headerText: fields.OrderID.displayName } as Column<OrderViewModel,DisplayValue<number>>,
         "Customer": {fieldName: fields.Customer.fieldName, headerText: fields.Customer.displayName } as Column<OrderViewModel,CustomerEntityRef>,
-        "Date": {fieldName: fields.Date.fieldName, headerText: fields.Date.displayName } as Column<OrderViewModel,string>,
-        "OrderTotal": {fieldName: fields.OrderTotal.fieldName, headerText: fields.OrderTotal.displayName } as Column<OrderViewModel,number>,
-        "DateUpdated": {fieldName: fields.DateUpdated.fieldName, headerText: fields.DateUpdated.displayName } as Column<OrderViewModel,string>,
-        "Type": {fieldName: fields.Type.fieldName, headerText: fields.Type.displayName } as Column<OrderViewModel,OrderType>,
+        "Date": {fieldName: fields.Date.fieldName, headerText: fields.Date.displayName } as Column<OrderViewModel,DisplayValue<string>>,
+        "OrderTotal": {fieldName: fields.OrderTotal.fieldName, headerText: fields.OrderTotal.displayName } as Column<OrderViewModel,Decimal>,
+        "DateUpdated": {fieldName: fields.DateUpdated.fieldName, headerText: fields.DateUpdated.displayName } as Column<OrderViewModel,DisplayValue<string>>,
+        "Type": {fieldName: fields.Type.fieldName, headerText: fields.Type.displayName } as Column<OrderViewModel,DisplayValue<OrderType>>,
     },
     "keyColumn": "OrderID",
     "defaultSort": {"column":"Date","descending":true}
