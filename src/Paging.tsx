@@ -159,6 +159,7 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.St
     return class extends React.Component<T & { paging: PagingProps }, never> {
 
         static readonly displayName = `WithPaging(${getComponentDisplayName(WrappedComponent)})`;
+        static defaultProps: Partial<T & { paging: PagingProps }> = WrappedComponent.defaultProps as any;
 
         constructor(props: T & { paging: PagingProps }) {
             super(props);

@@ -339,6 +339,7 @@ const SortableHeaderComponent = makePure((props: SortableHeaderComponentProps) =
 
 
 });
+SortableHeaderComponent.displayName = 'SortableHeaderComponent';
 
 
 export interface ExternalSortingProps {

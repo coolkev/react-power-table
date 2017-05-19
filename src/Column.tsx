@@ -9,6 +9,7 @@ export const defaultCellComponent = makePure((props: CellProps<any>) => {
     debuglog('Render cellComponent column: ' + props.column.key + ' value: ' + props.value);
     return <div>{props.value}</div>;
 });
+defaultCellComponent.displayName = 'defaultCellComponent';
 
 /** @internal */
 export function transformColumn<T>(options: Column<T> | string): StrictColumn<T> {

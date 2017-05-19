@@ -57,6 +57,7 @@ const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
 
 
 });
+DataRowComponent.displayName = 'DataRowComponent';
 
 /**
  * Primary table component
@@ -214,6 +215,7 @@ const HeaderComponent = makePure((props: HeaderComponentProps<any>) => {
     //debuglog('defaultHeaderComponent render ' + props.column.headerText);
     return <div>{props.column.headerText}</div>
 });
+HeaderComponent.displayName = 'HeaderComponent';
 
 export interface GridProps<T = any> {
     /**

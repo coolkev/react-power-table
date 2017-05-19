@@ -28,7 +28,8 @@ export class ExternalPagingSortingExample extends React.Component<never, Externa
 
     changeSort(sort: SortSettings) {
 
-        this.setState(prev => ({ data: sortArray(prev.data, sort.column, { descending: sort.descending, caseInsensitive: true }), currentSort: sort }));
+        //should reset back to page 1 when changing sort
+        this.setState(prev => ({ data: sortArray(prev.data, sort.column, { descending: sort.descending, caseInsensitive: true }), currentSort: sort, currentPage: 1 }));
     }
 
     gotoPage(currentPage: number, pageSize?: number) {
