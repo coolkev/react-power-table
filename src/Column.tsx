@@ -15,33 +15,30 @@ export function transformColumn<T>(options: Column<T> | string): StrictColumn<T>
 
     debuglog('transformColumn', options);
 
-    if (typeof options === 'string') {
-        options = { fieldName: options } as Column<T>;
-    }
+    const col = typeof options === 'string' ? { fieldName: options } as Column<T> : options;
 
     const core = getColumnCore(options);
     const { cellProps, headerProps } = getCellAndHeaderProps(options);
 
 
     const result: StrictColumn<T> = {
-        //__transformed: true,
-        ...options,
+        ...col,
         ...core,
         cellProps: cellProps,
         headerCellProps: headerProps,
-        headerComponent: options.headerComponent,
-        formatter: options.formatter || null
+        headerComponent: col.headerComponent,
+        formatter: col.formatter || null
     };
 
-    if (options.cellComponent) {
-        result.cellComponent = options.cellComponent;
-        result.cellComponentProps = options.cellComponentProps || (props => props);
+    if (col.cellComponent) {
+        result.cellComponent = col.cellComponent;
+        result.cellComponentProps = col.cellComponentProps || (props => props);
 
     }
     else {
 
         result.cellComponent = defaultCellComponent;
-        result.cellComponentProps = options.cellComponentProps || (props => ({ column: props.column, value: props.value }));
+        result.cellComponentProps = col.cellComponentProps || (props => ({ column: props.column, value: props.value }));
 
     }
 
@@ -170,26 +167,40 @@ export function getExpression(func: Function): string {
     return null;
 }
 
-export function columnsChanged(newColumns: (string | Column)[], prevColumns: Column[], compareKeys: string[]) {
+// export function columnsChanged(newColumns: (string | Column)[], prevColumns: (string | Column)[]) {
 
-    if ((!newColumns && prevColumns) || (newColumns && !prevColumns) || newColumns.length != prevColumns.length) {
-        return true;
-    }
+//     if ((!newColumns && prevColumns) || (newColumns && !prevColumns) || newColumns.length != prevColumns.length) {
+//         return true;
+//     }
 
-    //const keys = ['key', 'fieldName', 'headerText'];
+//     //const keys = ['key', 'fieldName', 'headerText'];
 
-    for (let i = 0; i < prevColumns.length; i++) {
-        const prevCol = prevColumns[i];
-        const newCol = getColumnCore(newColumns[i]);
+//     const changed: number[] = [];
+//     //let result = false;
 
-        for (let key of compareKeys) {
-            if (prevCol[key] !== newCol[key]) {
-                return true;
-            }
-        }
+//     for (let i = 0; i < prevColumns.length; i++) {
+//         const prevCol = prevColumns[i];
+//         const newCol = newColumns[i];
 
-        //if (!shallowEqual(newCol, {key:prevCol.key,field: prevCol.field, fieldName: prevCol.fieldName, headerText: prevCol.headerText}))
-    }
+//         if (prevCol != newCol) {
+//             //console.log('column changed: ' + (prevColumns[i] as any).key)
+//             //return true;
+//             changed.push(i);
+//         }
+//     }
 
-    return false;
-}
+//     if (changed.length > 0) {
+
+//         if (changed.length == prevColumns.length) {
+
+//             throw new Error('all columns changed - this means you are probably doing something wrong');
+//             //console.warn('all columns changed - this means you are probably doing something wrong');
+//         }
+//         // else {
+//         //     changed.forEach(i => console.log('column changed: ' + (prevColumns[i] as any).key));
+//         // }
+
+//         return true;
+//     }
+//     return false;
+// }

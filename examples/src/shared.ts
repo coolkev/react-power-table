@@ -1,5 +1,7 @@
 ﻿
-export const defaultColumns: object[] = [
+import { Column } from "../../src/ReactPowerTable";
+
+export const defaultColumns: Column[] = [
     { field: m => m.number },
     { field: m => m.president, headerText: 'name' },
     { field: m => m.party },

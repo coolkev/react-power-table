@@ -24,7 +24,7 @@
     "react-bootstrap": "^0.31.0",
     "react-bootstrap-date-picker": "coolkev/react-bootstrap-date-picker",
     "react-dom": "^15.4.2",
-    "react-select": "^1.0.0-rc.3"
+    "react-select": "^1.0.0-rc.4"
   },
   "devDependencies": {
     "@types/bootstrap": "^3.3.32",
@@ -60,32 +60,24 @@
     "gulp-webpack": "^1.5.0",
     "http-proxy-middleware": "^0.17.4",
     "imports-loader": "^0.7.1",
-    "jest": "^20.0.0",
-    "jest-enzyme": "^3.0.1",
+    "jest": "^20.0.3",
+    "jest-enzyme": "^3.1.1",
     "merge2": "^1.0.3",
     "react-hot-loader": "3.0.0-beta.6",
     "react-test-renderer": "^15.5.4",
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.13.2",
-    "ts-jest": "^20.0.0",
+    "ts-jest": "^20.0.4",
     "typescript": "^2.3.2",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.1"
   },
   "jest": {
-    "globals": {
-      "__TS_CONFIG__": {
-        "module": "commonjs",
-        "jsx": "react"
-      }
-    },
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testMatch": [
-      "**/?(*.)(spec|test).ts?(x)"
-    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",

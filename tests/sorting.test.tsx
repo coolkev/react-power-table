@@ -17,6 +17,7 @@ describe('withInternalSorting tests',
             const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ column: 'number' }} />;
             const component = mount<InternalSortingProps,InternalSortingState<any>>(c);
 
+            
             expect(component.state('currentSort').column).toEqual('number');
             
             const th = component.find('th');
@@ -37,7 +38,6 @@ describe('withInternalSorting tests',
             expect(th.at(1).render()).toMatchSnapshot();
 
             expect(component.render()).toMatchSnapshot();
-
 
         });
 
@@ -62,6 +62,7 @@ describe('withInternalSorting tests',
 
         test('change rows from props', () => {
 
+            
             const Table = withInternalSorting(ReactPowerTable);
 
             const c = <Table columns={columns} rows={rows} keyColumn='number' sorting={{ column: 'number'}} />;

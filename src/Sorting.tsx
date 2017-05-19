@@ -5,7 +5,7 @@
 import * as React from 'react';
 //import { Paging, PagingProps } from './components/Paging';
 import { sortArray, getComponentDisplayName, makePure, debuglog, shallowEqual } from './utils';
-import { defaultCellComponent, getExpression, getColumnCore, columnsChanged } from "./Column";
+import { defaultCellComponent, getExpression, getColumnCore } from "./Column";
 import { InternalPagingProps } from "./Paging";
 import { Column, HeaderComponentProps, GridProps } from "./ReactPowerTable";
 
@@ -24,12 +24,8 @@ export interface SortableColumn<TRow = any, TValue = any> extends Column<TRow, T
     sortExpression?: ((row: TRow) => any) | string;
     sortKey?: string;
 
-    //sortAscComponent?: JSX.Element;
-    //sortDescComponent?: JSX.Element;
-
-
-
 }
+
 /** @internal */
 export interface InternalSortingState<T> {
     sortedRows?: T[];
@@ -93,39 +89,6 @@ function transformColumn<T>(options: SortableColumn<T> | string) {
     return col;
 }
 
-function transformColumns(columns: Column<any>[]): SortableColumn<any>[] {
-    debuglog('Sorting.transformColumns', columns);
-
-    return columns.map(c => transformColumn(c));
-}
-
-
-// function transformComponents(components: GridComponents, getCurrentSort: () => SortSettings, changeSort: (sort: SortSettings) => void) {
-
-
-//     // const OriginalThComponent = components && components.head && components.head.thComponent || ReactPowerTable.defaultProps.components.head.thComponent;
-//     // const newComponents: GridComponents = {
-//     //     ...components, head: {
-//     //         ...(components && components.head), thComponent: (props) => {
-
-//     //             const { ref, children, ...extra } = props;
-//     //             const col = extra.column as SortableColumn;
-//     //             const currentSort = getCurrentSort();
-//     //             const sorting = col.sortKey == currentSort.column;
-//     //             const sortAsc = sorting && !currentSort.descending;
-
-//     //             if (!col.sortable) {
-//     //                 return <OriginalThComponent {...extra} children={children} />;
-//     //             }
-
-//     //             return <SortableHeaderComponent {...extra} sorting={sorting} sortAsc={sortAsc} thComponent={OriginalThComponent} onChangeSort={changeSort} />
-
-//     //         }
-//     //     }
-//     // };
-//     // return newComponents;
-
-// }
 function getSortableHeaderCell(OriginalHeaderCell: React.ComponentClass<HeaderComponentProps> | React.StatelessComponent<HeaderComponentProps>, getCurrentSort: () => SortSettings, changeSort: (sort: SortSettings) => void) {
 
     const headerCell: React.StatelessComponent<HeaderComponentProps> = (p) => {
@@ -165,19 +128,23 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
         //     }
         // } as any;
         static defaultProps: Partial<T & InternalSortingProps<TRow>> = WrappedComponent.defaultProps as any;
-        
+
         //private components: GridComponents<TRow>;
         private headerCell: React.StatelessComponent<HeaderComponentProps>;
         private sortChangedSinceLastRender: boolean;
 
         constructor(props: T & InternalSortingProps<TRow>) {
             super(props);
+            //console.log('Sorting constructor', props.columns[0]);
 
             const { sorting } = props;
 
             this.changeSort = this.changeSort.bind(this);
 
-            this.columns = transformColumns(props.columns);
+            this.columns = this.transformColumns(props.columns);
+            this.originalColumns = props.columns;
+
+            //console.log('Sorting this.columns set');
             const sortedRows = this.performSort(props.rows, sorting);
 
             this.state = {
@@ -193,17 +160,26 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
         }
 
         private columns: SortableColumn<TRow>[];
+        private originalColumns: (SortableColumn<TRow> | string)[];
 
         componentWillReceiveProps(nextProps: T & InternalSortingProps<T>) {
+            //console.log('Sorting.componentWillReceiveProps');
+            //console.log('Sorting componentWillReceiveProps', nextProps.columns[0]);
 
-            if (!shallowEqual(nextProps.columns, this.props.columns) || columnsChanged(nextProps.columns, this.columns, ['sortKey', 'fieldName', 'headerText'])) {
-                this.columns = transformColumns(nextProps.columns);
+            //const changes: string[] = [];
+            if (!shallowEqual(nextProps.columns, this.props.columns)) {
+                //changes.push('columns changed');
+                this.columns = this.transformColumns(nextProps.columns);
+                this.originalColumns = nextProps.columns;
+
             }
             if (nextProps.tableHeaderCellComponent != this.props.tableHeaderCellComponent) {
+                //changes.push('tableHeaderCellComponent changed');
                 //this.components = transformComponents(nextProps.components, () => this.state.currentSort, this.changeSort);
                 this.headerCell = getSortableHeaderCell(nextProps.tableHeaderCellComponent, () => this.state.currentSort, this.changeSort);
             }
             if (this.props.sorting.column != nextProps.sorting.column || this.props.sorting.descending != nextProps.sorting.descending) {
+                //changes.push('sorting changed');
 
                 const newSort: SortSettings = { column: nextProps.sorting.column, descending: nextProps.sorting.descending };
                 const sortedRows = this.performSort(nextProps.rows, newSort);
@@ -211,13 +187,38 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
                 this.setState({ currentSort: newSort, sortedRows });
             }
             else if (this.props.rows != nextProps.rows) {
+                //changes.push('rows changed');
 
                 this.setState(prev => ({
                     sortedRows: this.performSort(nextProps.rows, prev.currentSort)
                 }));
             }
 
+            // const FgRed = "\x1b[31m";
+            // const FgGreen = "\x1b[32m";
+            // const Reset = "\x1b[0m";
+
+            // if (changes.length > 0) {
+            //     console.log(FgRed + 'Sorting.componentWillReceiveProps has changes' + Reset, changes);
+            // }
+            // else {
+            //     console.log(FgGreen + 'Sorting.componentWillReceiveProps does not have any changes' + Reset);
+
+            // }
+
         }
+
+        private transformColumns(columns: SortableColumn<any>[]): SortableColumn<any>[] {
+            debuglog('Sorting.transformColumns', columns);
+
+            if (this.columns && this.originalColumns) {
+                //reuse the same column if it hasn't changed from the original
+                return columns.map((c, i) => shallowEqual(c, this.originalColumns[i]) ? this.columns[i] : transformColumn(c));
+
+            }
+            return columns.map((c) => transformColumn(c));
+        }
+
         // componentWillMount() {
         //     debuglog('Sort.componentWillMount')
 
@@ -264,6 +265,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
         }
 
         render() {
+            //console.log('Sorting.render');
 
             const { sorting, columns, rows, ...extra } = this.props as GridProps<TRow> & InternalSortingProps<T>;
 
@@ -342,7 +344,7 @@ const SortableHeaderComponent = makePure((props: SortableHeaderComponentProps) =
 export interface ExternalSortingProps {
 
     columns: (SortableColumn | string)[];
-    
+
     sorting: SortSettings & {
 
         changeSort: (sort: SortSettings) => void;
@@ -358,33 +360,48 @@ export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: R
 
     return class extends React.Component<T & ExternalSortingProps, never> {
 
-        
+
         private headerCell: React.StatelessComponent<HeaderComponentProps>;
 
         static readonly displayName = `WithSorting(${getComponentDisplayName(WrappedComponent)})`;
         static defaultProps: Partial<T & ExternalSortingProps> = WrappedComponent.defaultProps as any;
-        
+
         constructor(props: T & ExternalSortingProps) {
             super(props);
 
-            this.columns = transformColumns(props.columns);
+            this.columns = this.transformColumns(props.columns);
+            this.originalColumns = props.columns;
             this.headerCell = getSortableHeaderCell(props.tableHeaderCellComponent, () => this.props.sorting, this.props.sorting.changeSort);
 
         }
 
         componentWillReceiveProps(nextProps: T & ExternalSortingProps) {
 
-            if (!shallowEqual(nextProps.columns, this.props.columns) || columnsChanged(nextProps.columns, this.columns, ['sortKey', 'fieldName', 'headerText'])) {
-                //this.transformColumns(nextProps);
-                this.columns = transformColumns(nextProps.columns);
-            }
+            if (!shallowEqual(nextProps.columns, this.props.columns)) {
+                //changes.push('columns changed');
+                this.columns = this.transformColumns(nextProps.columns);
+                this.originalColumns = nextProps.columns;
 
+            }
             if (nextProps.tableHeaderCellComponent != this.props.tableHeaderCellComponent) {
-            this.headerCell = getSortableHeaderCell(nextProps.tableHeaderCellComponent, () => this.props.sorting, this.props.sorting.changeSort);
+                this.headerCell = getSortableHeaderCell(nextProps.tableHeaderCellComponent, () => this.props.sorting, this.props.sorting.changeSort);
             }
         }
 
+        private transformColumns(columns: SortableColumn<any>[]): SortableColumn<any>[] {
+            debuglog('Sorting.transformColumns', columns);
+
+            if (this.columns && this.originalColumns) {
+                //reuse the same column if it hasn't changed from the original
+                return columns.map((c, i) => c==this.originalColumns[i] ? this.columns[i] : transformColumn(c));
+
+            }
+            return columns.map((c) => transformColumn(c));
+        }
+
         private columns: SortableColumn<TRow>[];
+        private originalColumns: (SortableColumn<TRow> | string)[];
+
 
         render() {
             const { sorting, tableHeaderCellComponent, ...extra } = this.props as GridProps<TRow> & ExternalSortingProps;

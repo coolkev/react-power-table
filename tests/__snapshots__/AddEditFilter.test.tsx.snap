@@ -2643,7 +2643,7 @@ exports[`AddEditFilter tests add filter party in 1`] = `
       style="margin-left: 20px;"
     >
       <div
-        class="Select small Select--multi is-searchable"
+        class="Select small Select--multi is-clearable is-searchable"
       >
         <div
           class="Select-control"

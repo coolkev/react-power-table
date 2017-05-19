@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import { debuglog, shallowEqual, makePure } from './utils';
-import { transformColumn, columnsChanged } from "./Column";
+import { transformColumn } from "./Column";
 
 
 // function omitChildren(obj: React.HTMLProps<any>) {
@@ -21,7 +21,7 @@ export interface DataRowComponentProps<T> extends TableRowComponentProps<T> {
 
     rowComponent: React.ComponentClass<TableRowComponentProps<any>> | React.StatelessComponent<TableRowComponentProps<any>>;
     tdComponent: React.ComponentClass<HTMLPropsWithoutChildren<HTMLTableCellElement>> | React.StatelessComponent<HTMLPropsWithoutChildren<HTMLTableCellElement>>
-    
+
 }
 
 
@@ -31,12 +31,14 @@ const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
     const { row, columns, rowComponent: RowComponent, tdComponent: TdComponent } = props;
 
     debuglog('DataRowComponent render', props);
+    //console.log('DataRowComponent render', row);
 
     //const RowComponent = props.rowComponent;
     //const TdComponent = props.tdComponent;
 
     return <RowComponent columns={columns} row={row}>
-        {columns.map(col => {
+        {columns.filter(m => m.visible !== false).map(col => {
+
             const CellComponent = col.cellComponent as React.ComponentClass<CellProps<any>> | React.StatelessComponent<CellProps<any>>;
 
             const value = col.field(row);
@@ -49,6 +51,7 @@ const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
             //const { children, ...actualCellProps } = cellProps || { children: undefined };
 
             return <TdComponent key={col.key} {...cellProps}><CellComponent {...cellComponentProps} /></TdComponent>
+
         })}
     </RowComponent>;
 
@@ -60,8 +63,11 @@ const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
  */
 export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
+    private originalColumns: (Column | string)[];
     private columns: StrictColumn<any>[];
     private getRowKey: (row: any) => string | number;
+
+    static displayName = 'ReactPowerTable';
 
     static defaultProps: Partial<GridProps<any>> = {
         tableComponent: props => <table {...props}></table>,
@@ -80,35 +86,21 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         tableCellComponent: props => <td{...props}></td>
 
     };
-    // components: {
-    //     table: {
-    //         component: props => <table {...props}></table>
-    //     },
-    //     head: {
-    //         theadComponent: props => <thead {...props}></thead>,
-    //         trComponent: props => <tr {...props}></tr>,
-    //         thComponent: props => {
-    //             const { children, column, ...rest } = props;
-    //             debuglog('defaultProps thComponent render', props);
-    //             return <th {...rest}>{children}</th>;
-    //         }
-    //     },
-    //     body: {
-    //         tbodyComponent: props => <tbody>{props.children}</tbody>,
-    //         trComponent: props => <tr>{props.children}</tr>
-    //     }
-    // }
-    //};
-
     constructor(props: GridProps<any>) {
         super(props);
         debuglog('constructor', props);
 
-        this.transformProps(props);
+        //this.transformProps(props);
+
+        this.columns = props.columns.map(c => transformColumn(c));
+        this.originalColumns = props.columns;
+        this.getRowKey = typeof props.keyColumn == 'function' ? props.keyColumn : (row) => row[props.keyColumn as string];
+
     }
 
     componentWillReceiveProps(nextProps: GridProps<any>) {
         debuglog('componentWillReceiveProps', nextProps);
+
 
         this.transformProps(nextProps, this.props);
 
@@ -122,22 +114,50 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         return result;
     }
 
+    private transformColumns(columns: Column<any>[]): StrictColumn<any>[] {
+        debuglog('Sorting.transformColumns', columns);
+
+        if (this.columns && this.originalColumns) {
+            //reuse the same column if it hasn't changed from the original
+            return columns.map((c, i) => shallowEqual(c, this.originalColumns[i]) ? this.columns[i] : transformColumn(c));
+        }
+
+        return columns.map((c) => transformColumn(c));
+    }
 
     transformProps(newProps: GridProps<any>, oldProps?: GridProps<any>) {
 
         debuglog('transformProps', { newProps, oldProps });
+        //const changes: string[] = [];
 
-        if (!oldProps || !shallowEqual(newProps.columns, oldProps.columns) || columnsChanged(newProps.columns, this.columns, ['key', 'fieldName', 'headerText'])) {
+        if (!oldProps || !shallowEqual(newProps.columns, oldProps.columns)) {
+            //changes.push('columns changed');
             debuglog('transforming columns', newProps.columns);
 
-            this.columns = newProps.columns.map(c => transformColumn(c));
+
+            this.columns = this.transformColumns(newProps.columns);
+            this.originalColumns = newProps.columns;
         }
 
         if (!oldProps || newProps.keyColumn != oldProps.keyColumn) {
+            //changes.push('keyColumn changed');
+
             debuglog('transforming getRowKey');
+            //console.log('ReactPowerTable.getRowKey Changed');
+
             this.getRowKey = typeof newProps.keyColumn == 'function' ? newProps.keyColumn : (row) => row[newProps.keyColumn as string];
         }
+        // const FgRed = "\x1b[31m";
+        // const FgGreen = "\x1b[32m";
+        // const Reset = "\x1b[0m";
 
+        // if (changes.length > 0) {
+        //     console.log(FgRed + 'ReactPowerTable.transformProps has changes' + Reset, changes);
+        // }
+        // else {
+        //     console.log(FgGreen + 'ReactPowerTable.transformProps does not have any changes' + Reset);
+
+        // }
 
     }
 
@@ -179,7 +199,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         return <Table {...combinedTableProps }>
             <TableHead>
                 <TableHeadRow>
-                    {columns.map(c => <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>)}
+                    {columns.filter(m => m.visible !== false).map(c => <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>)}
                 </TableHeadRow>
             </TableHead>
 
@@ -273,19 +293,8 @@ export interface StrictColumn<TRow = any, TValue = any> {
 
     headerCellProps?: HTMLPropsWithoutChildren<HTMLTableHeaderCellElement>;
 
+    visible?: boolean;
 }
-
-
-
-
-export interface HeaderComponentProps<T = any> extends HTMLPropsWithoutChildren<HTMLTableHeaderCellElement> {
-    column: StrictColumn<T>;
-
-}
-
-
-
-
 
 
 export interface Column<TRow = any, TValue = any> {
@@ -308,7 +317,21 @@ export interface Column<TRow = any, TValue = any> {
     width?: number;
     maxWidth?: number;
     textAlign?: string;
+
+    /**
+     * default: true
+     */
+    visible?: boolean;
+
 }
+
+
+
+export interface HeaderComponentProps<T = any> extends HTMLPropsWithoutChildren<HTMLTableHeaderCellElement> {
+    column: StrictColumn<T>;
+
+}
+
 
 export interface CellProps<TRow = any, TValue = any> {
     row: TRow;

@@ -4,14 +4,19 @@ import { ReactPowerTable, withInternalSorting, Column, withInternalPaging } from
 import { getColumnCore } from "../../src/Column";
 
 interface HideColumnsExampleState {
-        visibleColumnNames: string[];
-        counter: number;
+        columns: Column[];
+        //counter: number;
 }
 
 
-const allColumns = defaultColumns.map(c => {
+// const allColumns = defaultColumns.map(c => {
+//         const core = getColumnCore(c);
+//         return { col: c, fieldName: core.fieldName, headerText: core.headerText };
+// });
+
+const initialColumns = defaultColumns.map(c => {
         const core = getColumnCore(c);
-        return { col: c, fieldName: core.fieldName, headerText: core.headerText };
+        return { ...c, fieldName: core.fieldName, headerText: core.headerText };
 });
 
 const Table = withInternalSorting(withInternalPaging(ReactPowerTable));
@@ -20,43 +25,42 @@ export class HideColumnsExample extends React.Component<never, HideColumnsExampl
         constructor(props: never) {
                 super(props);
                 this.state = {
-                        visibleColumnNames: allColumns.map(m => m.fieldName),
-                        counter: 0
+                        columns: initialColumns
                 };
 
-                this.handleVisibleChange = this.handleVisibleChange.bind(this);
+                //this.handleVisibleChange = this.handleVisibleChange.bind(this);
 
-                this.visibleColumns = defaultColumns;
         }
 
-        visibleColumns: Column<President>[];
-        handleVisibleChange(evt: React.SyntheticEvent<HTMLInputElement>) {
+        handleVisibleChange(col: Column, checked: boolean) {
 
-                const columnFieldName = evt.currentTarget.value;
+                // const columnFieldName = evt.currentTarget.value;
 
-                const { visibleColumnNames } = this.state;
-                const newVisibleColumnNames = evt.currentTarget.checked ? [...visibleColumnNames, columnFieldName] : visibleColumnNames.filter(c => c != columnFieldName);
+                // const { columns } = this.state;
+                // //const newVisibleColumnNames = evt.currentTarget.checked ? [...visibleColumnNames, columnFieldName] : visibleColumnNames.filter(c => c != columnFieldName);
 
-                this.setState({ visibleColumnNames: newVisibleColumnNames });
+                // this.setState({ visibleColumnNames: newVisibleColumnNames });
 
-                this.visibleColumns = allColumns.filter(m => newVisibleColumnNames.indexOf(m.fieldName) > -1).map(m => m.col);
+                // this.visibleColumns = allColumns.filter(m => newVisibleColumnNames.indexOf(m.fieldName) > -1).map(m => m.col);
 
+                this.setState(prev => ({ columns: prev.columns.map(c => c == col ? { ...c, visible: checked } : c) }));
         }
 
         render() {
 
+                const { columns } = this.state;
+
                 return <div>
 
 
-                        <button onClick={() => this.setState(prev => ({ counter: prev.counter + 1 }))}>Counter</button>
 
                         <div>Show Columns:
 
-                                {allColumns.map(c => <label key={c.fieldName} style={{ marginRight: 10 }}><input type="checkbox" checked={this.state.visibleColumnNames.indexOf(c.fieldName) > -1} value={c.fieldName} onChange={this.handleVisibleChange} /> {c.headerText}</label>)}
+                                {columns.map(c => <label key={c.fieldName} style={{ marginRight: 10 }}><input type="checkbox" checked={c.visible!==false} onChange={(e) => this.handleVisibleChange(c, e.currentTarget.checked)} /> {c.headerText}</label>)}
                         </div>
 
 
-                        <Table columns={this.visibleColumns} keyColumn="number" rows={sampledata} sorting={{ column: 'president'}} />
+                        <Table columns={this.state.columns} keyColumn="number" rows={sampledata} sorting={{ column: 'president' }} />
                 </div>;
         }
 }

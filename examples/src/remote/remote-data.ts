@@ -38,7 +38,7 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-ClrType': 'application/json'
         },
         body: JSON.stringify(postData),
     };
@@ -46,9 +46,9 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
     return fetch(url, options).then(response => {
 
         if (response.ok) {
-            var contentType = response.headers.get('Content-Type');
+            var contentType = response.headers.get('Content-ClrType');
             if (!contentType.match(/application\/json/i)) {
-                var msg = `Invalid Content-Type received. Expected 'application/json', was '${contentType}'`;
+                var msg = `Invalid Content-ClrType received. Expected 'application/json', was '${contentType}'`;
                 throw new Error(msg);
             } else {
                 return response.json() as any as T;
@@ -57,4 +57,26 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
             throw new Error('Error');
         }
     });
+}
+
+
+export interface FieldDefinition {
+    fieldName: string;
+    displayName: string;
+    filterable?: boolean;
+    visible?: boolean;
+    typeName: string;
+    dataType: FieldDataType;
+
+}
+
+export enum FieldDataType {
+    String = 1,
+    Int = 2,
+    Decimal = 3,
+    Date = 4,
+    DateTime = 5,
+    Boolean = 6,
+    Enum = 7,
+    EntityRef = 8,
 }

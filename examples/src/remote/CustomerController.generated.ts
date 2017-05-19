@@ -1,7 +1,7 @@
 // THIS FILE IS GENERATED AUTOMATICALLY
 // ANY MANUAL EDITS TO THIS FILE WILL GET OVERWRITTEN
 
-import { DataTypes, Column, SelectOption, getOptionProvider, executeQuery } from './remote-data';
+import { FieldDefinition, DataTypes, Column, SelectOption, getOptionProvider, executeQuery } from './remote-data';
 
 interface CustomerViewModel {
     "CustomerID": number;
@@ -14,15 +14,15 @@ interface CustomerViewModel {
 }
 
 
-const fields = {
-        "Orders_Details_ProductID": {"fieldName":"Orders_Details_ProductID","displayName":"Has Ordered Product"},
-        "CustomerID": {"fieldName":"CustomerID","displayName":"Customer ID"},
-        "FirstName": {"fieldName":"FirstName","displayName":"First Name"},
-        "LastName": {"fieldName":"LastName","displayName":"Last Name"},
-        "Age": {"fieldName":"Age","displayName":"Age"},
-        "OrderCount": {"fieldName":"OrderCount","displayName":"Order Count"},
-        "FirstOrderDate": {"fieldName":"FirstOrderDate","displayName":"First Order Date","canBeNull":true},
-        "LastOrderDate": {"fieldName":"LastOrderDate","displayName":"Last Order Date","canBeNull":true},
+export const fields = {
+        "Orders_Details_ProductID": {"fieldName":"Orders_Details_ProductID","displayName":"Has Ordered Product","filterable":true,"visible":false,"typeName":"Int32","dataType":2} as FieldDefinition,
+        "CustomerID": {"fieldName":"CustomerID","displayName":"Customer ID","filterable":true,"visible":false,"typeName":"Int32","dataType":2} as FieldDefinition,
+        "FirstName": {"fieldName":"FirstName","displayName":"First Name","filterable":true,"visible":true,"typeName":"String","dataType":1} as FieldDefinition,
+        "LastName": {"fieldName":"LastName","displayName":"Last Name","filterable":true,"visible":true,"typeName":"String","dataType":1} as FieldDefinition,
+        "Age": {"fieldName":"Age","displayName":"Age","filterable":true,"visible":true,"typeName":"Int32","dataType":2} as FieldDefinition,
+        "OrderCount": {"fieldName":"OrderCount","displayName":"Order Count","filterable":true,"visible":true,"typeName":"Int32","dataType":2} as FieldDefinition,
+        "FirstOrderDate": {"fieldName":"FirstOrderDate","displayName":"First Order Date","filterable":true,"visible":true,"typeName":"DateTime","canBeNull":true,"dataType":4} as FieldDefinition,
+        "LastOrderDate": {"fieldName":"LastOrderDate","displayName":"Last Order Date","filterable":true,"visible":true,"typeName":"DateTime","canBeNull":true,"dataType":4} as FieldDefinition,
 };
 
 const endpointUrl = "/api/customer/";

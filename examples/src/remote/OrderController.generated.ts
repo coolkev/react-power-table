@@ -1,7 +1,7 @@
 // THIS FILE IS GENERATED AUTOMATICALLY
 // ANY MANUAL EDITS TO THIS FILE WILL GET OVERWRITTEN
 
-import { DataTypes, Column, SelectOption, getOptionProvider, executeQuery } from './remote-data';
+import { FieldDefinition, DataTypes, Column, SelectOption, getOptionProvider, executeQuery } from './remote-data';
 
 interface OrderViewModel {
     "OrderID": number;
@@ -29,14 +29,14 @@ interface EntityRef {
 function mapEntries(obj: { [key:number]: string }) {
     return Object.keys(obj).map((k) => ({ label: obj[k], value: k as any } as SelectOption<number>))
 }
-const fields = {
-        "ProductID": {"fieldName":"ProductID","displayName":"Product ID"},
-        "OrderID": {"fieldName":"OrderID","displayName":"Order ID"},
-        "Customer": {"fieldName":"Customer","displayName":"Customer"},
-        "Date": {"fieldName":"Date","displayName":"Date"},
-        "OrderTotal": {"fieldName":"OrderTotal","displayName":"Order Total"},
-        "DateUpdated": {"fieldName":"DateUpdated","displayName":"Date Updated","canBeNull":true},
-        "Type": {"fieldName":"Type","displayName":"Type"},
+export const fields = {
+        "ProductID": {"fieldName":"ProductID","displayName":"Product ID","filterable":true,"visible":false,"typeName":"Int32","dataType":2} as FieldDefinition,
+        "OrderID": {"fieldName":"OrderID","displayName":"Order ID","filterable":true,"visible":true,"typeName":"Int32","dataType":2} as FieldDefinition,
+        "Customer": {"fieldName":"Customer","displayName":"Customer","filterable":true,"visible":true,"typeName":"CustomerEntityRef","dataType":8} as FieldDefinition,
+        "Date": {"fieldName":"Date","displayName":"Date","filterable":true,"visible":true,"typeName":"DateTime","dataType":4} as FieldDefinition,
+        "OrderTotal": {"fieldName":"OrderTotal","displayName":"Order Total","filterable":true,"visible":true,"typeName":"Decimal","dataType":3} as FieldDefinition,
+        "DateUpdated": {"fieldName":"DateUpdated","displayName":"Date Updated","filterable":true,"visible":true,"typeName":"DateTime","canBeNull":true,"dataType":4} as FieldDefinition,
+        "Type": {"fieldName":"Type","displayName":"Type","filterable":true,"visible":true,"typeName":"OrderType","dataType":7} as FieldDefinition,
 };
 
 const endpointUrl = "/api/order/";
