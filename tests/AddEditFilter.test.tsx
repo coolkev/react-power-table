@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
 import { GridFilters, DataTypes, AppliedFilter, FilterDefinition } from '../src/';
-import { defaultColumns, sampledata, President, partyList } from "./shared";
+import { defaultColumns, sampledata, President, partyList } from './shared';
 import { mount } from 'enzyme';
-import { AddEditFilter } from "../src/AddEditFilter";
+import { AddEditFilter } from '../src/AddEditFilter';
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
@@ -66,7 +66,7 @@ describe('AddEditFilter tests',
 
             const filter = availableFilters[0] as FilterDefinition<number>;
 
-            const op = filter.operations["between"];
+            const op = filter.operations['between'];
             const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
 
             const component = mount(c);
@@ -74,7 +74,7 @@ describe('AddEditFilter tests',
             expect(component.render()).toMatchSnapshot();
 
 
-            const testValue = "20-30" as any;
+            const testValue = '20-30' as any;
 
             //expect(typeof (filter.serializeValue(testValue))).toBe('string');
 

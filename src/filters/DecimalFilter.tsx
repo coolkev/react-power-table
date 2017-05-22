@@ -2,11 +2,9 @@
 import { NumericInput } from '../components/NumericInput';
 import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefinition } from './FilterDefinition';
 
-//const dataType = 'int';
-export class Int extends FilterDefinition<number> {
+export class DecimalFilter extends FilterDefinition<number> {
     public readonly operations = this.defaultOperations;
 
-    //static readonly dataType = dataType;
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 
         super(options);
@@ -15,16 +13,18 @@ export class Int extends FilterDefinition<number> {
 
             const { value, onValueChange, filter, operation, onEnterKeyPress, ...rest } = props;
 
-            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" onEnterKeyPress={onEnterKeyPress} {...rest} />;
+            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" onKeyPress={onEnterKeyPress} {...rest} />;
         };
 
     }
 
-    // protected getOperations() {
+    //public readonly operations = this.defaultOperations;
+
+    // protected getOperations(): ObjectMap<OperationDefinition<number>> {
     //     return this.defaultOperations;
     // }
 
     parseValue(str: string) {
-        return parseInt(str, 10);
+        return parseFloat(str);
     }
 }

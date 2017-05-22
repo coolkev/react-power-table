@@ -7,7 +7,7 @@ export interface SelectOption<T extends string | number> {
     label: string;
     value: T;
 }
-export class List<T extends string | number = string> extends PowerTable.FilterDefinition<T[]> {
+export class ListFilter<T extends string | number = string> extends PowerTable.FilterDefinition<T[]> {
 
     private deserializeFunc?: (str: string) => T;
     public readonly operations = this.getOperations();

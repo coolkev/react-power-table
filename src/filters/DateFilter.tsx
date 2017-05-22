@@ -1,9 +1,8 @@
 ﻿import * as React from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
-import { GlobalDate } from '../utils';
 import { FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from './FilterDefinition';
 
-export class Date extends FilterDefinition<string> {
+export class DateFilter extends FilterDefinition<string> {
     public readonly operations = this.getOperations();
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 
@@ -27,7 +26,7 @@ export class Date extends FilterDefinition<string> {
     public parseValue(str: string): string {
         if (str) {
 
-            const d = (new GlobalDate(str));
+            const d = (new Date(str));
 
             if (!isNaN(d.getTime())) {
                 return d.toISOString();
@@ -74,7 +73,7 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
 
         const { value, onEnterKeyPress, onValueChange, operation, ...rest } = this.props;
 
-        const dateValue = value ? (new GlobalDate(value)).toISOString() : '';
+        const dateValue = value ? (new Date(value)).toISOString() : '';
 
         return <DatePicker value={dateValue} onChange={this.handleChange} showClearButton={false} {...rest} />;
 

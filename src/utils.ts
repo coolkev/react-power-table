@@ -14,13 +14,6 @@ export function numberWithCommas(x) {
 
 const debugMode = false;
 
-/** @internal */
-export type GlobalDate = Date;
-/** @internal */
-export const GlobalDate = Date;
-
-//export { shallowEqual };
-
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 /**
@@ -63,7 +56,7 @@ export function shallowEqual(objA, objB) {
   }
 
   // Test for A's keys different from B.
-  for (let i = 0; i < keysA.length; i++) {
+  for (const i of keysA) {
     if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
       return false;
     }

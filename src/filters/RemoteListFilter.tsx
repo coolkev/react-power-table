@@ -1,11 +1,11 @@
 ﻿import * as React from 'react';
 import * as Select from 'react-select';
 import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition } from './FilterDefinition';
-import { SelectOption } from './List';
+import { SelectOption } from './ListFilter';
 //import { CustomSelectValue } from '../components/CustomSelectValue';
 export type RemoteListOptionProvider = (input: string | number[], maxOptions?: number) => Promise<Array<SelectOption<any>>>;
 
-export class RemoteList extends FilterDefinition<number[]> {
+export class RemoteListFilter extends FilterDefinition<number[]> {
 
     private queryHandler: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
     private cachedOptions: { [key: number]: string } = {};

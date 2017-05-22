@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
 import { GridFilters, DataTypes, AppliedFilter } from '../src/';
-import { defaultColumns, sampledata, President } from "./shared";
+import { defaultColumns, sampledata, President } from './shared';
 import { mount } from 'enzyme';
-import { AddSelectFilter } from "../src/AddSelectFilter";
+import { AddSelectFilter } from '../src/AddSelectFilter';
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
