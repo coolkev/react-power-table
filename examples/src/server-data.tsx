@@ -1,14 +1,13 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, numberWithCommas, AppliedFilter, GridFilters, FilterDefinition, withPaging, withSorting, SortSettings, Column, ObjectMap } from '../../src/'
-import { objectMapToArray } from "../../src/utils";
-import { QueryDTO, QueryResult } from "./remote/interfaces";
-import { OrderController } from "./remote/";
+import { ReactPowerTable, numberWithCommas, AppliedFilter, GridFilters, FilterDefinition, withPaging, withSorting, SortSettings, Column, ObjectMap } from '../../src/';
+import { objectMapToArray } from '../../src/utils';
+import { QueryDTO, QueryResult } from './remote/interfaces';
+import { OrderController } from './remote/';
 
 export const ServerDataExample = () => {
 
     return <ServerDataTable {...OrderController} />;
-}
-
+};
 
 export interface ServerDataTableProps {
     columns: ObjectMap<Column>;
@@ -57,17 +56,16 @@ class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTa
 
     handleQueryData(query: QueryDTO) {
 
-        this.setState({ query: query, loading: true });
+        this.setState({ query, loading: true });
 
         this.props.executeQuery(query).then(result => {
-            console.log('fetch returned ', result)
+            console.log('fetch returned ', result);
             this.setState({ errorMessage: null, rows: result.results, totalRowCount: result.totalResults, loading: false });
 
         }).catch((error: Error) => {
             this.setState({ errorMessage: error.message + ': ' + error.stack, loading: false });
             throw error;
         });
-
 
     }
 
@@ -79,17 +77,15 @@ class ServerDataTable extends React.Component<ServerDataTableProps, ServerDataTa
         if (errorMessage) {
             return <div className="alert alert-danger" role="alert">{errorMessage}</div>;
         }
-        return <div>
+        return (
+            <div>
 
-            <TableWithExternalFilters {...this.props} {...extraState} onQueryData={this.handleQueryData} />
+                <TableWithExternalFilters {...this.props} {...extraState} onQueryData={this.handleQueryData} />
 
-        </div>;
-
+            </div>);
 
     }
 }
-
-
 
 export interface TableWithExternalFiltersProps extends ServerDataTableProps {
     query: QueryDTO;
@@ -97,7 +93,6 @@ export interface TableWithExternalFiltersProps extends ServerDataTableProps {
     rows: any[];
     onQueryData: (query: QueryDTO) => void;
 }
-
 
 export class TableWithExternalFilters extends React.Component<TableWithExternalFiltersProps, never> {
 
@@ -109,8 +104,8 @@ export class TableWithExternalFilters extends React.Component<TableWithExternalF
         this.handleGotoPage = this.handleGotoPage.bind(this);
     }
 
-    handleFiltersChange(newFilters: AppliedFilter<any>[]) {
-        console.log('onFiltersChange', newFilters)
+    handleFiltersChange(newFilters: Array<AppliedFilter<any>>) {
+        console.log('onFiltersChange', newFilters);
 
         const filtersDto = newFilters.map(m => ({
             columnKey: m.filter.fieldName, operationKey: m.operation.key, value: m.filter.serializeValue(m.value),
@@ -132,46 +127,47 @@ export class TableWithExternalFilters extends React.Component<TableWithExternalF
 
     render() {
 
-
         const { query, rows, totalRowCount, filters, keyColumn, columns } = this.props;
 
         const appliedFilters = this.props.query.filters.map(m => {
 
             const filter = filters[m.columnKey];
 
-            return { filter: filter, operation: filter.operations[m.operationKey], value: filter.deSerializeValue(m.value) } as AppliedFilter;
+            return { filter, operation: filter.operations[m.operationKey], value: filter.deSerializeValue(m.value) } as AppliedFilter;
         });
 
         console.log('TableWithExternalFilters.render', appliedFilters);
 
         const columnArray = objectMapToArray(columns);
 
-        return <div className="row">
+        return (
+            <div className="row">
 
-            <div className="col-md-3">
-                <div className="grid-filters">
+                <div className="col-md-3">
+                    <div className="grid-filters">
 
-                    <div className="small">
-                        {totalRowCount && numberWithCommas(totalRowCount) + ' Records'}
-                        &nbsp;
+                        <div className="small">
+                            {totalRowCount && numberWithCommas(totalRowCount) + ' Records'}
+                            &nbsp;
                     </div>
 
-                    <div style={{ marginTop: 10 }}></div>
+                        <div style={{ marginTop: 10 }}/>
 
-                    <GridFilters availableFilters={filters} appliedFilters={appliedFilters} onFiltersChange={this.handleFiltersChange} />
+                        <GridFilters availableFilters={filters} appliedFilters={appliedFilters} onFiltersChange={this.handleFiltersChange} />
+                    </div>
+
                 </div>
-
+                <div className="col-md-9">
+                    <Table
+                        columns={columnArray}
+                        keyColumn={keyColumn}
+                        rows={rows}
+                        sorting={{ ...query.sort, changeSort: this.handleChangeSort }}
+                        paging={{ currentPage: query.paging.currentPage, pageSize: query.paging.pageSize, totalRowCount, gotoPage: this.handleGotoPage }}
+                    />
+                </div>
             </div>
-            <div className="col-md-9">
-                <Table columns={columnArray} keyColumn={keyColumn} rows={rows}
-                    sorting={{ ...query.sort, changeSort: this.handleChangeSort }}
-                    paging={{ currentPage: query.paging.currentPage, pageSize: query.paging.pageSize, totalRowCount: totalRowCount, gotoPage: this.handleGotoPage }} />
-            </div>
-        </div>;
-
-
+        );
 
     }
 }
-
-

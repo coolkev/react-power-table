@@ -1,13 +1,12 @@
 ﻿import * as React from 'react';
-import { sampledata, defaultColumns, President } from './shared'
-import { ReactPowerTable, withInternalSorting, Column, withInternalPaging } from '../../src/'
-import { getColumnCore } from "../../src/Column";
+import { sampledata, defaultColumns, President } from './shared';
+import { ReactPowerTable, withInternalSorting, Column, withInternalPaging } from '../../src/';
+import { getColumnCore } from '../../src/Column';
 
 interface HideColumnsExampleState {
         columns: Column[];
         //counter: number;
 }
-
 
 // const allColumns = defaultColumns.map(c => {
 //         const core = getColumnCore(c);
@@ -18,7 +17,7 @@ const initialColumns = defaultColumns.map(c => {
         const core = getColumnCore(c);
         return { ...c, fieldName: core.fieldName, headerText: core.headerText };
 });
-
+// tslint:disable:jsx-no-lambda
 const Table = withInternalSorting(withInternalPaging(ReactPowerTable));
 export class HideColumnsExample extends React.Component<never, HideColumnsExampleState>  {
 
@@ -43,24 +42,23 @@ export class HideColumnsExample extends React.Component<never, HideColumnsExampl
 
                 // this.visibleColumns = allColumns.filter(m => newVisibleColumnNames.indexOf(m.fieldName) > -1).map(m => m.col);
 
-                this.setState(prev => ({ columns: prev.columns.map(c => c == col ? { ...c, visible: checked } : c) }));
+                this.setState(prev => ({ columns: prev.columns.map(c => c === col ? { ...c, visible: checked } : c) }));
         }
 
         render() {
 
                 const { columns } = this.state;
 
-                return <div>
+                return (
+                        <div>
 
+                                <div>Show Columns:
 
+                                {columns.map(c => <label key={c.fieldName} style={{ marginRight: 10 }}><input type="checkbox" checked={c.visible !== false} onChange={(e) => this.handleVisibleChange(c, e.currentTarget.checked)} /> {c.headerText}</label>)}
+                                </div>
 
-                        <div>Show Columns:
-
-                                {columns.map(c => <label key={c.fieldName} style={{ marginRight: 10 }}><input type="checkbox" checked={c.visible!==false} onChange={(e) => this.handleVisibleChange(c, e.currentTarget.checked)} /> {c.headerText}</label>)}
+                                <Table columns={this.state.columns} keyColumn="number" rows={sampledata} sorting={{ column: 'president' }} />
                         </div>
-
-
-                        <Table columns={this.state.columns} keyColumn="number" rows={sampledata} sorting={{ column: 'president' }} />
-                </div>;
+                );
         }
 }

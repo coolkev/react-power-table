@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withPaging, withSorting, SortSettings, sortArray } from '../../src/'
-import { sampledata, President, defaultColumns } from './shared'
+import { ReactPowerTable, withPaging, withSorting, SortSettings, sortArray } from '../../src/';
+import { sampledata, President, defaultColumns } from './shared';
 
 interface ExternalPagingSortingExampleState {
     data: President[];
@@ -36,8 +36,7 @@ export class ExternalPagingSortingExample extends React.Component<never, Externa
 
         if (pageSize) {
             this.setState({ currentPage, pageSize });
-        }
-        else {
+        } else {
             this.setState({ currentPage });
         }
     }
@@ -52,7 +51,6 @@ export class ExternalPagingSortingExample extends React.Component<never, Externa
         const sortingProps = { ...currentSort, changeSort: this.changeSort };
 
         return <Table columns={defaultColumns} keyColumn="number" rows={pageRows} paging={pagingProps} sorting={sortingProps} />;
-
 
     }
 }

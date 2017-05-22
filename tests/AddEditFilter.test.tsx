@@ -19,7 +19,6 @@ const availableFilters = [
     new DataTypes.decimal('empty'),
 ];
 
-
 const testSerializeValues = [
     1,
     'test',
@@ -32,19 +31,19 @@ const testSerializeValues = [
     1.03
 ];
 
+const noop = () => { };
 
 describe('AddEditFilter tests',
     () => {
 
-
         availableFilters.forEach((filter: FilterDefinition<any>, i) => {
 
-            Object.keys(filter.operations).filter(m => m != 'between').forEach(opKey => {
+            Object.keys(filter.operations).filter(m => m !== 'between').forEach(opKey => {
                 const op = filter.operations[opKey];
 
                 test('add filter ' + filter.fieldName + ' ' + opKey, () => {
 
-                    const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
+                    const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={noop} />;
 
                     const component = mount(c);
 
@@ -67,12 +66,11 @@ describe('AddEditFilter tests',
             const filter = availableFilters[0] as FilterDefinition<number>;
 
             const op = filter.operations['between'];
-            const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={_e => { }} />;
+            const c = <AddEditFilter filter={filter} initialOperation={op} initialValue="" onApplyFilter={noop} />;
 
             const component = mount(c);
 
             expect(component.render()).toMatchSnapshot();
-
 
             const testValue = '20-30' as any;
 

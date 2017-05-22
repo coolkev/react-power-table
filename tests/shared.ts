@@ -1,1 +1,1 @@
-﻿export * from  "../examples/src/shared";
+﻿export * from '../examples/src/shared';

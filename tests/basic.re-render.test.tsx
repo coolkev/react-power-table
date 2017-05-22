@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
 import { ReactPowerTable, GridProps, TableRowComponentProps } from '../src/ReactPowerTable';
-import { defaultColumns, sampledata } from "./shared";
+import { defaultColumns, sampledata } from './shared';
 import { mount } from 'enzyme';
-import { makePure } from "../src/utils";
-import { withInternalSorting } from "../src/Sorting";
-import { withInternalPaging } from "../src/Paging";
+import { makePure } from '../src/utils';
+import { withInternalSorting } from '../src/Sorting';
+import { withInternalPaging } from '../src/Paging';
 
 const columns = defaultColumns;
 const rows = sampledata.slice(0, 5);
@@ -13,10 +13,9 @@ describe('basic re-render tests',
 
         const tableComponents = [ReactPowerTable,  withInternalSorting(ReactPowerTable), withInternalPaging(ReactPowerTable)];
 
-        
         tableComponents.forEach(Table => {
 
-            const extraProps : any = {};
+            const extraProps: any = {};
             if (Table.displayName.match(/WithInternalSorting/)) {
                 extraProps.sorting = { column: 'number' };
             }
@@ -37,7 +36,7 @@ describe('basic re-render tests',
                 columns[0] = { ...columns[0], width: 50 };
 
                 const component = mount(
-                    <Table columns={columns} rows={rows} keyColumn='number' tableRowComponent={rowComponent} tableCellComponent={cellComponent} {...extraProps} />
+                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} tableCellComponent={cellComponent} {...extraProps} />
                 );
                 expect(rowRenderCount).toBe(5);
                 expect(cellRenderCount).toBe(rows.length * columns.length);
@@ -48,7 +47,6 @@ describe('basic re-render tests',
                 expect(rowRenderCount).toBe(8);
                 expect(cellRenderCount).toBe(56);
                 expect(component.render()).toMatchSnapshot();
-
 
             });
 
@@ -66,7 +64,7 @@ describe('basic re-render tests',
                 });
 
                 const component = mount(
-                    <Table columns={columns} rows={rows} keyColumn='number' tableRowComponent={rowComponent} tableCellComponent={cellComponent}  {...extraProps} />
+                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} tableCellComponent={cellComponent}  {...extraProps} />
                 );
                 expect(rowRenderCount).toBe(5);
                 expect(cellRenderCount).toBe(rows.length * columns.length);
@@ -81,7 +79,6 @@ describe('basic re-render tests',
                 expect(rowRenderCount).toBe(10);
                 expect(cellRenderCount).toBe(70);
                 expect(component.render()).toMatchSnapshot();
-
 
             });
 
@@ -99,7 +96,7 @@ describe('basic re-render tests',
                 });
 
                 const component = mount(
-                    <Table columns={columns} rows={rows} keyColumn='number' tableRowComponent={rowComponent} tableCellComponent={cellComponent}  {...extraProps}  />
+                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} tableCellComponent={cellComponent}  {...extraProps}  />
                 );
                 expect(rowRenderCount).toBe(5);
                 expect(cellRenderCount).toBe(rows.length * columns.length);
@@ -107,7 +104,7 @@ describe('basic re-render tests',
                 //expect(component.render()).toMatchSnapshot();
 
                 console.log('changing tableClassName to test');
-                
+
                 component.setProps({ tableClassName: 'test' });
                 console.log('done changing tableClassName to test');
 
@@ -115,10 +112,8 @@ describe('basic re-render tests',
                 expect(cellRenderCount).toBe(35);
                //expect(component.render()).toMatchSnapshot();
 
-
             });
 
         });
-
 
     });

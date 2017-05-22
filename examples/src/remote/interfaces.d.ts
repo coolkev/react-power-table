@@ -17,14 +17,14 @@ export interface SortSettings {
     descending?: boolean;
 }
 export interface QueryDTO {
-    filters: AppliedFilterDTO[],
+    filters: AppliedFilterDTO[];
     sort: SortSettings;
 
     paging: {
         currentPage: number;
         pageSize: number;
         returnTotalCount?: boolean;
-    }
+    };
 }
 export interface QueryOptions {
     columnKey: string;

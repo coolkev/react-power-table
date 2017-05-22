@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withPaging } from '../../src/'
-import { sampledata, defaultColumns } from './shared'
-
+import { ReactPowerTable, withPaging } from '../../src/';
+import { sampledata, defaultColumns } from './shared';
 
 interface ExternalPagingExampleState {
     currentPage: number;
@@ -26,9 +25,8 @@ export class ExternalPagingExample extends React.Component<never, ExternalPaging
 
         if (pageSize) {
             this.setState({ currentPage, pageSize });
-        }
-        else {
-            this.setState({ currentPage });            
+        } else {
+            this.setState({ currentPage });
         }
     }
 
@@ -37,7 +35,7 @@ export class ExternalPagingExample extends React.Component<never, ExternalPaging
 
         const skip = (currentPage - 1) * pageSize;
         const pageRows = rows.slice(skip, skip + pageSize);
-        
+
         return <div><Table columns={defaultColumns} keyColumn="number" rows={pageRows} paging={{currentPage, pageSize, gotoPage: this.gotoPage, totalRowCount: rows.length}}/></div>;
 
     }

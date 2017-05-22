@@ -12,5 +12,4 @@ const { columns, filters } = OrderController;
 // columns.DateUpdated.headerText = 'Updated';
 // columns.Type.formatter = v => lookups.Type[v];
 
-
 export { OrderController  };

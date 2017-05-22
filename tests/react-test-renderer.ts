@@ -19,7 +19,6 @@
         }
         // https://github.com/facebook/react/blob/master/src/renderers/testing/ReactTestMount.js#L155
          function create<P>(nextElement: React.ReactElement<P>, options?: TestRendererOptions): Renderer<P>;
-         
 
     }
 //}

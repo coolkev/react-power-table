@@ -1,18 +1,18 @@
 ﻿import * as React from 'react';
-import { Nav, NavItem, Navbar } from "react-bootstrap";
-import { ReactPowerTable } from '../../src/'
-import { BasicExample } from "./basic";
-import { InternalSortingExample } from "./internal-sorting";
-import { ExternalSortingExample } from "./external-sorting";
-import { InternalPagingExample } from "./internal-paging";
-import { InternalPagingSortingExample } from "./internal-paging-sorting";
-import { ExternalPagingExample } from "./external-paging";
-import { ExternalPagingSortingExample } from "./external-paging-sorting";
+import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import { ReactPowerTable } from '../../src/';
+import { BasicExample } from './basic';
+import { InternalSortingExample } from './internal-sorting';
+import { ExternalSortingExample } from './external-sorting';
+import { InternalPagingExample } from './internal-paging';
+import { InternalPagingSortingExample } from './internal-paging-sorting';
+import { ExternalPagingExample } from './external-paging';
+import { ExternalPagingSortingExample } from './external-paging-sorting';
 
-import { CheckboxExample } from "./checkboxes";
-import { FiltersExample } from "./filters";
-import { HideColumnsExample } from "./hideColumns";
-import { ServerDataExample } from "./server-data";
+import { CheckboxExample } from './checkboxes';
+import { FiltersExample } from './filters';
+import { HideColumnsExample } from './hideColumns';
+import { ServerDataExample } from './server-data';
 
 interface ExamplesProps {
     selected: string;
@@ -20,9 +20,9 @@ interface ExamplesProps {
 }
 
 import 'react-select/dist/react-select.css';
-import { CustomRowExample } from "./CustomRow";
+import { CustomRowExample } from './CustomRow';
 
-ReactPowerTable.defaultProps.tableClassName = "table";
+ReactPowerTable.defaultProps.tableClassName = 'table';
 //ReactPowerTable.defaultProps.testDefault = 'test123' ;
 //ReactPowerTable.defaultProps.testDefault = 'test123';
 
@@ -47,10 +47,10 @@ class Examples extends React.Component<ExamplesProps, never> {
 
         const selected = this.props.selected || 'Basic';
 
-        const SelectedComponent = examples[selected]
+        const SelectedComponent = examples[selected];
         //return <div><ReactPowerTable columns={this.columns} keyColumn="number" rows={data} sorting={{ ...sort, changeSort: this.changeSort }}  /></div>;
-        return <div>
-
+        return (
+            <div>
 
                 <div className="row">
                     <div className="col-md-3">
@@ -66,7 +66,8 @@ class Examples extends React.Component<ExamplesProps, never> {
 
                 </div>
 
-            </div>;
+            </div>
+        );
 
     }
 }
@@ -76,6 +77,7 @@ export class ExamplesApp extends React.Component<never, {}> {
     constructor() {
         super();
         this.reload = this.reload.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
     handleSelect(name: any) {
         //this.setState({ selected: name });
@@ -99,6 +101,6 @@ export class ExamplesApp extends React.Component<never, {}> {
         //console.log('render location.hash=' + location.hash);
         const name = location.hash && location.hash.substring(1).replace('-', ' ');
         const selected = examples[name] && name;
-        return <Examples selected={selected} onSelect={s => this.handleSelect(s)} />
+        return <Examples selected={selected} onSelect={this.handleSelect} />;
     }
 }

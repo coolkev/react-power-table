@@ -15,17 +15,16 @@ export function getOptionProvider(url: string, key: string) {
             matchText: null,
             ids: null
         };
-        if (typeof (input) == 'string') {
+        if (typeof (input) === 'string') {
             query.matchText = input;
 
         } else {
             query.ids = input;
         }
 
-        return executeRequest<SelectOption<any>[]>(url, query);
-    }
+        return executeRequest<Array<SelectOption<any>>>(url, query);
+    };
 }
-
 
 export function executeQuery(url: string, query: QueryDTO): Promise<QueryResult> {
 
@@ -34,7 +33,7 @@ export function executeQuery(url: string, query: QueryDTO): Promise<QueryResult>
 
 function executeRequest<T>(url: string, postData: any): Promise<T> {
 
-    var options: RequestInit = {
+    const options: RequestInit = {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -47,9 +46,9 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
     return fetch(url, options).then(response => {
 
         if (response.ok) {
-            var contentType = response.headers.get('Content-Type');
+            const contentType = response.headers.get('Content-Type');
             if (!contentType.match(/application\/json/i)) {
-                var msg = `Invalid Content-Type received. Expected 'application/json', was '${contentType}'`;
+                const msg = `Invalid Content-Type received. Expected 'application/json', was '${contentType}'`;
                 throw new Error(msg);
             } else {
                 return response.json() as any as T;
@@ -59,7 +58,6 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
         }
     });
 }
-
 
 export interface FieldDefinition {
     fieldName: string;

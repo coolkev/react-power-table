@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, SortSettings, withSorting, sortArray } from '../../src/'
-import { sampledata, President, defaultColumns } from './shared'
-
+import { ReactPowerTable, SortSettings, withSorting, sortArray } from '../../src/';
+import { sampledata, President, defaultColumns } from './shared';
 
 interface ExternalSortingExampleState {
     data: President[];
@@ -22,13 +21,13 @@ export class ExternalSortingExample extends React.Component<never, ExternalSorti
 
     changeSort(sort: SortSettings) {
 
-        this.setState(prev => ({ data: sortArray(prev.data, sort.column, { descending: sort.descending, caseInsensitive: true }), currentSort:sort }));
+        this.setState(prev => ({ data: sortArray(prev.data, sort.column, { descending: sort.descending, caseInsensitive: true }), currentSort: sort }));
     }
 
     render() {
         const { data, currentSort } = this.state;
 
-        //return null;        
+        //return null;
         return <Table columns={defaultColumns} keyColumn="number" rows={data} sorting={{ ...currentSort, changeSort: this.changeSort }} />;
 
     }

@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes,groupBy, sortArray, numberWithCommas, AppliedFilter, GridFilters } from '../../src/'
-import { sampledata, defaultColumns, partyList } from './shared'
-
+import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes, groupBy, sortArray, numberWithCommas, AppliedFilter, GridFilters } from '../../src/';
+import { sampledata, defaultColumns, partyList } from './shared';
 
 // //if coming in from DTO
 // const availDTO = [
@@ -32,7 +31,6 @@ const availableFilters = [
 
 ];
 
-
 const assasinatedPresidents = [16, 20, 25, 35];
 
 const data = sampledata.map(m => ({ ...m, assasinated: assasinatedPresidents.indexOf(m.number) > -1 }));
@@ -40,12 +38,11 @@ const data = sampledata.map(m => ({ ...m, assasinated: assasinatedPresidents.ind
 //const availableFiltersMap = createKeyedMap(availableFilters, m => m.fieldName);
 
 //availableFiltersMap.number.operations.gt.displayName = 'greater than TEST';
-availableFilters.find(m=>m.fieldName=='death_year').operations['null'].displayName = 'still alive';
+availableFilters.find(m => m.fieldName === 'death_year').operations['null'].displayName = 'still alive';
 
 interface FiltersExampleState {
-    appliedFilters: AppliedFilter<any>[];
+    appliedFilters: Array<AppliedFilter<any>>;
 }
-
 
 const Table = withInternalSorting(withInternalPaging(ReactPowerTable));
 
@@ -58,8 +55,8 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
         this.handleFiltersChange = this.handleFiltersChange.bind(this);
     }
 
-    handleFiltersChange(newFilters: AppliedFilter<any>[]) {
-        console.log('onFiltersChange', newFilters)
+    handleFiltersChange(newFilters: Array<AppliedFilter<any>>) {
+        console.log('onFiltersChange', newFilters);
         this.setState({ appliedFilters: newFilters });
     }
     render() {
@@ -68,20 +65,20 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
 
         this.state.appliedFilters.forEach(m => {
             filteredData = m.filter.applyFilter(filteredData, m.operation, m.value);
-        })
+        });
 
         return (
             <div className="row">
 
             <div className="col-md-3">
                 <div className="grid-filters">
-                   
+
                     <div className="small">
                         {numberWithCommas(filteredData.length) + ' Presidents'}
                         &nbsp;
                     </div>
 
-                    <div style={{ marginTop: 10 }}></div>
+                    <div style={{ marginTop: 10 }}/>
 
                     <GridFilters availableFilters={availableFilters} appliedFilters={this.state.appliedFilters} onFiltersChange={this.handleFiltersChange} />
                 </div>
@@ -92,8 +89,6 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
             </div>
             </div>
         );
-
-
 
     }
 }

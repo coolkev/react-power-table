@@ -5,7 +5,6 @@
     ],
     "jsRules": {},
     "rules": {
-        
         "jsx-alignment": true,
         "jsx-boolean-value": false,
         "jsx-curly-spacing": [
@@ -47,6 +46,7 @@
             "trace"
         ],
         "no-empty": false,
+        "no-empty-interface": false,
         "no-inferrable-types": [
             true,
             "ignore-params"

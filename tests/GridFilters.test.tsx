@@ -24,7 +24,7 @@ describe('AddSelectFilter tests',
 
             let filtersChanged = false;
 
-            const onFiltersChange = (_newFilters: AppliedFilter<any>[]) => filtersChanged = true;
+            const onFiltersChange = (_newFilters: Array<AppliedFilter<any>>) => filtersChanged = true;
             const c = <GridFilters availableFilters={availableFilters} appliedFilters={[]} onFiltersChange={onFiltersChange} />;
             const component = mount(c);
 
@@ -34,11 +34,8 @@ describe('AddSelectFilter tests',
 
             component.setState({ addingFilter: true });
 
-
             expect(component.render()).toMatchSnapshot();
 
-
         });
-
 
     });

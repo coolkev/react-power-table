@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
 import { GridFilters, DataTypes, AppliedFilter } from '../src/';
-import { defaultColumns, sampledata, President } from "./shared";
+import { defaultColumns, sampledata, President } from './shared';
 import { mount } from 'enzyme';
-import { AddSelectFilter } from "../src/AddSelectFilter";
+import { AddSelectFilter } from '../src/AddSelectFilter';
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
@@ -18,38 +18,33 @@ const availableFilters = [
 
 ];
 
+const noop = () => { };
+
 describe('AddSelectFilter tests',
     () => {
 
-       
-
         test('add filter', () => {
 
-            const c = <AddSelectFilter availableFilters={availableFilters} appliedFilters={[]} cancelAddFilter={() => { }} onApplyFilter={_f => { }} />;
+            const c = <AddSelectFilter availableFilters={availableFilters} appliedFilters={[]} cancelAddFilter={noop} onApplyFilter={noop} />;
 
             const component = mount(c);
 
             expect(component.render()).toMatchSnapshot();
 
-
-
         });
 
         test('select filter', () => {
-            
-            const c = <AddSelectFilter availableFilters={availableFilters} appliedFilters={[]} cancelAddFilter={() => { }} onApplyFilter={_f => { }} />;
+
+            const c = <AddSelectFilter availableFilters={availableFilters} appliedFilters={[]} cancelAddFilter={noop} onApplyFilter={noop} />;
 
             const component = mount(c);
 
             expect(component.render()).toMatchSnapshot();
 
             component.setState({ selectedFilterKey: 'birth_year' });
-            
-           expect(component.render()).toMatchSnapshot();
 
+            expect(component.render()).toMatchSnapshot();
 
         });
-
-
 
     });
