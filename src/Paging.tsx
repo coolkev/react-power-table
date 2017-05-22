@@ -1,7 +1,6 @@
 ﻿import * as React from 'react';
 import { NumericInput } from './components/NumericInput';
-import { numberWithCommas, getComponentDisplayName, debuglog } from './utils';
-
+import { debuglog, getComponentDisplayName, numberWithCommas } from './utils';
 
 const linkStyle = { textDecoration: 'none' };
 const disabledStyle = { ...linkStyle, color: 'silver', cursor: 'default' };
@@ -12,9 +11,6 @@ interface InternalPagingState {
     currentPage: number;
     pageSize: number;
 }
-
-
-
 
 export interface InternalPagingProps {
     /** 1-based index of current page */
@@ -44,15 +40,15 @@ export interface PagingGridProps {
     // }
 }
 
-
-
-const TableFooterComponent = ({ columnCount = 0, pagingProps = null as PagingProps }) => <tfoot>
-    <tr>
-        <td colSpan={columnCount}>
-            <Paging {...pagingProps} />
-        </td>
-    </tr>
-</tfoot>;
+const TableFooterComponent = ({ columnCount = 0, pagingProps = null as PagingProps }) => (
+    <tfoot>
+        <tr>
+            <td colSpan={columnCount}>
+                <Paging {...pagingProps} />
+            </td>
+        </tr>
+    </tfoot>
+);
 
 export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
 export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
@@ -80,39 +76,35 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
 
         }
 
-
         componentWillReceiveProps(nextProps: T & { paging: Partial<InternalPagingProps> }) {
 
             debuglog('Paging componentWillReceiveProps', nextProps);
 
-            if (nextProps.paging && nextProps.paging.currentPage && (nextProps.paging.currentPage != this.state.currentPage)) {
+            if (nextProps.paging && nextProps.paging.currentPage && (nextProps.paging.currentPage !== this.state.currentPage)) {
 
                 debuglog('Paging setting state currentPage to ' + nextProps.paging.currentPage);
 
                 this.setState({ currentPage: nextProps.paging.currentPage });
             }
-            if (nextProps.paging && nextProps.paging.pageSize && (nextProps.paging.pageSize != this.state.pageSize)) {
+            if (nextProps.paging && nextProps.paging.pageSize && (nextProps.paging.pageSize !== this.state.pageSize)) {
                 debuglog('Paging setting state pageSize to ' + nextProps.paging.pageSize);
                 this.setState({ pageSize: nextProps.paging.pageSize });
             }
 
         }
 
-
         private gotoPage(currentPage: number, pageSize?: number) {
 
             if (pageSize) {
                 this.setState({
                     currentPage,
-                    pageSize
+                    pageSize,
                 });
-            }
-            else {
+            } else {
                 this.setState({
-                    currentPage
+                    currentPage,
                 });
             }
-
 
         }
 
@@ -121,8 +113,8 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
             const { currentPage, pageSize } = this.state;
 
             const pageSizes = paging && paging.pageSizes;
-            const columnCount = this.props.columns.filter(m => m.visible !== false).length;
-            const pagingProps = { currentPage: currentPage, pageSize: pageSize, pageSizes: pageSizes, gotoPage: this.gotoPage, totalRowCount: rows.length };
+            const columnCount = this.props.columns.filter((m) => m.visible !== false).length;
+            const pagingProps = { currentPage, pageSize, pageSizes, gotoPage: this.gotoPage, totalRowCount: rows.length };
 
             return <TableFooterComponent columnCount={columnCount} pagingProps={pagingProps} />;
         }
@@ -143,14 +135,11 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
                 </tr>
             </tfoot> };*/
 
-
             //return <PagingComponent rows={pageRows} {...extra} paging={{ currentPage: currentPage, pageSize: pageSize, pageSizes: pageSizes, gotoPage: this.gotoPage, totalRowCount: rows.length }} />
             return <WrappedComponent rows={pageRows} {...extra} tableFooterComponent={this.renderFooter} />;
         }
-    }
+    };
 }
-
-
 
 export function withPaging<T extends PagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & { paging: PagingProps }>;
 export function withPaging<T extends PagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & { paging: PagingProps }>;
@@ -171,7 +160,7 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.St
         renderFooter() {
 
             const pagingProps = this.props.paging;
-            const columnCount = this.props.columns.filter(m => m.visible !== false).length;
+            const columnCount = this.props.columns.filter((m) => m.visible !== false).length;
 
             return <TableFooterComponent columnCount={columnCount} pagingProps={pagingProps} />;
         }
@@ -179,20 +168,16 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.St
 
             const { paging, ...extra } = this.props as PagingGridProps & { paging: PagingProps };
 
-
             return <WrappedComponent {...extra} tableFooterComponent={this.renderFooter} />;
 
         }
-    }
-
+    };
 
     // const WithPaging: React.StatelessComponent<T & { paging: PagingProps }> = props => {
-
 
     //     const { paging, ...extra } = props as PagingGridProps & { paging: PagingProps };
     //     const columnCount = props.columns.filter(m => m.visible !== false).length;
     //     //const pagingProps = { ...paging };
-
 
     //     return <WrappedComponent {...extra} tableFooterComponent={() => <TableFooterComponent columnCount={columnCount} pagingProps={paging} />} />;
     // };
@@ -204,13 +189,16 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.St
 
 }
 
-
-
 export class Paging extends React.PureComponent<PagingProps, never> {
 
+    constructor(props: PagingProps) {
+        super(props);
+
+        this.gotoPage = this.gotoPage.bind(this);
+    }
 
     gotoPage(page: number) {
-        if (page >= 1 && page <= this.pageCount && page != this.props.currentPage) {
+        if (page >= 1 && page <= this.pageCount && page !== this.props.currentPage) {
             this.props.gotoPage(page);
         }
     }
@@ -228,56 +216,55 @@ export class Paging extends React.PureComponent<PagingProps, never> {
         let pageSizes = props.pageSizes || [10, 20, 50, 100, 500];
         const pageSize = props.pageSize || 20;
 
-        if (pageSizes.indexOf(pageSize) == -1) {
+        if (pageSizes.indexOf(pageSize) === -1) {
             pageSizes = [...pageSizes, pageSize];
             pageSizes.sort((a, b) => b - a);
         }
         const pageCount = this.pageCount;
 
-
         const currentPage = props.currentPage;
 
-        const backStyle = currentPage == 1 ? disabledStyle : linkStyle;
-        const forwardStyle = currentPage == pageCount ? disabledStyle : linkStyle;
+        const backStyle = currentPage === 1 ? disabledStyle : linkStyle;
+        const forwardStyle = currentPage === pageCount ? disabledStyle : linkStyle;
 
         if (typeof (props.totalRowCount) === 'undefined') {
             return null;
         }
 
-
         const rowCount = numberWithCommas(props.totalRowCount) + ' Records';
-
-        return <table width="100%" className="form-inline">
-            <tbody>
-                <tr>
-                    <td width="33%" style={{ fontWeight: 'bold' }}>{rowCount}</td>
-                    <td width="34%" style={{ textAlign: 'center' }}>
-                        <a href="#" className="glyphicon glyphicon-fast-backward" style={backStyle} onClick={e => { e.preventDefault(); this.gotoPage(1) }}></a>
-                        &nbsp;
-                    <a href="#" className="glyphicon glyphicon-backward" style={backStyle} onClick={e => { e.preventDefault(); this.gotoPage(currentPage - 1) }}></a>
-                        &nbsp;
+        /* tslint:disable:jsx-no-lambda */
+        return (
+            <table width="100%" className="form-inline">
+                <tbody>
+                    <tr>
+                        <td width="33%" style={{ fontWeight: 'bold' }}>{rowCount}</td>
+                        <td width="34%" style={{ textAlign: 'center' }}>
+                            <a href="#" className="glyphicon glyphicon-fast-backward" style={backStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(1); }} />
+                            &nbsp;
+                    <a href="#" className="glyphicon glyphicon-backward" style={backStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(currentPage - 1); }} />
+                            &nbsp;
 
                     <span>Page
                     &nbsp;
-                        <NumericInput className="form-control input-sm" style={{ width: 60 }} initialValue={currentPage} onValueChange={v => this.gotoPage(v)} />
-                            &nbsp;
+                        <NumericInput className="form-control input-sm" style={{ width: 60 }} initialValue={currentPage} onValueChange={this.gotoPage} />
+                                &nbsp;
                         of {numberWithCommas(pageCount)}</span>
-                        &nbsp;
+                            &nbsp;
 
-                    <a href="#" className="glyphicon glyphicon-forward" style={forwardStyle} onClick={e => { e.preventDefault(); this.gotoPage(currentPage + 1) }}></a>
-                        &nbsp;
-                    <a href="#" className="glyphicon glyphicon-fast-forward" style={forwardStyle} onClick={e => { e.preventDefault(); this.gotoPage(pageCount) }}></a>
+                    <a href="#" className="glyphicon glyphicon-forward" style={forwardStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(currentPage + 1); }} />
+                            &nbsp;
+                    <a href="#" className="glyphicon glyphicon-fast-forward" style={forwardStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(pageCount); }} />
 
-
-                    </td>
-                    <td width="33%" style={{ textAlign: 'right' }}>Show:
-                       <select className="form-control input-sm" style={{ width: 80 }} value={pageSize} onChange={e => props.gotoPage(1, parseInt(e.currentTarget.value))}>
-                            {pageSizes.map(m => <option key={m} value={m}>{m}</option>)}
-                        </select>
-                    </td>
-                </tr>
-            </tbody>
-        </table>;
+                        </td>
+                        <td width="33%" style={{ textAlign: 'right' }}>Show:&nbsp;
+                       <select className="form-control input-sm" style={{ width: 80 }} value={pageSize} onChange={(e) => props.gotoPage(1, parseInt(e.currentTarget.value, 10))}>
+                                {pageSizes.map((m) => <option key={m} value={m}>{m}</option>)}
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        );
 
     }
 }

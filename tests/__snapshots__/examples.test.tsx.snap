@@ -2858,7 +2858,7 @@ exports[`examples tests example Checkboxes 1`] = `
                 style="text-align:right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width:80px;"
@@ -6232,7 +6232,7 @@ exports[`examples tests example External Paging 1`] = `
                   style="text-align:right;"
                   width="33%"
                 >
-                  Show:
+                  Show: 
                   <select
                     class="form-control input-sm"
                     style="width:80px;"
@@ -7262,7 +7262,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
                 style="text-align:right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width:80px;"
@@ -10279,7 +10279,7 @@ exports[`examples tests example Filters 1`] = `
                     style="text-align:right;"
                     width="33%"
                   >
-                    Show:
+                    Show: 
                     <select
                       class="form-control input-sm"
                       style="width:80px;"
@@ -11367,7 +11367,7 @@ exports[`examples tests example Hide Columns 1`] = `
                   style="text-align:right;"
                   width="33%"
                 >
-                  Show:
+                  Show: 
                   <select
                     class="form-control input-sm"
                     style="width:80px;"
@@ -12309,7 +12309,7 @@ exports[`examples tests example Internal Paging 1`] = `
                 style="text-align:right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width:80px;"
@@ -13338,7 +13338,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
                 style="text-align:right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width:80px;"

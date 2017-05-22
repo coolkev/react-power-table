@@ -70,14 +70,12 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
             filteredData = m.filter.applyFilter(filteredData, m.operation, m.value);
         })
 
-        return <div className="row">
+        return (
+            <div className="row">
 
             <div className="col-md-3">
                 <div className="grid-filters">
-                    { /*<GridViews views={this.props.Views} currentView={this.props.Views[0]} /> 
-
-                <div style={{ margin: '10px 0', borderBottom: '1px solid silver' }}></div>
-*/}
+                   
                     <div className="small">
                         {numberWithCommas(filteredData.length) + ' Presidents'}
                         &nbsp;
@@ -92,7 +90,8 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
             <div className="col-md-9">
                 <Table columns={defaultColumns} keyColumn="number" rows={filteredData} sorting={{column: 'number' }} />
             </div>
-        </div>;
+            </div>
+        );
 
 
 

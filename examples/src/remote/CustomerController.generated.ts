@@ -5,8 +5,8 @@ import { DisplayValue, FieldDefinition, DataTypes, Column, SelectOption, getOpti
 
 export interface CustomerViewModel {
     "CustomerID": DisplayValue<number>;
-    "FirstName": { value: string };
-    "LastName": { value: string };
+    "FirstName": { display: string };
+    "LastName": { display: string };
     "Age": DisplayValue<number>;
     "OrderCount": DisplayValue<number>;
     "FirstOrderDate": DisplayValue<string>;
@@ -40,12 +40,12 @@ export default {
         "LastOrderDate": new DataTypes.date(fields.LastOrderDate),
     },
     "columns": {
-        "FirstName": {fieldName: fields.FirstName.fieldName, headerText: fields.FirstName.displayName } as Column<CustomerViewModel,{ value: string }>,
-        "LastName": {fieldName: fields.LastName.fieldName, headerText: fields.LastName.displayName } as Column<CustomerViewModel,{ value: string }>,
-        "Age": {fieldName: fields.Age.fieldName, headerText: fields.Age.displayName } as Column<CustomerViewModel,DisplayValue<number>>,
-        "OrderCount": {fieldName: fields.OrderCount.fieldName, headerText: fields.OrderCount.displayName } as Column<CustomerViewModel,DisplayValue<number>>,
-        "FirstOrderDate": {fieldName: fields.FirstOrderDate.fieldName, headerText: fields.FirstOrderDate.displayName } as Column<CustomerViewModel,DisplayValue<string>>,
-        "LastOrderDate": {fieldName: fields.LastOrderDate.fieldName, headerText: fields.LastOrderDate.displayName } as Column<CustomerViewModel,DisplayValue<string>>,
+        "FirstName": {fieldName: fields.FirstName.fieldName, headerText: fields.FirstName.displayName } as Column<CustomerViewModel,string>,
+        "LastName": {fieldName: fields.LastName.fieldName, headerText: fields.LastName.displayName } as Column<CustomerViewModel,string>,
+        "Age": {fieldName: fields.Age.fieldName, headerText: fields.Age.displayName } as Column<CustomerViewModel,number>,
+        "OrderCount": {fieldName: fields.OrderCount.fieldName, headerText: fields.OrderCount.displayName } as Column<CustomerViewModel,number>,
+        "FirstOrderDate": {fieldName: fields.FirstOrderDate.fieldName, headerText: fields.FirstOrderDate.displayName } as Column<CustomerViewModel,string>,
+        "LastOrderDate": {fieldName: fields.LastOrderDate.fieldName, headerText: fields.LastOrderDate.displayName } as Column<CustomerViewModel,string>,
     },
     "keyColumn": "CustomerID",
     "defaultSort": {"column":"CustomerID","descending":false}

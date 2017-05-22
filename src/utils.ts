@@ -1,8 +1,5 @@
 ﻿import * as React from 'react';
 
-
-
-
 /**
  * @module react-power-table/lib/utils
  *  Utility functions
@@ -12,9 +9,8 @@
  * Format a number with comma for thousands separator2
  */
 export function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
-
 
 const debugMode = false;
 
@@ -23,10 +19,9 @@ export type GlobalDate = Date;
 /** @internal */
 export const GlobalDate = Date;
 
-
 //export { shallowEqual };
 
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 /**
  * inlined Object.is polyfill to avoid requiring consumers ship their own
@@ -45,9 +40,8 @@ function is(x, y) {
   }
 }
 
-
 /**
- @internal
+ * @internal
  * Performs equality by iterating through keys on an object and returning false
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
@@ -61,15 +55,15 @@ export function shallowEqual(objA, objB) {
     return false;
   }
 
-  var keysA = Object.keys(objA);
-  var keysB = Object.keys(objB);
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
 
   if (keysA.length !== keysB.length) {
     return false;
   }
 
   // Test for A's keys different from B.
-  for (var i = 0; i < keysA.length; i++) {
+  for (let i = 0; i < keysA.length; i++) {
     if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
       return false;
     }
@@ -78,21 +72,18 @@ export function shallowEqual(objA, objB) {
   return true;
 }
 
-
 // export function shallowEqual(a, b) {
 //     return a != b;
 // }
 
-
 /**
-  * @internal
-  */
+ * @internal
+ */
 export const debuglog = debugMode ? console.log : () => { };
-
 
 /** @internal */
 export function getComponentDisplayName(WrappedComponent: React.ComponentClass<any> | React.StatelessComponent<any>) {
-    return WrappedComponent.displayName || (<any>WrappedComponent).name || 'Component';
+    return WrappedComponent.displayName || (WrappedComponent as any).name || 'Component';
 }
 /** @internal */
 export function makePure<T>(factory: React.StatelessComponent<T>): React.ComponentClass<T> {
@@ -101,7 +92,7 @@ export function makePure<T>(factory: React.StatelessComponent<T>): React.Compone
         return class extends React.Component<T, never> {
 
             shouldComponentUpdate(nextProps: T) {
-                var result = !shallowEqual(this.props, nextProps);
+                const result = !shallowEqual(this.props, nextProps);
                 debuglog('shouldComponentUpdate returned ' + result, this.props, nextProps);
                 return result;
             }
@@ -109,7 +100,7 @@ export function makePure<T>(factory: React.StatelessComponent<T>): React.Compone
             render() {
                 return factory(this.props);
             }
-        }
+        };
     } else {
 
         return class extends React.PureComponent<T, never> {
@@ -117,7 +108,7 @@ export function makePure<T>(factory: React.StatelessComponent<T>): React.Compone
             render() {
                 return factory(this.props);
             }
-        }
+        };
     }
 }
 
@@ -136,21 +127,19 @@ export function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((
 
     if (options && options.caseInsensitive) {
 
-        var sortFunc: (a: any, b: any) => number;
+        let sortFunc: (a: any, b: any) => number;
 
         return [...array].sort((a: any, b: any) => {
-            var av = <any>expression(a);
-            var bv = <any>expression(b);
+            const av = expression(a) as any;
+            const bv = expression(b) as any;
 
             if (av == null) {
                 if (bv == null) {
                     return 0;
-                }
-                else {
+                } else {
                     return -sortDirNum;
                 }
-            }
-            else if (bv == null) {
+            } else if (bv == null) {
                 return sortDirNum;
             }
 
@@ -160,17 +149,16 @@ export function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((
                 const bType = typeof bv;
 
                 if (aType === bType && aType === 'string') {
-                    sortFunc = (a, b) => {
-                        return a.localeCompare(b, [], { sensitivity: 'base' }) * sortDirNum;
+                    sortFunc = (x, y) => {
+                        return x.localeCompare(y, [], { sensitivity: 'base' }) * sortDirNum;
 
                     };
 
-                }
-                else {
-                    sortFunc = (a, b) => {
+                } else {
+                    sortFunc = (x, y) => {
 
-                        return ((a < b) ? -sortDirNum : ((a > b) ? sortDirNum : 0));
-                    }
+                        return ((x < y) ? -sortDirNum : ((x > y) ? sortDirNum : 0));
+                    };
                 }
 
             }
@@ -179,25 +167,22 @@ export function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((
         });
     }
     return [...array].sort((a: any, b: any) => {
-        var av = expression(a);
-        var bv = expression(b);
+        const av = expression(a);
+        const bv = expression(b);
         return ((av < bv) ? -sortDirNum : ((av > bv) ? sortDirNum : 0));
     });
 
 }
 
-
-
-
-export function groupBy<T, TKey>(items: T[], keyGen: (item: T, index?: number) => TKey): Group<T, TKey>[] {
-    var result: Group<T, TKey>[] = [];
-    for (var i = 0; i < items.length; i++) {
-        var key = keyGen(items[i], i);
-        var g = result.find(a => a.key === key);
+export function groupBy<T, TKey>(items: T[], keyGen: (item: T, index?: number) => TKey): Array<Group<T, TKey>> {
+    const result: Array<Group<T, TKey>> = [];
+    for (let i = 0; i < items.length; i++) {
+        const key = keyGen(items[i], i);
+        let g = result.find((a) => a.key === key);
         if (g == null) {
             g = {
-                key: key,
-                items: []
+                key,
+                items: [],
             };
             result.push(g);
         }
@@ -208,30 +193,28 @@ export function groupBy<T, TKey>(items: T[], keyGen: (item: T, index?: number) =
 }
 export interface Group<T, TKey> {
     key: TKey; items: T[];
-};
+}
 
-
-export function objectMapToArray<T>(mapOrArray: {[key:string]:T} | T[]): T[] {
+export function objectMapToArray<T>(mapOrArray: {[key: string]: T} | T[]): T[] {
 
     if (Array.isArray(mapOrArray)) {
         return mapOrArray;
     }
-    return Object.keys(mapOrArray).map(key => mapOrArray[key]);
+    return Object.keys(mapOrArray).map((key) => mapOrArray[key]);
 }
-
 
 export class Lazy<T> {
 
-    private _value: T;    
+    private _value: T;
     private func: () => T;
     constructor(func: () => T) {
-        
+
         this.func = () => {
-            
+
             this.func = () => this._value;
             return this._value = func();
-            
-        }
+
+        };
     }
 
     public get value(): T {

@@ -1,92 +1,92 @@
 ﻿import * as React from 'react';
 import * as Select from 'react-select';
-import { SelectOption } from "./List";
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition } from "./FilterDefinition";
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition } from './FilterDefinition';
+import { SelectOption } from './List';
 //import { CustomSelectValue } from '../components/CustomSelectValue';
-export type RemoteListOptionProvider = (input: string | number[], maxOptions?: number) => Promise<SelectOption<any>[]>;
+export type RemoteListOptionProvider = (input: string | number[], maxOptions?: number) => Promise<Array<SelectOption<any>>>;
 
 export class RemoteList extends FilterDefinition<number[]> {
 
-    private queryHandler: (input: string | number[]) => Promise<SelectOption<any>[]>;
+    private queryHandler: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
     private cachedOptions: { [key: number]: string } = {};
+    public readonly operations = this.getOperations();
 
     constructor(options: FilterDefinitionOptionsOrFieldName, optionProvider: RemoteListOptionProvider) {
-        super(options)
+        super(options);
 
         this.serializeValue = (value) => value.join(' ');
-        this.deSerializeValue = (value) => value.split(' ').map(m => parseInt(m));
+        this.deSerializeValue = (value) => value.split(' ').map((m) => parseInt(m, 10));
 
         const maxOptions = 20;
 
         this.queryHandler = (input) => {
-            return optionProvider(input, maxOptions).then(options => {
+            return optionProvider(input, maxOptions).then((opts) => {
 
-                options.forEach(o => {
+                opts.forEach((o) => {
                     if (!this.cachedOptions[o.value]) {
                         this.cachedOptions[o.value] = o.label;
                     }
                 });
 
-                return options;
+                return opts;
             });
-        }
+        };
 
-        const loadOptions = input => this.queryHandler(input).then(options => {
+        const loadOptions = (input) => this.queryHandler(input).then((opts) => {
 
             return {
-                options: options,
-                complete: options.length < maxOptions
+                opts,
+                complete: opts.length < maxOptions,
             };
 
         });
-        this.filterComponent = props => {
+        this.filterComponent = (props) => {
 
-            return <Select.Async value={props.value && props.value.map(m => ({ label: this.cachedOptions[m], value: m })) || []} multi
-                loadOptions={loadOptions}
-                onChange={(e: SelectOption<any>[]) => props.onValueChange(e.map(m => m.value))}
-                /*valueComponent={CustomSelectValue as any}*/
-                className="small" />
+            /* tslint:disable:jsx-no-lambda */
+            return (
+                <Select.Async
+                    value={props.value && props.value.map((m) => ({ label: this.cachedOptions[m], value: m })) || []}
+                    multi
+                    loadOptions={loadOptions}
+                    onChange={(e: Array<SelectOption<any>>) => props.onValueChange(e.map((m) => m.value))}
+                    className="small"
+                />
+            );
         };
 
+        this.appliedLabelComponent = (props) => {
+            const selectedOptions = props.value.map((m) => ({ label: this.cachedOptions[m], value: m }));
 
-        this.appliedLabelComponent = props => {
-            const selectedOptions = props.value.map(m => ({ label: this.cachedOptions[m], value: m }));
+            return <RemoteListFilterLabel selectedOptions={selectedOptions} listOptionsProvider={this.queryHandler} />;
 
-            return <RemoteListFilterLabel selectedOptions={selectedOptions} listOptionsProvider={this.queryHandler} />
-
-        }
+        };
 
     }
-
-    public readonly operations = this.getOperations();
-
     protected getOperations(): ObjectMap<OperationDefinition<number[]>> {
         return {
-            'in': {
+            in: {
                 key: 'in',
                 displayName: 'is any of',
                 test: (sourceValue: number, filterValue) => filterValue.indexOf(sourceValue) > -1,
 
-
-            }
+            },
         };
     }
 
 }
 
 interface RemoteListFilterLabelProps {
-    selectedOptions: SelectOption<any>[];
-    listOptionsProvider: (input: string | number[]) => Promise<SelectOption<any>[]>;
+    selectedOptions: Array<SelectOption<any>>;
+    listOptionsProvider: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
 }
 
 class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, never> {
+    private anyMissing: boolean;
 
     constructor(props: RemoteListFilterLabelProps) {
         super(props);
 
-
     }
-
 
     componentWillMount() {
 
@@ -100,7 +100,7 @@ class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, 
 
     checkOptions(props: RemoteListFilterLabelProps) {
 
-        const missing = props.selectedOptions.filter(m => !m.label).map(m => m.value);
+        const missing = props.selectedOptions.filter((m) => !m.label).map((m) => m.value);
         this.anyMissing = missing.length > 0;
         if (this.anyMissing) {
             props.listOptionsProvider(missing).then(() => {
@@ -108,17 +108,13 @@ class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, 
             });
         }
     }
-
-    private anyMissing: boolean;
-
     render() {
-
 
         if (this.anyMissing) {
             return <span>Loading...</span>;
 
         }
-        return <span>{this.props.selectedOptions.map(m => m.label).join(' or ')}</span>;
+        return <span>{this.props.selectedOptions.map((m) => m.label).join(' or ')}</span>;
 
     }
 }

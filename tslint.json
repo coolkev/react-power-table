@@ -1,0 +1,77 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended","tslint-react"
+    ],
+    "jsRules": {},
+    "rules": {
+        
+        "jsx-alignment": true,
+        "jsx-boolean-value": false,
+        "jsx-curly-spacing": [
+            false,
+            "never"
+        ],
+        "jsx-no-bind": true,
+        "jsx-no-lambda": true,
+        "jsx-no-multiline-js": true,
+        "jsx-no-string-ref": true,
+        "jsx-self-close": true,
+        "jsx-wrap-multiline": true,
+        "array-type": false,
+        "arrow-parens": false,
+        "comment-format": false,
+        "interface-name": false,
+        "import-blacklist": [
+            true,
+            "rxjs"
+        ],
+        "max-line-length": [
+            true,
+            260
+        ],
+        "max-classes-per-file": [
+            4
+        ],
+        "member-access": false,
+        "member-ordering": [
+            true,
+            "static-before-instance",
+            "variables-before-functions"
+        ],
+        "no-console": [
+            true,
+            "debug",
+            "info",
+            "time",
+            "timeEnd",
+            "trace"
+        ],
+        "no-empty": false,
+        "no-inferrable-types": [
+            true,
+            "ignore-params"
+        ],
+        "no-non-null-assertion": true,
+        "no-string-literal": false,
+        "no-switch-case-fall-through": true,
+        "object-literal-sort-keys": false,
+        "ordered-imports": false,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-catch",
+            "check-else",
+            "check-whitespace"
+        ],
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double"
+        ],
+        "trailing-comma": false,
+        "unified-signatures": false,
+        "variable-name": false        
+    },
+    "rulesDirectory": []
+}

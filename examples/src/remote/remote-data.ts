@@ -41,6 +41,7 @@ function executeRequest<T>(url: string, postData: any): Promise<T> {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(postData),
+        credentials: 'include'
     };
 
     return fetch(url, options).then(response => {

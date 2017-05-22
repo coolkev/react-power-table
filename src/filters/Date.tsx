@@ -1,29 +1,29 @@
 ﻿import * as React from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
-import { GlobalDate } from "../utils";
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from "./FilterDefinition";
+import { GlobalDate } from '../utils';
+import { FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from './FilterDefinition';
 
-export class Date extends FilterDefinition<string>
-{
+export class Date extends FilterDefinition<string> {
+    public readonly operations = this.getOperations();
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 
         super(options);
 
-        this.filterComponent = (props) => {
+        this.filterComponent = DateFilterComponent;
 
-            const { value, onValueChange, filter, operation, ...rest } = props;
+        // this.filterComponent = (props) => {
 
-            var dateValue = value ? (new GlobalDate(value)).toISOString() : '';
+        //     const { value, onValueChange, filter, operation, ...rest } = props;
 
-            return <DatePicker value={dateValue} onChange={(_value, formattedValue) => props.onValueChange(formattedValue)} showClearButton={false} {...rest} />;
+        //     const dateValue = value ? (new GlobalDate(value)).toISOString() : '';
 
-        }
+        //     return <DatePicker value={dateValue} onChange={(_value, formattedValue) => props.onValueChange(formattedValue)} showClearButton={false} {...rest} />;
 
+        // };
 
     }
     //public readonly operations = { ...this.defaultOperations,...this.getNullableOperations() };
 
-    public readonly operations = this.getOperations();
     public parseValue(str: string): string {
         if (str) {
 
@@ -38,21 +38,47 @@ export class Date extends FilterDefinition<string>
 
     }
 
-
-
     private getOperations() {
         const result = {
             eq: this.defaultOperations.eq,
             lt: { ...this.defaultOperations.lt, displayName: 'is before' } as OperationDefinition<string>,
             gt: { ...this.defaultOperations.gt, displayName: 'is after' } as OperationDefinition<string>,
-            between: this.defaultOperations.between            
+            between: this.defaultOperations.between,
         };
 
         if (this.canBeNull) {
-            return { ...result,...nullableOperations() };
-}
+            return { ...result, ...nullableOperations() };
+        }
         return result;
     }
 
+}
+
+class DateFilterComponent extends React.Component<FilterComponentProps<string>, never> {
+
+    constructor(props: FilterComponentProps<string>) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    public handleChange(_value, formattedValue: string) {
+        this.props.onValueChange(formattedValue);
+    }
+
+    public handleKeyPress(e: React.KeyboardEvent<any>) {
+        if (e.charCode === 13) {
+            this.props.onEnterKeyPress();
+        }
+    }
+    public render() {
+
+        const { value, onEnterKeyPress, onValueChange, operation, ...rest } = this.props;
+
+        const dateValue = value ? (new GlobalDate(value)).toISOString() : '';
+
+        return <DatePicker value={dateValue} onChange={this.handleChange} showClearButton={false} {...rest} />;
+
+        //return <FormControl value={value} autoFocus onChange={this.handleChange} onKeyPress={this.handleKeyPress} />;
+    }
 
 }

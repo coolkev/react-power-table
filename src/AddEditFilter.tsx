@@ -1,13 +1,12 @@
 ﻿import * as React from 'react';
-import * as Radio from 'react-bootstrap/lib/Radio';
 import * as Button from 'react-bootstrap/lib/Button';
-import { debuglog } from "./utils";
-import * as filters from "./filters/FilterDefinition";
-
+import * as Radio from 'react-bootstrap/lib/Radio';
+import * as filters from './filters/FilterDefinition';
+import { debuglog } from './utils';
 
 /**
-  * @internal
-  */
+ * @internal
+ */
 export interface AddEditFilterProps {
     filter: filters.FilterDefinition<any>;
     initialOperation: filters.OperationDefinition<any>;
@@ -15,10 +14,9 @@ export interface AddEditFilterProps {
     onApplyFilter: (filter: filters.AppliedFilter<any>) => void;
 }
 
-
 /**
-  * @internal
-  */
+ * @internal
+ */
 export interface AddEditFilterState {
 
     operationKey: string;
@@ -27,17 +25,16 @@ export interface AddEditFilterState {
 }
 
 /**
-  * @internal
-  */
+ * @internal
+ */
 export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEditFilterState> {
 
     constructor(props: AddEditFilterProps) {
         super(props);
 
-
         const value = props.initialValue || props.filter.defaultValue || '';
 
-        this.state = { value: value, operationKey: props.initialOperation.key };
+        this.state = { value, operationKey: props.initialOperation.key };
 
         this.selectedOperationChange = this.selectedOperationChange.bind(this);
         this.handleFilterValueChange = this.handleFilterValueChange.bind(this);
@@ -51,86 +48,89 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         const operationKey = e.currentTarget.value;
         //const operation = this.props.filter.operations[operationKey];
 
-        const newState: Partial<AddEditFilterState> = { operationKey: operationKey };
+        const newState: Partial<AddEditFilterState> = { operationKey };
 
-        if (prevOperationKey == 'between' && operationKey != prevOperationKey && typeof this.state.value === 'string') {
+        if (prevOperationKey === 'between' && operationKey !== prevOperationKey && typeof this.state.value === 'string') {
             newState.value = this.state.value.split(' ')[0];
         }
-        this.setState(newState as any)
+        this.setState(newState as any);
     }
 
     private handleFilterValueChange(value: string) {
         debuglog('AddEditFilter.filterValueChange', value);
         this.setState({
-            value: value
+            value,
         });
     }
 
     private applyFilter() {
         const operation = this.props.filter.operations[this.state.operationKey];
 
-        this.props.onApplyFilter({ filter: this.props.filter, operation: operation, value: this.state.value });
+        this.props.onApplyFilter({ filter: this.props.filter, operation, value: this.state.value });
     }
     render() {
         debuglog('AddEditFilter.render', this.props);
 
         const filter = this.props.filter;
 
-        return <div>
-            <div style={{ margin: '10px 0' }}><b>{filter.displayName}</b>
-            </div>
+        const { value, operationKey } = this.state;
 
+        const opComponents = Object.keys(filter.operations).map((opKey) => {
+            const op = filter.operations[opKey];
+            let children: React.ReactChild;
+            if (opKey === this.state.operationKey) {
 
+                const SelectedFilterComponent = op.filterComponent || filter.filterComponent;
 
-
-            {Object.keys(filter.operations).map(opKey => {
-                const op = filter.operations[opKey];
-                let selectedFilterComponentProps: filters.FilterComponentProps<any>;
-                let SelectedFilterComponent: React.ComponentClass<filters.FilterComponentProps<any>> | React.StatelessComponent<filters.FilterComponentProps<any>>;
-
-                if (op.key == this.state.operationKey) {
-                    selectedFilterComponentProps = {
-                        filter: this.props.filter,
-                        operation: op,
-                        value: this.state.value,
-                        onValueChange: this.handleFilterValueChange,
-                        onEnterKeyPress: this.applyFilter
-                    };
-
-                    SelectedFilterComponent = op.filterComponent || filter.filterComponent;
-
+                if (SelectedFilterComponent) {
+                    children = <div style={{ marginLeft: 20 }}><SelectedFilterComponent filter={filter} operation={op} value={value} onValueChange={this.handleFilterValueChange} onEnterKeyPress={this.applyFilter} /></div>;
                 }
+            }
 
+            return <FilterOperation key={opKey} operation={op} filter={filter} selected={opKey === operationKey} onChange={this.selectedOperationChange}>{children}</FilterOperation>;
+        });
 
+        return (
+            <div>
+                <div style={{ margin: '10px 0' }}><b>{filter.displayName}</b>
+                </div>
 
-                return <div key={op.key}>
-                    <Radio checked={op.key == this.state.operationKey} onChange={this.selectedOperationChange} value={op.key}>
-                        {filter.radioButtonLabel ? filter.radioButtonLabel({
-                            filter: this.props.filter,
-                            operation: op
-                        }) : op.displayName}
+                {opComponents.map((opComponent) => opComponent)}
 
-                    </Radio>
-                    {SelectedFilterComponent &&
-                        <div style={{ marginLeft: 20 }}><SelectedFilterComponent {...selectedFilterComponentProps} /></div>
-                    }
-                </div>;
+                <div style={{ marginTop: 20 }}>
+                    <Button bsStyle="primary" bsSize="sm" onClick={this.applyFilter}>Apply Filter</Button>
+                </div>
 
-
-            })}
-
-
-            <div style={{ marginTop: 20 }}>
-                <Button bsStyle="primary" bsSize="sm" onClick={this.applyFilter}>Apply Filter</Button>
-            </div>
-
-        </div>;
+            </div>);
     }
 }
 
+/**
+ * @internal
+ */
+export interface FilterOperationProps extends React.Props<any> {
+    operation: filters.OperationDefinition;
+    filter: filters.FilterDefinition;
 
+    selected: boolean;
+    onChange: React.EventHandler<React.FormEvent<Radio & HTMLInputElement>>;
+}
 
 /**
-  * @internal
-  */
-//export const AddEditFilter : React.ComponentClass<AddEditFilterProps>= AddEditFilterInternal;
+ * @internal
+ */
+export const FilterOperation = (props: FilterOperationProps) => {
+
+    const { operation, filter, onChange, selected, children } = props;
+
+    return (
+        <div key={operation.key}>
+            <Radio checked={selected} onChange={onChange} value={operation.key}>
+                {filter.radioButtonLabel ? filter.radioButtonLabel({ filter, operation }) : operation.displayName}
+
+            </Radio>
+            {children}
+        </div>
+    );
+
+};

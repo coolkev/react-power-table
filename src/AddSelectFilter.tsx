@@ -1,14 +1,13 @@
 ﻿import * as React from 'react';
-import { AddEditFilter } from './AddEditFilter'
 import * as FormControl from 'react-bootstrap/lib/FormControl';
-import * as PowerTable from "./filters/FilterDefinition";
-import { BackLink } from "./components/BackLink";
-import { objectMapToArray } from "./utils";
-
+import { AddEditFilter } from './AddEditFilter';
+import { BackLink } from './components/BackLink';
+import * as PowerTable from './filters/FilterDefinition';
+import { objectMapToArray } from './utils';
 
 /**
-  * @internal
-  */
+ * @internal
+ */
 export interface AddFilterProps {
     cancelAddFilter: () => void;
 
@@ -20,20 +19,17 @@ export interface AddFilterProps {
 
 }
 
-
 /**
-  * @internal
-  */
+ * @internal
+ */
 export interface AddFilterState {
     searchText: string;
     selectedFilterKey?: string;
 }
 
-
-
 /**
-  * @internal
-  */
+ * @internal
+ */
 export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilterState> {
 
     constructor(props: AddFilterProps) {
@@ -41,25 +37,28 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
         this.state = { searchText: '' };
         this.onSearchTextChanged = this.onSearchTextChanged.bind(this);
         this.backToPrev = this.backToPrev.bind(this);
+        this.newFilterSelected = this.newFilterSelected.bind(this);
 
     }
-
 
     private onSearchTextChanged(e: React.FormEvent<FormControl & HTMLInputElement>) {
         this.setState({
-            searchText: e.currentTarget.value
+            searchText: e.currentTarget.value,
         });
 
     }
 
-    private newFilterSelected(key: string) {
+    private newFilterSelected(e: React.SyntheticEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+
         this.setState({
-            selectedFilterKey: key
+            selectedFilterKey: e.currentTarget.name,
         });
-
     }
 
-    private backToPrev() {
+    private backToPrev(e: React.SyntheticEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+
         if (this.state.selectedFilterKey) {
             this.setState({ selectedFilterKey: null });
         } else {
@@ -68,61 +67,59 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
     }
     render() {
 
-        const {availableFilters, appliedFilters } = this.props;
+        const { availableFilters, appliedFilters } = this.props;
 
         const { searchText, selectedFilterKey } = this.state;
 
-
         if (selectedFilterKey) {
 
-
-            const filter = Array.isArray(availableFilters) ? availableFilters.find(f => f.fieldName == selectedFilterKey) : availableFilters[selectedFilterKey];
+            const filter = Array.isArray(availableFilters) ? availableFilters.find((f) => f.fieldName === selectedFilterKey) : availableFilters[selectedFilterKey];
 
             const initialOperation = objectMapToArray(filter.operations)[0];
 
-            return <div>
-                <BackLink onClick={this.backToPrev} />
-
+            return (
                 <div>
+                    <BackLink onClick={this.backToPrev} />
 
-                    <AddEditFilter filter={filter} initialOperation={initialOperation} onApplyFilter={this.props.onApplyFilter} />
+                    <div>
 
+                        <AddEditFilter filter={filter} initialOperation={initialOperation} onApplyFilter={this.props.onApplyFilter} />
+
+                    </div>
                 </div>
-            </div>;
+            );
 
         }
 
         const filters = objectMapToArray(availableFilters);
 
-        const unusedFilters = filters.filter(m =>appliedFilters.every(c => c.filter.fieldName != m.fieldName));
+        const unusedFilters = filters.filter((m) => appliedFilters.every((c) => c.filter.fieldName !== m.fieldName));
 
         const regex = new RegExp(searchText, 'i');
-        const showFilters = searchText ? unusedFilters.filter(m => m.displayName.match(regex)) : unusedFilters;
+        const showFilters = searchText ? unusedFilters.filter((m) => m.displayName.match(regex)) : unusedFilters;
 
+        // const onSelectFilter = (e: React.) => {
+        //     e.preventDefault();
+        //     this.newFilterSelected(m.fieldName);
+        // };
 
-        return <div className="flex-column">
-            <BackLink onClick={this.backToPrev} />
+        return (
+            <div className="flex-column">
+                <BackLink onClick={this.backToPrev} />
 
+                <div><FormControl placeholder="Filter by" value={searchText} onChange={this.onSearchTextChanged} autoFocus /></div>
 
-            <div><FormControl placeholder="Filter by" value={searchText} onChange={this.onSearchTextChanged} autoFocus /></div>
-
-            <div className="small flex-column">
-                <div style={{ margin: '10px 0' }}><b>Available Filters</b></div>
-                <div className="available-filters">
-                    <div className="list-group">
-                        {showFilters.map(m => <a href="#" onClick={e => {
-                            e.preventDefault();
-                            this.newFilterSelected(m.fieldName);
-                        }} className="list-group-item" key={m.fieldName}>{m.displayName}</a>)}
+                <div className="small flex-column">
+                    <div style={{ margin: '10px 0' }}><b>Available Filters</b></div>
+                    <div className="available-filters">
+                        <div className="list-group">
+                            {showFilters.map((m) => <a href="#" onClick={this.newFilterSelected} name={m.fieldName} className="list-group-item" key={m.fieldName}>{m.displayName}</a>)}
+                        </div>
                     </div>
+
                 </div>
 
             </div>
-
-        </div>;
+        );
     }
 }
-
-
-
-

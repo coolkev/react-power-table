@@ -13,9 +13,10 @@ var babel = require("gulp-babel"),
     WebpackDevServer = require('webpack-dev-server'),
     jestCli = require('jest-cli'),
     coveralls = require('gulp-coveralls'),
-    fs = require('fs');
+    fs = require('fs'),
+    tslint = require("gulp-tslint");
 
-gulp.task("build", function () {
+gulp.task("build", ['lint'],function () {
 
     // const babelOptions = {
     //     "presets": [
@@ -29,6 +30,7 @@ gulp.task("build", function () {
     //         ]
     //     ]
     // };
+
     let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: '@types' });
 
     let typescriptCompile = gulp.src(["./src/**/*.ts?(x)"])
@@ -42,6 +44,18 @@ gulp.task("build", function () {
     typescriptCompile.dts.pipe(gulp.dest('./@types')),
 
     ]);
+});
+
+
+
+gulp.task("lint", function () {
+   
+    return gulp.src(["./src/**/*.ts?(x)"])
+        .pipe(tslint({
+            formatter: "verbose"
+        }))
+        .pipe(tslint.report());
+
 });
 
 const buildFolders = ['dist', 'docs', 'examples/dist', '@types', 'tests-dist'];
@@ -91,7 +105,7 @@ function runJest(options, cb) {
 
 gulp.task('start', (cb) => {
 
-    runJest({watch: true, silent: true, coverage: true}, cb);
+    runJest({ watch: true, silent: true, coverage: true }, cb);
 
 
     var webpackConfig = require('./examples/webpack.config.js');
@@ -144,15 +158,15 @@ gulp.task('start', (cb) => {
 
 gulp.task("test", function (cb) {
 
-    runJest({silent: true}, cb);
-    
+    runJest({ silent: true }, cb);
+
 });
 
 gulp.task("test:coverage", function (cb) {
 
     //process.env.NODE_ENV = 'test';
-    runJest({silent: true, coverage: true}, cb);
-    
+    runJest({ silent: true, coverage: true }, cb);
+
 });
 
 

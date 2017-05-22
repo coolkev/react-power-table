@@ -315,7 +315,7 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
                 style="text-align: right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width: 80px;"
@@ -671,7 +671,7 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
                 style="text-align: right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width: 80px;"
@@ -1612,7 +1612,7 @@ exports[`withInternalPaging tests render paging 1`] = `
                 style="text-align: right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width: 80px;"

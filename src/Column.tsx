@@ -1,8 +1,6 @@
 ﻿import * as React from 'react';
-import { makePure, debuglog } from "./utils";
-import { CellProps, Column, StrictColumn } from "./ReactPowerTable";
-
-
+import { CellProps, Column, StrictColumn } from './ReactPowerTable';
+import { debuglog, makePure } from './utils';
 
 /** @internal */
 // export const defaultCellComponent = makePure((props: CellProps<any>) => {
@@ -21,33 +19,28 @@ export function transformColumn<T>(options: Column<T> | string): StrictColumn<T>
     const core = getColumnCore(options);
     const { cellProps, headerProps } = getCellAndHeaderProps(options);
 
-
     const result: StrictColumn<T> = {
         ...col,
         ...core,
-        cellProps: cellProps,
+        cellProps,
         headerCellProps: headerProps,
         headerComponent: col.headerComponent,
-        formatter: col.formatter || null
+        formatter: col.formatter || null,
     };
 
     if (col.cellComponent) {
         result.cellComponent = col.cellComponent;
-        result.cellComponentProps = col.cellComponentProps || (props => props);
+        result.cellComponentProps = col.cellComponentProps || ((props) => props);
 
-    }
-    else {
+    } else {
 
         //result.cellComponent = defaultCellComponent;
-        result.cellComponentProps = col.cellComponentProps || (props => ({ column: props.column, value: props.value }));
+        result.cellComponentProps = col.cellComponentProps || ((props) => ({ column: props.column, value: props.value }));
 
     }
 
     return result;
 }
-
-
-
 
 function getCellAndHeaderProps(options: Column<any>) {
 
@@ -58,7 +51,6 @@ function getCellAndHeaderProps(options: Column<any>) {
 
     const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (options.cellProps) === 'function' ? {} : { ...options.cellProps };
     const cellPropsFunc = typeof (options.cellProps) === 'function' ? options.cellProps : () => null;
-
 
     //var cssClassFunc: (row: T) => string;
 
@@ -75,15 +67,13 @@ function getCellAndHeaderProps(options: Column<any>) {
     }
 
     if (typeof cssClass === 'function') {
-        cellProps = row => ({ ...cellStaticProps, ...cellPropsFunc(row), className: cssClass(row) });
+        cellProps = (row) => ({ ...cellStaticProps, ...cellPropsFunc(row), className: cssClass(row) });
 
-    }
-    else if (typeof (cssClass) === "string") {
+    } else if (typeof (cssClass) === 'string') {
         cellStaticProps.className = cssClass;
-        cellProps = row => ({ ...cellStaticProps, ...cellPropsFunc(row) });
-    }
-    else {
-        cellProps = row => ({ ...cellStaticProps, ...cellPropsFunc(row) });
+        cellProps = (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) });
+    } else {
+        cellProps = (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) });
     }
     if (options.headerCssClass) {
         headerProps.className = options.headerCssClass;
@@ -99,7 +89,6 @@ function getCellAndHeaderProps(options: Column<any>) {
 
 }
 
-
 export interface ColumnCore<T> {
     key: string | number;
     field: (row: T) => any;
@@ -109,16 +98,15 @@ export interface ColumnCore<T> {
 
 export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
 
-    if (typeof (col) == 'string') {
+    if (typeof (col) === 'string') {
         return {
             key: col,
-            field: row => row[col],
+            field: (row) => row[col],
             fieldName: col,
             headerText: col,
 
         };
     }
-
 
     const { field, fieldName, key } = col;
 
@@ -126,42 +114,42 @@ export function getColumnCore<T>(col: Column<T> | string): ColumnCore<T> {
         const actualFieldName = fieldName || getExpression(field);
         return {
             key: key || actualFieldName,
-            field: field,
+            field,
             fieldName: actualFieldName,
-            headerText: col.headerText || actualFieldName
+            headerText: col.headerText || actualFieldName,
         };
     }
     if (fieldName) {
         return {
             key: key || fieldName,
-            field: row => row[fieldName],
-            fieldName: fieldName,
-            headerText: col.headerText || fieldName
+            field: (row) => row[fieldName],
+            fieldName,
+            headerText: col.headerText || fieldName,
 
         };
     }
 
     if (!key) {
-        throw new Error('Must specify value for "key" if field is not used')
+        throw new Error('Must specify value for "key" if field is not used');
     }
     //    field = _row => null;
 
     return {
-        key: key,
-        field: _row => null,
+        key,
+        field: (_row) => null,
         fieldName: null,
-        headerText: col.headerText
+        headerText: col.headerText,
 
     };
 
 }
 /** @internal */
-export function getExpression(func: Function): string {
+export function getExpression(func: (row: any) => any): string {
 
     const expr = func.toString();
 
-    let myregexp = /(?:return|\w+ => ).*\.(\w+);?/;
-    let match = myregexp.exec(expr);
+    const myregexp = /(?:return|\w+ => ).*\.(\w+);?/;
+    const match = myregexp.exec(expr);
     if (match != null) {
         return match[1];
     }

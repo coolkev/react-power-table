@@ -855,7 +855,7 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
                 style="text-align: right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width: 80px;"
@@ -1221,7 +1221,7 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
                 style="text-align: right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width: 80px;"
@@ -2705,7 +2705,7 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
                 style="text-align: right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width: 80px;"
@@ -3071,7 +3071,7 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
                 style="text-align: right;"
                 width="33%"
               >
-                Show:
+                Show: 
                 <select
                   class="form-control input-sm"
                   style="width: 80px;"

@@ -1,21 +1,15 @@
 import * as React from 'react';
 
 /**
-  * @internal
-  */
+ * @internal
+ */
 export interface BackLinkProps {
-    onClick: () => void;
+    onClick: React.EventHandler<React.SyntheticEvent<HTMLAnchorElement>>;
 }
 
 /**
-  * @internal
-  */
+ * @internal
+ */
 export const BackLink = (props: BackLinkProps) => {
-    return <div style={{ marginBottom: 10 }}><a href="#" onClick={e => {
-        e.preventDefault();
-        props.onClick()
-    }}><span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a>
-    </div>;
-}
-
-
+    return <div style={{ marginBottom: 10 }}><a href="#" onClick={props.onClick}><span className="glyphicon glyphicon-chevron-left" aria-hidden="true"/>Back</a></div>;
+};

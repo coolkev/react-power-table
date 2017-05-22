@@ -1,21 +1,20 @@
 ﻿import * as React from 'react';
 
-
 export interface NumericInputProps extends React.HTMLProps<HTMLInputElement> {
-    
+
     initialValue: number | string;
     onValueChange: (newValue: number) => void;
     allowDecimal?: boolean;
+    onEnterKeyPress?: () => void;
 }
 
-
 /**
-  * @internal
-  */
+ * @internal
+ */
 export interface NumericInputState {
     value: string;
 }
-export const NumericInput : React.ComponentClass<NumericInputProps> = class NumericInput extends React.Component<NumericInputProps, NumericInputState> {
+export const NumericInput: React.ComponentClass<NumericInputProps> = class NumericInput extends React.Component<NumericInputProps, NumericInputState> {
 
     constructor(props: NumericInputProps & React.HTMLProps<HTMLInputElement>) {
         super(props);
@@ -29,16 +28,16 @@ export const NumericInput : React.ComponentClass<NumericInputProps> = class Nume
 
     private isValid() {
 
-        return !isNaN(parseInt(this.state.value));
+        return !isNaN(parseInt(this.state.value, 10));
     }
     componentWillReceiveProps(nextProps: NumericInputProps) {
-        if (nextProps.initialValue != this.props.initialValue) {
+        if (nextProps.initialValue !== this.props.initialValue) {
             this.setState({ value: nextProps.initialValue as any });
         }
     }
     private onChange(e: React.FormEvent<HTMLInputElement>) {
 
-        const ivalue = parseInt(e.currentTarget.value);
+        const ivalue = parseInt(e.currentTarget.value, 10);
 
         const isValid = !isNaN(ivalue);
         if (isValid) {
@@ -51,19 +50,23 @@ export const NumericInput : React.ComponentClass<NumericInputProps> = class Nume
 
     private onKeyPress(evt: React.KeyboardEvent<HTMLInputElement>) {
         //console.log('onKeyPress which: ' + evt.which, evt);
-        this.props.onKeyPress && this.props.onKeyPress(evt);
-        
-        if (evt.metaKey || evt.which <= 0 || evt.which == 8 || evt.which == 45 || (evt.which >= 48 && evt.which <= 57) || (evt.which == 46 && this.props.allowDecimal)) {
+        if (this.props.onKeyPress) {
+            this.props.onKeyPress(evt);
         }
-        else {
+
+        if (evt.metaKey || evt.which <= 0 || evt.which === 8 || evt.which === 45 || (evt.which >= 48 && evt.which <= 57) || (evt.which === 46 && this.props.allowDecimal)) {
+        } else {
+            if (evt.charCode === 13 && this.props.onEnterKeyPress) {
+                this.props.onEnterKeyPress();
+            }
             evt.preventDefault();
         }
     }
     render() {
 
-        const {initialValue, onValueChange, allowDecimal,...rest } = this.props;
+        const { initialValue, onValueChange, allowDecimal, onEnterKeyPress, ...rest } = this.props;
 
-        return <span className={this.isValid() ? null : 'has-error'}><input type="text" {...rest} value={this.state.value} onKeyPress={this.onKeyPress} onChange={this.onChange} /></span>
+        return <span className={this.isValid() ? null : 'has-error'}><input type="text" {...rest} value={this.state.value} onKeyPress={this.onKeyPress} onChange={this.onChange} /></span>;
 
     }
-}
+};
