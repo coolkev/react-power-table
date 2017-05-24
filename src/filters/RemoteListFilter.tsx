@@ -35,7 +35,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
         const loadOptions = (input) => this.queryHandler(input).then((opts) => {
 
             return {
-                opts,
+                options: opts,
                 complete: opts.length < maxOptions,
             };
 
