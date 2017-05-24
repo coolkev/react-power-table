@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import * as Select from 'react-select';
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition } from './FilterDefinition';
+import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition, AppliedFilter } from './FilterDefinition';
 import { SelectOption } from './ListFilter';
 //import { CustomSelectValue } from '../components/CustomSelectValue';
 export type RemoteListOptionProvider = (input: string | number[], maxOptions?: number) => Promise<Array<SelectOption<any>>>;
@@ -57,7 +57,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
         this.appliedLabelComponent = (props) => {
             const selectedOptions = props.value.map((m) => ({ label: this.cachedOptions[m], value: m }));
 
-            return <RemoteListFilterLabel selectedOptions={selectedOptions} listOptionsProvider={this.queryHandler} />;
+            return <RemoteListFilterLabel appliedFilter={props} selectedOptions={selectedOptions} listOptionsProvider={this.queryHandler} />;
 
         };
 
@@ -76,6 +76,8 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
 }
 
 interface RemoteListFilterLabelProps {
+
+    appliedFilter: AppliedFilter;
     selectedOptions: Array<SelectOption<any>>;
     listOptionsProvider: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
 }
@@ -112,9 +114,11 @@ class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, 
 
         if (this.anyMissing) {
             return <span>Loading...</span>;
-
         }
-        return <span>{this.props.selectedOptions.map((m) => m.label).join(' or ')}</span>;
+        const { selectedOptions, appliedFilter } = this.props;
+        const label = appliedFilter.filter.displayName + ' is ' + selectedOptions.map((m) => m.label).join(' or ');
+
+        return <span>{label}</span>;
 
     }
 }
