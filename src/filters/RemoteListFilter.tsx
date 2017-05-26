@@ -56,6 +56,10 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
                 />);
 
         };
+        this.filterComponent.defaultProps = {
+            className: 'small',
+            autoFocus: true
+        };
 
         this.appliedLabelComponent = (props) => {
             const selectedOptions = props.value.map((m) => ({ label: this.cachedOptions[m], value: m }));
