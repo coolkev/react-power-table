@@ -44,8 +44,6 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
             className: 'small',
             autoFocus: true
         };
-
-        //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
     }
     private getOperations(): PowerTable.ObjectMap<PowerTable.OperationDefinition<T[]>> {
         return {
@@ -65,7 +63,6 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
     deSerializeValue(value: string): T[] {
         return value.split(' ').map((m) => this.deserializeFunc(m));
     }
-
 }
 
 function getSelectedLabels<T extends string | number>(values: T[], items: Array<SelectOption<T>>) {
@@ -76,4 +73,3 @@ function getSelectedLabels<T extends string | number>(values: T[], items: Array<
     }).filter((m) => m);
 
 }
-
