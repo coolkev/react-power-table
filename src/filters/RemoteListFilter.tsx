@@ -40,18 +40,21 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
             };
 
         });
-        this.filterComponent = (props) => {
 
-            /* tslint:disable:jsx-no-lambda */
+        this.filterComponent = (props) => {
+            const { autoFocus, value, onEnterKeyPress, onValueChange, children, filter, operation, ...rest } = props;
+
             return (
                 <Select.Async
+                    {...rest}
                     value={props.value && props.value.map((m) => ({ label: this.cachedOptions[m], value: m })) || []}
                     multi
                     loadOptions={loadOptions}
+                    // tslint:disable-next-line:jsx-no-lambda
                     onChange={(e: Array<SelectOption<any>>) => props.onValueChange(e.map((m) => m.value))}
-                    className="small"
-                />
-            );
+                    autofocus={autoFocus}
+                />);
+
         };
 
         this.appliedLabelComponent = (props) => {

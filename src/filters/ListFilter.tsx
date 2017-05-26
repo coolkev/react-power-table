@@ -26,17 +26,24 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
             }
         }
 
-        this.filterComponent = (props) => (
-            <Select
-                value={props.value ? props.value : []}
-                multi
-                options={items}
-                // tslint:disable-next-line:jsx-no-lambda
-                onChange={(e: Array<SelectOption<T>>) => props.onValueChange(e.map((m) => m.value))}
-                /*valueComponent={CustomSelectValue as any}  */
-                className="small"
-            />
-        );
+        this.filterComponent = (props) => {
+            const { autoFocus, value, onEnterKeyPress, onValueChange, children, filter, operation, ...rest } = props;
+
+            return (
+                <Select
+                    {...rest}
+                    value={props.value ? props.value : []}
+                    multi
+                    options={items}
+                    // tslint:disable-next-line:jsx-no-lambda
+                    onChange={(e: Array<SelectOption<T>>) => props.onValueChange(e.map((m) => m.value))}
+                    autofocus={autoFocus}
+                />);
+        };
+        this.filterComponent.defaultProps = {
+            className: 'small',
+            autoFocus: true
+        };
 
         //this.defaultFormat = (filter) => filter.filter.displayName + ' ' + filter.operation.displayName + ' "' + filter.value + '"'
     }
@@ -69,3 +76,4 @@ function getSelectedLabels<T extends string | number>(values: T[], items: Array<
     }).filter((m) => m);
 
 }
+
