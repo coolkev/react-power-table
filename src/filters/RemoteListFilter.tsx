@@ -91,6 +91,7 @@ interface RemoteListFilterLabelProps {
 
 class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, never> {
     private anyMissing: boolean;
+    private checkingOptions: boolean;
 
     constructor(props: RemoteListFilterLabelProps) {
         super(props);
@@ -109,12 +110,20 @@ class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, 
 
     checkOptions(props: RemoteListFilterLabelProps) {
 
-        const missing = props.selectedOptions.filter((m) => !m.label).map((m) => m.value);
-        this.anyMissing = missing.length > 0;
-        if (this.anyMissing) {
-            props.listOptionsProvider(missing).then(() => {
-                this.forceUpdate();
-            });
+        if (!this.checkingOptions) {
+            this.checkingOptions = true;
+            const missing = props.selectedOptions.filter((m) => !m.label).map((m) => m.value);
+            this.anyMissing = missing.length > 0;
+            if (this.anyMissing) {
+                props.listOptionsProvider(missing).then(() => {
+                    this.checkingOptions = false;
+                    this.forceUpdate();
+                }).catch(error => {
+                    if (!error.message.match(/aborted/)) {
+                        throw error;
+                    }
+                });
+            }
         }
     }
     render() {
