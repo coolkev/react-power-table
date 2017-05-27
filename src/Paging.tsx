@@ -76,7 +76,7 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
 
         }
 
-        componentWillReceiveProps(nextProps: T & { paging: Partial<InternalPagingProps> }) {
+        componentWillReceiveProps(nextProps: Readonly<T & { paging: Partial<InternalPagingProps> }>) {
 
             debuglog('Paging componentWillReceiveProps', nextProps);
 

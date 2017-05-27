@@ -145,7 +145,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
             //const OriginalHeaderCell = props.tableHeaderCellComponent;
 
         }
-        componentWillReceiveProps(nextProps: T & InternalSortingProps<T>) {
+        componentWillReceiveProps(nextProps: Readonly<T & InternalSortingProps<TRow>>) {
             //console.log('Sorting.componentWillReceiveProps');
             //console.log('Sorting componentWillReceiveProps', nextProps.columns[0]);
 
@@ -348,7 +348,7 @@ export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: R
 
         }
 
-        componentWillReceiveProps(nextProps: T & ExternalSortingProps) {
+        componentWillReceiveProps(nextProps: Readonly<T & ExternalSortingProps>) {
 
             if (!shallowEqual(nextProps.columns, this.props.columns)) {
                 //changes.push('columns changed');
