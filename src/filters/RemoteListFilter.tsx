@@ -21,7 +21,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
 
         this.queryHandler = (input) => {
             return optionProvider(input, maxOptions).then((opts) => {
-
+                //console.log('queryhandler options returned', opts);
                 opts.forEach((o) => {
                     if (!this.cachedOptions[o.value]) {
                         this.cachedOptions[o.value] = o.label;
@@ -63,7 +63,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
 
         this.appliedLabelComponent = (props) => {
             const selectedOptions = props.value.map((m) => ({ label: this.cachedOptions[m], value: m }));
-
+            //console.log('appliedLabelComponent render', selectedOptions);
             return <RemoteListFilterLabel appliedFilter={props} selectedOptions={selectedOptions} listOptionsProvider={this.queryHandler} />;
 
         };
@@ -89,13 +89,13 @@ interface RemoteListFilterLabelProps {
     listOptionsProvider: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
 }
 
-class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, never> {
-    private anyMissing: boolean;
+class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, { label: string }> {
+    //private anyMissing: boolean;
     private checkingOptions: boolean;
 
     constructor(props: RemoteListFilterLabelProps) {
         super(props);
-
+        this.state = { label: null };
     }
 
     componentWillMount() {
@@ -109,31 +109,49 @@ class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, 
     }
 
     checkOptions(props: RemoteListFilterLabelProps) {
+        //console.log('checkOptions', { checkingOptions: this.checkingOptions });
 
         if (!this.checkingOptions) {
             this.checkingOptions = true;
             const missing = props.selectedOptions.filter((m) => !m.label).map((m) => m.value);
-            this.anyMissing = missing.length > 0;
-            if (this.anyMissing) {
-                props.listOptionsProvider(missing).then(() => {
+            const anyMissing = missing.length > 0;
+            if (anyMissing) {
+
+                if (this.state.label) {
+                    this.setState({ label: null });
+                }
+                props.listOptionsProvider(missing).then((options) => {
+                    //console.log('listOptionsProvider callback');
                     this.checkingOptions = false;
-                    this.forceUpdate();
+                    //this.anyMissing = false;
+                    //this.forceUpdate();
+                    const newOptions = props.selectedOptions.map((m) => m.label ? m : options.find(o => o.value === m.value));
+                    this.setState({ label: props.appliedFilter.filter.displayName + ' is ' + newOptions.map((m) => m.label).join(' or ') });
+
                 }).catch(error => {
+                    console.log('error from listOptionsProvider', error);
                     if (!error.message.match(/aborted/)) {
                         throw error;
                     }
                 });
+            } else {
+                this.setState({ label: props.appliedFilter.filter.displayName + ' is ' + props.selectedOptions.map((m) => m.label).join(' or ') });
             }
         }
     }
     render() {
+        //console.log('render', { anyMissing: this.anyMissing });
 
-        if (this.anyMissing) {
+        // if (this.anyMissing) {
+        //     return <span>Loading...</span>;
+        // }
+        //const { selectedOptions, appliedFilter } = this.props;
+        //const label = appliedFilter.filter.displayName + ' is ' + selectedOptions.map((m) => m.label).join(' or ');
+        const { label } = this.state;
+
+        if (!label) {
             return <span>Loading...</span>;
         }
-        const { selectedOptions, appliedFilter } = this.props;
-        const label = appliedFilter.filter.displayName + ' is ' + selectedOptions.map((m) => m.label).join(' or ');
-
         return <span>{label}</span>;
 
     }
