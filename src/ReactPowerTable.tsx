@@ -286,7 +286,7 @@ export interface StrictColumn<TRow = any, TValue = any> {
 export interface Column<TRow = any, TValue = any> {
     key?: string | number;
     formatter?: (value: TValue, row?: TRow) => string;
-    cellComponent?: React.ComponentClass<CellProps<TRow, TValue>> | React.StatelessComponent<CellProps<TRow, TValue>>;
+    cellComponent?: React.ComponentClass<Partial<CellProps<TRow, TValue>>> | React.StatelessComponent<Partial<CellProps<TRow, TValue>>>;
     cellComponentProps?: (props: CellProps<TRow, TValue>) => any;
     headerComponent?: React.ComponentClass<HeaderComponentProps<HTMLTableHeaderCellElement>> | React.StatelessComponent<HeaderComponentProps<HTMLTableHeaderCellElement>>;
 

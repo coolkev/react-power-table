@@ -58,6 +58,7 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
     constructor(props: FilterComponentProps<string>) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     public handleChange(_value, formattedValue: string) {
@@ -75,7 +76,7 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
 
         const dateValue = value ? (new Date(value)).toISOString() : '';
 
-        return <DatePicker value={dateValue} onChange={this.handleChange} showClearButton={false} {...rest} />;
+        return <DatePicker value={dateValue} onChange={this.handleChange} onKeyPress={this.handleKeyPress} showClearButton={false} {...rest} />;
 
         //return <FormControl value={value} autoFocus onChange={this.handleChange} onKeyPress={this.handleKeyPress} />;
     }
