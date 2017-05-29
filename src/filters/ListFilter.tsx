@@ -53,6 +53,12 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
                 test: (sourceValue: any, filterValue) => filterValue.indexOf(sourceValue) > -1,
                 appliedLabel: (filter) => filter.filter.displayName + ' is ' + getSelectedLabels(filter.value, this.items).join(' or '),
             },
+             notin: {
+                key: 'notin',
+                displayName: 'is not any of',
+                test: (sourceValue: any, filterValue) => filterValue.indexOf(sourceValue) === -1,
+                appliedLabel: (filter) => filter.filter.displayName + ' is not ' + getSelectedLabels(filter.value, this.items).join(' or '),
+            },
         };
     }
 
