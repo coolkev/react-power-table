@@ -12,7 +12,7 @@ export interface SortSettings {
 
 }
 
-export interface SortableColumn<TRow = any, TValue = any> extends Column<TRow, TValue> {
+export interface SortableColumn<TRow = any, TValue = any, TFormattedValue = TValue> extends Column<TRow, TValue, TFormattedValue> {
 
     sortable?: boolean;
     sortExpression?: ((row: TRow) => any) | string;
