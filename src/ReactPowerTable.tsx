@@ -49,9 +49,9 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
     static displayName = 'ReactPowerTable';
 
     static defaultProps: Partial<GridProps<any>> = {
-        tableComponent: (props) => <table {...props}/>,
-        tableHeaderComponent: (props) => <thead {...props}/>,
-        tableHeaderRowComponent: (props) => <tr {...props}/>,
+        tableComponent: (props) => <table {...props} />,
+        tableHeaderComponent: (props) => <thead {...props} />,
+        tableHeaderRowComponent: (props) => <tr {...props} />,
         tableHeaderCellComponent: (props) => {
             const { children, column, ...rest } = props;
             debuglog('defaultProps thComponent render', props);
@@ -60,9 +60,9 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         tableBodyComponent: (props) => <tbody>{props.children}</tbody>,
         tableRowComponent: (props) => {
             const { row, columns, ...rest } = props;
-            return <tr{...rest}/>;
+            return <tr{...rest} />;
         },
-        tableCellComponent: (props) => <td{...props}/>,
+        tableCellComponent: (props) => <td{...props} />,
         tableCellValueComponent: (props) => <div>{props.value}</div>,
 
     };
@@ -179,15 +179,15 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
         return (
             <Table {...combinedTableProps }>
-            <TableHead>
-                <TableHeadRow>
-                    {columns.filter((m) => m.visible !== false).map((c) => <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>)}
-                </TableHeadRow>
-            </TableHead>
+                <TableHead>
+                    <TableHeadRow>
+                        {columns.filter((m) => m.visible !== false).map((c) => <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>)}
+                    </TableHeadRow>
+                </TableHead>
 
-            {TableBody ? <TableBody>{dataRows}</TableBody> : dataRows}
+                {TableBody ? <TableBody>{dataRows}</TableBody> : dataRows}
 
-            {TableFoot && <TableFoot />}
+                {TableFoot && <TableFoot />}
             </Table >
         );
 
@@ -263,7 +263,7 @@ export interface TableRowComponentProps<T = any> extends React.HTMLProps<HTMLTab
     row: T;
 }
 
-export interface StrictColumn<TRow = any, TValue = any> {
+export interface StrictColumn<TRow = any, TValue = any, TFormattedValue = TValue> {
 
     key: string | number;
 
@@ -272,22 +272,22 @@ export interface StrictColumn<TRow = any, TValue = any> {
 
     headerText: string;
 
-    cellProps?: ((props: CellProps<TRow, TValue>) => HTMLPropsWithoutChildren<HTMLTableCellElement>);
+    cellProps?: ((props: Partial<CellProps<TRow, TValue, TFormattedValue>>) => HTMLPropsWithoutChildren<HTMLTableCellElement>);
 
-    formatter: (value: any, row?: TRow) => string;
-    cellComponent?: React.ComponentClass<CellProps<TRow>> | React.StatelessComponent<CellProps<TRow>>;
-    cellComponentProps?: (props: CellProps<TRow>) => any;
+    formatter: (value: any, row?: TRow) => TFormattedValue;
+    cellComponent?: React.ComponentClass<Partial<CellProps<TRow, TValue, TFormattedValue>>> | React.StatelessComponent<Partial<CellProps<TRow, TValue, TFormattedValue>>>;
+    cellComponentProps?: (props: CellProps<TRow, TValue, TFormattedValue>) => any;
 
     headerCellProps?: HTMLPropsWithoutChildren<HTMLTableHeaderCellElement>;
 
     visible?: boolean;
 }
 
-export interface Column<TRow = any, TValue = any> {
+export interface Column<TRow = any, TValue = any, TFormattedValue = TValue> {
     key?: string | number;
-    formatter?: (value: TValue, row?: TRow) => string;
-    cellComponent?: React.ComponentClass<Partial<CellProps<TRow, TValue>>> | React.StatelessComponent<Partial<CellProps<TRow, TValue>>>;
-    cellComponentProps?: (props: CellProps<TRow, TValue>) => any;
+    formatter?: (value: TValue, row?: TRow) => TFormattedValue;
+    cellComponent?: React.ComponentClass<Partial<CellProps<TRow, TValue, TFormattedValue>>> | React.StatelessComponent<Partial<CellProps<TRow, TValue, TFormattedValue>>>;
+    cellComponentProps?: (props: Partial<CellProps<TRow, TValue, TFormattedValue>>) => any;
     headerComponent?: React.ComponentClass<HeaderComponentProps<HTMLTableHeaderCellElement>> | React.StatelessComponent<HeaderComponentProps<HTMLTableHeaderCellElement>>;
 
     headerCellProps?: HTMLPropsWithoutChildren<HTMLTableHeaderCellElement>;
@@ -295,10 +295,10 @@ export interface Column<TRow = any, TValue = any> {
     field?: ((row: TRow) => TValue);
     fieldName?: string;
     headerText?: string;
-    cellProps?: HTMLPropsWithoutChildren<HTMLTableCellElement> | ((props: CellProps<TRow, TValue>) => HTMLPropsWithoutChildren<HTMLTableCellElement>);
+    cellProps?: HTMLPropsWithoutChildren<HTMLTableCellElement> | ((props: CellProps<TRow, TValue, TFormattedValue>) => HTMLPropsWithoutChildren<HTMLTableCellElement>);
 
     headerCssClass?: string;
-    cssClass?: ((props: CellProps<TRow>) => string) | string;
+    cssClass?: ((props: CellProps<TRow, TValue, TFormattedValue>) => string) | string;
     width?: number;
     maxWidth?: number;
     textAlign?: string;
@@ -315,11 +315,11 @@ export interface HeaderComponentProps<T = any> extends HTMLPropsWithoutChildren<
 
 }
 
-export interface CellProps<TRow = any, TValue = any> {
+export interface CellProps<TRow = any, TValue = any, TFormattedValue = TValue> {
     row: TRow;
-    column: Column<TRow>;
+    column: Column<TRow, TValue, TFormattedValue>;
 
-    value: TValue;
+    value: TFormattedValue;
     rawValue: TValue;
 
 }
