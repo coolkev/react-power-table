@@ -2686,6 +2686,113 @@ exports[`AddEditFilter tests add filter party in 1`] = `
       </div>
     </div>
   </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="notin"
+        />
+        is not any of
+      </label>
+    </div>
+  </div>
+  <div
+    style="margin-top: 20px;"
+  >
+    <button
+      class="btn btn-sm btn-primary"
+      type="button"
+    >
+      Apply Filter
+    </button>
+  </div>
+</div>
+`;
+
+exports[`AddEditFilter tests add filter party notin 1`] = `
+<div>
+  <div
+    style="margin: 10px 0px;"
+  >
+    <b>
+      party
+    </b>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="in"
+        />
+        is any of
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      class="radio"
+    >
+      <label>
+        <input
+          type="radio"
+          value="notin"
+        />
+        is not any of
+      </label>
+    </div>
+    <div
+      style="margin-left: 20px;"
+    >
+      <div
+        class="Select small Select--multi is-clearable is-searchable"
+      >
+        <div
+          class="Select-control"
+        >
+          <span
+            class="Select-multi-value-wrapper"
+            id="react-select-3--value"
+          >
+            <div
+              class="Select-placeholder"
+            >
+              Select...
+            </div>
+            <div
+              class="Select-input"
+              style="display: inline-block;"
+            >
+              <input
+                aria-activedescendant="react-select-3--value"
+                aria-expanded="false"
+                aria-haspopup="false"
+                aria-owns=""
+                role="combobox"
+                style="width: 5px; box-sizing: content-box;"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre;"
+              />
+            </div>
+          </span>
+          <span
+            class="Select-arrow-zone"
+          >
+            <span
+              class="Select-arrow"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div
     style="margin-top: 20px;"
   >
