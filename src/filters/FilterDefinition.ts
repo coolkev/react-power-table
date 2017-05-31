@@ -223,9 +223,6 @@ export interface RadioButtonLabelProps<T> {
 
 // }
 
-/**
- * @internal
- */
 export interface OnChangeOperationProps {
 
     operationKey: string;
