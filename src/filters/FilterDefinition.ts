@@ -98,7 +98,7 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
             newFilterState.value = newFilterState.value.split(' ')[0];
         }
     }
-    public serializeValue(value: T) {
+    public serializeValue(value: T, type?: string) {
         return value.toString();
     }
 

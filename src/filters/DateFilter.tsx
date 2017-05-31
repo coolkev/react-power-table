@@ -37,7 +37,7 @@ export class DateFilter extends FilterDefinition<string> {
 
     }
 
-    private getOperations() {
+    protected getOperations() {
         const result = {
             eq: this.defaultOperations.eq,
             lt: { ...this.defaultOperations.lt, displayName: 'is before' } as OperationDefinition<string>,
