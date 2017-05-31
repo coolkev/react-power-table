@@ -93,6 +93,11 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
 
     }
 
+    public onOperationChange(prevOperationKey: string, newFilterState: OnChangeOperationProps) {
+        if (prevOperationKey === 'between' && newFilterState.operationKey !== prevOperationKey && typeof newFilterState.value === 'string') {
+            newFilterState.value = newFilterState.value.split(' ')[0];
+        }
+    }
     public serializeValue(value: T) {
         return value.toString();
     }
@@ -217,3 +222,13 @@ export interface RadioButtonLabelProps<T> {
 }
 
 // }
+
+/**
+ * @internal
+ */
+export interface OnChangeOperationProps {
+
+    operationKey: string;
+    value: any;
+
+}

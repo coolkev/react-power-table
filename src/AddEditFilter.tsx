@@ -48,12 +48,13 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         const operationKey = e.currentTarget.value;
         //const operation = this.props.filter.operations[operationKey];
 
-        const newState: Partial<AddEditFilterState> = { operationKey };
+        const newState: AddEditFilterState = { operationKey, value: this.state.value };
 
-        if (prevOperationKey === 'between' && operationKey !== prevOperationKey && typeof this.state.value === 'string') {
-            newState.value = this.state.value.split(' ')[0];
-        }
-        this.setState(newState as any);
+        this.props.filter.onOperationChange(prevOperationKey, newState);
+        // if (prevOperationKey === 'between' && operationKey !== prevOperationKey && typeof this.state.value === 'string') {
+        //     newState.value = this.state.value.split(' ')[0];
+        // }
+        this.setState(newState);
     }
 
     private handleFilterValueChange(value: string) {
