@@ -58,25 +58,25 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
     constructor(props: FilterComponentProps<string>) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
+        //this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     public handleChange(_value, formattedValue: string) {
         this.props.onValueChange(formattedValue);
     }
 
-    public handleKeyPress(e: React.KeyboardEvent<any>) {
-        if (e.charCode === 13) {
-            this.props.onEnterKeyPress();
-        }
-    }
+    // public handleKeyPress(e: React.KeyboardEvent<any>) {
+    //     if (e.charCode === 13) {
+    //         this.props.onEnterKeyPress();
+    //     }
+    // }
     public render() {
 
-        const { value, onEnterKeyPress, onValueChange, operation, ...rest } = this.props;
+        const { value, onValueChange, operation, ...rest } = this.props;
 
         const dateValue = value ? (new Date(value)).toISOString() : '';
 
-        return <DatePicker value={dateValue} onChange={this.handleChange} onKeyPress={this.handleKeyPress} showClearButton={false} {...rest} />;
+        return <DatePicker value={dateValue} onChange={this.handleChange} showClearButton={false} {...rest} />;
 
         //return <FormControl value={value} autoFocus onChange={this.handleChange} onKeyPress={this.handleKeyPress} />;
     }

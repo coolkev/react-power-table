@@ -5,7 +5,7 @@ export interface NumericInputProps extends React.HTMLProps<HTMLInputElement> {
     initialValue: number | string;
     onValueChange: (newValue: number) => void;
     allowDecimal?: boolean;
-    onEnterKeyPress?: () => void;
+    //onEnterKeyPress?: () => void;
 }
 
 /**
@@ -56,15 +56,15 @@ export const NumericInput: React.ComponentClass<NumericInputProps> = class Numer
 
         if (evt.metaKey || evt.which <= 0 || evt.which === 8 || evt.which === 45 || (evt.which >= 48 && evt.which <= 57) || (evt.which === 46 && this.props.allowDecimal)) {
         } else {
-            if (evt.charCode === 13 && this.props.onEnterKeyPress) {
-                this.props.onEnterKeyPress();
-            }
+            // if (evt.charCode === 13 && this.props.onEnterKeyPress) {
+            //     this.props.onEnterKeyPress();
+            // }
             evt.preventDefault();
         }
     }
     render() {
 
-        const { initialValue, onValueChange, allowDecimal, onEnterKeyPress, ...rest } = this.props;
+        const { initialValue, onValueChange, allowDecimal, ...rest } = this.props;
 
         return <span className={this.isValid() ? null : 'has-error'}><input type="text" {...rest} value={this.state.value} onKeyPress={this.onKeyPress} onChange={this.onChange} /></span>;
 

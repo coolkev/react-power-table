@@ -47,23 +47,17 @@ class StringFilterComponent extends React.Component<PowerTable.FilterComponentPr
     constructor(props: PowerTable.FilterComponentProps<string>) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     public handleChange(e: React.FormEvent<FormControl>) {
         this.props.onValueChange(e.currentTarget.value);
     }
 
-    public handleKeyPress(e: React.KeyboardEvent<FormControl>) {
-        if (e.charCode === 13) {
-            this.props.onEnterKeyPress();
-        }
-    }
     public render() {
 
         const { value } = this.props;
 
-        return <FormControl value={value} autoFocus onChange={this.handleChange} onKeyPress={this.handleKeyPress} />;
+        return <FormControl value={value} autoFocus onChange={this.handleChange}  />;
     }
 
 }

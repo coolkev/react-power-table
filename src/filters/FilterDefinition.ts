@@ -214,7 +214,7 @@ export interface FilterComponentProps<T> extends AppliedFilter<T> {
     autoFocus?: boolean;
     disabled?: boolean;
     placeholder?: string;
-    onEnterKeyPress: () => void;
+    //onEnterKeyPress: () => void;
 }
 export interface RadioButtonLabelProps<T> {
     filter: FilterDefinition<T>;

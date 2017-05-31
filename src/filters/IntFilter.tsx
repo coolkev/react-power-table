@@ -13,9 +13,9 @@ export class IntFilter extends FilterDefinition<number> {
 
         this.filterComponent = (props) => {
 
-            const { value, onValueChange, filter, operation, onEnterKeyPress, ...rest } = props;
+            const { value, onValueChange, filter, operation, ...rest } = props;
 
-            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" onEnterKeyPress={onEnterKeyPress} {...rest} />;
+            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" {...rest} />;
         };
 
     }

@@ -39,6 +39,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         this.selectedOperationChange = this.selectedOperationChange.bind(this);
         this.handleFilterValueChange = this.handleFilterValueChange.bind(this);
         this.applyFilter = this.applyFilter.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
 
     }
 
@@ -69,6 +70,12 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
         this.props.onApplyFilter({ filter: this.props.filter, operation, value: this.state.value });
     }
+
+    private handleKeyPress(e: React.KeyboardEvent<any>) {
+        if (e.charCode === 13) {
+            this.applyFilter();
+        }
+    }
     render() {
         debuglog('AddEditFilter.render', this.props);
 
@@ -84,7 +91,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
                 const SelectedFilterComponent = op.filterComponent || filter.filterComponent;
 
                 if (SelectedFilterComponent) {
-                    children = <div style={{ marginLeft: 20 }}><SelectedFilterComponent filter={filter} operation={op} value={value} onValueChange={this.handleFilterValueChange} onEnterKeyPress={this.applyFilter} /></div>;
+                    children = <div style={{ marginLeft: 20 }} onKeyPress={this.handleKeyPress}><SelectedFilterComponent filter={filter} operation={op} value={value} onValueChange={this.handleFilterValueChange} /></div>;
                 }
             }
 

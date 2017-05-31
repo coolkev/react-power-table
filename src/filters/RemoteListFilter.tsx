@@ -42,7 +42,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
         });
 
         this.filterComponent = (props) => {
-            const { autoFocus, value, onEnterKeyPress, onValueChange, children, filter, operation, ...rest } = props;
+            const { autoFocus, value, onValueChange, children, filter, operation, ...rest } = props;
 
             return (
                 <Select.Async

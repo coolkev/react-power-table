@@ -3,7 +3,7 @@
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noUnusedLocals": false,
     "removeComments": false,
     "sourceMap": true,

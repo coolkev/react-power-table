@@ -27,7 +27,7 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
         }
 
         this.filterComponent = (props) => {
-            const { autoFocus, value, onEnterKeyPress, onValueChange, children, filter, operation, ...rest } = props;
+            const { autoFocus, value, onValueChange, children, filter, operation, ...rest } = props;
 
             return (
                 <Select

@@ -11,9 +11,9 @@ export class DecimalFilter extends FilterDefinition<number> {
 
         this.filterComponent = (props) => {
 
-            const { value, onValueChange, filter, operation, onEnterKeyPress, ...rest } = props;
+            const { value, onValueChange, filter, operation, ...rest } = props;
 
-            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" onKeyPress={onEnterKeyPress} {...rest} />;
+            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" {...rest} />;
         };
 
     }
