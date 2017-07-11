@@ -177,15 +177,16 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
         const combinedTableProps = tableClassName ? { ...tableProps, className: tableClassName } : tableProps;
 
+        const header = columns.filter((m) => m.visible !== false).map((c) => {
+            const HeaderComponent = c.headerComponent || DefaultHeaderComponent;
+            return <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>;
+        });
+
         return (
             <Table {...combinedTableProps }>
                 <TableHead>
                     <TableHeadRow>
-                        {columns.filter((m) => m.visible !== false).map((c) => {
-                            const HeaderComponent = c.headerComponent || DefaultHeaderComponent;
-                            return <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>
-                        })
-                        }
+                        {header}
                     </TableHeadRow>
                 </TableHead>
 
