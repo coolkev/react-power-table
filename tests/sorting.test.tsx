@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { ReactPowerTable, GridProps, withInternalSorting, InternalSortingProps, SortableColumn, InternalSortingState } from '../src/';
 import { defaultColumns, sampledata } from './shared';
-import { mount } from 'enzyme';
+import { mount, render } from 'enzyme';
 
 const columns = defaultColumns;
 const rows = sampledata.slice(0, 5);
@@ -43,7 +43,7 @@ describe('withInternalSorting tests',
 
             const Table = withInternalSorting(ReactPowerTable);
 
-            const c = <Table columns={columns} rows={rows} keyColumn="number" sorting={{ column: 'number'}} />;
+            const c = <Table columns={columns} rows={rows} keyColumn="number" sorting={{ column: 'number' }} />;
 
             const component = mount(c);
             expect(component.state('currentSort').descending).toBeFalsy();
@@ -59,7 +59,7 @@ describe('withInternalSorting tests',
 
             const Table = withInternalSorting(ReactPowerTable);
 
-            const c = <Table columns={columns} rows={rows} keyColumn="number" sorting={{ column: 'number'}} />;
+            const c = <Table columns={columns} rows={rows} keyColumn="number" sorting={{ column: 'number' }} />;
 
             const component = mount(c);
             expect(component.find('tbody tr').length).toEqual(5);
@@ -93,4 +93,17 @@ describe('withInternalSorting tests',
 
         });
 
+        test('sorting with custom cellcomponent', () => {
+
+            const columns2 = columns.map(c => ({ ...c }));
+            columns2[0].cellComponent = p => <span>{p.row.name}</span>;
+            columns2[0].textAlign = 'right';
+
+            const Table = withInternalSorting(ReactPowerTable);
+
+            const component = render(<Table columns={columns2} rows={rows} keyColumn="number" sorting={{ column: 'number' }} />);
+
+            expect(component).toMatchSnapshot();
+
+        });
     });

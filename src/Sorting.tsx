@@ -69,7 +69,7 @@ function transformColumn<T>(options: SortableColumn<T> | string) {
 
         //this is needed to pad right-aligned cells so they line up with header text right side and don't appear under the sort icon
         const CellComponent = col.cellComponent || ReactPowerTable.defaultProps.tableCellValueComponent;
-        const cellComponentProps = col.cellComponentProps || ((props) => ({ column: props.column, value: props.value }));
+        const cellComponentProps = col.cellComponentProps || ((props) => props);
 
         col.cellComponent = (props) => <SortableCellComponentWrapper><CellComponent {...cellComponentProps(props) } /></SortableCellComponentWrapper>;
     }

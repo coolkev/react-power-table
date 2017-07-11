@@ -255,6 +255,251 @@ exports[`basic tests Render plain table 1`] = `
 </table>
 `;
 
+exports[`basic tests Render plain table with custom cellComponent 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th
+        style="text-align:left;white-space:nowrap;"
+      >
+        <span>
+          number
+        </span>
+      </th>
+      <th
+        style="text-align:left;white-space:nowrap;"
+      >
+        <span>
+          name
+        </span>
+      </th>
+      <th
+        style="text-align:left;white-space:nowrap;"
+      >
+        <span>
+          party
+        </span>
+      </th>
+      <th
+        style="text-align:left;white-space:nowrap;"
+      >
+        <span>
+          birth_year
+        </span>
+      </th>
+      <th
+        style="text-align:left;white-space:nowrap;"
+      >
+        <span>
+          death_year
+        </span>
+      </th>
+      <th
+        style="text-align:right;white-space:nowrap;width:140px;"
+      >
+        <span>
+          took_office
+        </span>
+      </th>
+      <th
+        style="text-align:left;white-space:nowrap;"
+      >
+        <span>
+          left_office
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span />
+      </td>
+      <td>
+        <div>
+          George Washington
+        </div>
+      </td>
+      <td>
+        <div>
+          No Party
+        </div>
+      </td>
+      <td>
+        <div>
+          1732
+        </div>
+      </td>
+      <td>
+        <div>
+          1799
+        </div>
+      </td>
+      <td
+        style="width:140px;text-align:right;"
+      >
+        <div>
+          1789-04-30
+        </div>
+      </td>
+      <td>
+        <div>
+          1797-03-04
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span />
+      </td>
+      <td>
+        <div>
+          John Adams
+        </div>
+      </td>
+      <td>
+        <div>
+          Federalist
+        </div>
+      </td>
+      <td>
+        <div>
+          1735
+        </div>
+      </td>
+      <td>
+        <div>
+          1826
+        </div>
+      </td>
+      <td
+        style="width:140px;text-align:right;"
+      >
+        <div>
+          1797-03-04
+        </div>
+      </td>
+      <td>
+        <div>
+          1801-03-04
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span />
+      </td>
+      <td>
+        <div>
+          Thomas Jefferson
+        </div>
+      </td>
+      <td>
+        <div>
+          Democratic-Republican
+        </div>
+      </td>
+      <td>
+        <div>
+          1743
+        </div>
+      </td>
+      <td>
+        <div>
+          1826
+        </div>
+      </td>
+      <td
+        style="width:140px;text-align:right;"
+      >
+        <div>
+          1801-03-04
+        </div>
+      </td>
+      <td>
+        <div>
+          1809-03-04
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span />
+      </td>
+      <td>
+        <div>
+          James Madison
+        </div>
+      </td>
+      <td>
+        <div>
+          Democratic-Republican
+        </div>
+      </td>
+      <td>
+        <div>
+          1751
+        </div>
+      </td>
+      <td>
+        <div>
+          1836
+        </div>
+      </td>
+      <td
+        style="width:140px;text-align:right;"
+      >
+        <div>
+          1809-03-04
+        </div>
+      </td>
+      <td>
+        <div>
+          1817-03-04
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span />
+      </td>
+      <td>
+        <div>
+          James Monroe
+        </div>
+      </td>
+      <td>
+        <div>
+          Democratic-Republican
+        </div>
+      </td>
+      <td>
+        <div>
+          1758
+        </div>
+      </td>
+      <td>
+        <div>
+          1831
+        </div>
+      </td>
+      <td
+        style="width:140px;text-align:right;"
+      >
+        <div>
+          1817-03-04
+        </div>
+      </td>
+      <td>
+        <div>
+          1825-03-04
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
 exports[`basic tests Render plain table with custom cellValueComponent 1`] = `
 <table>
   <thead>
@@ -568,197 +813,197 @@ exports[`basic tests Render plain table with custom headerComponent 1`] = `
   <tbody>
     <tr>
       <td>
-        <span>
+        <div>
           1
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           George Washington
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           No Party
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1732
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1799
-        </span>
+        </div>
       </td>
       <td
         style="width:140px;text-align:right;"
       >
-        <span>
+        <div>
           1789-04-30
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1797-03-04
-        </span>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span>
+        <div>
           2
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           John Adams
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           Federalist
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1735
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1826
-        </span>
+        </div>
       </td>
       <td
         style="width:140px;text-align:right;"
       >
-        <span>
+        <div>
           1797-03-04
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1801-03-04
-        </span>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span>
+        <div>
           3
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           Thomas Jefferson
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           Democratic-Republican
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1743
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1826
-        </span>
+        </div>
       </td>
       <td
         style="width:140px;text-align:right;"
       >
-        <span>
+        <div>
           1801-03-04
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1809-03-04
-        </span>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span>
+        <div>
           4
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           James Madison
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           Democratic-Republican
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1751
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1836
-        </span>
+        </div>
       </td>
       <td
         style="width:140px;text-align:right;"
       >
-        <span>
+        <div>
           1809-03-04
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1817-03-04
-        </span>
+        </div>
       </td>
     </tr>
     <tr>
       <td>
-        <span>
+        <div>
           5
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           James Monroe
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           Democratic-Republican
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1758
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1831
-        </span>
+        </div>
       </td>
       <td
         style="width:140px;text-align:right;"
       >
-        <span>
+        <div>
           1817-03-04
-        </span>
+        </div>
       </td>
       <td>
-        <span>
+        <div>
           1825-03-04
-        </span>
+        </div>
       </td>
     </tr>
   </tbody>

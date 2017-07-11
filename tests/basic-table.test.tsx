@@ -28,13 +28,27 @@ describe('basic tests',
         });
 
         test('Render plain table with custom headerComponent', () => {
-            
+
             const columns2 = columns.map(c => ({ ...c }));
             columns2[0].headerComponent = p => <span>Test</span>;
-            
+
             const component = render(
                 // tslint:disable-next-line:jsx-no-lambda
-                <ReactPowerTable columns={columns2} rows={rows} keyColumn="number" tableCellValueComponent={(p) => <span>{p.value}</span> } />
+                <ReactPowerTable columns={columns2} rows={rows} keyColumn="number" />
+            );
+
+            expect(component).toMatchSnapshot();
+
+        });
+
+        test('Render plain table with custom cellComponent', () => {
+
+            const columns2 = columns.map(c => ({ ...c }));
+            columns2[0].cellComponent = p => <span>{p.row.name}</span>;
+
+            const component = render(
+                // tslint:disable-next-line:jsx-no-lambda
+                <ReactPowerTable columns={columns2} rows={rows} keyColumn="number" />
             );
 
             expect(component).toMatchSnapshot();
