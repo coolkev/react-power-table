@@ -3,7 +3,7 @@ import { NumericInput } from '../components/NumericInput';
 import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefinition } from './FilterDefinition';
 
 export class DecimalFilter extends FilterDefinition<number> {
-    public readonly operations = this.defaultOperations;
+    public operations = this.defaultOperations;
 
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 

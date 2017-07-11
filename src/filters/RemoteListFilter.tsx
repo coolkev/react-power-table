@@ -9,7 +9,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
 
     private queryHandler: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
     private cachedOptions: { [key: number]: string } = {};
-    public readonly operations = this.getOperations();
+    public operations = this.getOperations();
 
     constructor(options: FilterDefinitionOptionsOrFieldName, optionProvider: RemoteListOptionProvider) {
         super(options);

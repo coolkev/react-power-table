@@ -4,7 +4,7 @@ import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefiniti
 
 //const dataType = 'int';
 export class IntFilter extends FilterDefinition<number> {
-    public readonly operations = this.defaultOperations;
+    public operations = this.defaultOperations;
 
     //static readonly dataType = dataType;
     constructor(options: FilterDefinitionOptionsOrFieldName) {

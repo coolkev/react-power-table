@@ -9,7 +9,7 @@ const verbs = [
     ['was', 'was not'],
 ];
 export class BooleanFilter extends FilterDefinition<boolean> {
-    public readonly operations = this.getOperations();
+    public operations = this.getOperations();
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 
         super(options);

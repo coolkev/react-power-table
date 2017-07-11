@@ -3,7 +3,7 @@ import DatePicker from 'react-bootstrap-date-picker';
 import { FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from './FilterDefinition';
 
 export class DateFilter extends FilterDefinition<string> {
-    public readonly operations = this.getOperations();
+    public operations = this.getOperations();
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 
         super(options);

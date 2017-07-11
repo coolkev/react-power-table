@@ -10,7 +10,7 @@ export interface SelectOption<T extends string | number> {
 export class ListFilter<T extends string | number = string> extends PowerTable.FilterDefinition<T[]> {
 
     private deserializeFunc?: (str: string) => T;
-    public readonly operations = this.getOperations();
+    public operations = this.getOperations();
 
     constructor(options: PowerTable.FilterDefinitionOptionsOrFieldName, private items: Array<SelectOption<T>>, deserializeFunc?: (str: string) => T) {
 

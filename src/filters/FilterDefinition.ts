@@ -67,7 +67,7 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
 
     public appliedLabel?: (filter: AppliedFilter<T>) => string;
     public appliedLabelComponent?: React.ComponentClass<AppliedFilter<T>> | React.StatelessComponent<AppliedFilter<T>>;
-    public readonly operations: ObjectMap<OperationDefinition<T>>;
+    public operations: ObjectMap<OperationDefinition<T>>;
     private readonly lazyDefaultOperations = new Lazy(() => this.canBeNull ? { ...defaultOperations<T>(), ...nullableOperations() } : defaultOperations<T>());
 
     public static readonly defaultAppliedFilterLabel = (filter: AppliedFilter<any>) => {
