@@ -7,51 +7,51 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -363,51 +363,51 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -719,51 +719,51 @@ exports[`withInternalPaging tests render paging 1`] = `
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>

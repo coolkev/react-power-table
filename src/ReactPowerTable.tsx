@@ -200,7 +200,7 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 }
 const DefaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => {
     //debuglog('defaultHeaderComponent render ' + props.column.headerText);
-    return <div>{props.column.headerText}</div>;
+    return <span>{props.column.headerText}</span>;
 });
 DefaultHeaderComponent.displayName = 'DefaultHeaderComponent';
 

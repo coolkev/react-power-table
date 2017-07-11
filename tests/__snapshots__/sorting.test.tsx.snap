@@ -10,7 +10,9 @@ exports[`withInternalSorting tests change rows from props 1`] = `
         <div
           style="padding-right: 15px; position: relative;"
         >
-          number
+          <span>
+            number
+          </span>
            
           <span
             class="sort-asc"
@@ -22,28 +24,36 @@ exports[`withInternalSorting tests change rows from props 1`] = `
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -52,14 +62,18 @@ exports[`withInternalSorting tests change rows from props 1`] = `
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -251,7 +265,9 @@ exports[`withInternalSorting tests change sort from props 1`] = `
         <div
           style="padding-right: 15px; position: relative;"
         >
-          number
+          <span>
+            number
+          </span>
            
           <span
             class="sort-desc"
@@ -263,28 +279,36 @@ exports[`withInternalSorting tests change sort from props 1`] = `
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -293,14 +317,18 @@ exports[`withInternalSorting tests change sort from props 1`] = `
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -532,7 +560,9 @@ exports[`withInternalSorting tests change sort on th click 1`] = `
   <div
     style="padding-right: 15px; position: relative;"
   >
-    number
+    <span>
+      number
+    </span>
      
     <span
       class="sort-asc"
@@ -547,7 +577,9 @@ exports[`withInternalSorting tests change sort on th click 2`] = `
   style="cursor: pointer; text-align: left; white-space: nowrap;"
 >
   <div>
-    name
+    <span>
+      name
+    </span>
   </div>
 </th>
 `;
@@ -562,7 +594,9 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
         <div
           style="padding-right: 15px; position: relative;"
         >
-          number
+          <span>
+            number
+          </span>
            
           <span
             class="sort-asc"
@@ -574,28 +608,36 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -604,14 +646,18 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -843,7 +889,9 @@ exports[`withInternalSorting tests change sort on th click 4`] = `
   <div
     style="padding-right: 15px;"
   >
-    number
+    <span>
+      number
+    </span>
   </div>
 </th>
 `;
@@ -855,7 +903,9 @@ exports[`withInternalSorting tests change sort on th click 5`] = `
   <div
     style="padding-right: 15px; position: relative;"
   >
-    name
+    <span>
+      name
+    </span>
      
     <span
       class="sort-asc"
@@ -875,7 +925,9 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         <div
           style="padding-right: 15px;"
         >
-          number
+          <span>
+            number
+          </span>
         </div>
       </th>
       <th
@@ -884,7 +936,9 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         <div
           style="padding-right: 15px; position: relative;"
         >
-          name
+          <span>
+            name
+          </span>
            
           <span
             class="sort-asc"
@@ -896,21 +950,27 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -919,14 +979,18 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>

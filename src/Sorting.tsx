@@ -90,7 +90,7 @@ function getSortableHeaderCell(OriginalHeaderCell: React.ComponentClass<HeaderCo
             return <OriginalHeaderCell {...extra} children={children} />;
         }
 
-        return <SortableHeaderComponent {...extra} sorting={sorting} sortAsc={sortAsc} thComponent={OriginalHeaderCell} onChangeSort={changeSort} />;
+        return <SortableHeaderComponent {...extra} sorting={sorting} sortAsc={sortAsc} thComponent={OriginalHeaderCell} onChangeSort={changeSort} children={children} />;
     };
 
     return headerCell;
@@ -284,7 +284,7 @@ interface SortableHeaderComponentProps extends HeaderComponentProps<any> {
     onChangeSort(sort: SortSettings): void;
 }
 
-const SortableHeaderComponent = makePure((props: SortableHeaderComponentProps) => {
+const SortableHeaderComponent = makePure((props: SortableHeaderComponentProps & {children?: React.ReactNode}) => {
 
     const { thComponent, column, sorting, sortAsc, onChangeSort, ...rest } = props;
     const col = column as SortableColumn;
@@ -309,7 +309,7 @@ const SortableHeaderComponent = makePure((props: SortableHeaderComponentProps) =
 
     const thStyle = { cursor: 'pointer', ...rest.style };
 
-    return <OriginalThComponent column={column} {...rest} style={thStyle} onClick={handleClick}><div style={divStyle}>{props.column.headerText}{sortComponent && ' '}{sortComponent}</div></OriginalThComponent>;
+    return <OriginalThComponent column={column} {...rest} style={thStyle} onClick={handleClick}><div style={divStyle}>{props.children}{sortComponent && ' '}{sortComponent}</div></OriginalThComponent>;
 
 });
 SortableHeaderComponent.displayName = 'SortableHeaderComponent';

@@ -7,51 +7,51 @@ exports[`basic re-render tests render all rows when columns changed ReactPowerTa
       <th
         style="text-align: left; white-space: nowrap; width: 50px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -272,51 +272,51 @@ exports[`basic re-render tests render all rows when columns changed ReactPowerTa
       <th
         style="text-align: left; white-space: nowrap; width: 80px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -537,51 +537,51 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
       <th
         style="text-align: left; white-space: nowrap; width: 50px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -903,51 +903,51 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
       <th
         style="text-align: left; white-space: nowrap; width: 80px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -1272,7 +1272,9 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
         <div
           style="padding-right: 15px; position: relative;"
         >
-          number
+          <span>
+            number
+          </span>
            
           <span
             class="sort-asc"
@@ -1284,28 +1286,36 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -1314,14 +1324,18 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -1566,7 +1580,9 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
         <div
           style="padding-right: 15px; position: relative;"
         >
-          number
+          <span>
+            number
+          </span>
            
           <span
             class="sort-asc"
@@ -1578,28 +1594,36 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -1608,14 +1632,18 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -1857,51 +1885,51 @@ exports[`basic re-render tests render only changed rows ReactPowerTable 1`] = `
       <th
         style="text-align: left; white-space: nowrap; width: 50px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -2122,51 +2150,51 @@ exports[`basic re-render tests render only changed rows ReactPowerTable 2`] = `
       <th
         style="text-align: left; white-space: nowrap; width: 50px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -2387,51 +2415,51 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
       <th
         style="text-align: left; white-space: nowrap; width: 50px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -2753,51 +2781,51 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
       <th
         style="text-align: left; white-space: nowrap; width: 50px;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align: right; white-space: nowrap; width: 140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align: left; white-space: nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -3122,7 +3150,9 @@ exports[`basic re-render tests render only changed rows WithInternalSorting(Reac
         <div
           style="padding-right: 15px; position: relative;"
         >
-          number
+          <span>
+            number
+          </span>
            
           <span
             class="sort-asc"
@@ -3134,28 +3164,36 @@ exports[`basic re-render tests render only changed rows WithInternalSorting(Reac
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -3164,14 +3202,18 @@ exports[`basic re-render tests render only changed rows WithInternalSorting(Reac
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -3416,7 +3458,9 @@ exports[`basic re-render tests render only changed rows WithInternalSorting(Reac
         <div
           style="padding-right: 15px; position: relative;"
         >
-          number
+          <span>
+            number
+          </span>
            
           <span
             class="sort-asc"
@@ -3428,28 +3472,36 @@ exports[`basic re-render tests render only changed rows WithInternalSorting(Reac
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -3458,14 +3510,18 @@ exports[`basic re-render tests render only changed rows WithInternalSorting(Reac
         <div
           style="padding-right: 15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor: pointer; text-align: left; white-space: nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>

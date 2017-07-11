@@ -7,51 +7,51 @@ exports[`examples tests example Basic 1`] = `
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align:right;white-space:nowrap;width:140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -1781,7 +1781,10 @@ exports[`examples tests example Checkboxes 1`] = `
         <div
           style="padding-right:15px;position:relative;"
         >
-          number 
+          <span>
+            number
+          </span>
+           
           <span
             class="sort-asc"
             style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -1792,28 +1795,36 @@ exports[`examples tests example Checkboxes 1`] = `
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -1822,14 +1833,18 @@ exports[`examples tests example Checkboxes 1`] = `
         <div
           style="padding-right:15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -2910,7 +2925,10 @@ exports[`examples tests example Custom Row 1`] = `
         <div
           style="padding-right:15px;position:relative;"
         >
-          number 
+          <span>
+            number
+          </span>
+           
           <span
             class="sort-asc"
             style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -2921,15 +2939,17 @@ exports[`examples tests example Custom Row 1`] = `
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           party (not sortable)
-        </div>
+        </span>
       </th>
       <th
         style="cursor:pointer;text-align:right;white-space:nowrap;"
@@ -2937,14 +2957,18 @@ exports[`examples tests example Custom Row 1`] = `
         <div
           style="padding-right:15px;"
         >
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -2953,14 +2977,18 @@ exports[`examples tests example Custom Row 1`] = `
         <div
           style="padding-right:15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -5340,51 +5368,51 @@ exports[`examples tests example External Paging 1`] = `
         <th
           style="text-align:left;white-space:nowrap;"
         >
-          <div>
+          <span>
             number
-          </div>
+          </span>
         </th>
         <th
           style="text-align:left;white-space:nowrap;"
         >
-          <div>
+          <span>
             name
-          </div>
+          </span>
         </th>
         <th
           style="text-align:left;white-space:nowrap;"
         >
-          <div>
+          <span>
             party
-          </div>
+          </span>
         </th>
         <th
           style="text-align:left;white-space:nowrap;"
         >
-          <div>
+          <span>
             birth_year
-          </div>
+          </span>
         </th>
         <th
           style="text-align:left;white-space:nowrap;"
         >
-          <div>
+          <span>
             death_year
-          </div>
+          </span>
         </th>
         <th
           style="text-align:right;white-space:nowrap;width:140px;"
         >
-          <div>
+          <span>
             took_office
-          </div>
+          </span>
         </th>
         <th
           style="text-align:left;white-space:nowrap;"
         >
-          <div>
+          <span>
             left_office
-          </div>
+          </span>
         </th>
       </tr>
     </thead>
@@ -6285,7 +6313,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         <div
           style="padding-right:15px;position:relative;"
         >
-          number 
+          <span>
+            number
+          </span>
+           
           <span
             class="sort-asc"
             style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -6296,28 +6327,36 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -6326,14 +6365,18 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         <div
           style="padding-right:15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -7314,7 +7357,10 @@ exports[`examples tests example External Sorting 1`] = `
         <div
           style="padding-right:15px;position:relative;"
         >
-          number 
+          <span>
+            number
+          </span>
+           
           <span
             class="sort-asc"
             style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -7325,28 +7371,36 @@ exports[`examples tests example External Sorting 1`] = `
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -7355,14 +7409,18 @@ exports[`examples tests example External Sorting 1`] = `
         <div
           style="padding-right:15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -9302,7 +9360,10 @@ exports[`examples tests example Filters 1`] = `
             <div
               style="padding-right:15px;position:relative;"
             >
-              number 
+              <span>
+                number
+              </span>
+               
               <span
                 class="sort-asc"
                 style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -9313,28 +9374,36 @@ exports[`examples tests example Filters 1`] = `
             style="cursor:pointer;text-align:left;white-space:nowrap;"
           >
             <div>
-              name
+              <span>
+                name
+              </span>
             </div>
           </th>
           <th
             style="cursor:pointer;text-align:left;white-space:nowrap;"
           >
             <div>
-              party
+              <span>
+                party
+              </span>
             </div>
           </th>
           <th
             style="cursor:pointer;text-align:left;white-space:nowrap;"
           >
             <div>
-              birth_year
+              <span>
+                birth_year
+              </span>
             </div>
           </th>
           <th
             style="cursor:pointer;text-align:left;white-space:nowrap;"
           >
             <div>
-              death_year
+              <span>
+                death_year
+              </span>
             </div>
           </th>
           <th
@@ -9343,14 +9412,18 @@ exports[`examples tests example Filters 1`] = `
             <div
               style="padding-right:15px;"
             >
-              took_office
+              <span>
+                took_office
+              </span>
             </div>
           </th>
           <th
             style="cursor:pointer;text-align:left;white-space:nowrap;"
           >
             <div>
-              left_office
+              <span>
+                left_office
+              </span>
             </div>
           </th>
         </tr>
@@ -10398,7 +10471,9 @@ exports[`examples tests example Hide Columns 1`] = `
           style="cursor:pointer;text-align:left;white-space:nowrap;"
         >
           <div>
-            number
+            <span>
+              number
+            </span>
           </div>
         </th>
         <th
@@ -10407,7 +10482,10 @@ exports[`examples tests example Hide Columns 1`] = `
           <div
             style="padding-right:15px;position:relative;"
           >
-            name 
+            <span>
+              name
+            </span>
+             
             <span
               class="sort-asc"
               style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -10418,21 +10496,27 @@ exports[`examples tests example Hide Columns 1`] = `
           style="cursor:pointer;text-align:left;white-space:nowrap;"
         >
           <div>
-            party
+            <span>
+              party
+            </span>
           </div>
         </th>
         <th
           style="cursor:pointer;text-align:left;white-space:nowrap;"
         >
           <div>
-            birth_year
+            <span>
+              birth_year
+            </span>
           </div>
         </th>
         <th
           style="cursor:pointer;text-align:left;white-space:nowrap;"
         >
           <div>
-            death_year
+            <span>
+              death_year
+            </span>
           </div>
         </th>
         <th
@@ -10441,14 +10525,18 @@ exports[`examples tests example Hide Columns 1`] = `
           <div
             style="padding-right:15px;"
           >
-            took_office
+            <span>
+              took_office
+            </span>
           </div>
         </th>
         <th
           style="cursor:pointer;text-align:left;white-space:nowrap;"
         >
           <div>
-            left_office
+            <span>
+              left_office
+            </span>
           </div>
         </th>
       </tr>
@@ -11417,51 +11505,51 @@ exports[`examples tests example Internal Paging 1`] = `
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           number
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           name
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           party
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           birth_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           death_year
-        </div>
+        </span>
       </th>
       <th
         style="text-align:right;white-space:nowrap;width:140px;"
       >
-        <div>
+        <span>
           took_office
-        </div>
+        </span>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           left_office
-        </div>
+        </span>
       </th>
     </tr>
   </thead>
@@ -12361,7 +12449,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         <div
           style="padding-right:15px;position:relative;"
         >
-          number 
+          <span>
+            number
+          </span>
+           
           <span
             class="sort-asc"
             style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -12372,28 +12463,36 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          party
+          <span>
+            party
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          birth_year
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -12402,14 +12501,18 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         <div
           style="padding-right:15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
@@ -13390,7 +13493,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         <div
           style="padding-right:15px;position:relative;"
         >
-          number 
+          <span>
+            number
+          </span>
+           
           <span
             class="sort-asc"
             style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
@@ -13401,28 +13507,34 @@ exports[`examples tests example Internal Sorting 1`] = `
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          name
+          <span>
+            name
+          </span>
         </div>
       </th>
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
+        <span>
           party (not sortable)
+        </span>
+      </th>
+      <th
+        style="cursor:pointer;text-align:left;white-space:nowrap;"
+      >
+        <div>
+          <span>
+            birth_year
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          birth_year
-        </div>
-      </th>
-      <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
-      >
-        <div>
-          death_year
+          <span>
+            death_year
+          </span>
         </div>
       </th>
       <th
@@ -13431,14 +13543,18 @@ exports[`examples tests example Internal Sorting 1`] = `
         <div
           style="padding-right:15px;"
         >
-          took_office
+          <span>
+            took_office
+          </span>
         </div>
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
       >
         <div>
-          left_office
+          <span>
+            left_office
+          </span>
         </div>
       </th>
     </tr>
