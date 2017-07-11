@@ -181,7 +181,11 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
             <Table {...combinedTableProps }>
                 <TableHead>
                     <TableHeadRow>
-                        {columns.filter((m) => m.visible !== false).map((c) => <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>)}
+                        {columns.filter((m) => m.visible !== false).map((c) => {
+                            const HeaderComponent = c.headerComponent || DefaultHeaderComponent;
+                            return <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>
+                        })
+                        }
                     </TableHeadRow>
                 </TableHead>
 
@@ -193,11 +197,11 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
     }
 }
-const HeaderComponent = makePure((props: HeaderComponentProps<any>) => {
+const DefaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => {
     //debuglog('defaultHeaderComponent render ' + props.column.headerText);
     return <div>{props.column.headerText}</div>;
 });
-HeaderComponent.displayName = 'HeaderComponent';
+DefaultHeaderComponent.displayName = 'DefaultHeaderComponent';
 
 export interface GridProps<T = any> {
     /**
@@ -277,6 +281,7 @@ export interface StrictColumn<TRow = any, TValue = any, TFormattedValue = TValue
     formatter: (value: any, row?: TRow) => TFormattedValue;
     cellComponent?: React.ComponentClass<Partial<CellProps<TRow, TValue, TFormattedValue>>> | React.StatelessComponent<Partial<CellProps<TRow, TValue, TFormattedValue>>>;
     cellComponentProps?: (props: CellProps<TRow, TValue, TFormattedValue>) => any;
+    headerComponent?: React.ComponentClass<HeaderComponentProps<HTMLTableHeaderCellElement>> | React.StatelessComponent<HeaderComponentProps<HTMLTableHeaderCellElement>>;
 
     headerCellProps?: HTMLPropsWithoutChildren<HTMLTableHeaderCellElement>;
 

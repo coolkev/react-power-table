@@ -1771,9 +1771,9 @@ exports[`examples tests example Checkboxes 1`] = `
       <th
         style="text-align:left;white-space:nowrap;"
       >
-        <div>
-          checked
-        </div>
+        <input
+          type="checkbox"
+        />
       </th>
       <th
         style="cursor:pointer;text-align:left;white-space:nowrap;"
