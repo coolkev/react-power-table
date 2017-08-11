@@ -159,10 +159,14 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.St
 
         renderFooter() {
 
-            const pagingProps = this.props.paging;
-            const columnCount = this.props.columns.filter((m) => m.visible !== false).length;
+            const { paging, columns, tableFooterComponent } = this.props;
 
-            return <TableFooterComponent columnCount={columnCount} pagingProps={pagingProps} />;
+            //const pagingProps = this.props.paging;
+            const columnCount = columns.filter((m) => m.visible !== false).length;
+
+            const Footer: any = tableFooterComponent ? tableFooterComponent : TableFooterComponent;
+
+            return <Footer columnCount={columnCount} pagingProps={paging} />;
         }
         render() {
 
