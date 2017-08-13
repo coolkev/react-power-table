@@ -248,7 +248,7 @@ export interface GridProps<T = any> {
 
     /** Customize the <tbody> tag. children are passed to props and must be rendered  */
     /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
-    tableRowComponent?: React.ComponentClass<TableRowComponentProps> | React.StatelessComponent<TableRowComponentProps>;
+    tableRowComponent?: React.ComponentType<TableRowComponentProps<T>>;
 
     /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
      * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps  *

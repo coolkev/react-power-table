@@ -64,9 +64,13 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^15.0.22", "@types/react@^15.0.24":
+"@types/react@*", "@types/react@^15.0.22":
   version "15.0.25"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.25.tgz#d396949cccc9a90b61755def9781e5aced9b2261"
+
+"@types/react@15.0.26":
+  version "15.0.26"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.26.tgz#19d8969edcabb2aa6d10ccfba807e67a93a0a8f4"
 
 "@types/through2@*":
   version "2.0.33"
