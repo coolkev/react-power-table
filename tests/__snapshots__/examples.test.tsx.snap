@@ -2818,19 +2818,17 @@ exports[`examples tests example Checkboxes 1`] = `
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width:100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight:bold;"
-                width="33%"
+                style="width:33%;font-weight:bold;"
               >
                 44 Records
               </td>
               <td
-                style="text-align:center;"
-                width="34%"
+                style="width:34%;text-align:center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -2870,8 +2868,7 @@ exports[`examples tests example Checkboxes 1`] = `
                 />
               </td>
               <td
-                style="text-align:right;"
-                width="33%"
+                style="width:33%;text-align:right;"
               >
                 Show: 
                 <select
@@ -6205,19 +6202,17 @@ exports[`examples tests example External Paging 1`] = `
         >
           <table
             class="form-inline"
-            width="100%"
+            style="width:100%;"
           >
             <tbody>
               <tr>
                 <td
-                  style="font-weight:bold;"
-                  width="33%"
+                  style="width:33%;font-weight:bold;"
                 >
                   44 Records
                 </td>
                 <td
-                  style="text-align:center;"
-                  width="34%"
+                  style="width:34%;text-align:center;"
                 >
                   <a
                     class="glyphicon glyphicon-fast-backward"
@@ -6257,8 +6252,7 @@ exports[`examples tests example External Paging 1`] = `
                   />
                 </td>
                 <td
-                  style="text-align:right;"
-                  width="33%"
+                  style="width:33%;text-align:right;"
                 >
                   Show: 
                   <select
@@ -7250,19 +7244,17 @@ exports[`examples tests example External Paging/Sorting 1`] = `
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width:100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight:bold;"
-                width="33%"
+                style="width:33%;font-weight:bold;"
               >
                 44 Records
               </td>
               <td
-                style="text-align:center;"
-                width="34%"
+                style="width:34%;text-align:center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -7302,8 +7294,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
                 />
               </td>
               <td
-                style="text-align:right;"
-                width="33%"
+                style="width:33%;text-align:right;"
               >
                 Show: 
                 <select
@@ -10297,19 +10288,17 @@ exports[`examples tests example Filters 1`] = `
           >
             <table
               class="form-inline"
-              width="100%"
+              style="width:100%;"
             >
               <tbody>
                 <tr>
                   <td
-                    style="font-weight:bold;"
-                    width="33%"
+                    style="width:33%;font-weight:bold;"
                   >
                     44 Records
                   </td>
                   <td
-                    style="text-align:center;"
-                    width="34%"
+                    style="width:34%;text-align:center;"
                   >
                     <a
                       class="glyphicon glyphicon-fast-backward"
@@ -10349,8 +10338,7 @@ exports[`examples tests example Filters 1`] = `
                     />
                   </td>
                   <td
-                    style="text-align:right;"
-                    width="33%"
+                    style="width:33%;text-align:right;"
                   >
                     Show: 
                     <select
@@ -11400,19 +11388,17 @@ exports[`examples tests example Hide Columns 1`] = `
         >
           <table
             class="form-inline"
-            width="100%"
+            style="width:100%;"
           >
             <tbody>
               <tr>
                 <td
-                  style="font-weight:bold;"
-                  width="33%"
+                  style="width:33%;font-weight:bold;"
                 >
                   44 Records
                 </td>
                 <td
-                  style="text-align:center;"
-                  width="34%"
+                  style="width:34%;text-align:center;"
                 >
                   <a
                     class="glyphicon glyphicon-fast-backward"
@@ -11452,8 +11438,7 @@ exports[`examples tests example Hide Columns 1`] = `
                   />
                 </td>
                 <td
-                  style="text-align:right;"
-                  width="33%"
+                  style="width:33%;text-align:right;"
                 >
                   Show: 
                   <select
@@ -12342,19 +12327,17 @@ exports[`examples tests example Internal Paging 1`] = `
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width:100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight:bold;"
-                width="33%"
+                style="width:33%;font-weight:bold;"
               >
                 44 Records
               </td>
               <td
-                style="text-align:center;"
-                width="34%"
+                style="width:34%;text-align:center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -12394,8 +12377,7 @@ exports[`examples tests example Internal Paging 1`] = `
                 />
               </td>
               <td
-                style="text-align:right;"
-                width="33%"
+                style="width:33%;text-align:right;"
               >
                 Show: 
                 <select
@@ -13386,19 +13368,17 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width:100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight:bold;"
-                width="33%"
+                style="width:33%;font-weight:bold;"
               >
                 44 Records
               </td>
               <td
-                style="text-align:center;"
-                width="34%"
+                style="width:34%;text-align:center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -13438,8 +13418,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
                 />
               </td>
               <td
-                style="text-align:right;"
-                width="33%"
+                style="width:33%;text-align:right;"
               >
                 Show: 
                 <select

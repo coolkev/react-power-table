@@ -259,19 +259,17 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width: 100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight: bold;"
-                width="33%"
+                style="width: 33%; font-weight: bold;"
               >
                 25 Records
               </td>
               <td
-                style="text-align: center;"
-                width="34%"
+                style="width: 34%; text-align: center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -312,8 +310,7 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
                 />
               </td>
               <td
-                style="text-align: right;"
-                width="33%"
+                style="width: 33%; text-align: right;"
               >
                 Show: 
                 <select
@@ -615,19 +612,17 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width: 100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight: bold;"
-                width="33%"
+                style="width: 33%; font-weight: bold;"
               >
                 25 Records
               </td>
               <td
-                style="text-align: center;"
-                width="34%"
+                style="width: 34%; text-align: center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -668,8 +663,7 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
                 />
               </td>
               <td
-                style="text-align: right;"
-                width="33%"
+                style="width: 33%; text-align: right;"
               >
                 Show: 
                 <select
@@ -1556,19 +1550,17 @@ exports[`withInternalPaging tests render paging 1`] = `
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width: 100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight: bold;"
-                width="33%"
+                style="width: 33%; font-weight: bold;"
               >
                 25 Records
               </td>
               <td
-                style="text-align: center;"
-                width="34%"
+                style="width: 34%; text-align: center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -1609,8 +1601,7 @@ exports[`withInternalPaging tests render paging 1`] = `
                 />
               </td>
               <td
-                style="text-align: right;"
-                width="33%"
+                style="width: 33%; text-align: right;"
               >
                 Show: 
                 <select

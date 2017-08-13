@@ -238,11 +238,11 @@ export class Paging extends React.PureComponent<PagingProps, never> {
         const rowCount = numberWithCommas(props.totalRowCount) + ' Records';
         /* tslint:disable:jsx-no-lambda */
         return (
-            <table width="100%" className="form-inline">
+            <table style={{ width: '100%' }} className="form-inline">
                 <tbody>
                     <tr>
-                        <td width="33%" style={{ fontWeight: 'bold' }}>{rowCount}</td>
-                        <td width="34%" style={{ textAlign: 'center' }}>
+                        <td style={{ width: '33%', fontWeight: 'bold' }}>{rowCount}</td>
+                        <td style={{ width: '34%', textAlign: 'center' }}>
                             <a href="#" className="glyphicon glyphicon-fast-backward" style={backStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(1); }} />
                             &nbsp;
                     <a href="#" className="glyphicon glyphicon-backward" style={backStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(currentPage - 1); }} />
@@ -260,7 +260,7 @@ export class Paging extends React.PureComponent<PagingProps, never> {
                     <a href="#" className="glyphicon glyphicon-fast-forward" style={forwardStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(pageCount); }} />
 
                         </td>
-                        <td width="33%" style={{ textAlign: 'right' }}>Show:&nbsp;
+                        <td style={{ width: '33%', textAlign: 'right' }}>Show:&nbsp;
                        <select className="form-control input-sm" style={{ width: 80 }} value={pageSize} onChange={(e) => props.gotoPage(1, parseInt(e.currentTarget.value, 10))}>
                                 {pageSizes.map((m) => <option key={m} value={m}>{m}</option>)}
                             </select>

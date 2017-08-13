@@ -799,19 +799,17 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width: 100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight: bold;"
-                width="33%"
+                style="width: 33%; font-weight: bold;"
               >
                 5 Records
               </td>
               <td
-                style="text-align: center;"
-                width="34%"
+                style="width: 34%; text-align: center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -852,8 +850,7 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
                 />
               </td>
               <td
-                style="text-align: right;"
-                width="33%"
+                style="width: 33%; text-align: right;"
               >
                 Show: 
                 <select
@@ -1165,19 +1162,17 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width: 100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight: bold;"
-                width="33%"
+                style="width: 33%; font-weight: bold;"
               >
                 5 Records
               </td>
               <td
-                style="text-align: center;"
-                width="34%"
+                style="width: 34%; text-align: center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -1218,8 +1213,7 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
                 />
               </td>
               <td
-                style="text-align: right;"
-                width="33%"
+                style="width: 33%; text-align: right;"
               >
                 Show: 
                 <select
@@ -2677,19 +2671,17 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width: 100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight: bold;"
-                width="33%"
+                style="width: 33%; font-weight: bold;"
               >
                 5 Records
               </td>
               <td
-                style="text-align: center;"
-                width="34%"
+                style="width: 34%; text-align: center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -2730,8 +2722,7 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
                 />
               </td>
               <td
-                style="text-align: right;"
-                width="33%"
+                style="width: 33%; text-align: right;"
               >
                 Show: 
                 <select
@@ -3043,19 +3034,17 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
       >
         <table
           class="form-inline"
-          width="100%"
+          style="width: 100%;"
         >
           <tbody>
             <tr>
               <td
-                style="font-weight: bold;"
-                width="33%"
+                style="width: 33%; font-weight: bold;"
               >
                 5 Records
               </td>
               <td
-                style="text-align: center;"
-                width="34%"
+                style="width: 34%; text-align: center;"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
@@ -3096,8 +3085,7 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
                 />
               </td>
               <td
-                style="text-align: right;"
-                width="33%"
+                style="width: 33%; text-align: right;"
               >
                 Show: 
                 <select

@@ -69,50 +69,50 @@ exports[`AddSelectFilter tests render gridfilters 2`] = `
         >
           <a
             class="list-group-item"
+            data-fieldname="number"
             href="#"
-            name="number"
           >
             number
           </a>
           <a
             class="list-group-item"
+            data-fieldname="president"
             href="#"
-            name="president"
           >
             president
           </a>
           <a
             class="list-group-item"
+            data-fieldname="birth_year"
             href="#"
-            name="birth_year"
           >
             birth_year
           </a>
           <a
             class="list-group-item"
+            data-fieldname="death_year"
             href="#"
-            name="death_year"
           >
             death_year
           </a>
           <a
             class="list-group-item"
+            data-fieldname="took_office"
             href="#"
-            name="took_office"
           >
             took_office
           </a>
           <a
             class="list-group-item"
+            data-fieldname="left_office"
             href="#"
-            name="left_office"
           >
             left_office
           </a>
           <a
             class="list-group-item"
+            data-fieldname="assasinated"
             href="#"
-            name="assasinated"
           >
             was assasinated
           </a>
