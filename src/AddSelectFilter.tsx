@@ -52,7 +52,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
         e.preventDefault();
 
         this.setState({
-            selectedFilterKey: e.currentTarget.dataset.fieldName,
+            selectedFilterKey: e.currentTarget.dataset.fieldname,
         });
     }
 
@@ -113,7 +113,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
                     <div style={{ margin: '10px 0' }}><b>Available Filters</b></div>
                     <div className="available-filters">
                         <div className="list-group">
-                            {showFilters.map((m) => <a href="#" onClick={this.newFilterSelected} data-fieldName={m.fieldName} className="list-group-item" key={m.fieldName}>{m.displayName}</a>)}
+                            {showFilters.map((m) => <a href="#" onClick={this.newFilterSelected} data-fieldname={m.fieldName} className="list-group-item" key={m.fieldName}>{m.displayName}</a>)}
                         </div>
                     </div>
 
