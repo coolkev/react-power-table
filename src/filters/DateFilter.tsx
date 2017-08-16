@@ -46,7 +46,7 @@ export class DateFilter extends FilterDefinition<string> {
         };
 
         if (this.canBeNull) {
-            return { ...result, ...nullableOperations() };
+            return { ...result, ...nullableOperations<string>() };
         }
         return result;
     }

@@ -62,13 +62,13 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
 
     public radioButtonLabel: (props: RadioButtonLabelProps<T>) => React.ReactType;
     //public filterComponent: (props: FilterComponentProps<T>) =>JSX.Element;
-    public filterComponent: React.ComponentClass<FilterComponentProps<T>> | React.StatelessComponent<FilterComponentProps<T>>;
+    public filterComponent: React.ComponentType<FilterComponentProps<T>>;
     public defaultValue: T;
 
     public appliedLabel?: (filter: AppliedFilter<T>) => string;
-    public appliedLabelComponent?: React.ComponentClass<AppliedFilter<T>> | React.StatelessComponent<AppliedFilter<T>>;
+    public appliedLabelComponent?: React.ComponentType<AppliedFilter<T>>;
     public operations: ObjectMap<OperationDefinition<T>>;
-    private readonly lazyDefaultOperations = new Lazy(() => this.canBeNull ? { ...defaultOperations<T>(), ...nullableOperations() } : defaultOperations<T>());
+    private readonly lazyDefaultOperations = new Lazy(() => this.canBeNull ? { ...defaultOperations<T>(), ...nullableOperations<T>() } : defaultOperations<T>());
 
     public static readonly defaultAppliedFilterLabel = (filter: AppliedFilter<any>) => {
         return filter.filter.displayName + ' ' + filter.operation.displayName + ' ' + filter.value;

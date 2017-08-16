@@ -1,7 +1,7 @@
 {
   "name": "react-power-table",
   "author": "Kevin Lewis",
-  "version": "0.4.25",
+  "version": "0.4.23",
   "description": "React Power Table",
   "repository": {
     "type": "git",
@@ -71,7 +71,7 @@
     "ts-jest": "^20.0.4",
     "tslint": "^5.2.0",
     "tslint-react": "^3.0.0",
-    "typescript": "^2.4.2",
+    "typescript": "2.3.4",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.1"
