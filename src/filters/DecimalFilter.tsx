@@ -13,7 +13,7 @@ export class DecimalFilter extends FilterDefinition<number> {
 
             const { value, onValueChange, filter, operation, ...rest } = props;
 
-            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" {...rest} />;
+            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" allowDecimal {...rest} />;
         };
 
     }
