@@ -23,7 +23,7 @@ const availableFilters = [
     new DataTypes.int('number'),
     new DataTypes.string('president'),
     new DataTypes.int('birth_year'),
-    new DataTypes.int({ fieldName: 'death_year', canBeNull: true }),
+    new DataTypes.decimal({ fieldName: 'death_year', canBeNull: true }),
     new DataTypes.date({ fieldName: 'took_office'}),
     new DataTypes.date({ fieldName: 'left_office', canBeNull: true }),
     new DataTypes.list('party', partyListOptions),

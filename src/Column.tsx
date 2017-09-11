@@ -17,16 +17,16 @@ export function transformColumn<T>(options: Column<T> | string): StrictColumn<T>
     const col = typeof options === 'string' ? { fieldName: options } as Column<T> : options;
 
     const core = getColumnCore(options);
-    const { cellProps, headerProps } = getCellAndHeaderProps(options);
+    const { cellProps, headerProps } = getCellAndHeaderProps(col);
 
-    const result: StrictColumn<T> = {
+    const result = {
         ...col,
         ...core,
         cellProps,
         headerCellProps: headerProps,
         headerComponent: col.headerComponent,
         formatter: col.formatter || null,
-    };
+    } as StrictColumn<T>;
 
     if (col.cellComponent) {
         result.cellComponent = col.cellComponent;
