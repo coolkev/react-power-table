@@ -28,7 +28,7 @@ export const NumericInput: React.ComponentClass<NumericInputProps> = class Numer
 
     private isValid() {
 
-        return !isNaN(parseInt(this.state.value, 10));
+        return !isNaN(this.props.allowDecimal ? parseFloat(this.state.value) : parseInt(this.state.value, 10));
     }
     componentWillReceiveProps(nextProps: NumericInputProps) {
         if (nextProps.initialValue !== this.props.initialValue) {
@@ -37,7 +37,7 @@ export const NumericInput: React.ComponentClass<NumericInputProps> = class Numer
     }
     private onChange(e: React.FormEvent<HTMLInputElement>) {
 
-        const ivalue = parseInt(e.currentTarget.value, 10);
+        const ivalue = this.props.allowDecimal ? parseFloat(e.currentTarget.value) : parseInt(e.currentTarget.value, 10);
 
         const isValid = !isNaN(ivalue);
         if (isValid) {
