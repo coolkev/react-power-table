@@ -72,7 +72,7 @@ class Examples extends React.Component<ExamplesProps, never> {
     }
 }
 
-export class ExamplesApp extends React.Component<never, {}> {
+export class ExamplesApp extends React.Component<{}, {}> {
 
     constructor() {
         super();
@@ -80,13 +80,11 @@ export class ExamplesApp extends React.Component<never, {}> {
         this.handleSelect = this.handleSelect.bind(this);
     }
     handleSelect(name: any) {
-        //this.setState({ selected: name });
         location.hash = '#' + name.replace(/ /g, '-');
-        //this.forceUpdate();
     }
 
     reload() {
-        this.setState({});
+            this.setState({});
     }
     componentWillMount() {
         window.addEventListener('hashchange', this.reload, false);
@@ -97,8 +95,6 @@ export class ExamplesApp extends React.Component<never, {}> {
     }
     render() {
 
-        //const keys = Object.keys(examples).map(name => name.replace(/ /g, '-'));
-        //console.log('render location.hash=' + location.hash);
         const name = location.hash && location.hash.substring(1).replace('-', ' ');
         const selected = examples[name] && name;
         return <Examples selected={selected} onSelect={this.handleSelect} />;

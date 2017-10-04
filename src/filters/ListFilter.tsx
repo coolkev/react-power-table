@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import * as Select from 'react-select';
+import Select from 'react-select';
 import * as PowerTable from './FilterDefinition';
 //import { CustomSelectValue } from '../components/CustomSelectValue';
 

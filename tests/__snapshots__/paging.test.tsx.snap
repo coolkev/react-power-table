@@ -293,8 +293,7 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
                       value="2"
                     />
                   </span>
-                    of 
-                  2
+                    of 2
                 </span>
                  
                 <a
@@ -646,8 +645,7 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
                       value="2"
                     />
                   </span>
-                    of 
-                  2
+                    of 2
                 </span>
                  
                 <a
@@ -1584,8 +1582,7 @@ exports[`withInternalPaging tests render paging 1`] = `
                       value="1"
                     />
                   </span>
-                    of 
-                  2
+                    of 2
                 </span>
                  
                 <a

@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting } from '../../src/';
+import { ReactPowerTable, withInternalSorting, SortableColumn } from '../../src/';
 import { sampledata, defaultColumns } from './shared';
 
 const columns = [...defaultColumns];
 
-columns[2] = { ...columns[2], sortable: false, headerText: 'party (not sortable)' };
+columns[2] = { ...columns[2], sortable: false, headerText: 'party (not sortable)' } as SortableColumn;
 
 const Table = withInternalSorting(ReactPowerTable);
 

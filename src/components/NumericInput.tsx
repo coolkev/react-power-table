@@ -8,13 +8,10 @@ export interface NumericInputProps extends React.HTMLProps<HTMLInputElement> {
     //onEnterKeyPress?: () => void;
 }
 
-/**
- * @internal
- */
-export interface NumericInputState {
+interface NumericInputState {
     value: string;
 }
-export const NumericInput: React.ComponentClass<NumericInputProps> = class NumericInput extends React.Component<NumericInputProps, NumericInputState> {
+export const NumericInput: React.ComponentClass<NumericInputProps> = class extends React.Component<NumericInputProps, NumericInputState> {
 
     constructor(props: NumericInputProps & React.HTMLProps<HTMLInputElement>) {
         super(props);

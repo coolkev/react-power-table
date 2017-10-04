@@ -190,7 +190,7 @@ export function withInternalSorting<TRow, T extends GridProps<TRow>>(WrappedComp
 
         }
 
-        private transformColumns(columns: Array<SortableColumn<any>>): Array<SortableColumn<any>> {
+        private transformColumns(columns: Array<string | SortableColumn<TRow>>): Array<SortableColumn<TRow>> {
             debuglog('Sorting.transformColumns', columns);
 
             if (this.columns && this.originalColumns) {
@@ -361,7 +361,7 @@ export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: R
             }
         }
 
-        private transformColumns(columns: Array<SortableColumn<any>>): Array<SortableColumn<any>> {
+        private transformColumns(columns: Array<string | SortableColumn<TRow>>): Array<SortableColumn<TRow>> {
             debuglog('Sorting.transformColumns', columns);
 
             if (this.columns && this.originalColumns) {
@@ -381,7 +381,7 @@ export function withSorting<TRow, T extends GridProps<TRow>>(WrappedComponent: R
 }
 
 const sortableCellComponentWrapperStyle = { marginRight: 15 };
-const SortableCellComponentWrapper: React.StatelessComponent<never> = (props) => {
+const SortableCellComponentWrapper: React.StatelessComponent = (props) => {
     return <div style={sortableCellComponentWrapperStyle}>{props.children}</div>;
 };
 const defaultSortAscProps: React.CSSProperties = {

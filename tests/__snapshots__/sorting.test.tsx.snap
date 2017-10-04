@@ -1220,10 +1220,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;"
+        style="cursor:pointer;text-align:right;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;position:relative;"
+          style="padding-right:15px;position:relative"
         >
           <span>
             number
@@ -1231,12 +1231,12 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
            
           <span
             class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
           />
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1245,7 +1245,7 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1254,7 +1254,7 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1263,7 +1263,7 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1272,10 +1272,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             took_office
@@ -1283,7 +1283,7 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1296,10 +1296,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
   <tbody>
     <tr>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <span />
         </div>
@@ -1325,10 +1325,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1789-04-30
@@ -1343,10 +1343,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
     </tr>
     <tr>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <span />
         </div>
@@ -1372,10 +1372,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1797-03-04
@@ -1390,10 +1390,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
     </tr>
     <tr>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <span />
         </div>
@@ -1419,10 +1419,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1801-03-04
@@ -1437,10 +1437,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
     </tr>
     <tr>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <span />
         </div>
@@ -1466,10 +1466,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809-03-04
@@ -1484,10 +1484,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
     </tr>
     <tr>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <span />
         </div>
@@ -1513,10 +1513,10 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1817-03-04

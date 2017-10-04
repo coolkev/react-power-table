@@ -13,7 +13,9 @@ exports[`AddEditFilter tests add filter assasinated eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -26,7 +28,9 @@ exports[`AddEditFilter tests add filter assasinated eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -61,7 +65,9 @@ exports[`AddEditFilter tests add filter assasinated ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -74,7 +80,9 @@ exports[`AddEditFilter tests add filter assasinated ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -109,7 +117,9 @@ exports[`AddEditFilter tests add filter birth_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -135,7 +145,9 @@ exports[`AddEditFilter tests add filter birth_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -148,7 +160,9 @@ exports[`AddEditFilter tests add filter birth_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -161,7 +175,9 @@ exports[`AddEditFilter tests add filter birth_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -174,7 +190,9 @@ exports[`AddEditFilter tests add filter birth_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -209,7 +227,9 @@ exports[`AddEditFilter tests add filter birth_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -222,7 +242,9 @@ exports[`AddEditFilter tests add filter birth_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -235,7 +257,9 @@ exports[`AddEditFilter tests add filter birth_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -248,7 +272,9 @@ exports[`AddEditFilter tests add filter birth_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -274,7 +300,9 @@ exports[`AddEditFilter tests add filter birth_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -309,7 +337,9 @@ exports[`AddEditFilter tests add filter birth_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -322,7 +352,9 @@ exports[`AddEditFilter tests add filter birth_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -335,7 +367,9 @@ exports[`AddEditFilter tests add filter birth_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -361,7 +395,9 @@ exports[`AddEditFilter tests add filter birth_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -374,7 +410,9 @@ exports[`AddEditFilter tests add filter birth_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -409,7 +447,9 @@ exports[`AddEditFilter tests add filter birth_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -422,7 +462,9 @@ exports[`AddEditFilter tests add filter birth_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -448,7 +490,9 @@ exports[`AddEditFilter tests add filter birth_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -461,7 +505,9 @@ exports[`AddEditFilter tests add filter birth_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -474,7 +520,9 @@ exports[`AddEditFilter tests add filter birth_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -509,7 +557,9 @@ exports[`AddEditFilter tests add filter death_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -535,7 +585,9 @@ exports[`AddEditFilter tests add filter death_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -548,7 +600,9 @@ exports[`AddEditFilter tests add filter death_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -561,7 +615,9 @@ exports[`AddEditFilter tests add filter death_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -574,7 +630,9 @@ exports[`AddEditFilter tests add filter death_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -587,7 +645,9 @@ exports[`AddEditFilter tests add filter death_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -600,7 +660,9 @@ exports[`AddEditFilter tests add filter death_year eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -635,7 +697,9 @@ exports[`AddEditFilter tests add filter death_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -648,7 +712,9 @@ exports[`AddEditFilter tests add filter death_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -661,7 +727,9 @@ exports[`AddEditFilter tests add filter death_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -674,7 +742,9 @@ exports[`AddEditFilter tests add filter death_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -700,7 +770,9 @@ exports[`AddEditFilter tests add filter death_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -713,7 +785,9 @@ exports[`AddEditFilter tests add filter death_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -726,7 +800,9 @@ exports[`AddEditFilter tests add filter death_year gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -761,7 +837,9 @@ exports[`AddEditFilter tests add filter death_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -774,7 +852,9 @@ exports[`AddEditFilter tests add filter death_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -787,7 +867,9 @@ exports[`AddEditFilter tests add filter death_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -813,7 +895,9 @@ exports[`AddEditFilter tests add filter death_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -826,7 +910,9 @@ exports[`AddEditFilter tests add filter death_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -839,7 +925,9 @@ exports[`AddEditFilter tests add filter death_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -852,7 +940,9 @@ exports[`AddEditFilter tests add filter death_year lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -887,7 +977,9 @@ exports[`AddEditFilter tests add filter death_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -900,7 +992,9 @@ exports[`AddEditFilter tests add filter death_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -926,7 +1020,9 @@ exports[`AddEditFilter tests add filter death_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -939,7 +1035,9 @@ exports[`AddEditFilter tests add filter death_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -952,7 +1050,9 @@ exports[`AddEditFilter tests add filter death_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -965,7 +1065,9 @@ exports[`AddEditFilter tests add filter death_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -978,7 +1080,9 @@ exports[`AddEditFilter tests add filter death_year ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -1013,7 +1117,9 @@ exports[`AddEditFilter tests add filter death_year notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1026,7 +1132,9 @@ exports[`AddEditFilter tests add filter death_year notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -1039,7 +1147,9 @@ exports[`AddEditFilter tests add filter death_year notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1052,7 +1162,9 @@ exports[`AddEditFilter tests add filter death_year notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1065,7 +1177,9 @@ exports[`AddEditFilter tests add filter death_year notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1078,7 +1192,9 @@ exports[`AddEditFilter tests add filter death_year notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -1088,15 +1204,15 @@ exports[`AddEditFilter tests add filter death_year notnull 1`] = `
     </div>
     <div
       style="margin-left: 20px;"
-    >
-      
-    </div>
+    />
   </div>
   <div>
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -1131,7 +1247,9 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1144,7 +1262,9 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -1157,7 +1277,9 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1170,7 +1292,9 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1183,7 +1307,9 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1196,7 +1322,9 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -1209,7 +1337,9 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -1219,9 +1349,7 @@ exports[`AddEditFilter tests add filter death_year null 1`] = `
     </div>
     <div
       style="margin-left: 20px;"
-    >
-      
-    </div>
+    />
   </div>
   <div
     style="margin-top: 20px;"
@@ -1249,7 +1377,9 @@ exports[`AddEditFilter tests add filter empty eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1275,7 +1405,9 @@ exports[`AddEditFilter tests add filter empty eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -1288,7 +1420,9 @@ exports[`AddEditFilter tests add filter empty eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1301,7 +1435,9 @@ exports[`AddEditFilter tests add filter empty eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1314,7 +1450,9 @@ exports[`AddEditFilter tests add filter empty eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1349,7 +1487,9 @@ exports[`AddEditFilter tests add filter empty gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1362,7 +1502,9 @@ exports[`AddEditFilter tests add filter empty gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -1375,7 +1517,9 @@ exports[`AddEditFilter tests add filter empty gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1388,7 +1532,9 @@ exports[`AddEditFilter tests add filter empty gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1414,7 +1560,9 @@ exports[`AddEditFilter tests add filter empty gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1449,7 +1597,9 @@ exports[`AddEditFilter tests add filter empty lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1462,7 +1612,9 @@ exports[`AddEditFilter tests add filter empty lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -1475,7 +1627,9 @@ exports[`AddEditFilter tests add filter empty lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1501,7 +1655,9 @@ exports[`AddEditFilter tests add filter empty lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1514,7 +1670,9 @@ exports[`AddEditFilter tests add filter empty lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1549,7 +1707,9 @@ exports[`AddEditFilter tests add filter empty ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1562,7 +1722,9 @@ exports[`AddEditFilter tests add filter empty ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -1588,7 +1750,9 @@ exports[`AddEditFilter tests add filter empty ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1601,7 +1765,9 @@ exports[`AddEditFilter tests add filter empty ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1614,7 +1780,9 @@ exports[`AddEditFilter tests add filter empty ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1649,7 +1817,9 @@ exports[`AddEditFilter tests add filter left_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1686,7 +1856,9 @@ exports[`AddEditFilter tests add filter left_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1699,7 +1871,9 @@ exports[`AddEditFilter tests add filter left_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1712,7 +1886,9 @@ exports[`AddEditFilter tests add filter left_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1725,7 +1901,9 @@ exports[`AddEditFilter tests add filter left_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -1738,7 +1916,9 @@ exports[`AddEditFilter tests add filter left_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -1773,7 +1953,9 @@ exports[`AddEditFilter tests add filter left_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1786,7 +1968,9 @@ exports[`AddEditFilter tests add filter left_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1799,7 +1983,9 @@ exports[`AddEditFilter tests add filter left_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1836,7 +2022,9 @@ exports[`AddEditFilter tests add filter left_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1849,7 +2037,9 @@ exports[`AddEditFilter tests add filter left_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -1862,7 +2052,9 @@ exports[`AddEditFilter tests add filter left_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -1897,7 +2089,9 @@ exports[`AddEditFilter tests add filter left_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -1910,7 +2104,9 @@ exports[`AddEditFilter tests add filter left_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -1947,7 +2143,9 @@ exports[`AddEditFilter tests add filter left_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -1960,7 +2158,9 @@ exports[`AddEditFilter tests add filter left_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -1973,7 +2173,9 @@ exports[`AddEditFilter tests add filter left_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -1986,7 +2188,9 @@ exports[`AddEditFilter tests add filter left_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -2021,7 +2225,9 @@ exports[`AddEditFilter tests add filter left_office notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2034,7 +2240,9 @@ exports[`AddEditFilter tests add filter left_office notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -2047,7 +2255,9 @@ exports[`AddEditFilter tests add filter left_office notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -2060,7 +2270,9 @@ exports[`AddEditFilter tests add filter left_office notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -2073,7 +2285,9 @@ exports[`AddEditFilter tests add filter left_office notnull 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -2083,15 +2297,15 @@ exports[`AddEditFilter tests add filter left_office notnull 1`] = `
     </div>
     <div
       style="margin-left: 20px;"
-    >
-      
-    </div>
+    />
   </div>
   <div>
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -2126,7 +2340,9 @@ exports[`AddEditFilter tests add filter left_office null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2139,7 +2355,9 @@ exports[`AddEditFilter tests add filter left_office null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -2152,7 +2370,9 @@ exports[`AddEditFilter tests add filter left_office null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -2165,7 +2385,9 @@ exports[`AddEditFilter tests add filter left_office null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -2178,7 +2400,9 @@ exports[`AddEditFilter tests add filter left_office null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notnull"
@@ -2191,7 +2415,9 @@ exports[`AddEditFilter tests add filter left_office null 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="null"
@@ -2201,9 +2427,7 @@ exports[`AddEditFilter tests add filter left_office null 1`] = `
     </div>
     <div
       style="margin-left: 20px;"
-    >
-      
-    </div>
+    />
   </div>
   <div
     style="margin-top: 20px;"
@@ -2231,7 +2455,9 @@ exports[`AddEditFilter tests add filter number eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2257,7 +2483,9 @@ exports[`AddEditFilter tests add filter number eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -2270,7 +2498,9 @@ exports[`AddEditFilter tests add filter number eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -2283,7 +2513,9 @@ exports[`AddEditFilter tests add filter number eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -2296,7 +2528,9 @@ exports[`AddEditFilter tests add filter number eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -2331,7 +2565,9 @@ exports[`AddEditFilter tests add filter number gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2344,7 +2580,9 @@ exports[`AddEditFilter tests add filter number gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -2357,7 +2595,9 @@ exports[`AddEditFilter tests add filter number gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -2370,7 +2610,9 @@ exports[`AddEditFilter tests add filter number gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -2396,7 +2638,9 @@ exports[`AddEditFilter tests add filter number gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -2431,7 +2675,9 @@ exports[`AddEditFilter tests add filter number lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2444,7 +2690,9 @@ exports[`AddEditFilter tests add filter number lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -2457,7 +2705,9 @@ exports[`AddEditFilter tests add filter number lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -2483,7 +2733,9 @@ exports[`AddEditFilter tests add filter number lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -2496,7 +2748,9 @@ exports[`AddEditFilter tests add filter number lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -2531,7 +2785,9 @@ exports[`AddEditFilter tests add filter number ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2544,7 +2800,9 @@ exports[`AddEditFilter tests add filter number ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -2570,7 +2828,9 @@ exports[`AddEditFilter tests add filter number ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -2583,7 +2843,9 @@ exports[`AddEditFilter tests add filter number ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -2596,7 +2858,9 @@ exports[`AddEditFilter tests add filter number ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -2631,7 +2895,9 @@ exports[`AddEditFilter tests add filter party in 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="in"
@@ -2671,7 +2937,7 @@ exports[`AddEditFilter tests add filter party in 1`] = `
                 value=""
               />
               <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre;"
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
               />
             </div>
           </span>
@@ -2690,7 +2956,9 @@ exports[`AddEditFilter tests add filter party in 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notin"
@@ -2725,7 +2993,9 @@ exports[`AddEditFilter tests add filter party notin 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="in"
@@ -2738,7 +3008,9 @@ exports[`AddEditFilter tests add filter party notin 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notin"
@@ -2778,7 +3050,7 @@ exports[`AddEditFilter tests add filter party notin 1`] = `
                 value=""
               />
               <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre;"
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
               />
             </div>
           </span>
@@ -2819,7 +3091,9 @@ exports[`AddEditFilter tests add filter president contains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="contains"
@@ -2840,7 +3114,9 @@ exports[`AddEditFilter tests add filter president contains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notcontains"
@@ -2853,7 +3129,9 @@ exports[`AddEditFilter tests add filter president contains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2866,7 +3144,9 @@ exports[`AddEditFilter tests add filter president contains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -2901,7 +3181,9 @@ exports[`AddEditFilter tests add filter president eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="contains"
@@ -2914,7 +3196,9 @@ exports[`AddEditFilter tests add filter president eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notcontains"
@@ -2927,7 +3211,9 @@ exports[`AddEditFilter tests add filter president eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -2948,7 +3234,9 @@ exports[`AddEditFilter tests add filter president eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -2983,7 +3271,9 @@ exports[`AddEditFilter tests add filter president ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="contains"
@@ -2996,7 +3286,9 @@ exports[`AddEditFilter tests add filter president ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notcontains"
@@ -3009,7 +3301,9 @@ exports[`AddEditFilter tests add filter president ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -3022,7 +3316,9 @@ exports[`AddEditFilter tests add filter president ne 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -3065,7 +3361,9 @@ exports[`AddEditFilter tests add filter president notcontains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="contains"
@@ -3078,7 +3376,9 @@ exports[`AddEditFilter tests add filter president notcontains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="notcontains"
@@ -3099,7 +3399,9 @@ exports[`AddEditFilter tests add filter president notcontains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -3112,7 +3414,9 @@ exports[`AddEditFilter tests add filter president notcontains 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -3147,7 +3451,9 @@ exports[`AddEditFilter tests add filter took_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -3184,7 +3490,9 @@ exports[`AddEditFilter tests add filter took_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -3197,7 +3505,9 @@ exports[`AddEditFilter tests add filter took_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -3210,7 +3520,9 @@ exports[`AddEditFilter tests add filter took_office eq 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -3245,7 +3557,9 @@ exports[`AddEditFilter tests add filter took_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -3258,7 +3572,9 @@ exports[`AddEditFilter tests add filter took_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -3271,7 +3587,9 @@ exports[`AddEditFilter tests add filter took_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -3308,7 +3626,9 @@ exports[`AddEditFilter tests add filter took_office gt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -3343,7 +3663,9 @@ exports[`AddEditFilter tests add filter took_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -3356,7 +3678,9 @@ exports[`AddEditFilter tests add filter took_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -3393,7 +3717,9 @@ exports[`AddEditFilter tests add filter took_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -3406,7 +3732,9 @@ exports[`AddEditFilter tests add filter took_office lt 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"
@@ -3441,7 +3769,9 @@ exports[`AddEditFilter tests between filter 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="eq"
@@ -3454,7 +3784,9 @@ exports[`AddEditFilter tests between filter 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="ne"
@@ -3467,7 +3799,9 @@ exports[`AddEditFilter tests between filter 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="lt"
@@ -3480,7 +3814,9 @@ exports[`AddEditFilter tests between filter 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="gt"
@@ -3493,7 +3829,9 @@ exports[`AddEditFilter tests between filter 1`] = `
     <div
       class="radio"
     >
-      <label>
+      <label
+        title=""
+      >
         <input
           type="radio"
           value="between"

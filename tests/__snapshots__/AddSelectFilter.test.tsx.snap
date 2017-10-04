@@ -218,7 +218,9 @@ exports[`AddSelectFilter tests select filter 2`] = `
         <div
           class="radio"
         >
-          <label>
+          <label
+            title=""
+          >
             <input
               type="radio"
               value="eq"
@@ -244,7 +246,9 @@ exports[`AddSelectFilter tests select filter 2`] = `
         <div
           class="radio"
         >
-          <label>
+          <label
+            title=""
+          >
             <input
               type="radio"
               value="ne"
@@ -257,7 +261,9 @@ exports[`AddSelectFilter tests select filter 2`] = `
         <div
           class="radio"
         >
-          <label>
+          <label
+            title=""
+          >
             <input
               type="radio"
               value="lt"
@@ -270,7 +276,9 @@ exports[`AddSelectFilter tests select filter 2`] = `
         <div
           class="radio"
         >
-          <label>
+          <label
+            title=""
+          >
             <input
               type="radio"
               value="gt"
@@ -283,7 +291,9 @@ exports[`AddSelectFilter tests select filter 2`] = `
         <div
           class="radio"
         >
-          <label>
+          <label
+            title=""
+          >
             <input
               type="radio"
               value="between"

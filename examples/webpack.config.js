@@ -12,11 +12,12 @@ function prependHotLoader(entry) {
   if (isDevBuild) {
     return [
 
+      'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:8080',
       // bundle the client for webpack-dev-server
       // and connect to the provided endpoint
       'webpack/hot/only-dev-server',
-      'react-hot-loader/patch',
+
       entry
     ];
   }
@@ -88,7 +89,7 @@ module.exports = {
         test: /\.tsx?$/, exclude: /(node_modules)/, use: [
           {
             loader: 'babel-loader', query: {
-              "plugins": ["react-hot-loader/babel"]
+              "presets": ["env"],  "plugins": ["react-hot-loader/babel"]
             }
           },
           { loader: 'awesome-typescript-loader', query: { "configFileName": path.resolve(__dirname, "tsconfig.json") } }

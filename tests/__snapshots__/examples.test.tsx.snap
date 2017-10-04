@@ -5,49 +5,49 @@ exports[`examples tests example Basic 1`] = `
   <thead>
     <tr>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           number
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           name
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           party
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           birth_year
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           death_year
         </span>
       </th>
       <th
-        style="text-align:right;white-space:nowrap;width:140px;"
+        style="text-align:right;white-space:nowrap;width:140px"
       >
         <span>
           took_office
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           left_office
@@ -83,7 +83,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1789-04-30
@@ -122,7 +122,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1797-03-04
@@ -161,7 +161,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1801-03-04
@@ -200,7 +200,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1809-03-04
@@ -239,7 +239,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1817-03-04
@@ -278,7 +278,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1825-03-04
@@ -317,7 +317,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1829-03-04
@@ -356,7 +356,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1837-03-04
@@ -395,7 +395,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1841-03-04
@@ -434,7 +434,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1841-04-04
@@ -473,7 +473,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1845-03-04
@@ -512,7 +512,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1849-03-04
@@ -551,7 +551,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1850-07-09
@@ -590,7 +590,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1853-03-04
@@ -629,7 +629,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1857-03-04
@@ -668,7 +668,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1861-03-04
@@ -707,7 +707,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1865-04-15
@@ -746,7 +746,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1869-03-04
@@ -785,7 +785,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1877-03-04
@@ -824,7 +824,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1881-03-04
@@ -863,7 +863,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1881-09-19
@@ -902,7 +902,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1885-03-04
@@ -941,7 +941,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1889-03-04
@@ -980,7 +980,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1893-03-04
@@ -1019,7 +1019,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1897-03-04
@@ -1058,7 +1058,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1901-09-14
@@ -1097,7 +1097,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1909-03-04
@@ -1136,7 +1136,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1913-03-04
@@ -1175,7 +1175,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1921-03-04
@@ -1214,7 +1214,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1923-08-02
@@ -1253,7 +1253,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1929-03-04
@@ -1292,7 +1292,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1933-03-04
@@ -1331,7 +1331,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1945-04-12
@@ -1370,7 +1370,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1953-01-20
@@ -1409,7 +1409,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1961-01-20
@@ -1448,7 +1448,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1963-11-22
@@ -1487,7 +1487,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1969-01-20
@@ -1526,7 +1526,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1974-08-09
@@ -1563,7 +1563,7 @@ exports[`examples tests example Basic 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1977-01-20
@@ -1602,7 +1602,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1981-01-20
@@ -1639,7 +1639,7 @@ exports[`examples tests example Basic 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1989-01-20
@@ -1676,7 +1676,7 @@ exports[`examples tests example Basic 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1993-01-20
@@ -1713,7 +1713,7 @@ exports[`examples tests example Basic 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           2001-01-20
@@ -1750,7 +1750,7 @@ exports[`examples tests example Basic 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           2009-01-20
@@ -1769,17 +1769,17 @@ exports[`examples tests example Checkboxes 1`] = `
   <thead>
     <tr>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <input
           type="checkbox"
         />
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;position:relative;"
+          style="padding-right:15px;position:relative"
         >
           <span>
             number
@@ -1787,12 +1787,12 @@ exports[`examples tests example Checkboxes 1`] = `
            
           <span
             class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
           />
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1801,7 +1801,7 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1810,7 +1810,7 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1819,7 +1819,7 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1828,10 +1828,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             took_office
@@ -1839,7 +1839,7 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -1882,10 +1882,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1789-04-30
@@ -1930,10 +1930,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1797-03-04
@@ -1978,10 +1978,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1801-03-04
@@ -2026,10 +2026,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809-03-04
@@ -2074,10 +2074,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1817-03-04
@@ -2122,10 +2122,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1825-03-04
@@ -2170,10 +2170,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1829-03-04
@@ -2218,10 +2218,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837-03-04
@@ -2266,10 +2266,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-03-04
@@ -2314,10 +2314,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-04-04
@@ -2362,10 +2362,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1845-03-04
@@ -2410,10 +2410,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1849-03-04
@@ -2458,10 +2458,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1850-07-09
@@ -2506,10 +2506,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1853-03-04
@@ -2554,10 +2554,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1857-03-04
@@ -2602,10 +2602,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1861-03-04
@@ -2650,10 +2650,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1865-04-15
@@ -2698,10 +2698,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1869-03-04
@@ -2746,10 +2746,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1877-03-04
@@ -2794,10 +2794,10 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-03-04
@@ -2818,28 +2818,28 @@ exports[`examples tests example Checkboxes 1`] = `
       >
         <table
           class="form-inline"
-          style="width:100%;"
+          style="width:100%"
         >
           <tbody>
             <tr>
               <td
-                style="width:33%;font-weight:bold;"
+                style="width:33%;font-weight:bold"
               >
                 44 Records
               </td>
               <td
-                style="width:34%;text-align:center;"
+                style="width:34%;text-align:center"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <a
                   class="glyphicon glyphicon-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <span>
@@ -2847,7 +2847,7 @@ exports[`examples tests example Checkboxes 1`] = `
                   <span>
                     <input
                       class="form-control input-sm"
-                      style="width:60px;"
+                      style="width:60px"
                       type="text"
                       value="1"
                     />
@@ -2858,22 +2858,22 @@ exports[`examples tests example Checkboxes 1`] = `
                 <a
                   class="glyphicon glyphicon-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
                  
                 <a
                   class="glyphicon glyphicon-fast-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
               </td>
               <td
-                style="width:33%;text-align:right;"
+                style="width:33%;text-align:right"
               >
                 Show: 
                 <select
                   class="form-control input-sm"
-                  style="width:80px;"
+                  style="width:80px"
                 >
                   <option
                     value="10"
@@ -2917,10 +2917,10 @@ exports[`examples tests example Custom Row 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;position:relative;"
+          style="padding-right:15px;position:relative"
         >
           <span>
             number
@@ -2928,12 +2928,12 @@ exports[`examples tests example Custom Row 1`] = `
            
           <span
             class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
           />
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -2942,17 +2942,17 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           party (not sortable)
         </span>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;"
+        style="cursor:pointer;text-align:right;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             birth_year
@@ -2960,7 +2960,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -2969,10 +2969,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             took_office
@@ -2980,7 +2980,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -2993,7 +2993,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3011,10 +3011,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1732
@@ -3027,10 +3027,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1789-04-30
@@ -3047,7 +3047,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3065,10 +3065,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1735
@@ -3081,10 +3081,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1797-03-04
@@ -3101,7 +3101,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3119,10 +3119,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1743
@@ -3135,10 +3135,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1801-03-04
@@ -3155,7 +3155,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3173,10 +3173,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1751
@@ -3189,10 +3189,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809-03-04
@@ -3209,7 +3209,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3227,10 +3227,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1758
@@ -3243,10 +3243,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1817-03-04
@@ -3263,7 +3263,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3281,10 +3281,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1767
@@ -3297,10 +3297,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1825-03-04
@@ -3317,7 +3317,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3335,10 +3335,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1767
@@ -3351,10 +3351,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1829-03-04
@@ -3371,7 +3371,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3389,10 +3389,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1782
@@ -3405,10 +3405,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837-03-04
@@ -3425,7 +3425,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3443,10 +3443,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1773
@@ -3459,10 +3459,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-03-04
@@ -3479,7 +3479,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3497,10 +3497,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1790
@@ -3513,10 +3513,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-04-04
@@ -3533,7 +3533,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3551,10 +3551,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1795
@@ -3567,10 +3567,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1845-03-04
@@ -3587,7 +3587,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3605,10 +3605,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1784
@@ -3621,10 +3621,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1849-03-04
@@ -3641,7 +3641,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3659,10 +3659,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1800
@@ -3675,10 +3675,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1850-07-09
@@ -3695,7 +3695,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3713,10 +3713,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1804
@@ -3729,10 +3729,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1853-03-04
@@ -3749,7 +3749,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3767,10 +3767,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1791
@@ -3783,10 +3783,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1857-03-04
@@ -3803,7 +3803,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3821,10 +3821,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809
@@ -3837,10 +3837,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1861-03-04
@@ -3857,7 +3857,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3875,10 +3875,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1808
@@ -3891,10 +3891,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1865-04-15
@@ -3911,7 +3911,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -3929,10 +3929,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1822
@@ -3945,10 +3945,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1869-03-04
@@ -3965,7 +3965,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -3983,10 +3983,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1822
@@ -3999,10 +3999,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1877-03-04
@@ -4019,7 +4019,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4037,10 +4037,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1831
@@ -4053,10 +4053,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-03-04
@@ -4073,7 +4073,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4091,10 +4091,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1829
@@ -4107,10 +4107,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-09-19
@@ -4127,7 +4127,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4145,10 +4145,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837
@@ -4161,10 +4161,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1885-03-04
@@ -4181,7 +4181,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4199,10 +4199,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1833
@@ -4215,10 +4215,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1889-03-04
@@ -4235,7 +4235,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4253,10 +4253,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837
@@ -4269,10 +4269,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1893-03-04
@@ -4289,7 +4289,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4307,10 +4307,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1843
@@ -4323,10 +4323,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1897-03-04
@@ -4343,7 +4343,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4361,10 +4361,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1858
@@ -4377,10 +4377,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1901-09-14
@@ -4397,7 +4397,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4415,10 +4415,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1857
@@ -4431,10 +4431,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1909-03-04
@@ -4451,7 +4451,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4469,10 +4469,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1856
@@ -4485,10 +4485,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1913-03-04
@@ -4505,7 +4505,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4523,10 +4523,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1865
@@ -4539,10 +4539,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1921-03-04
@@ -4559,7 +4559,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4577,10 +4577,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1872
@@ -4593,10 +4593,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1923-08-02
@@ -4613,7 +4613,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4631,10 +4631,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1874
@@ -4647,10 +4647,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1929-03-04
@@ -4667,7 +4667,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4685,10 +4685,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1882
@@ -4701,10 +4701,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1933-03-04
@@ -4721,7 +4721,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4739,10 +4739,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1884
@@ -4755,10 +4755,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1945-04-12
@@ -4775,7 +4775,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4793,10 +4793,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1890
@@ -4809,10 +4809,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1953-01-20
@@ -4829,7 +4829,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4847,10 +4847,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1917
@@ -4863,10 +4863,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1961-01-20
@@ -4883,7 +4883,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -4901,10 +4901,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1908
@@ -4917,10 +4917,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1963-11-22
@@ -4937,7 +4937,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -4955,10 +4955,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1913
@@ -4971,10 +4971,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1969-01-20
@@ -4991,7 +4991,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -5009,10 +5009,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1913
@@ -5025,10 +5025,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1974-08-09
@@ -5045,7 +5045,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -5063,10 +5063,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1924
@@ -5077,10 +5077,10 @@ exports[`examples tests example Custom Row 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1977-01-20
@@ -5097,7 +5097,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -5115,10 +5115,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1911
@@ -5131,10 +5131,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1981-01-20
@@ -5151,7 +5151,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -5169,10 +5169,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1924
@@ -5183,10 +5183,10 @@ exports[`examples tests example Custom Row 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1989-01-20
@@ -5203,7 +5203,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -5221,10 +5221,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1946
@@ -5235,10 +5235,10 @@ exports[`examples tests example Custom Row 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1993-01-20
@@ -5255,7 +5255,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:;"
+      style="background-color:"
     >
       <td>
         <div>
@@ -5273,10 +5273,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1946
@@ -5287,10 +5287,10 @@ exports[`examples tests example Custom Row 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             2001-01-20
@@ -5307,7 +5307,7 @@ exports[`examples tests example Custom Row 1`] = `
   <tbody>
     <tr
       class="tr-test"
-      style="background-color:silver;"
+      style="background-color:silver"
     >
       <td>
         <div>
@@ -5325,10 +5325,10 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
       <td
-        style="text-align:right;"
+        style="text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1961
@@ -5339,10 +5339,10 @@ exports[`examples tests example Custom Row 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             2009-01-20
@@ -5363,49 +5363,49 @@ exports[`examples tests example External Paging 1`] = `
     <thead>
       <tr>
         <th
-          style="text-align:left;white-space:nowrap;"
+          style="text-align:left;white-space:nowrap"
         >
           <span>
             number
           </span>
         </th>
         <th
-          style="text-align:left;white-space:nowrap;"
+          style="text-align:left;white-space:nowrap"
         >
           <span>
             name
           </span>
         </th>
         <th
-          style="text-align:left;white-space:nowrap;"
+          style="text-align:left;white-space:nowrap"
         >
           <span>
             party
           </span>
         </th>
         <th
-          style="text-align:left;white-space:nowrap;"
+          style="text-align:left;white-space:nowrap"
         >
           <span>
             birth_year
           </span>
         </th>
         <th
-          style="text-align:left;white-space:nowrap;"
+          style="text-align:left;white-space:nowrap"
         >
           <span>
             death_year
           </span>
         </th>
         <th
-          style="text-align:right;white-space:nowrap;width:140px;"
+          style="text-align:right;white-space:nowrap;width:140px"
         >
           <span>
             took_office
           </span>
         </th>
         <th
-          style="text-align:left;white-space:nowrap;"
+          style="text-align:left;white-space:nowrap"
         >
           <span>
             left_office
@@ -5441,7 +5441,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1789-04-30
@@ -5480,7 +5480,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1797-03-04
@@ -5519,7 +5519,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1801-03-04
@@ -5558,7 +5558,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1809-03-04
@@ -5597,7 +5597,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1817-03-04
@@ -5636,7 +5636,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1825-03-04
@@ -5675,7 +5675,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1829-03-04
@@ -5714,7 +5714,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1837-03-04
@@ -5753,7 +5753,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1841-03-04
@@ -5792,7 +5792,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1841-04-04
@@ -5831,7 +5831,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1845-03-04
@@ -5870,7 +5870,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1849-03-04
@@ -5909,7 +5909,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1850-07-09
@@ -5948,7 +5948,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1853-03-04
@@ -5987,7 +5987,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1857-03-04
@@ -6026,7 +6026,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1861-03-04
@@ -6065,7 +6065,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1865-04-15
@@ -6104,7 +6104,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1869-03-04
@@ -6143,7 +6143,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1877-03-04
@@ -6182,7 +6182,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div>
             1881-03-04
@@ -6202,28 +6202,28 @@ exports[`examples tests example External Paging 1`] = `
         >
           <table
             class="form-inline"
-            style="width:100%;"
+            style="width:100%"
           >
             <tbody>
               <tr>
                 <td
-                  style="width:33%;font-weight:bold;"
+                  style="width:33%;font-weight:bold"
                 >
                   44 Records
                 </td>
                 <td
-                  style="width:34%;text-align:center;"
+                  style="width:34%;text-align:center"
                 >
                   <a
                     class="glyphicon glyphicon-fast-backward"
                     href="#"
-                    style="text-decoration:none;color:silver;cursor:default;"
+                    style="text-decoration:none;color:silver;cursor:default"
                   />
                    
                   <a
                     class="glyphicon glyphicon-backward"
                     href="#"
-                    style="text-decoration:none;color:silver;cursor:default;"
+                    style="text-decoration:none;color:silver;cursor:default"
                   />
                    
                   <span>
@@ -6231,7 +6231,7 @@ exports[`examples tests example External Paging 1`] = `
                     <span>
                       <input
                         class="form-control input-sm"
-                        style="width:60px;"
+                        style="width:60px"
                         type="text"
                         value="1"
                       />
@@ -6242,22 +6242,22 @@ exports[`examples tests example External Paging 1`] = `
                   <a
                     class="glyphicon glyphicon-forward"
                     href="#"
-                    style="text-decoration:none;"
+                    style="text-decoration:none"
                   />
                    
                   <a
                     class="glyphicon glyphicon-fast-forward"
                     href="#"
-                    style="text-decoration:none;"
+                    style="text-decoration:none"
                   />
                 </td>
                 <td
-                  style="width:33%;text-align:right;"
+                  style="width:33%;text-align:right"
                 >
                   Show: 
                   <select
                     class="form-control input-sm"
-                    style="width:80px;"
+                    style="width:80px"
                   >
                     <option
                       value="10"
@@ -6302,10 +6302,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;position:relative;"
+          style="padding-right:15px;position:relative"
         >
           <span>
             number
@@ -6313,12 +6313,12 @@ exports[`examples tests example External Paging/Sorting 1`] = `
            
           <span
             class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
           />
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -6327,7 +6327,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -6336,7 +6336,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -6345,7 +6345,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -6354,10 +6354,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             took_office
@@ -6365,7 +6365,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -6403,10 +6403,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1789-04-30
@@ -6446,10 +6446,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1797-03-04
@@ -6489,10 +6489,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1801-03-04
@@ -6532,10 +6532,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809-03-04
@@ -6575,10 +6575,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1817-03-04
@@ -6618,10 +6618,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1825-03-04
@@ -6661,10 +6661,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1829-03-04
@@ -6704,10 +6704,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837-03-04
@@ -6747,10 +6747,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-03-04
@@ -6790,10 +6790,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-04-04
@@ -6833,10 +6833,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1845-03-04
@@ -6876,10 +6876,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1849-03-04
@@ -6919,10 +6919,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1850-07-09
@@ -6962,10 +6962,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1853-03-04
@@ -7005,10 +7005,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1857-03-04
@@ -7048,10 +7048,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1861-03-04
@@ -7091,10 +7091,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1865-04-15
@@ -7134,10 +7134,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1869-03-04
@@ -7177,10 +7177,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1877-03-04
@@ -7220,10 +7220,10 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-03-04
@@ -7244,28 +7244,28 @@ exports[`examples tests example External Paging/Sorting 1`] = `
       >
         <table
           class="form-inline"
-          style="width:100%;"
+          style="width:100%"
         >
           <tbody>
             <tr>
               <td
-                style="width:33%;font-weight:bold;"
+                style="width:33%;font-weight:bold"
               >
                 44 Records
               </td>
               <td
-                style="width:34%;text-align:center;"
+                style="width:34%;text-align:center"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <a
                   class="glyphicon glyphicon-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <span>
@@ -7273,7 +7273,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
                   <span>
                     <input
                       class="form-control input-sm"
-                      style="width:60px;"
+                      style="width:60px"
                       type="text"
                       value="1"
                     />
@@ -7284,22 +7284,22 @@ exports[`examples tests example External Paging/Sorting 1`] = `
                 <a
                   class="glyphicon glyphicon-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
                  
                 <a
                   class="glyphicon glyphicon-fast-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
               </td>
               <td
-                style="width:33%;text-align:right;"
+                style="width:33%;text-align:right"
               >
                 Show: 
                 <select
                   class="form-control input-sm"
-                  style="width:80px;"
+                  style="width:80px"
                 >
                   <option
                     value="10"
@@ -7343,10 +7343,10 @@ exports[`examples tests example External Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;position:relative;"
+          style="padding-right:15px;position:relative"
         >
           <span>
             number
@@ -7354,12 +7354,12 @@ exports[`examples tests example External Sorting 1`] = `
            
           <span
             class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
           />
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -7368,7 +7368,7 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -7377,7 +7377,7 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -7386,7 +7386,7 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -7395,10 +7395,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             took_office
@@ -7406,7 +7406,7 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -7444,10 +7444,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1789-04-30
@@ -7487,10 +7487,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1797-03-04
@@ -7530,10 +7530,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1801-03-04
@@ -7573,10 +7573,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809-03-04
@@ -7616,10 +7616,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1817-03-04
@@ -7659,10 +7659,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1825-03-04
@@ -7702,10 +7702,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1829-03-04
@@ -7745,10 +7745,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837-03-04
@@ -7788,10 +7788,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-03-04
@@ -7831,10 +7831,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-04-04
@@ -7874,10 +7874,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1845-03-04
@@ -7917,10 +7917,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1849-03-04
@@ -7960,10 +7960,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1850-07-09
@@ -8003,10 +8003,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1853-03-04
@@ -8046,10 +8046,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1857-03-04
@@ -8089,10 +8089,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1861-03-04
@@ -8132,10 +8132,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1865-04-15
@@ -8175,10 +8175,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1869-03-04
@@ -8218,10 +8218,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1877-03-04
@@ -8261,10 +8261,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-03-04
@@ -8304,10 +8304,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-09-19
@@ -8347,10 +8347,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1885-03-04
@@ -8390,10 +8390,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1889-03-04
@@ -8433,10 +8433,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1893-03-04
@@ -8476,10 +8476,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1897-03-04
@@ -8519,10 +8519,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1901-09-14
@@ -8562,10 +8562,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1909-03-04
@@ -8605,10 +8605,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1913-03-04
@@ -8648,10 +8648,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1921-03-04
@@ -8691,10 +8691,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1923-08-02
@@ -8734,10 +8734,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1929-03-04
@@ -8777,10 +8777,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1933-03-04
@@ -8820,10 +8820,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1945-04-12
@@ -8863,10 +8863,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1953-01-20
@@ -8906,10 +8906,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1961-01-20
@@ -8949,10 +8949,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1963-11-22
@@ -8992,10 +8992,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1969-01-20
@@ -9035,10 +9035,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1974-08-09
@@ -9076,10 +9076,10 @@ exports[`examples tests example External Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1977-01-20
@@ -9119,10 +9119,10 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1981-01-20
@@ -9160,10 +9160,10 @@ exports[`examples tests example External Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1989-01-20
@@ -9201,10 +9201,10 @@ exports[`examples tests example External Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1993-01-20
@@ -9242,10 +9242,10 @@ exports[`examples tests example External Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             2001-01-20
@@ -9283,10 +9283,10 @@ exports[`examples tests example External Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             2009-01-20
@@ -9317,7 +9317,7 @@ exports[`examples tests example Filters 1`] = `
         44 Presidents 
       </div>
       <div
-        style="margin-top:10px;"
+        style="margin-top:10px"
       />
       <div
         class="flex-column"
@@ -9331,7 +9331,7 @@ exports[`examples tests example Filters 1`] = `
           >
             <span
               class="glyphicon glyphicon-plus"
-              style="margin-right:5px;"
+              style="margin-right:5px"
             />
             Add Filter
           </a>
@@ -9346,10 +9346,10 @@ exports[`examples tests example Filters 1`] = `
       <thead>
         <tr>
           <th
-            style="cursor:pointer;text-align:left;white-space:nowrap;"
+            style="cursor:pointer;text-align:left;white-space:nowrap"
           >
             <div
-              style="padding-right:15px;position:relative;"
+              style="padding-right:15px;position:relative"
             >
               <span>
                 number
@@ -9357,12 +9357,12 @@ exports[`examples tests example Filters 1`] = `
                
               <span
                 class="sort-asc"
-                style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+                style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
               />
             </div>
           </th>
           <th
-            style="cursor:pointer;text-align:left;white-space:nowrap;"
+            style="cursor:pointer;text-align:left;white-space:nowrap"
           >
             <div>
               <span>
@@ -9371,7 +9371,7 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </th>
           <th
-            style="cursor:pointer;text-align:left;white-space:nowrap;"
+            style="cursor:pointer;text-align:left;white-space:nowrap"
           >
             <div>
               <span>
@@ -9380,7 +9380,7 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </th>
           <th
-            style="cursor:pointer;text-align:left;white-space:nowrap;"
+            style="cursor:pointer;text-align:left;white-space:nowrap"
           >
             <div>
               <span>
@@ -9389,7 +9389,7 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </th>
           <th
-            style="cursor:pointer;text-align:left;white-space:nowrap;"
+            style="cursor:pointer;text-align:left;white-space:nowrap"
           >
             <div>
               <span>
@@ -9398,10 +9398,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </th>
           <th
-            style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+            style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
           >
             <div
-              style="padding-right:15px;"
+              style="padding-right:15px"
             >
               <span>
                 took_office
@@ -9409,7 +9409,7 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </th>
           <th
-            style="cursor:pointer;text-align:left;white-space:nowrap;"
+            style="cursor:pointer;text-align:left;white-space:nowrap"
           >
             <div>
               <span>
@@ -9447,10 +9447,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1789-04-30
@@ -9490,10 +9490,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1797-03-04
@@ -9533,10 +9533,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1801-03-04
@@ -9576,10 +9576,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1809-03-04
@@ -9619,10 +9619,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1817-03-04
@@ -9662,10 +9662,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1825-03-04
@@ -9705,10 +9705,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1829-03-04
@@ -9748,10 +9748,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1837-03-04
@@ -9791,10 +9791,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1841-03-04
@@ -9834,10 +9834,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1841-04-04
@@ -9877,10 +9877,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1845-03-04
@@ -9920,10 +9920,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1849-03-04
@@ -9963,10 +9963,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1850-07-09
@@ -10006,10 +10006,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1853-03-04
@@ -10049,10 +10049,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1857-03-04
@@ -10092,10 +10092,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1861-03-04
@@ -10135,10 +10135,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1865-04-15
@@ -10178,10 +10178,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1869-03-04
@@ -10221,10 +10221,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1877-03-04
@@ -10264,10 +10264,10 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </td>
           <td
-            style="width:140px;text-align:right;"
+            style="width:140px;text-align:right"
           >
             <div
-              style="margin-right:15px;"
+              style="margin-right:15px"
             >
               <div>
                 1881-03-04
@@ -10288,28 +10288,28 @@ exports[`examples tests example Filters 1`] = `
           >
             <table
               class="form-inline"
-              style="width:100%;"
+              style="width:100%"
             >
               <tbody>
                 <tr>
                   <td
-                    style="width:33%;font-weight:bold;"
+                    style="width:33%;font-weight:bold"
                   >
                     44 Records
                   </td>
                   <td
-                    style="width:34%;text-align:center;"
+                    style="width:34%;text-align:center"
                   >
                     <a
                       class="glyphicon glyphicon-fast-backward"
                       href="#"
-                      style="text-decoration:none;color:silver;cursor:default;"
+                      style="text-decoration:none;color:silver;cursor:default"
                     />
                      
                     <a
                       class="glyphicon glyphicon-backward"
                       href="#"
-                      style="text-decoration:none;color:silver;cursor:default;"
+                      style="text-decoration:none;color:silver;cursor:default"
                     />
                      
                     <span>
@@ -10317,7 +10317,7 @@ exports[`examples tests example Filters 1`] = `
                       <span>
                         <input
                           class="form-control input-sm"
-                          style="width:60px;"
+                          style="width:60px"
                           type="text"
                           value="1"
                         />
@@ -10328,22 +10328,22 @@ exports[`examples tests example Filters 1`] = `
                     <a
                       class="glyphicon glyphicon-forward"
                       href="#"
-                      style="text-decoration:none;"
+                      style="text-decoration:none"
                     />
                      
                     <a
                       class="glyphicon glyphicon-fast-forward"
                       href="#"
-                      style="text-decoration:none;"
+                      style="text-decoration:none"
                     />
                   </td>
                   <td
-                    style="width:33%;text-align:right;"
+                    style="width:33%;text-align:right"
                   >
                     Show: 
                     <select
                       class="form-control input-sm"
-                      style="width:80px;"
+                      style="width:80px"
                     >
                       <option
                         value="10"
@@ -10389,7 +10389,7 @@ exports[`examples tests example Hide Columns 1`] = `
   <div>
     Show Columns:
     <label
-      style="margin-right:10px;"
+      style="margin-right:10px"
     >
       <input
         checked=""
@@ -10398,7 +10398,7 @@ exports[`examples tests example Hide Columns 1`] = `
        number
     </label>
     <label
-      style="margin-right:10px;"
+      style="margin-right:10px"
     >
       <input
         checked=""
@@ -10407,7 +10407,7 @@ exports[`examples tests example Hide Columns 1`] = `
        name
     </label>
     <label
-      style="margin-right:10px;"
+      style="margin-right:10px"
     >
       <input
         checked=""
@@ -10416,7 +10416,7 @@ exports[`examples tests example Hide Columns 1`] = `
        party
     </label>
     <label
-      style="margin-right:10px;"
+      style="margin-right:10px"
     >
       <input
         checked=""
@@ -10425,7 +10425,7 @@ exports[`examples tests example Hide Columns 1`] = `
        birth_year
     </label>
     <label
-      style="margin-right:10px;"
+      style="margin-right:10px"
     >
       <input
         checked=""
@@ -10434,7 +10434,7 @@ exports[`examples tests example Hide Columns 1`] = `
        death_year
     </label>
     <label
-      style="margin-right:10px;"
+      style="margin-right:10px"
     >
       <input
         checked=""
@@ -10443,7 +10443,7 @@ exports[`examples tests example Hide Columns 1`] = `
        took_office
     </label>
     <label
-      style="margin-right:10px;"
+      style="margin-right:10px"
     >
       <input
         checked=""
@@ -10456,7 +10456,7 @@ exports[`examples tests example Hide Columns 1`] = `
     <thead>
       <tr>
         <th
-          style="cursor:pointer;text-align:left;white-space:nowrap;"
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
           <div>
             <span>
@@ -10465,10 +10465,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </th>
         <th
-          style="cursor:pointer;text-align:left;white-space:nowrap;"
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
           <div
-            style="padding-right:15px;position:relative;"
+            style="padding-right:15px;position:relative"
           >
             <span>
               name
@@ -10476,12 +10476,12 @@ exports[`examples tests example Hide Columns 1`] = `
              
             <span
               class="sort-asc"
-              style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+              style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
             />
           </div>
         </th>
         <th
-          style="cursor:pointer;text-align:left;white-space:nowrap;"
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
           <div>
             <span>
@@ -10490,7 +10490,7 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </th>
         <th
-          style="cursor:pointer;text-align:left;white-space:nowrap;"
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
           <div>
             <span>
@@ -10499,7 +10499,7 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </th>
         <th
-          style="cursor:pointer;text-align:left;white-space:nowrap;"
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
           <div>
             <span>
@@ -10508,10 +10508,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </th>
         <th
-          style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+          style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
         >
           <div
-            style="padding-right:15px;"
+            style="padding-right:15px"
           >
             <span>
               took_office
@@ -10519,7 +10519,7 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </th>
         <th
-          style="cursor:pointer;text-align:left;white-space:nowrap;"
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
           <div>
             <span>
@@ -10557,10 +10557,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1861-03-04
@@ -10600,10 +10600,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1829-03-04
@@ -10643,10 +10643,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1865-04-15
@@ -10684,10 +10684,10 @@ exports[`examples tests example Hide Columns 1`] = `
           <div />
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               2009-01-20
@@ -10725,10 +10725,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1889-03-04
@@ -10766,10 +10766,10 @@ exports[`examples tests example Hide Columns 1`] = `
           <div />
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1993-01-20
@@ -10809,10 +10809,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1923-08-02
@@ -10852,10 +10852,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1881-09-19
@@ -10895,10 +10895,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1953-01-20
@@ -10938,10 +10938,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1933-03-04
@@ -10981,10 +10981,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1853-03-04
@@ -11022,10 +11022,10 @@ exports[`examples tests example Hide Columns 1`] = `
           <div />
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1989-01-20
@@ -11063,10 +11063,10 @@ exports[`examples tests example Hide Columns 1`] = `
           <div />
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               2001-01-20
@@ -11106,10 +11106,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1789-04-30
@@ -11149,10 +11149,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1974-08-09
@@ -11192,10 +11192,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1893-03-04
@@ -11235,10 +11235,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1885-03-04
@@ -11278,10 +11278,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1945-04-12
@@ -11321,10 +11321,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1929-03-04
@@ -11364,10 +11364,10 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </td>
         <td
-          style="width:140px;text-align:right;"
+          style="width:140px;text-align:right"
         >
           <div
-            style="margin-right:15px;"
+            style="margin-right:15px"
           >
             <div>
               1881-03-04
@@ -11388,28 +11388,28 @@ exports[`examples tests example Hide Columns 1`] = `
         >
           <table
             class="form-inline"
-            style="width:100%;"
+            style="width:100%"
           >
             <tbody>
               <tr>
                 <td
-                  style="width:33%;font-weight:bold;"
+                  style="width:33%;font-weight:bold"
                 >
                   44 Records
                 </td>
                 <td
-                  style="width:34%;text-align:center;"
+                  style="width:34%;text-align:center"
                 >
                   <a
                     class="glyphicon glyphicon-fast-backward"
                     href="#"
-                    style="text-decoration:none;color:silver;cursor:default;"
+                    style="text-decoration:none;color:silver;cursor:default"
                   />
                    
                   <a
                     class="glyphicon glyphicon-backward"
                     href="#"
-                    style="text-decoration:none;color:silver;cursor:default;"
+                    style="text-decoration:none;color:silver;cursor:default"
                   />
                    
                   <span>
@@ -11417,7 +11417,7 @@ exports[`examples tests example Hide Columns 1`] = `
                     <span>
                       <input
                         class="form-control input-sm"
-                        style="width:60px;"
+                        style="width:60px"
                         type="text"
                         value="1"
                       />
@@ -11428,22 +11428,22 @@ exports[`examples tests example Hide Columns 1`] = `
                   <a
                     class="glyphicon glyphicon-forward"
                     href="#"
-                    style="text-decoration:none;"
+                    style="text-decoration:none"
                   />
                    
                   <a
                     class="glyphicon glyphicon-fast-forward"
                     href="#"
-                    style="text-decoration:none;"
+                    style="text-decoration:none"
                   />
                 </td>
                 <td
-                  style="width:33%;text-align:right;"
+                  style="width:33%;text-align:right"
                 >
                   Show: 
                   <select
                     class="form-control input-sm"
-                    style="width:80px;"
+                    style="width:80px"
                   >
                     <option
                       value="10"
@@ -11488,49 +11488,49 @@ exports[`examples tests example Internal Paging 1`] = `
   <thead>
     <tr>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           number
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           name
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           party
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           birth_year
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           death_year
         </span>
       </th>
       <th
-        style="text-align:right;white-space:nowrap;width:140px;"
+        style="text-align:right;white-space:nowrap;width:140px"
       >
         <span>
           took_office
         </span>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           left_office
@@ -11566,7 +11566,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1789-04-30
@@ -11605,7 +11605,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1797-03-04
@@ -11644,7 +11644,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1801-03-04
@@ -11683,7 +11683,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1809-03-04
@@ -11722,7 +11722,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1817-03-04
@@ -11761,7 +11761,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1825-03-04
@@ -11800,7 +11800,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1829-03-04
@@ -11839,7 +11839,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1837-03-04
@@ -11878,7 +11878,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1841-03-04
@@ -11917,7 +11917,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1841-04-04
@@ -11956,7 +11956,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1845-03-04
@@ -11995,7 +11995,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1849-03-04
@@ -12034,7 +12034,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1850-07-09
@@ -12073,7 +12073,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1853-03-04
@@ -12112,7 +12112,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1857-03-04
@@ -12151,7 +12151,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1861-03-04
@@ -12190,7 +12190,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1865-04-15
@@ -12229,7 +12229,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1869-03-04
@@ -12268,7 +12268,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1877-03-04
@@ -12307,7 +12307,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div>
           1881-03-04
@@ -12327,28 +12327,28 @@ exports[`examples tests example Internal Paging 1`] = `
       >
         <table
           class="form-inline"
-          style="width:100%;"
+          style="width:100%"
         >
           <tbody>
             <tr>
               <td
-                style="width:33%;font-weight:bold;"
+                style="width:33%;font-weight:bold"
               >
                 44 Records
               </td>
               <td
-                style="width:34%;text-align:center;"
+                style="width:34%;text-align:center"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <a
                   class="glyphicon glyphicon-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <span>
@@ -12356,7 +12356,7 @@ exports[`examples tests example Internal Paging 1`] = `
                   <span>
                     <input
                       class="form-control input-sm"
-                      style="width:60px;"
+                      style="width:60px"
                       type="text"
                       value="1"
                     />
@@ -12367,22 +12367,22 @@ exports[`examples tests example Internal Paging 1`] = `
                 <a
                   class="glyphicon glyphicon-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
                  
                 <a
                   class="glyphicon glyphicon-fast-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
               </td>
               <td
-                style="width:33%;text-align:right;"
+                style="width:33%;text-align:right"
               >
                 Show: 
                 <select
                   class="form-control input-sm"
-                  style="width:80px;"
+                  style="width:80px"
                 >
                   <option
                     value="10"
@@ -12426,10 +12426,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;position:relative;"
+          style="padding-right:15px;position:relative"
         >
           <span>
             number
@@ -12437,12 +12437,12 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
            
           <span
             class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
           />
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -12451,7 +12451,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -12460,7 +12460,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -12469,7 +12469,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -12478,10 +12478,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             took_office
@@ -12489,7 +12489,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -12527,10 +12527,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1789-04-30
@@ -12570,10 +12570,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1797-03-04
@@ -12613,10 +12613,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1801-03-04
@@ -12656,10 +12656,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809-03-04
@@ -12699,10 +12699,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1817-03-04
@@ -12742,10 +12742,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1825-03-04
@@ -12785,10 +12785,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1829-03-04
@@ -12828,10 +12828,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837-03-04
@@ -12871,10 +12871,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-03-04
@@ -12914,10 +12914,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-04-04
@@ -12957,10 +12957,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1845-03-04
@@ -13000,10 +13000,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1849-03-04
@@ -13043,10 +13043,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1850-07-09
@@ -13086,10 +13086,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1853-03-04
@@ -13129,10 +13129,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1857-03-04
@@ -13172,10 +13172,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1861-03-04
@@ -13215,10 +13215,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1865-04-15
@@ -13258,10 +13258,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1869-03-04
@@ -13301,10 +13301,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1877-03-04
@@ -13344,10 +13344,10 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-03-04
@@ -13368,28 +13368,28 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
       >
         <table
           class="form-inline"
-          style="width:100%;"
+          style="width:100%"
         >
           <tbody>
             <tr>
               <td
-                style="width:33%;font-weight:bold;"
+                style="width:33%;font-weight:bold"
               >
                 44 Records
               </td>
               <td
-                style="width:34%;text-align:center;"
+                style="width:34%;text-align:center"
               >
                 <a
                   class="glyphicon glyphicon-fast-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <a
                   class="glyphicon glyphicon-backward"
                   href="#"
-                  style="text-decoration:none;color:silver;cursor:default;"
+                  style="text-decoration:none;color:silver;cursor:default"
                 />
                  
                 <span>
@@ -13397,7 +13397,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
                   <span>
                     <input
                       class="form-control input-sm"
-                      style="width:60px;"
+                      style="width:60px"
                       type="text"
                       value="1"
                     />
@@ -13408,22 +13408,22 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
                 <a
                   class="glyphicon glyphicon-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
                  
                 <a
                   class="glyphicon glyphicon-fast-forward"
                   href="#"
-                  style="text-decoration:none;"
+                  style="text-decoration:none"
                 />
               </td>
               <td
-                style="width:33%;text-align:right;"
+                style="width:33%;text-align:right"
               >
                 Show: 
                 <select
                   class="form-control input-sm"
-                  style="width:80px;"
+                  style="width:80px"
                 >
                   <option
                     value="10"
@@ -13467,10 +13467,10 @@ exports[`examples tests example Internal Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div
-          style="padding-right:15px;position:relative;"
+          style="padding-right:15px;position:relative"
         >
           <span>
             number
@@ -13478,12 +13478,12 @@ exports[`examples tests example Internal Sorting 1`] = `
            
           <span
             class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px;"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
           />
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -13492,14 +13492,14 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </th>
       <th
-        style="text-align:left;white-space:nowrap;"
+        style="text-align:left;white-space:nowrap"
       >
         <span>
           party (not sortable)
         </span>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -13508,7 +13508,7 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -13517,10 +13517,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px;"
+        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
       >
         <div
-          style="padding-right:15px;"
+          style="padding-right:15px"
         >
           <span>
             took_office
@@ -13528,7 +13528,7 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </th>
       <th
-        style="cursor:pointer;text-align:left;white-space:nowrap;"
+        style="cursor:pointer;text-align:left;white-space:nowrap"
       >
         <div>
           <span>
@@ -13566,10 +13566,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1789-04-30
@@ -13609,10 +13609,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1797-03-04
@@ -13652,10 +13652,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1801-03-04
@@ -13695,10 +13695,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1809-03-04
@@ -13738,10 +13738,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1817-03-04
@@ -13781,10 +13781,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1825-03-04
@@ -13824,10 +13824,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1829-03-04
@@ -13867,10 +13867,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1837-03-04
@@ -13910,10 +13910,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-03-04
@@ -13953,10 +13953,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1841-04-04
@@ -13996,10 +13996,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1845-03-04
@@ -14039,10 +14039,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1849-03-04
@@ -14082,10 +14082,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1850-07-09
@@ -14125,10 +14125,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1853-03-04
@@ -14168,10 +14168,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1857-03-04
@@ -14211,10 +14211,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1861-03-04
@@ -14254,10 +14254,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1865-04-15
@@ -14297,10 +14297,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1869-03-04
@@ -14340,10 +14340,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1877-03-04
@@ -14383,10 +14383,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-03-04
@@ -14426,10 +14426,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1881-09-19
@@ -14469,10 +14469,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1885-03-04
@@ -14512,10 +14512,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1889-03-04
@@ -14555,10 +14555,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1893-03-04
@@ -14598,10 +14598,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1897-03-04
@@ -14641,10 +14641,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1901-09-14
@@ -14684,10 +14684,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1909-03-04
@@ -14727,10 +14727,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1913-03-04
@@ -14770,10 +14770,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1921-03-04
@@ -14813,10 +14813,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1923-08-02
@@ -14856,10 +14856,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1929-03-04
@@ -14899,10 +14899,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1933-03-04
@@ -14942,10 +14942,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1945-04-12
@@ -14985,10 +14985,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1953-01-20
@@ -15028,10 +15028,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1961-01-20
@@ -15071,10 +15071,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1963-11-22
@@ -15114,10 +15114,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1969-01-20
@@ -15157,10 +15157,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1974-08-09
@@ -15198,10 +15198,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1977-01-20
@@ -15241,10 +15241,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1981-01-20
@@ -15282,10 +15282,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1989-01-20
@@ -15323,10 +15323,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             1993-01-20
@@ -15364,10 +15364,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             2001-01-20
@@ -15405,10 +15405,10 @@ exports[`examples tests example Internal Sorting 1`] = `
         <div />
       </td>
       <td
-        style="width:140px;text-align:right;"
+        style="width:140px;text-align:right"
       >
         <div
-          style="margin-right:15px;"
+          style="margin-right:15px"
         >
           <div>
             2009-01-20

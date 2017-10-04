@@ -833,8 +833,7 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
                       value="1"
                     />
                   </span>
-                    of 
-                  1
+                    of 1
                 </span>
                  
                 <a
@@ -1196,8 +1195,7 @@ exports[`basic re-render tests render all rows when columns changed WithInternal
                       value="1"
                     />
                   </span>
-                    of 
-                  1
+                    of 1
                 </span>
                  
                 <a
@@ -2705,8 +2703,7 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
                       value="1"
                     />
                   </span>
-                    of 
-                  1
+                    of 1
                 </span>
                  
                 <a
@@ -3068,8 +3065,7 @@ exports[`basic re-render tests render only changed rows WithInternalPaging(React
                       value="1"
                     />
                   </span>
-                    of 
-                  1
+                    of 1
                 </span>
                  
                 <a

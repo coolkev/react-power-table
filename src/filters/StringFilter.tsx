@@ -49,7 +49,7 @@ class StringFilterComponent extends React.Component<PowerTable.FilterComponentPr
         this.handleChange = this.handleChange.bind(this);
     }
 
-    public handleChange(e: React.FormEvent<FormControl>) {
+    public handleChange(e: React.FormEvent<FormControl & HTMLInputElement>) {
         this.props.onValueChange(e.currentTarget.value);
     }
 
