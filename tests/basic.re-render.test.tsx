@@ -11,7 +11,7 @@ const rows = sampledata.slice(0, 5);
 describe('basic re-render tests',
     () => {
 
-        const tableComponents = [ReactPowerTable,  withInternalSorting(ReactPowerTable), withInternalPaging(ReactPowerTable)];
+        const tableComponents = [ReactPowerTable, withInternalSorting(ReactPowerTable), withInternalPaging(ReactPowerTable)];
 
         tableComponents.forEach(Table => {
 
@@ -28,15 +28,15 @@ describe('basic re-render tests',
                     return (ReactPowerTable.defaultProps.tableRowComponent as React.StatelessComponent<TableRowComponentProps>)(p);
                 };
                 let cellRenderCount = 0;
-                const cellComponent = makePure(p => {
+                const cellComponent = makePure('cellComponent', p => {
                     cellRenderCount++;
-                    return (ReactPowerTable.defaultProps.tableCellComponent as React.StatelessComponent<React.HTMLProps<HTMLTableCellElement>>)(p);
+                    return (ReactPowerTable.defaultProps.defaultTdComponent as React.StatelessComponent<React.HTMLProps<HTMLTableCellElement>>)(p);
                 });
 
                 columns[0] = { ...columns[0], width: 50 };
 
                 const component = mount(
-                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} tableCellComponent={cellComponent} {...extraProps} />
+                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} defaultTdComponent={cellComponent} {...extraProps} />
                 );
                 expect(rowRenderCount).toBe(5);
                 expect(cellRenderCount).toBe(rows.length * columns.length);
@@ -58,13 +58,13 @@ describe('basic re-render tests',
                     return (ReactPowerTable.defaultProps.tableRowComponent as React.StatelessComponent<TableRowComponentProps>)(p);
                 };
                 let cellRenderCount = 0;
-                const cellComponent = makePure(p => {
+                const cellComponent = makePure('cellComponent', p => {
                     cellRenderCount++;
-                    return (ReactPowerTable.defaultProps.tableCellComponent as React.StatelessComponent<React.HTMLProps<HTMLTableCellElement>>)(p);
+                    return (ReactPowerTable.defaultProps.defaultTdComponent as React.StatelessComponent<React.HTMLProps<HTMLTableCellElement>>)(p);
                 });
 
                 const component = mount(
-                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} tableCellComponent={cellComponent}  {...extraProps} />
+                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} defaultTdComponent={cellComponent}  {...extraProps} />
                 );
                 expect(rowRenderCount).toBe(5);
                 expect(cellRenderCount).toBe(rows.length * columns.length);
@@ -90,13 +90,13 @@ describe('basic re-render tests',
                     return (ReactPowerTable.defaultProps.tableRowComponent as React.StatelessComponent<TableRowComponentProps>)(p);
                 };
                 let cellRenderCount = 0;
-                const cellComponent = makePure(p => {
+                const cellComponent = makePure('cellComponent', p => {
                     cellRenderCount++;
-                    return (ReactPowerTable.defaultProps.tableCellComponent as React.StatelessComponent<React.HTMLProps<HTMLTableCellElement>>)(p);
+                    return (ReactPowerTable.defaultProps.defaultTdComponent as React.StatelessComponent<React.HTMLProps<HTMLTableCellElement>>)(p);
                 });
 
                 const component = mount(
-                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} tableCellComponent={cellComponent}  {...extraProps}  />
+                    <Table columns={columns} rows={rows} keyColumn="number" tableRowComponent={rowComponent} defaultTdComponent={cellComponent}  {...extraProps} />
                 );
                 expect(rowRenderCount).toBe(5);
                 expect(cellRenderCount).toBe(rows.length * columns.length);
@@ -110,7 +110,7 @@ describe('basic re-render tests',
 
                 expect(rowRenderCount).toBe(5);
                 expect(cellRenderCount).toBe(35);
-               //expect(component.render()).toMatchSnapshot();
+                //expect(component.render()).toMatchSnapshot();
 
             });
 

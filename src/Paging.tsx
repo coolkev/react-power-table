@@ -10,6 +10,8 @@ interface InternalPagingState {
     /** 1-based index of current page */
     currentPage: number;
     pageSize: number;
+
+    pageRows: any[];
 }
 
 export interface InternalPagingProps {
@@ -32,7 +34,7 @@ export interface InternalPagingGridProps extends PagingGridProps {
 export interface PagingGridProps {
     columns: any[];
 
-    tableFooterComponent?: React.ComponentClass<React.HTMLProps<HTMLTableSectionElement>> | React.StatelessComponent<React.HTMLProps<HTMLTableSectionElement>>;
+    tableFooterComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
 
     //footerComponent?: React.ComponentClass<any> | React.StatelessComponent<any>;
     // components?: {
@@ -50,9 +52,7 @@ const TableFooterComponent = ({ columnCount = 0, pagingProps = null as PagingPro
     </tfoot>
 );
 
-export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
-export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }>;
-export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentClass<InternalPagingGridProps> | React.StatelessComponent<InternalPagingGridProps>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }> {
+export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentType<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }> {
 
     if (WrappedComponent.displayName && WrappedComponent.displayName.match(/^WithInternalSorting|WithSorting/)) {
         console.error('Warning: You are applying sorting after paging which will cause the sorting to only affect the current page. You should probably apply sorting first then paging');
@@ -68,7 +68,11 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
 
             //log('withInternalPaging constructor', props);
 
-            this.state = { currentPage: props.paging && props.paging.currentPage || 1, pageSize: props.paging && props.paging.pageSize || 20 };
+            const currentPage = props.paging && props.paging.currentPage || 1;
+            const pageSize = props.paging && props.paging.pageSize || 20;
+            const skip = (currentPage - 1) * pageSize;
+
+            this.state = { currentPage, pageSize, pageRows: props.rows.slice(skip, skip + pageSize) };
 
             this.gotoPage = this.gotoPage.bind(this);
 
@@ -79,30 +83,44 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
         componentWillReceiveProps(nextProps: Readonly<T & { paging: Partial<InternalPagingProps> }>) {
 
             debuglog('Paging componentWillReceiveProps', nextProps);
+            const currentPage = nextProps.paging && nextProps.paging.currentPage || 1;
+            const pageSize = nextProps.paging && nextProps.paging.pageSize || 20;
+            const skip = (currentPage - 1) * pageSize;
 
             if (nextProps.paging && nextProps.paging.currentPage && (nextProps.paging.currentPage !== this.state.currentPage)) {
 
                 debuglog('Paging setting state currentPage to ' + nextProps.paging.currentPage);
 
-                this.setState({ currentPage: nextProps.paging.currentPage });
+                this.setState({ currentPage: nextProps.paging.currentPage, pageRows: nextProps.rows.slice(skip, skip + pageSize) });
             }
             if (nextProps.paging && nextProps.paging.pageSize && (nextProps.paging.pageSize !== this.state.pageSize)) {
                 debuglog('Paging setting state pageSize to ' + nextProps.paging.pageSize);
-                this.setState({ pageSize: nextProps.paging.pageSize });
+                this.setState({ pageSize: nextProps.paging.pageSize, pageRows: nextProps.rows.slice(skip, skip + pageSize) });
+            }
+            if (nextProps.rows && (nextProps.rows  !== this.props.rows)) {
+                debuglog('Paging setting state because rows changed, resetting currentPage to 1');
+                const skip2 = (currentPage - 1) * pageSize;
+                this.setState({ pageRows: nextProps.rows.slice(skip2, skip2 + pageSize), currentPage: 1 });
             }
 
         }
 
         private gotoPage(currentPage: number, pageSize?: number) {
 
+            const actualPageSize = pageSize || this.state.pageSize;
+            const skip = (currentPage - 1) * actualPageSize;
+            const pageRows = this.props.rows.slice(skip, skip + actualPageSize);
+
             if (pageSize) {
                 this.setState({
                     currentPage,
                     pageSize,
+                    pageRows
                 });
             } else {
                 this.setState({
                     currentPage,
+                    pageRows
                 });
             }
 
@@ -121,11 +139,9 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
         render() {
 
             const { paging, rows, ...extra } = this.props as InternalPagingGridProps & { paging: Partial<InternalPagingProps> };
-            const { currentPage, pageSize } = this.state;
-            const skip = (currentPage - 1) * pageSize;
-            const pageRows = rows.slice(skip, skip + pageSize);
+            const { pageRows } = this.state;
 
-            debuglog('Paging render() currentPage is ' + currentPage);
+            //debuglog('Paging render() currentPage is ' + currentPage);
 
             /*const components = { ...extra.components, foot: () => <tfoot>
                 <tr>
@@ -141,9 +157,7 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
     };
 }
 
-export function withPaging<T extends PagingGridProps>(WrappedComponent: React.ComponentClass<T>): React.ComponentClass<T & { paging: PagingProps }>;
-export function withPaging<T extends PagingGridProps>(WrappedComponent: React.StatelessComponent<T>): React.ComponentClass<T & { paging: PagingProps }>;
-export function withPaging<T extends PagingGridProps>(WrappedComponent: React.StatelessComponent<PagingGridProps> | React.ComponentClass<PagingGridProps>): React.ComponentClass<T & { paging: PagingProps }> {
+export function withPaging<T extends PagingGridProps>(WrappedComponent: React.ComponentType<T>): React.ComponentClass<T & { paging: PagingProps }> {
 
     return class extends React.Component<T & { paging: PagingProps }, never> {
 

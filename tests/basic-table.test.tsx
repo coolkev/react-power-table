@@ -20,7 +20,7 @@ describe('basic tests',
         test('Render plain table with custom cellValueComponent', () => {
             const component = render(
                 // tslint:disable-next-line:jsx-no-lambda
-                <ReactPowerTable columns={columns} rows={rows} keyColumn="number" tableCellValueComponent={(p) => <span>{p.value}</span> } />
+                <ReactPowerTable columns={columns} rows={rows} keyColumn="number" defaultCellComponent={(p) => <span>{p.value}</span> } />
             );
 
             expect(component).toMatchSnapshot();

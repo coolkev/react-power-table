@@ -12,7 +12,7 @@ export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-const debugMode = false;
+const debugMode = true;
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -21,16 +21,16 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
  */
 function is(x, y) {
-  // SameValue algorithm
-  if (x === y) {
-    // Steps 1-5, 7-10
-    // Steps 6.b-6.e: +0 != -0
-    // Added the nonzero y check to make Flow happy, but it is redundant
-    return x !== 0 || y !== 0 || 1 / x === 1 / y;
-  } else {
-    // Step 6.a: NaN == NaN
-    return x !== x && y !== y;
-  }
+    // SameValue algorithm
+    if (x === y) {
+        // Steps 1-5, 7-10
+        // Steps 6.b-6.e: +0 != -0
+        // Added the nonzero y check to make Flow happy, but it is redundant
+        return x !== 0 || y !== 0 || 1 / x === 1 / y;
+    } else {
+        // Step 6.a: NaN == NaN
+        return x !== x && y !== y;
+    }
 }
 
 /**
@@ -39,34 +39,113 @@ function is(x, y) {
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
  */
-export function shallowEqual(objA, objB) {
-  if (is(objA, objB)) {
-    return true;
-  }
-
-  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-    return false;
-  }
-
-  const keysA = Object.keys(objA);
-  const keysB = Object.keys(objB);
-
-  if (keysA.length !== keysB.length) {
-    return false;
-  }
-
-  // Test for A's keys different from B.
-  for (const i of keysA) {
-    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
-      return false;
+export function shallowEqual<T>(objA: T, objB: T, ...excludeProps: Array<keyof T>) {
+    if (is(objA, objB)) {
+        return true;
     }
-  }
 
-  return true;
+    if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+        debuglog('values are null', objA, objB);
+        return false;
+    }
+
+    const keysA = Object.keys(objA);
+    const keysB = Object.keys(objB);
+
+    if (keysA.length !== keysB.length) {
+        debuglog('objects do not have same keys', keysA, keysB);
+        return false;
+    }
+
+    if (excludeProps.length) {
+        // Test for A's keys different from B.
+        for (const key of keysA) {
+            if (excludeProps.indexOf(key as any) === -1 && (!hasOwnProperty.call(objB, key) || !is(objA[key], objB[key]))) {
+
+                return false;
+            }
+        }
+    } else {
+        for (const key of keysA) {
+            if (!hasOwnProperty.call(objB, key) || !is(objA[key], objB[key])) {
+
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
-// export function shallowEqual(a, b) {
-//     return a != b;
+/**
+ * @internal
+ * Performs equality by iterating through keys on an object and returning false
+ * when any key has values which are not strictly equal between the arguments.
+ * Returns true when the values of all keys are strictly equal.
+ */
+export function shallowDiff<T>(objA: T, objB: T, ...excludeProps: Array<keyof T>) {
+    if (is(objA, objB)) {
+        return [];
+    }
+
+    if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+        debuglog('values are null', objA, objB);
+        return [{ 'values are null': [objA, objB] }];
+    }
+
+    const keysA = Object.keys(objA);
+    const keysB = Object.keys(objB);
+
+    if (keysA.length !== keysB.length) {
+        //debuglog('objects do not have same keys', keysA, keysB);
+        return [{ 'objects do not have same keys': [keysA, keysB] }];
+    }
+
+    const result = {};
+    if (excludeProps.length) {
+        // Test for A's keys different from B.
+        for (const key of keysA) {
+            if (excludeProps.indexOf(key as any) === -1 && (!hasOwnProperty.call(objB, key) || !is(objA[key], objB[key]))) {
+                result[key] = [objA[key], objB[key]];
+            }
+        }
+    } else {
+        for (const key of keysA) {
+            if (!hasOwnProperty.call(objB, key) || !is(objA[key], objB[key])) {
+                //result = [...result, [key, objA[key], objB[key]]];
+                result[key] = [objA[key], objB[key]];
+            }
+        }
+    }
+    return result;
+}
+
+// if (result) {
+//     const fields = distinct(Object.keys(this.props).concat(Object.keys(nextProps)));
+//     for (const f of fields) {
+
+//         const v1 = this.props[f];
+//         const v2 = nextProps[f];
+
+//         if (Array.isArray(v1) || Array.isArray(v2)) {
+//             if (v1.length !== v2.length) {
+//                 debuglog('returned true arrays different length field: ' + f, v1, v2);
+//             }
+//             for (let x = 0; x < v1.length; x++) {
+//                 if (!shallowEqual(v1[x], v2[x])) {
+//                     debuglog('returned true array values changed field: ' + f, v1[x], v2[x]);
+
+//                 }
+//             }
+
+//         } else {
+//             const result2 = shallowEqual(v1, v2);
+
+//             if (!result2) {
+//                 debuglog('returned true ' + f + ' changed', v1, v2);
+//             }
+//         }
+//     }
+
 // }
 
 /**
@@ -78,28 +157,63 @@ export const debuglog = debugMode ? console.log : () => { };
 export function getComponentDisplayName(WrappedComponent: React.ComponentClass<any> | React.StatelessComponent<any>) {
     return WrappedComponent.displayName || (WrappedComponent as any).name || 'Component';
 }
-/** @internal */
-export function makePure<T>(factory: React.StatelessComponent<T>): React.ComponentClass<T> {
 
-    if (debugMode) {
+interface PureOptions<T> {
+    componentName?: string;
+    deeperCompareProps?: keyof T | Array<keyof T>;
+
+    exclude?: keyof T | Array<keyof T>;
+}
+/** @internal */
+export function makePure<T>(Component: React.ComponentType<T>, options?: PureOptions<T>): React.ComponentClass<T> {
+
+    const componentName = options && options.componentName || Component.displayName || '(No Name)';
+    const deeperCompareProps = options && options.deeperCompareProps ? (Array.isArray(options.deeperCompareProps) ? options.deeperCompareProps : [options.deeperCompareProps]) : [];
+    const exclude = options && options.exclude ? (Array.isArray(options.exclude) ? options.exclude : [options.exclude]) : [];
+
+    if (!Component.displayName && options && options.componentName) {
+        Component.displayName = componentName;
+    }
+    if (debugMode || deeperCompareProps.length || exclude.length) {
         return class extends React.Component<T, never> {
 
+            static displayName = `PureWrapped(${componentName})`;
+
             shouldComponentUpdate(nextProps: T) {
-                const result = !shallowEqual(this.props, nextProps);
-                debuglog('shouldComponentUpdate returned ' + result, this.props, nextProps);
-                return result;
+                const equal = shallowEqual(this.props, nextProps, ...deeperCompareProps, ...exclude);
+                if (!equal) {
+                    debuglog(componentName + ' shouldComponentUpdate returned true because props changed', shallowDiff(this.props, nextProps, ...deeperCompareProps));
+                    return true;
+                }
+
+                for (const key of deeperCompareProps as any) {
+
+                    if (!is(this.props[key], nextProps[key])) {
+                        const innerEqual = shallowEqual(this.props[key], nextProps[key]);
+
+                        if (!innerEqual) {
+                            debuglog(componentName + ' shouldComponentUpdate returned true because props.' + key + ' changed', shallowDiff(this.props[key], nextProps[key]));
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
             }
 
             render() {
-                return factory(this.props);
+                //debuglog('pure render', this.props);
+                return React.createElement(Component, this.props);
             }
         };
     } else {
 
         return class extends React.PureComponent<T, never> {
+            static displayName = `PureWrapped(${componentName})`;
 
             render() {
-                return factory(this.props);
+                //debuglog('pure render', this.props);
+                return React.createElement(Component, this.props);
             }
         };
     }
@@ -188,7 +302,7 @@ export interface Group<T, TKey> {
     key: TKey; items: T[];
 }
 
-export function objectMapToArray<T>(mapOrArray: {[key: string]: T} | T[]): T[] {
+export function objectMapToArray<T>(mapOrArray: { [key: string]: T } | T[]): T[] {
 
     if (Array.isArray(mapOrArray)) {
         return mapOrArray;

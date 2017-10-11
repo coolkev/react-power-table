@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting, SortableColumn, withInternalPaging, TableRowComponentProps } from '../../src/';
+import { ReactPowerTable, withInternalSorting, SortableColumn, TableRowComponentProps } from '../../src/';
 import { sampledata, defaultColumns, President } from './shared';
 
 const columns = [...defaultColumns] as Array<SortableColumn<President>>;
@@ -9,7 +9,7 @@ columns[3] = { ...columns[3], textAlign: 'right' };
 
 const Table = withInternalSorting((ReactPowerTable));
 
-const tableRowComponent = (props: TableRowComponentProps) => <tbody><tr className="tr-test" style={{ backgroundColor: props.row.number % 2 === 0 ? 'silver' : '' }}>{props.children}</tr></tbody>;
+const tableRowComponent = (props: TableRowComponentProps<President>) => <tbody><tr className="tr-test" style={{ backgroundColor: props.row.number % 2 === 0 ? 'silver' : '' }}>{props.children}</tr></tbody>;
 
 export const CustomRowExample = () => {
     console.log('examples.render()');

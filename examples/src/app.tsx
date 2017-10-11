@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { Nav, NavItem, Navbar } from 'react-bootstrap';
+import { Nav, NavItem } from 'react-bootstrap';
 import { ReactPowerTable } from '../../src/';
 import { BasicExample } from './basic';
 import { InternalSortingExample } from './internal-sorting';
@@ -21,6 +21,7 @@ interface ExamplesProps {
 
 import 'react-select/dist/react-select.css';
 import { CustomRowExample } from './CustomRow';
+import { CalculatedCellExample } from './calculatedCell';
 
 ReactPowerTable.defaultProps.tableClassName = 'table';
 //ReactPowerTable.defaultProps.testDefault = 'test123' ;
@@ -35,6 +36,7 @@ const examples = {
     'External Paging': ExternalPagingExample,
     'External Paging/Sorting': ExternalPagingSortingExample,
     'Checkboxes': CheckboxExample,
+    'Calculated Cell': CalculatedCellExample,
     'Filters': FiltersExample,
     'Hide Columns': HideColumnsExample,
     'Custom Row': CustomRowExample,

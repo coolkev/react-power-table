@@ -3,44 +3,59 @@ import * as React from 'react';
 import { transformColumn } from './Column';
 import { debuglog, makePure, shallowEqual } from './utils';
 
-export interface DataRowComponentProps<T> extends TableRowComponentProps<T> {
+export const DataRowBuilderComponent: React.SFC<DataRowBuilderProps<any>> = (props) => {
 
-    rowComponent: React.ComponentType<TableRowComponentProps<any>>;
-    tdComponent: React.ComponentType<React.HTMLProps<HTMLTableCellElement>>;
-    tableCellValueComponent: React.ComponentType<CellProps<T>>;
-}
-
-const DataRowComponent = makePure((props: DataRowComponentProps<any>) => {
-
-    const { row, columns, rowComponent: RowComponent, tdComponent: TdComponent, tableCellValueComponent } = props;
+    const { row, columns, rowComponent: RowComponent, children, rowProps, ...extraCellProps } = props;
 
     debuglog('DataRowComponent render', props);
-    //console.log('DataRowComponent render', row);
-
-    //const RowComponent = props.rowComponent;
-    //const TdComponent = props.tdComponent;
-
-    const cols = columns.filter((m) => m.visible !== false).map((col) => {
-
-        const CellComponent = col.cellComponent || tableCellValueComponent;
+    const cells = columns.map((col) => {
 
         const value = col.field(row);
-        const formattedValue = col.formatter ? col.formatter(col.field(row), row) : col.field(row);
-        const rowValueProps: CellProps = { row, column: col, value: formattedValue, rawValue: value };
+        const formattedValue = col.formatter ? col.formatter(value, row) : value;
 
-        const cellProps = col.cellProps(rowValueProps);
+        const { includeExtraCellProps, tdComponent: TdComponent, cellComponent } = col;
 
-        const cellComponentProps = col.cellComponentProps(rowValueProps);
-        //const { children, ...actualCellProps } = cellProps || { children: undefined };
+        const rowValueProps: CellProps = includeExtraCellProps ? { row, column: col, children: formattedValue, value, ...extraCellProps } : { row, column: col, children: formattedValue, value };
 
-        return <TdComponent key={col.key} {...cellProps}><CellComponent {...cellComponentProps} /></TdComponent>;
+        const tdProps = col.tdProps(rowValueProps);
+
+        const valueComponentProps = col.cellComponentProps ? col.cellComponentProps(rowValueProps) : rowValueProps;
+
+        return <TdComponent key={col.key} cellProps={tdProps} valueComponent={cellComponent} {...valueComponentProps} />;
 
     });
 
-    return <RowComponent columns={columns} row={row}>{cols}</RowComponent>;
+    return (
+        <RowComponent columns={columns} row={row} extraProps={extraCellProps}>
+            {cells}
+        </RowComponent>
+    );
 
-});
-DataRowComponent.displayName = 'DataRowComponent';
+};
+DataRowBuilderComponent.displayName = 'DataRowBuilderComponent';
+
+export const DataRowBuilderPureComponent = makePure(DataRowBuilderComponent);
+
+export const HeaderRowBuilderComponent: React.ComponentType<HeaderRowBuilderProps> = (props) => {
+
+    const { columns, tableHeaderRowComponent: TableHeadRow, extraCellProps } = props;
+
+    debuglog('HeaderRowComponent render', props);
+
+    const header = columns.map((c) => {
+        const TableHeadCell = c.thComponent;
+        const TableHeaderCellValueComponent = c.headerComponent;
+
+        return <TableHeadCell key={c.key} column={c} extraProps={extraCellProps} {...c.thProps}><TableHeaderCellValueComponent column={c} extraProps={extraCellProps} /></TableHeadCell>;
+
+    });
+
+    return <TableHeadRow>{header}</TableHeadRow>;
+
+};
+
+HeaderRowBuilderComponent.displayName = 'HeaderRowBuilderComponent';
+export const HeaderRowBuilderPureComponent = makePure(HeaderRowBuilderComponent, { deeperCompareProps: 'extraCellProps' });
 
 /**
  * Primary table component
@@ -54,33 +69,46 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         tableHeaderComponent: (props) => <thead {...props} />,
         tableHeaderRowComponent: (props) => <tr {...props} />,
         tableHeaderCellComponent: (props) => {
-            const { children, column, ...rest } = props;
-            debuglog('defaultProps thComponent render', props);
+            const { children, column, extraProps, ...rest } = props;
+            debuglog('defaultProps tableHeaderCellComponent render', props);
             return <th {...rest}>{children}</th>;
+        },
+        tableHeaderCellValueComponent: (props) => {
+            //const { children, column, extraProps, ...rest } = props;
+            debuglog('defaultProps tableHeaderCellValueComponent render', props);
+            //debuglog('defaultProps thComponent render', props);
+            return <span>{props.column.headerText}</span>;
         },
         tableBodyComponent: (props) => <tbody>{props.children}</tbody>,
         tableRowComponent: (props) => {
-            const { row, columns, ...rest } = props;
+            const { row, columns, extraProps, ...rest } = props;
             return <tr{...rest} />;
         },
-        tableCellComponent: (props) => <td{...props} />,
-        tableCellValueComponent: (props) => <div>{props.value}</div>,
+        defaultTdComponent: ((props) => {
+            debuglog('tableCellComponent render', props);
+            const { valueComponent: ValueComponent, cellProps, ...rest } = props;
 
+            return <td{...cellProps}><ValueComponent {...rest} /></td>;
+        }),
+        defaultCellComponent: ((props) => {
+            debuglog('tableCellValueComponent render', props);
+            return <div>{props.children}</div>;
+        }),
+        //dataRowBuilder: DataRowBuilderPureComponent,
+        headerRowBuilder: HeaderRowBuilderComponent
     };
 
-    private originalColumns: Array<Column | string>;
+    //private originalColumns: Array<Column | string>;
     private columns: Array<StrictColumn<any>>;
+    private visibleColumns: Array<StrictColumn<any>>;
+
     private getRowKey: (row: any) => string | number;
 
     constructor(props: GridProps<any>) {
         super(props);
         debuglog('constructor', props);
 
-        //this.transformProps(props);
-
-        this.columns = props.columns.map((c) => transformColumn(c));
-        this.originalColumns = props.columns;
-        this.getRowKey = typeof props.keyColumn === 'function' ? props.keyColumn : (row) => row[props.keyColumn as string];
+        this.transformProps(props);
 
     }
 
@@ -91,104 +119,157 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
     }
 
-    shouldComponentUpdate(nextProps: GridProps<any>) {
+    // shouldComponentUpdate(nextProps: GridProps<any>) {
 
-        const result = !shallowEqual(this.props, nextProps);
-        debuglog('shouldComponentUpdate returned ' + result);
+    //     const equal = shallowEqual(this.props, nextProps, 'extraCellProps');
 
-        return result;
-    }
+    //     if (equal) {
+    //         const equal2 = shallowEqual(this.props.extraCellProps, nextProps.extraCellProps);
 
+    //         if (!equal2) {
+    //             debuglog('shouldComponentUpdate returned true because extraCellProps changed', this.props.extraCellProps, nextProps.extraCellProps);
+    //             return true;
+    //         }
+    //     }
+    //     // if (result) {
+    //     //     const fields = distinct(Object.keys(this.props).concat(Object.keys(nextProps)));
+    //     //     for (const f of fields) {
+
+    //     //         const v1 = this.props[f];
+    //     //         const v2 = nextProps[f];
+
+    //     //         if (Array.isArray(v1) || Array.isArray(v2)) {
+    //     //             if (v1.length !== v2.length) {
+    //     //                 debuglog('returned true arrays different length field: ' + f, v1, v2);
+    //     //             }
+    //     //             for (let x = 0; x < v1.length; x++) {
+    //     //                 if (!shallowEqual(v1[x], v2[x])) {
+    //     //                     debuglog('returned true array values changed field: ' + f, v1[x], v2[x]);
+
+    //     //                 }
+    //     //             }
+
+    //     //         } else {
+    //     //             const result2 = shallowEqual(v1, v2);
+
+    //     //             if (!result2) {
+    //     //                 debuglog('returned true ' + f + ' changed', v1, v2);
+    //     //             }
+    //     //         }
+    //     //     }
+
+    //     // }
+
+    //     return !equal;
+    // }
     private transformColumns(columns: Array<Column<any> | string>): Array<StrictColumn<any>> {
         debuglog('Sorting.transformColumns', columns);
 
-        if (this.columns && this.originalColumns) {
+        if (this.columns && this.props.columns) {
             //reuse the same column if it hasn't changed from the original
-            return columns.map((c, i) => shallowEqual(c, this.originalColumns[i]) ? this.columns[i] : transformColumn(c));
+            return columns.map((c, i) => shallowEqual(c, this.props.columns[i]) ? this.columns[i] : this.transformColumn(c));
         }
 
-        return columns.map((c) => transformColumn(c));
+        return columns.map((c) => this.transformColumn(c));
+    }
+
+    private transformColumn(column: Column | string): StrictColumn {
+
+        const col = transformColumn(column);
+
+        return {
+            tdComponent: col.pure !== false ? makePure(this.props.defaultTdComponent) : this.props.defaultTdComponent,
+            cellComponent: col.pure !== false ? makePure(this.props.defaultCellComponent) : this.props.defaultCellComponent,
+            includeExtraCellProps: this.props.alwaysIncludeExtraCellProps,
+            thComponent: this.props.tableHeaderCellComponent,
+            headerComponent: this.props.tableHeaderCellValueComponent,
+            ...col
+        };
+
     }
 
     transformProps(newProps: GridProps<any>, oldProps?: GridProps<any>) {
 
         debuglog('transformProps', { newProps, oldProps });
-        //const changes: string[] = [];
 
         if (!oldProps || !shallowEqual(newProps.columns, oldProps.columns)) {
-            //changes.push('columns changed');
             debuglog('transforming columns', newProps.columns);
 
             this.columns = this.transformColumns(newProps.columns);
-            this.originalColumns = newProps.columns;
+            this.visibleColumns = this.columns.filter((m) => m.visible !== false);
         }
 
         if (!oldProps || newProps.keyColumn !== oldProps.keyColumn) {
-            //changes.push('keyColumn changed');
 
             debuglog('transforming getRowKey');
-            //console.log('ReactPowerTable.getRowKey Changed');
 
             this.getRowKey = typeof newProps.keyColumn === 'function' ? newProps.keyColumn : (row) => row[newProps.keyColumn as string];
         }
-        // const FgRed = "\x1b[31m";
-        // const FgGreen = "\x1b[32m";
-        // const Reset = "\x1b[0m";
-
-        // if (changes.length > 0) {
-        //     console.log(FgRed + 'ReactPowerTable.transformProps has changes' + Reset, changes);
-        // }
-        // else {
-        //     console.log(FgGreen + 'ReactPowerTable.transformProps does not have any changes' + Reset);
-
-        // }
 
     }
+    // const FgRed = "\x1b[31m";
+    // const FgGreen = "\x1b[32m";
+    // const Reset = "\x1b[0m";
+
+    // if (changes.length > 0) {
+    //     console.log(FgRed + 'ReactPowerTable.transformProps has changes' + Reset, changes);
+    // }
+    // else {
+    //     console.log(FgGreen + 'ReactPowerTable.transformProps does not have any changes' + Reset);
+
+    // }
 
     render() {
 
         const { rows,
+            dataRowBuilder,
+            headerRowBuilder: HeaderRowBuilder,
             tableComponent: Table,
             tableHeaderComponent: TableHead,
-            tableHeaderRowComponent: TableHeadRow,
-            tableHeaderCellComponent: TableHeadCell,
+            tableHeaderRowComponent,
             tableBodyComponent: TableBody,
             tableRowComponent,
-            tableCellComponent,
-            tableCellValueComponent,
             tableFooterComponent: TableFoot,
             tableClassName,
             tableProps,
-
+            extraCellProps,
+            rowProps
     } = this.props;
 
         const columns = this.columns;
 
         debuglog('ReactPowerTable.render()', this.props);
 
-        const dataRows = rows.map((row) => {
-            //const rowProps = this.getRowProps(row);
-            const key = this.getRowKey(row);
+        const allColumnsPure = columns.every(c => c.pure !== false);
 
+        const DataRowBuilder = dataRowBuilder || (allColumnsPure ? DataRowBuilderPureComponent : DataRowBuilderComponent);
+
+        const dataRows = rows.map((row) => {
+            const key = this.getRowKey(row);
+            const actualRowProps = rowProps && (typeof (rowProps) === 'function' ? rowProps({ row, columns, extraProps: extraCellProps, ...extraCellProps }) : rowProps);
             debuglog('DataRow map');
 
-            return <DataRowComponent rowComponent={tableRowComponent} tdComponent={tableCellComponent} tableCellValueComponent={tableCellValueComponent} key={key} columns={columns} row={row} />;
+            return (
+                <DataRowBuilder key={key} columns={columns} row={row} rowComponent={tableRowComponent} {...extraCellProps} rowProps={actualRowProps} />
+            );
 
         });
 
         const combinedTableProps = tableClassName ? { ...tableProps, className: tableClassName } : tableProps;
 
-        const header = columns.filter((m) => m.visible !== false).map((c) => {
-            const HeaderComponent = c.headerComponent || DefaultHeaderComponent;
-            return <TableHeadCell key={c.key} column={c} {...c.headerCellProps}><HeaderComponent column={c} /></TableHeadCell>;
-        });
+        const headerRow = (
+            <HeaderRowBuilder
+                columns={columns}
+                extraCellProps={extraCellProps}
+                tableHeaderRowComponent={tableHeaderRowComponent}
+
+            />
+        );
 
         return (
             <Table {...combinedTableProps }>
                 <TableHead>
-                    <TableHeadRow>
-                        {header}
-                    </TableHeadRow>
+                    {headerRow}
                 </TableHead>
 
                 {TableBody ? <TableBody>{dataRows}</TableBody> : dataRows}
@@ -198,18 +279,14 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         );
 
     }
-}
-const DefaultHeaderComponent = makePure((props: HeaderComponentProps<any>) => {
-    //debuglog('defaultHeaderComponent render ' + props.column.headerText);
-    return <span>{props.column.headerText}</span>;
-});
-DefaultHeaderComponent.displayName = 'DefaultHeaderComponent';
 
-export interface GridProps<T = any> {
+}
+
+export interface GridProps<T = {}, TExtraProps = {}> {
     /**
      * Columns to display in table
      */
-    columns: Array<Column<T> | string>;
+    columns: Array<Column<T, any, TExtraProps> | string>;
 
     /**
      * Field name or function to provide unique key for each column
@@ -224,6 +301,9 @@ export interface GridProps<T = any> {
 
     loading?: boolean;
 
+    headerRowBuilder?: React.ComponentType<HeaderRowBuilderProps<T>>;
+
+    dataRowBuilder?: React.ComponentType<DataRowBuilderProps<T>>;
     //components?: GridComponents<T>
 
     /** Customize the <table> tag. children are passed to props and must be rendered  */
@@ -242,34 +322,39 @@ export interface GridProps<T = any> {
     /** Customize the <th> tag that appears in <thead> > <tr>. children are passed to props and must be rendered
      * header cell can also be customize per column using Column.headerCellProps
      */
-    tableHeaderCellComponent?: React.ComponentType<HeaderComponentProps<T>>;
+    tableHeaderCellComponent?: React.ComponentType<HeaderComponentProps<T> & React.HTMLProps<HTMLTableHeaderCellElement>>;
+
+    /** Customize the component tag that renders in <thead> > <tr> > <th>.
+     */
+    tableHeaderCellValueComponent?: React.ComponentType<HeaderComponentProps<T>>;
 
     /** Customize the <tbody> tag. children are passed to props and must be rendered  */
     tableBodyComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
 
-    /** Customize the <tbody> tag. children are passed to props and must be rendered  */
     /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
     tableRowComponent?: React.ComponentType<TableRowComponentProps<T>> | React.SFC<TableRowComponentProps<T>>;
 
+    rowProps?: StaticOrDynamicProps<TableRowComponentProps<T>, React.HTMLProps<HTMLTableRowElement>>;
     /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
      * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps  *
      */
-    tableCellComponent?: React.ComponentType<React.HTMLProps<HTMLTableCellElement>>;
+    defaultTdComponent?: React.ComponentType<TdComponentProps<T, TExtraProps>>;
 
-    /** This is the default cell value component that will be used if a column specific cellComponent
+    /** This is the default cell value component that will be used if column specific cellComponent is not provided
      */
-    tableCellValueComponent?: React.ComponentType<CellProps<T>>;
+    defaultCellComponent?: React.ComponentType<CellProps<T>>;
 
     tableFooterComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
 
+    extraCellProps?: TExtraProps;
+    /**
+     * Set to true to pass the extraCellProps into the cellComponentProps of each row
+     * default: false
+     */
+    alwaysIncludeExtraCellProps?: boolean;
 }
 
-export interface TableRowComponentProps<T = any> extends React.HTMLProps<HTMLTableRowElement> {
-    columns: Array<StrictColumn<T>>;
-    row: T;
-}
-
-export interface StrictColumn<TRow = any, TValue = any, TFormattedValue = TValue> {
+export interface StrictColumn<TRow = {}, TValue = {}, TExtraProps = {}> {
 
     key: string | number;
 
@@ -278,34 +363,48 @@ export interface StrictColumn<TRow = any, TValue = any, TFormattedValue = TValue
 
     headerText: string;
 
-    cellProps?: ((props: Partial<CellProps<TRow, TValue, TFormattedValue>>) => React.HTMLProps<HTMLTableCellElement>);
+    tdComponent?: React.ComponentType<CellProps<TRow, TValue, TExtraProps>>;
+    tdProps: DynamicProps<CellProps<TRow, TValue, TExtraProps>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
 
-    formatter: (value: any, row?: TRow) => TFormattedValue;
-    cellComponent?: React.ComponentType<Partial<CellProps<TRow, TValue, TFormattedValue>>>;
-    cellComponentProps?: (props: CellProps<TRow, TValue, TFormattedValue>) => any;
-    headerComponent?: React.ComponentType<HeaderComponentProps<HTMLTableHeaderCellElement>>;
+    formatter: (value: any, row?: TRow) => any;
+    cellComponent?: React.ComponentType<Partial<CellProps<TRow, TValue, TExtraProps>>>;
+    cellComponentProps: (props: CellProps<TRow, TValue, TExtraProps>) => any;
+    headerComponent?: React.ComponentType<HeaderComponentProps<TRow>>;
+    thComponent?: React.ComponentType<HeaderComponentProps<TRow> & React.ThHTMLAttributes<HTMLTableHeaderCellElement>>;
 
-    headerCellProps?: React.HTMLProps<HTMLTableHeaderCellElement>;
+    //thProps: React.HTMLProps<HTMLTableHeaderCellElement>;
+    thProps: React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
 
+    pure?: boolean;
     visible?: boolean;
+
+    includeExtraCellProps?: boolean;
+
 }
 
-export interface Column<TRow = any, TValue = any, TFormattedValue = TValue> {
-    key?: string | number;
-    formatter?: (value: TValue, row?: TRow) => TFormattedValue;
-    cellComponent?: React.ComponentType<Partial<CellProps<TRow, TValue, TFormattedValue>>>;
-    cellComponentProps?: (props: Partial<CellProps<TRow, TValue, TFormattedValue>>) => any;
-    headerComponent?: React.ComponentType<HeaderComponentProps<HTMLTableHeaderCellElement>>;
+export type StaticOrDynamicProps<TIn, TOut> = TOut | ((props: TIn) => TOut);
+export type DynamicProps<TIn, TOut> = ((props: TIn) => TOut);
 
-    headerCellProps?: React.HTMLProps<HTMLTableHeaderCellElement>;
+export interface Column<TRow = {}, TValue = {}, TExtraProps = {}> {
+    key?: string | number;
+    formatter?: (value: TValue, row?: TRow) => any;
+    cellComponent?: React.ComponentType<CellProps<TRow, TValue, TExtraProps>>;
+    cellComponentProps?: (props: CellProps<TRow, TValue, TExtraProps>) => CellProps<TRow, TValue, TExtraProps>;
+    tdComponent?: React.ComponentType<CellProps<TRow, TValue, TExtraProps>>;
+    tdProps?: StaticOrDynamicProps<CellProps<TRow, TValue, TExtraProps>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
+
+    headerComponent?: React.ComponentType<HeaderComponentProps<TRow>>;
+    thComponent?: React.ComponentType<HeaderComponentProps<TRow> & React.HTMLProps<HTMLTableHeaderCellElement>>;
+
+    thProps?: React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
 
     field?: ((row: TRow) => TValue);
     fieldName?: string;
     headerText?: string;
-    cellProps?: React.HTMLProps<HTMLTableCellElement> | ((props: CellProps<TRow, TValue, TFormattedValue>) => React.HTMLProps<HTMLTableCellElement>);
+    //cellProps?: React.HTMLProps<HTMLTableCellElement> | ((props: CellProps<TRow, TValue, TExtraProps>) => React.HTMLProps<HTMLTableCellElement>);
 
     headerCssClass?: string;
-    cssClass?: ((props: CellProps<TRow, TValue, TFormattedValue>) => string) | string;
+    cssClass?: ((props: CellProps<TRow, TValue, TExtraProps>) => string) | string;
     width?: number;
     maxWidth?: number;
     textAlign?: string;
@@ -315,348 +414,195 @@ export interface Column<TRow = any, TValue = any, TFormattedValue = TValue> {
      */
     visible?: boolean;
 
+    /**
+     * Set to false if you are using a custom cellComponent and relying on state or other data not passed into the cellProps
+     * default: true
+     */
+    pure?: boolean;
+
+    /**
+     * Set to true to pass the extraCellProps into the cellComponentProps of each row
+     * default: TableProps.alwaysIncludeExtraCellProps
+     */
+    includeExtraCellProps?: boolean;
 }
 
-export interface HeaderComponentProps<T = any> extends React.HTMLProps<HTMLTableHeaderCellElement> {
+export type CellProps<TRow = {}, TValue = {}, TExtraProps = {}> = {
+    row: TRow;
+    column: StrictColumn<TRow, TValue, TExtraProps>;
+
+    value: TValue;
+
+    children: React.ReactChild;
+    //extraProps?: TExtraProps;
+
+} & TExtraProps;
+
+//ReactPowerTable.defaultProps.tableHeaderCellComponent.displayName = 'tableHeaderCellComponent';
+
+export type TdComponentProps<T = {}, TExtraProps = {}> = CellProps<T, any, TExtraProps> & {
+    cellProps: React.HTMLProps<HTMLTableCellElement>;
+    valueComponent: React.ComponentType<Partial<CellProps<T, any, TExtraProps>>>;
+
+};
+
+export interface TableRowComponentProps<T = {}, TExtraProps = {}> {
+    columns: Array<StrictColumn<T>>;
+    row: T;
+
+    //rowProps: StaticOrDynamicProps<TableRowComponentProps<T>, React.HTMLProps<HTMLTableRowElement>>;
+    extraProps: TExtraProps;
+
+}
+
+export interface DataRowBuilderProps<T = {}> {
+    columns: StrictColumn[];
+    row: T;
+    rowComponent: React.ComponentType<TableRowComponentProps<any>>;
+    //extraCellProps: any;
+
+    rowProps: React.HTMLAttributes<HTMLTableRowElement>;
+
+    //alwaysIncludeExtraCellProps: boolean;
+    //cells: DataRowCellProps[];
+}
+export interface HeaderRowBuilderProps<T = {}> {
+
+    columns: Array<StrictColumn<T>>;
+    tableHeaderRowComponent: React.ComponentType<React.Props<HTMLTableRowElement>>;
+    extraCellProps: any;
+}
+
+export interface HeaderComponentProps<T = {}, TExtraProps = {}> {
     column: StrictColumn<T>;
 
+    extraProps: TExtraProps;
 }
 
-export interface CellProps<TRow = any, TValue = any, TFormattedValue = TValue> {
-    row: TRow;
-    column: Column<TRow, TValue, TFormattedValue>;
+export type HeadComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+    columns: Array<StrictColumn<T, {}, TExtraProps>>;
 
-    value: TFormattedValue;
-    rawValue: TValue;
+    rowComponent: React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
+};
+export type HeadComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadComponentProps<T, TExtraProps>>;
 
+export type HeadRowComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+    columns: Array<StrictColumn<T, {}, TExtraProps>>;
+
+};
+export type HeadRowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
+
+export type HeadCellComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+    column: StrictColumn<T, {}, TExtraProps>;
+
+};
+export type HeadCellComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadCellComponentProps<T, TExtraProps>>;
+
+export type BodyComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+    rows: T[];
+    columns: Array<StrictColumn<T, {}, TExtraProps>>;
+
+    rowComponent: React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
+};
+export type BodyComponentType<T = {}, TExtraProps = {}> = React.ComponentType<BodyComponentProps<T, TExtraProps>>;
+
+export type RowComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+    row: T;
+    columns: Array<StrictColumn<T, {}, TExtraProps>>;
+
+};
+export type RowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowComponentProps<T, TExtraProps>>;
+
+export type CellComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+
+    row: T;
+    column: StrictColumn<T, {}, TExtraProps>;
+
+    valueComponent: ValueComponentType<T, TExtraProps>;
+};
+export type CellComponentType<T = {}, TExtraProps = {}> = React.ComponentType<CellComponentProps<T, TExtraProps>>;
+
+export type ValueComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+
+    row: T;
+    column: StrictColumn<T, {}, TExtraProps>;
+
+};
+export type ValueComponentType<T = {}, TExtraProps = {}> = React.ComponentType<ValueComponentProps<T, TExtraProps>>;
+
+export interface PowerTableProps<T = {}, TExtraProps = {}> {
+    /**
+     * Columns to display in table
+     */
+    columns: Array<Column<T, any, TExtraProps> | string>;
+
+    /**
+     * Field name or function to provide unique key for each column
+     */
+    keyColumn: string | ((row: T) => (string | number));
+
+    /**
+     * Rows to display in table
+     */
+    rows: T[];
+    //rowProps?: React.HTMLProps<HTMLTableRowElement> | ((row: T) => React.HTMLProps<HTMLTableRowElement>);
+
+    loading?: boolean;
+
+    dataRowBuilder?: React.ComponentType<DataRowBuilderProps<T>>;
+    //components?: GridComponents<T>
+
+    /** Customize the <table> tag. children are passed to props and must be rendered  */
+    tableComponent?: React.ComponentType<React.HTMLProps<HTMLTableElement>>;
+
+    /** Inject custom props into the tableComponent  */
+    tableProps?: React.HTMLProps<HTMLTableElement>;
+    tableClassName?: string;
+
+    /** Customize the <thead> tag. children are passed to props and must be rendered  */
+    headComponent?: HeadComponentType<T, TExtraProps>;
+
+    /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
+    headRowComponent?: HeadRowComponentType<T, TExtraProps>;
+
+    /** Customize the <th> tag that appears in <thead> > <tr>. children are passed to props and must be rendered
+     * header cell can also be customize per column using Column.headerCellProps
+     */
+    headCellComponent?: HeadCellComponentType<T, TExtraProps>;
+
+    /** Customize the component tag that renders in <thead> > <tr> > <th>.
+     */
+    //tableHeaderCellValueComponent?: React.ComponentType<HeaderComponentProps<T>>;
+
+    /** Customize the <tbody> tag. children are passed to props and must be rendered  */
+    bodyComponent?: BodyComponentType<T, TExtraProps>;
+
+    /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
+    rowComponent?: RowComponentType<T, TExtraProps>;
+
+    rowProps?: StaticOrDynamicProps<TableRowComponentProps<T>, React.HTMLProps<HTMLTableRowElement>>;
+    /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
+     * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps
+     */
+    cellComponent?: CellComponentType<T, TExtraProps>;
+
+    /** Customize the html that appears in <tbody> > <tr> > <td>. children are passed to props and must be rendered
+     * value can also be customize per column using Column.valueComponent
+     */
+    valueComponent?: ValueComponentType<T, TExtraProps>;
+
+    //defaultTdComponent?: React.ComponentType<TdComponentProps<T, TExtraProps>>;
+
+    /** This is the default cell value component that will be used if column specific cellComponent is not provided
+     */
+    //defaultCellComponent?: React.ComponentType<CellProps<T>>;
+
+    tableFooterComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
+
+    extraCellProps?: TExtraProps;
+    /**
+     * Set to true to pass the extraCellProps into the cellComponentProps of each row
+     * default: false
+     */
+    alwaysIncludeExtraCellProps?: boolean;
 }
-
-// These interfaces should be the same as
-// https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/types/react/index.d.ts
-// except the children property has been commented out
-// export interface React.HTMLProps<T> extends HTMLAttributesWithoutChildren<T>, React.ClassAttributes<T> {
-// }
-
-// export interface DOMAttributesWithoutChildren<T> {
-//     //children?: React.ReactNode;
-//     dangerouslySetInnerHTML?: {
-//         __html: string;
-//     };
-
-//     // Clipboard Events
-//     onCopy?: React.ClipboardEventHandler<T>;
-//     onCopyCapture?: React.ClipboardEventHandler<T>;
-//     onCut?: React.ClipboardEventHandler<T>;
-//     onCutCapture?: React.ClipboardEventHandler<T>;
-//     onPaste?: React.ClipboardEventHandler<T>;
-//     onPasteCapture?: React.ClipboardEventHandler<T>;
-
-//     // Composition Events
-//     onCompositionEnd?: React.CompositionEventHandler<T>;
-//     onCompositionEndCapture?: React.CompositionEventHandler<T>;
-//     onCompositionStart?: React.CompositionEventHandler<T>;
-//     onCompositionStartCapture?: React.CompositionEventHandler<T>;
-//     onCompositionUpdate?: React.CompositionEventHandler<T>;
-//     onCompositionUpdateCapture?: React.CompositionEventHandler<T>;
-
-//     // Focus Events
-//     onFocus?: React.FocusEventHandler<T>;
-//     onFocusCapture?: React.FocusEventHandler<T>;
-//     onBlur?: React.FocusEventHandler<T>;
-//     onBlurCapture?: React.FocusEventHandler<T>;
-
-//     // Form Events
-//     onChange?: React.FormEventHandler<T>;
-//     onChangeCapture?: React.FormEventHandler<T>;
-//     onInput?: React.FormEventHandler<T>;
-//     onInputCapture?: React.FormEventHandler<T>;
-//     onReset?: React.FormEventHandler<T>;
-//     onResetCapture?: React.FormEventHandler<T>;
-//     onSubmit?: React.FormEventHandler<T>;
-//     onSubmitCapture?: React.FormEventHandler<T>;
-
-//     // Image Events
-//     onLoad?: React.ReactEventHandler<T>;
-//     onLoadCapture?: React.ReactEventHandler<T>;
-//     onError?: React.ReactEventHandler<T>; // also a Media Event
-//     onErrorCapture?: React.ReactEventHandler<T>; // also a Media Event
-
-//     // Keyboard Events
-//     onKeyDown?: React.KeyboardEventHandler<T>;
-//     onKeyDownCapture?: React.KeyboardEventHandler<T>;
-//     onKeyPress?: React.KeyboardEventHandler<T>;
-//     onKeyPressCapture?: React.KeyboardEventHandler<T>;
-//     onKeyUp?: React.KeyboardEventHandler<T>;
-//     onKeyUpCapture?: React.KeyboardEventHandler<T>;
-
-//     // Media Events
-//     onAbort?: React.ReactEventHandler<T>;
-//     onAbortCapture?: React.ReactEventHandler<T>;
-//     onCanPlay?: React.ReactEventHandler<T>;
-//     onCanPlayCapture?: React.ReactEventHandler<T>;
-//     onCanPlayThrough?: React.ReactEventHandler<T>;
-//     onCanPlayThroughCapture?: React.ReactEventHandler<T>;
-//     onDurationChange?: React.ReactEventHandler<T>;
-//     onDurationChangeCapture?: React.ReactEventHandler<T>;
-//     onEmptied?: React.ReactEventHandler<T>;
-//     onEmptiedCapture?: React.ReactEventHandler<T>;
-//     onEncrypted?: React.ReactEventHandler<T>;
-//     onEncryptedCapture?: React.ReactEventHandler<T>;
-//     onEnded?: React.ReactEventHandler<T>;
-//     onEndedCapture?: React.ReactEventHandler<T>;
-//     onLoadedData?: React.ReactEventHandler<T>;
-//     onLoadedDataCapture?: React.ReactEventHandler<T>;
-//     onLoadedMetadata?: React.ReactEventHandler<T>;
-//     onLoadedMetadataCapture?: React.ReactEventHandler<T>;
-//     onLoadStart?: React.ReactEventHandler<T>;
-//     onLoadStartCapture?: React.ReactEventHandler<T>;
-//     onPause?: React.ReactEventHandler<T>;
-//     onPauseCapture?: React.ReactEventHandler<T>;
-//     onPlay?: React.ReactEventHandler<T>;
-//     onPlayCapture?: React.ReactEventHandler<T>;
-//     onPlaying?: React.ReactEventHandler<T>;
-//     onPlayingCapture?: React.ReactEventHandler<T>;
-//     onProgress?: React.ReactEventHandler<T>;
-//     onProgressCapture?: React.ReactEventHandler<T>;
-//     onRateChange?: React.ReactEventHandler<T>;
-//     onRateChangeCapture?: React.ReactEventHandler<T>;
-//     onSeeked?: React.ReactEventHandler<T>;
-//     onSeekedCapture?: React.ReactEventHandler<T>;
-//     onSeeking?: React.ReactEventHandler<T>;
-//     onSeekingCapture?: React.ReactEventHandler<T>;
-//     onStalled?: React.ReactEventHandler<T>;
-//     onStalledCapture?: React.ReactEventHandler<T>;
-//     onSuspend?: React.ReactEventHandler<T>;
-//     onSuspendCapture?: React.ReactEventHandler<T>;
-//     onTimeUpdate?: React.ReactEventHandler<T>;
-//     onTimeUpdateCapture?: React.ReactEventHandler<T>;
-//     onVolumeChange?: React.ReactEventHandler<T>;
-//     onVolumeChangeCapture?: React.ReactEventHandler<T>;
-//     onWaiting?: React.ReactEventHandler<T>;
-//     onWaitingCapture?: React.ReactEventHandler<T>;
-
-//     // MouseEvents
-//     onClick?: React.MouseEventHandler<T>;
-//     onClickCapture?: React.MouseEventHandler<T>;
-//     onContextMenu?: React.MouseEventHandler<T>;
-//     onContextMenuCapture?: React.MouseEventHandler<T>;
-//     onDoubleClick?: React.MouseEventHandler<T>;
-//     onDoubleClickCapture?: React.MouseEventHandler<T>;
-//     onDrag?: React.DragEventHandler<T>;
-//     onDragCapture?: React.DragEventHandler<T>;
-//     onDragEnd?: React.DragEventHandler<T>;
-//     onDragEndCapture?: React.DragEventHandler<T>;
-//     onDragEnter?: React.DragEventHandler<T>;
-//     onDragEnterCapture?: React.DragEventHandler<T>;
-//     onDragExit?: React.DragEventHandler<T>;
-//     onDragExitCapture?: React.DragEventHandler<T>;
-//     onDragLeave?: React.DragEventHandler<T>;
-//     onDragLeaveCapture?: React.DragEventHandler<T>;
-//     onDragOver?: React.DragEventHandler<T>;
-//     onDragOverCapture?: React.DragEventHandler<T>;
-//     onDragStart?: React.DragEventHandler<T>;
-//     onDragStartCapture?: React.DragEventHandler<T>;
-//     onDrop?: React.DragEventHandler<T>;
-//     onDropCapture?: React.DragEventHandler<T>;
-//     onMouseDown?: React.MouseEventHandler<T>;
-//     onMouseDownCapture?: React.MouseEventHandler<T>;
-//     onMouseEnter?: React.MouseEventHandler<T>;
-//     onMouseLeave?: React.MouseEventHandler<T>;
-//     onMouseMove?: React.MouseEventHandler<T>;
-//     onMouseMoveCapture?: React.MouseEventHandler<T>;
-//     onMouseOut?: React.MouseEventHandler<T>;
-//     onMouseOutCapture?: React.MouseEventHandler<T>;
-//     onMouseOver?: React.MouseEventHandler<T>;
-//     onMouseOverCapture?: React.MouseEventHandler<T>;
-//     onMouseUp?: React.MouseEventHandler<T>;
-//     onMouseUpCapture?: React.MouseEventHandler<T>;
-
-//     // Selection Events
-//     onSelect?: React.ReactEventHandler<T>;
-//     onSelectCapture?: React.ReactEventHandler<T>;
-
-//     // Touch Events
-//     onTouchCancel?: React.TouchEventHandler<T>;
-//     onTouchCancelCapture?: React.TouchEventHandler<T>;
-//     onTouchEnd?: React.TouchEventHandler<T>;
-//     onTouchEndCapture?: React.TouchEventHandler<T>;
-//     onTouchMove?: React.TouchEventHandler<T>;
-//     onTouchMoveCapture?: React.TouchEventHandler<T>;
-//     onTouchStart?: React.TouchEventHandler<T>;
-//     onTouchStartCapture?: React.TouchEventHandler<T>;
-
-//     // UI Events
-//     onScroll?: React.UIEventHandler<T>;
-//     onScrollCapture?: React.UIEventHandler<T>;
-
-//     // Wheel Events
-//     onWheel?: React.WheelEventHandler<T>;
-//     onWheelCapture?: React.WheelEventHandler<T>;
-
-//     // Animation Events
-//     onAnimationStart?: React.AnimationEventHandler<T>;
-//     onAnimationStartCapture?: React.AnimationEventHandler<T>;
-//     onAnimationEnd?: React.AnimationEventHandler<T>;
-//     onAnimationEndCapture?: React.AnimationEventHandler<T>;
-//     onAnimationIteration?: React.AnimationEventHandler<T>;
-//     onAnimationIterationCapture?: React.AnimationEventHandler<T>;
-
-//     // Transition Events
-//     onTransitionEnd?: React.TransitionEventHandler<T>;
-//     onTransitionEndCapture?: React.TransitionEventHandler<T>;
-// }
-// export interface HTMLAttributesWithoutChildren<T> extends DOMAttributesWithoutChildren<T> {
-//     // React-specific Attributes
-//     defaultChecked?: boolean;
-//     defaultValue?: string | string[];
-//     suppressContentEditableWarning?: boolean;
-
-//     // Standard HTML Attributes
-//     accept?: string;
-//     acceptCharset?: string;
-//     accessKey?: string;
-//     action?: string;
-//     allowFullScreen?: boolean;
-//     allowTransparency?: boolean;
-//     alt?: string;
-//     async?: boolean;
-//     autoComplete?: string;
-//     autoFocus?: boolean;
-//     autoPlay?: boolean;
-//     capture?: boolean;
-//     cellPadding?: number | string;
-//     cellSpacing?: number | string;
-//     charSet?: string;
-//     challenge?: string;
-//     checked?: boolean;
-//     cite?: string;
-//     classID?: string;
-//     className?: string;
-//     cols?: number;
-//     colSpan?: number;
-//     content?: string;
-//     contentEditable?: boolean;
-//     contextMenu?: string;
-//     controls?: boolean;
-//     coords?: string;
-//     crossOrigin?: string;
-//     data?: string;
-//     dateTime?: string;
-//     default?: boolean;
-//     defer?: boolean;
-//     dir?: string;
-//     disabled?: boolean;
-//     download?: any;
-//     draggable?: boolean;
-//     encType?: string;
-//     form?: string;
-//     formAction?: string;
-//     formEncType?: string;
-//     formMethod?: string;
-//     formNoValidate?: boolean;
-//     formTarget?: string;
-//     frameBorder?: number | string;
-//     headers?: string;
-//     height?: number | string;
-//     hidden?: boolean;
-//     high?: number;
-//     href?: string;
-//     hrefLang?: string;
-//     htmlFor?: string;
-//     httpEquiv?: string;
-//     id?: string;
-//     inputMode?: string;
-//     integrity?: string;
-//     is?: string;
-//     keyParams?: string;
-//     keyType?: string;
-//     kind?: string;
-//     label?: string;
-//     lang?: string;
-//     list?: string;
-//     loop?: boolean;
-//     low?: number;
-//     manifest?: string;
-//     marginHeight?: number;
-//     marginWidth?: number;
-//     max?: number | string;
-//     maxLength?: number;
-//     media?: string;
-//     mediaGroup?: string;
-//     method?: string;
-//     min?: number | string;
-//     minLength?: number;
-//     multiple?: boolean;
-//     muted?: boolean;
-//     name?: string;
-//     nonce?: string;
-//     noValidate?: boolean;
-//     open?: boolean;
-//     optimum?: number;
-//     pattern?: string;
-//     placeholder?: string;
-//     playsInline?: boolean;
-//     poster?: string;
-//     preload?: string;
-//     radioGroup?: string;
-//     readOnly?: boolean;
-//     rel?: string;
-//     required?: boolean;
-//     reversed?: boolean;
-//     role?: string;
-//     rows?: number;
-//     rowSpan?: number;
-//     sandbox?: string;
-//     scope?: string;
-//     scoped?: boolean;
-//     scrolling?: string;
-//     seamless?: boolean;
-//     selected?: boolean;
-//     shape?: string;
-//     size?: number;
-//     sizes?: string;
-//     slot?: string;
-//     span?: number;
-//     spellCheck?: boolean;
-//     src?: string;
-//     srcDoc?: string;
-//     srcLang?: string;
-//     srcSet?: string;
-//     start?: number;
-//     step?: number | string;
-//     style?: React.CSSProperties;
-//     summary?: string;
-//     tabIndex?: number;
-//     target?: string;
-//     title?: string;
-//     type?: string;
-//     useMap?: string;
-//     value?: string | string[] | number;
-//     width?: number | string;
-//     wmode?: string;
-//     wrap?: string;
-
-//     // RDFa Attributes
-//     about?: string;
-//     datatype?: string;
-//     inlist?: any;
-//     prefix?: string;
-//     property?: string;
-//     resource?: string;
-//     typeof?: string;
-//     vocab?: string;
-
-//     // Non-standard Attributes
-//     autoCapitalize?: string;
-//     autoCorrect?: string;
-//     autoSave?: string;
-//     color?: string;
-//     itemProp?: string;
-//     itemScope?: boolean;
-//     itemType?: string;
-//     itemID?: string;
-//     itemRef?: string;
-//     results?: number;
-//     security?: string;
-//     unselectable?: boolean;
-// }

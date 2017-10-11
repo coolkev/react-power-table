@@ -121,6 +121,21 @@ gulp.task('start', (cb) => {
 
 });
 
+gulp.task('start:web', (cb) => {
+    
+        var webpackConfig = require('./examples/webpack.config.js');
+        return new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(webpackConfig.devServer.port, 'localhost', function (err) {
+            if (err) {
+                cb(new gutil.PluginError('webpack-dev-server', err));
+            }
+            gutil.log('[webpack-dev-server]', 'http://localhost:8080/');
+        }).on('close', () => {
+            cb();
+        });
+    
+    
+    });
+    
 // });
 // this is not working because each time it reloads, it compiles an additional time
 // gulp.task('start', (cb)=> {

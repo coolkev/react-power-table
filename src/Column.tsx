@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { CellProps, Column, StrictColumn } from './ReactPowerTable';
-import { debuglog, makePure } from './utils';
+import { debuglog } from './utils';
 
 /** @internal */
 // export const defaultCellComponent = makePure((props: CellProps<any>) => {
@@ -17,75 +17,62 @@ export function transformColumn<T>(options: Column<T> | string): StrictColumn<T>
     const col = typeof options === 'string' ? { fieldName: options } as Column<T> : options;
 
     const core = getColumnCore(options);
-    const { cellProps, headerProps } = getCellAndHeaderProps(col);
+    const { tdProps, headerProps } = getCellAndHeaderProps(col);
 
     const result = {
         ...col,
         ...core,
-        cellProps,
-        headerCellProps: headerProps,
-        headerComponent: col.headerComponent,
-        formatter: col.formatter || null,
+        tdProps,
+        thProps: headerProps
     } as StrictColumn<T>;
-
-    if (col.cellComponent) {
-        result.cellComponent = col.cellComponent;
-        result.cellComponentProps = col.cellComponentProps || ((props) => props);
-
-    } else {
-
-        //result.cellComponent = defaultCellComponent;
-        result.cellComponentProps = col.cellComponentProps || ((props) => ({ column: props.column, value: props.value }));
-
-    }
 
     return result;
 }
 
 function getCellAndHeaderProps(options: Column<any>) {
 
-    const cssClass = options.cssClass;
+    const { cssClass, maxWidth, width, thProps, headerCssClass, textAlign, tdProps } = options;
 
-    const headerProps = { style: { textAlign: 'left', whiteSpace: 'nowrap', ...(options.headerCellProps && options.headerCellProps.style) }, ...options.headerCellProps };
-    let cellProps: ((props: CellProps<any>) => React.HTMLProps<HTMLTableDataCellElement>);
+    const headerProps = { style: { textAlign: 'left', whiteSpace: 'nowrap', ...(thProps && thProps.style) }, ...thProps };
 
-    const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (options.cellProps) === 'function' ? {} : { ...options.cellProps };
-    const cellPropsFunc = typeof (options.cellProps) === 'function' ? options.cellProps : () => null;
+    const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (tdProps) === 'function' ? {} : { ...tdProps };
+    const cellPropsFunc = typeof (tdProps) === 'function' ? tdProps : undefined;
 
     //var cssClassFunc: (row: T) => string;
 
-    if (options.width) {
-        cellStaticProps.style = { ...cellStaticProps.style, width: options.width };
-        headerProps.style = { ...headerProps.style, width: options.width };
+    if (width) {
+        cellStaticProps.style = { ...cellStaticProps.style, width };
+        headerProps.style = { ...headerProps.style, width };
 
     }
 
-    if (options.maxWidth) {
-        cellStaticProps.style = { ...cellStaticProps.style, maxWidth: options.maxWidth };
-        headerProps.style = { ...headerProps.style, maxWidth: options.maxWidth };
+    if (maxWidth) {
+        cellStaticProps.style = { ...cellStaticProps.style, maxWidth };
+        headerProps.style = { ...headerProps.style, maxWidth };
 
     }
+
+    if (textAlign) {
+        cellStaticProps.style = { ...cellStaticProps.style, textAlign };
+        headerProps.style = { ...headerProps.style, textAlign };
+    }
+
+    let actualTdProps: ((props: CellProps<any>) => React.HTMLProps<HTMLTableDataCellElement>);
 
     if (typeof cssClass === 'function') {
-        cellProps = (row) => ({ ...cellStaticProps, ...cellPropsFunc(row), className: cssClass(row) });
-
+        actualTdProps = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row), className: cssClass(row) }) : (row) => ({ ...cellStaticProps, className: cssClass(row) });
     } else if (typeof (cssClass) === 'string') {
         cellStaticProps.className = cssClass;
-        cellProps = (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) });
+        actualTdProps = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
     } else {
-        cellProps = (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) });
+        actualTdProps = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
     }
-    if (options.headerCssClass) {
-        headerProps.className = options.headerCssClass;
-    }
-
-    if (options.textAlign) {
-        cellStaticProps.style = { ...cellStaticProps.style, textAlign: options.textAlign };
-        headerProps.style = { ...headerProps.style, textAlign: options.textAlign };
+    if (headerCssClass) {
+        headerProps.className = headerCssClass;
     }
 
     debuglog('getCellAndHeaderProps', options);
-    return { cellProps, headerProps };
+    return { tdProps: actualTdProps, headerProps };
 
 }
 
