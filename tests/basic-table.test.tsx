@@ -44,7 +44,7 @@ describe('basic tests',
         test('Render plain table with custom cellComponent', () => {
 
             const columns2 = columns.map(c => ({ ...c }));
-            columns2[0].cellComponent = p => <span>{p.row.name}</span>;
+            columns2[0].tdComponent = p => <span>{p.row.name}</span>;
 
             const component = render(
                 // tslint:disable-next-line:jsx-no-lambda

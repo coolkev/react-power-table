@@ -1765,1151 +1765,1113 @@ exports[`examples tests example Basic 1`] = `
 `;
 
 exports[`examples tests example Checkboxes 1`] = `
-<table>
-  <thead>
-    <tr>
-      <th
-        style="text-align:left;white-space:nowrap"
-      >
-        <input
-          type="checkbox"
-        />
-      </th>
-      <th
-        style="cursor:pointer;text-align:left;white-space:nowrap"
-      >
-        <div
-          style="padding-right:15px;position:relative"
+Array [
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <input
+    type="checkbox"
+  />,
+  <table>
+    <thead>
+      <tr>
+        <th
+          style="text-align:left;white-space:nowrap"
         >
           <span>
-            number
+            checked
           </span>
-           
-          <span
-            class="sort-asc"
-            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
-          />
-        </div>
-      </th>
-      <th
-        style="cursor:pointer;text-align:left;white-space:nowrap"
-      >
-        <div>
-          <span>
-            name
-          </span>
-        </div>
-      </th>
-      <th
-        style="cursor:pointer;text-align:left;white-space:nowrap"
-      >
-        <div>
-          <span>
-            party
-          </span>
-        </div>
-      </th>
-      <th
-        style="cursor:pointer;text-align:left;white-space:nowrap"
-      >
-        <div>
-          <span>
-            birth_year
-          </span>
-        </div>
-      </th>
-      <th
-        style="cursor:pointer;text-align:left;white-space:nowrap"
-      >
-        <div>
-          <span>
-            death_year
-          </span>
-        </div>
-      </th>
-      <th
-        style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
-      >
-        <div
-          style="padding-right:15px"
+        </th>
+        <th
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
-          <span>
-            took_office
-          </span>
-        </div>
-      </th>
-      <th
-        style="cursor:pointer;text-align:left;white-space:nowrap"
-      >
-        <div>
-          <span>
-            left_office
-          </span>
-        </div>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          1
-        </div>
-      </td>
-      <td>
-        <div>
-          George Washington
-        </div>
-      </td>
-      <td>
-        <div>
-          No Party
-        </div>
-      </td>
-      <td>
-        <div>
-          1732
-        </div>
-      </td>
-      <td>
-        <div>
-          1799
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+          <div
+            style="padding-right:15px;position:relative"
+          >
+            <span>
+              number
+            </span>
+             
+            <span
+              class="sort-asc"
+              style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
+            />
+          </div>
+        </th>
+        <th
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
           <div>
-            1789-04-30
+            <span>
+              name
+            </span>
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1797-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          2
-        </div>
-      </td>
-      <td>
-        <div>
-          John Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Federalist
-        </div>
-      </td>
-      <td>
-        <div>
-          1735
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </th>
+        <th
+          style="cursor:pointer;text-align:left;white-space:nowrap"
         >
+          <div>
+            <span>
+              party
+            </span>
+          </div>
+        </th>
+        <th
+          style="cursor:pointer;text-align:left;white-space:nowrap"
+        >
+          <div>
+            <span>
+              birth_year
+            </span>
+          </div>
+        </th>
+        <th
+          style="cursor:pointer;text-align:left;white-space:nowrap"
+        >
+          <div>
+            <span>
+              death_year
+            </span>
+          </div>
+        </th>
+        <th
+          style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
+        >
+          <div
+            style="padding-right:15px"
+          >
+            <span>
+              took_office
+            </span>
+          </div>
+        </th>
+        <th
+          style="cursor:pointer;text-align:left;white-space:nowrap"
+        >
+          <div>
+            <span>
+              left_office
+            </span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div>
+            1
+          </div>
+        </td>
+        <td>
+          <div>
+            George Washington
+          </div>
+        </td>
+        <td>
+          <div>
+            No Party
+          </div>
+        </td>
+        <td>
+          <div>
+            1732
+          </div>
+        </td>
+        <td>
+          <div>
+            1799
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
+        >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1789-04-30
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1797-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1801-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          3
-        </div>
-      </td>
-      <td>
-        <div>
-          Thomas Jefferson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1743
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            2
+          </div>
+        </td>
+        <td>
+          <div>
+            John Adams
+          </div>
+        </td>
+        <td>
+          <div>
+            Federalist
+          </div>
+        </td>
+        <td>
+          <div>
+            1735
+          </div>
+        </td>
+        <td>
+          <div>
+            1826
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1797-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1801-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1809-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          4
-        </div>
-      </td>
-      <td>
-        <div>
-          James Madison
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1751
-        </div>
-      </td>
-      <td>
-        <div>
-          1836
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            3
+          </div>
+        </td>
+        <td>
+          <div>
+            Thomas Jefferson
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic-Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1743
+          </div>
+        </td>
+        <td>
+          <div>
+            1826
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1801-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1809-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1817-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          5
-        </div>
-      </td>
-      <td>
-        <div>
-          James Monroe
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1758
-        </div>
-      </td>
-      <td>
-        <div>
-          1831
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            4
+          </div>
+        </td>
+        <td>
+          <div>
+            James Madison
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic-Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1751
+          </div>
+        </td>
+        <td>
+          <div>
+            1836
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1809-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1817-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1825-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          6
-        </div>
-      </td>
-      <td>
-        <div>
-          John Quincy Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1767
-        </div>
-      </td>
-      <td>
-        <div>
-          1848
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            5
+          </div>
+        </td>
+        <td>
+          <div>
+            James Monroe
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic-Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1758
+          </div>
+        </td>
+        <td>
+          <div>
+            1831
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1817-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1825-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1829-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          7
-        </div>
-      </td>
-      <td>
-        <div>
-          Andrew Jackson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1767
-        </div>
-      </td>
-      <td>
-        <div>
-          1845
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            6
+          </div>
+        </td>
+        <td>
+          <div>
+            John Quincy Adams
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic-Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1767
+          </div>
+        </td>
+        <td>
+          <div>
+            1848
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1825-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1829-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1837-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          8
-        </div>
-      </td>
-      <td>
-        <div>
-          Martin Van Buren
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1782
-        </div>
-      </td>
-      <td>
-        <div>
-          1862
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            7
+          </div>
+        </td>
+        <td>
+          <div>
+            Andrew Jackson
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic
+          </div>
+        </td>
+        <td>
+          <div>
+            1767
+          </div>
+        </td>
+        <td>
+          <div>
+            1845
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1829-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1837-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1841-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          9
-        </div>
-      </td>
-      <td>
-        <div>
-          William Henry Harrison
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1773
-        </div>
-      </td>
-      <td>
-        <div>
-          1841
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            8
+          </div>
+        </td>
+        <td>
+          <div>
+            Martin Van Buren
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic
+          </div>
+        </td>
+        <td>
+          <div>
+            1782
+          </div>
+        </td>
+        <td>
+          <div>
+            1862
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1837-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1841-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1841-04-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          10
-        </div>
-      </td>
-      <td>
-        <div>
-          John Tyler
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1790
-        </div>
-      </td>
-      <td>
-        <div>
-          1862
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            9
+          </div>
+        </td>
+        <td>
+          <div>
+            William Henry Harrison
+          </div>
+        </td>
+        <td>
+          <div>
+            Whig
+          </div>
+        </td>
+        <td>
+          <div>
+            1773
+          </div>
+        </td>
+        <td>
+          <div>
+            1841
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1841-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1841-04-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1845-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          11
-        </div>
-      </td>
-      <td>
-        <div>
-          James K. Polk
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1795
-        </div>
-      </td>
-      <td>
-        <div>
-          1849
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            10
+          </div>
+        </td>
+        <td>
+          <div>
+            John Tyler
+          </div>
+        </td>
+        <td>
+          <div>
+            Whig
+          </div>
+        </td>
+        <td>
+          <div>
+            1790
+          </div>
+        </td>
+        <td>
+          <div>
+            1862
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1841-04-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1845-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1849-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          12
-        </div>
-      </td>
-      <td>
-        <div>
-          Zachary Taylor
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1784
-        </div>
-      </td>
-      <td>
-        <div>
-          1850
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            11
+          </div>
+        </td>
+        <td>
+          <div>
+            James K. Polk
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic
+          </div>
+        </td>
+        <td>
+          <div>
+            1795
+          </div>
+        </td>
+        <td>
+          <div>
+            1849
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1845-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1849-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1850-07-09
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          13
-        </div>
-      </td>
-      <td>
-        <div>
-          Millard Fillmore
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1800
-        </div>
-      </td>
-      <td>
-        <div>
-          1874
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            12
+          </div>
+        </td>
+        <td>
+          <div>
+            Zachary Taylor
+          </div>
+        </td>
+        <td>
+          <div>
+            Whig
+          </div>
+        </td>
+        <td>
+          <div>
+            1784
+          </div>
+        </td>
+        <td>
+          <div>
+            1850
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1849-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1850-07-09
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1853-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          14
-        </div>
-      </td>
-      <td>
-        <div>
-          Franklin Pierce
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1804
-        </div>
-      </td>
-      <td>
-        <div>
-          1869
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            13
+          </div>
+        </td>
+        <td>
+          <div>
+            Millard Fillmore
+          </div>
+        </td>
+        <td>
+          <div>
+            Whig
+          </div>
+        </td>
+        <td>
+          <div>
+            1800
+          </div>
+        </td>
+        <td>
+          <div>
+            1874
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1850-07-09
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1853-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1857-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          15
-        </div>
-      </td>
-      <td>
-        <div>
-          James Buchanan
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1791
-        </div>
-      </td>
-      <td>
-        <div>
-          1868
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            14
+          </div>
+        </td>
+        <td>
+          <div>
+            Franklin Pierce
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic
+          </div>
+        </td>
+        <td>
+          <div>
+            1804
+          </div>
+        </td>
+        <td>
+          <div>
+            1869
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1853-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1857-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1861-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          16
-        </div>
-      </td>
-      <td>
-        <div>
-          Abraham Lincoln
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1809
-        </div>
-      </td>
-      <td>
-        <div>
-          1865
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            15
+          </div>
+        </td>
+        <td>
+          <div>
+            James Buchanan
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic
+          </div>
+        </td>
+        <td>
+          <div>
+            1791
+          </div>
+        </td>
+        <td>
+          <div>
+            1868
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1857-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1861-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1865-04-15
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          17
-        </div>
-      </td>
-      <td>
-        <div>
-          Andrew Johnson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1808
-        </div>
-      </td>
-      <td>
-        <div>
-          1875
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            16
+          </div>
+        </td>
+        <td>
+          <div>
+            Abraham Lincoln
+          </div>
+        </td>
+        <td>
+          <div>
+            Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1809
+          </div>
+        </td>
+        <td>
+          <div>
+            1865
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1861-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1865-04-15
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1869-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          18
-        </div>
-      </td>
-      <td>
-        <div>
-          Ulysses S. Grant
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1822
-        </div>
-      </td>
-      <td>
-        <div>
-          1885
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            17
+          </div>
+        </td>
+        <td>
+          <div>
+            Andrew Johnson
+          </div>
+        </td>
+        <td>
+          <div>
+            Democratic
+          </div>
+        </td>
+        <td>
+          <div>
+            1808
+          </div>
+        </td>
+        <td>
+          <div>
+            1875
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1865-04-15
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1869-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1877-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          19
-        </div>
-      </td>
-      <td>
-        <div>
-          Rutherford B. Hayes
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1822
-        </div>
-      </td>
-      <td>
-        <div>
-          1893
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            18
+          </div>
+        </td>
+        <td>
+          <div>
+            Ulysses S. Grant
+          </div>
+        </td>
+        <td>
+          <div>
+            Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1822
+          </div>
+        </td>
+        <td>
+          <div>
+            1885
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1869-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1877-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1881-03-04
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input
-          type="checkbox"
-        />
-      </td>
-      <td>
-        <div>
-          20
-        </div>
-      </td>
-      <td>
-        <div>
-          James A. Garfield
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1831
-        </div>
-      </td>
-      <td>
-        <div>
-          1881
-        </div>
-      </td>
-      <td
-        style="width:140px;text-align:right"
-      >
-        <div
-          style="margin-right:15px"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            19
+          </div>
+        </td>
+        <td>
+          <div>
+            Rutherford B. Hayes
+          </div>
+        </td>
+        <td>
+          <div>
+            Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1822
+          </div>
+        </td>
+        <td>
+          <div>
+            1893
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1877-03-04
+            </div>
+          </div>
+        </td>
+        <td>
           <div>
             1881-03-04
           </div>
-        </div>
-      </td>
-      <td>
-        <div>
-          1881-09-19
-        </div>
-      </td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td
-        colspan="8"
-      >
-        <table
-          class="form-inline"
-          style="width:100%"
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            20
+          </div>
+        </td>
+        <td>
+          <div>
+            James A. Garfield
+          </div>
+        </td>
+        <td>
+          <div>
+            Republican
+          </div>
+        </td>
+        <td>
+          <div>
+            1831
+          </div>
+        </td>
+        <td>
+          <div>
+            1881
+          </div>
+        </td>
+        <td
+          style="width:140px;text-align:right"
         >
-          <tbody>
-            <tr>
-              <td
-                style="width:33%;font-weight:bold"
-              >
-                44 Records
-              </td>
-              <td
-                style="width:34%;text-align:center"
-              >
-                <a
-                  class="glyphicon glyphicon-fast-backward"
-                  href="#"
-                  style="text-decoration:none;color:silver;cursor:default"
-                />
-                 
-                <a
-                  class="glyphicon glyphicon-backward"
-                  href="#"
-                  style="text-decoration:none;color:silver;cursor:default"
-                />
-                 
-                <span>
-                  Page  
-                  <span>
-                    <input
-                      class="form-control input-sm"
-                      style="width:60px"
-                      type="text"
-                      value="1"
-                    />
-                  </span>
-                    of 3
-                </span>
-                 
-                <a
-                  class="glyphicon glyphicon-forward"
-                  href="#"
-                  style="text-decoration:none"
-                />
-                 
-                <a
-                  class="glyphicon glyphicon-fast-forward"
-                  href="#"
-                  style="text-decoration:none"
-                />
-              </td>
-              <td
-                style="width:33%;text-align:right"
-              >
-                Show: 
-                <select
-                  class="form-control input-sm"
-                  style="width:80px"
+          <div
+            style="margin-right:15px"
+          >
+            <div>
+              1881-03-04
+            </div>
+          </div>
+        </td>
+        <td>
+          <div>
+            1881-09-19
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td
+          colspan="8"
+        >
+          <table
+            class="form-inline"
+            style="width:100%"
+          >
+            <tbody>
+              <tr>
+                <td
+                  style="width:33%;font-weight:bold"
                 >
-                  <option
-                    value="10"
+                  44 Records
+                </td>
+                <td
+                  style="width:34%;text-align:center"
+                >
+                  <a
+                    class="glyphicon glyphicon-fast-backward"
+                    href="#"
+                    style="text-decoration:none;color:silver;cursor:default"
+                  />
+                   
+                  <a
+                    class="glyphicon glyphicon-backward"
+                    href="#"
+                    style="text-decoration:none;color:silver;cursor:default"
+                  />
+                   
+                  <span>
+                    Page  
+                    <span>
+                      <input
+                        class="form-control input-sm"
+                        style="width:60px"
+                        type="text"
+                        value="1"
+                      />
+                    </span>
+                      of 3
+                  </span>
+                   
+                  <a
+                    class="glyphicon glyphicon-forward"
+                    href="#"
+                    style="text-decoration:none"
+                  />
+                   
+                  <a
+                    class="glyphicon glyphicon-fast-forward"
+                    href="#"
+                    style="text-decoration:none"
+                  />
+                </td>
+                <td
+                  style="width:33%;text-align:right"
+                >
+                  Show: 
+                  <select
+                    class="form-control input-sm"
+                    style="width:80px"
                   >
-                    10
-                  </option>
-                  <option
-                    selected=""
-                    value="20"
-                  >
-                    20
-                  </option>
-                  <option
-                    value="50"
-                  >
-                    50
-                  </option>
-                  <option
-                    value="100"
-                  >
-                    100
-                  </option>
-                  <option
-                    value="500"
-                  >
-                    500
-                  </option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+                    <option
+                      value="10"
+                    >
+                      10
+                    </option>
+                    <option
+                      selected=""
+                      value="20"
+                    >
+                      20
+                    </option>
+                    <option
+                      value="50"
+                    >
+                      50
+                    </option>
+                    <option
+                      value="100"
+                    >
+                      100
+                    </option>
+                    <option
+                      value="500"
+                    >
+                      500
+                    </option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tfoot>
+  </table>,
+]
 `;
 
 exports[`examples tests example Custom Row 1`] = `
@@ -2991,10 +2953,7 @@ exports[`examples tests example Custom Row 1`] = `
     </tr>
   </thead>
   <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           1
@@ -3043,12 +3002,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           2
@@ -3097,12 +3051,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           3
@@ -3151,12 +3100,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           4
@@ -3205,12 +3149,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           5
@@ -3259,12 +3198,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           6
@@ -3313,12 +3247,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           7
@@ -3367,12 +3296,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           8
@@ -3421,12 +3345,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           9
@@ -3475,12 +3394,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           10
@@ -3529,12 +3443,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           11
@@ -3583,12 +3492,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           12
@@ -3637,12 +3541,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           13
@@ -3691,12 +3590,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           14
@@ -3745,12 +3639,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           15
@@ -3799,12 +3688,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           16
@@ -3853,12 +3737,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           17
@@ -3907,12 +3786,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           18
@@ -3961,12 +3835,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           19
@@ -4015,12 +3884,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           20
@@ -4069,12 +3933,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           21
@@ -4123,12 +3982,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           22
@@ -4177,12 +4031,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           23
@@ -4231,12 +4080,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           24
@@ -4285,12 +4129,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           25
@@ -4339,12 +4178,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           26
@@ -4393,12 +4227,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           27
@@ -4447,12 +4276,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           28
@@ -4501,12 +4325,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           29
@@ -4555,12 +4374,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           30
@@ -4609,12 +4423,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           31
@@ -4663,12 +4472,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           32
@@ -4717,12 +4521,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           33
@@ -4771,12 +4570,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           34
@@ -4825,12 +4619,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           35
@@ -4879,12 +4668,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           36
@@ -4933,12 +4717,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           37
@@ -4987,12 +4766,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           38
@@ -5041,12 +4815,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           39
@@ -5093,12 +4862,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           40
@@ -5147,12 +4911,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           41
@@ -5199,12 +4958,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           42
@@ -5251,12 +5005,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:"
-    >
+    <tr>
       <td>
         <div>
           43
@@ -5303,12 +5052,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr
-      class="tr-test"
-      style="background-color:silver"
-    >
+    <tr>
       <td>
         <div>
           44

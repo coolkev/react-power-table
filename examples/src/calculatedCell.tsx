@@ -1,15 +1,15 @@
 ﻿import * as React from 'react';
 import { sampledata, President } from './shared';
-import { ReactPowerTable, Column, TableRowComponentProps, withInternalSorting, CellProps, withInternalPaging } from '../../src/';
+import { ReactPowerTable, Column, withInternalSorting, withInternalPaging, RowComponentProps, ValueComponentProps, PowerTableProps } from '../../src/';
 
 //const Table = ReactPowerTable;
-const Table = withInternalSorting(withInternalPaging(ReactPowerTable));
+const Table = (withInternalSorting(ReactPowerTable as any as React.ComponentClass<PowerTableProps<President>>));
 
-const rows = sampledata;
+let rows = sampledata;
 
-// for (let x = 1; x <= 2; x++) {
-//         rows = rows.concat(sampledata.map(m => ({ ...m, number: m.number + (54 * x) })));
-// }
+for (let x = 1; x <= 1; x++) {
+        rows = rows.concat(sampledata.map(m => ({ ...m, number: m.number + (44 * x) })));
+}
 
 export class CalculatedCellExample extends React.Component<{}, { nameHyperlink: boolean, partyBold: boolean, yearBold: boolean, counter: number, tableClassName: string }>  {
 
@@ -35,25 +35,23 @@ export class CalculatedCellExample extends React.Component<{}, { nameHyperlink: 
                 this.columns = [
                         { field: m => m.number },
                         {
-                                field: m => m.president, headerText: 'name', cellComponent: (v) => {
+                                field: m => m.president, headerText: 'name', valueComponent: (v) => {
                                         return v.nameHyperlink ? <a href="#">{v.children}</a> : v.children;
                                 },
                                 includeExtraCellProps: true
                         } as Column<President, {}, { nameHyperlink?: boolean }>,
                         {
                                 field: m => m.party,
-                                cellComponent: (v: CellProps<President> & { partyBold: boolean }) => {
-                                        return v.partyBold ? <b>{v.children}</b> : <div>{v.children}</div>;
-                                },
-                                cellComponentProps: v => ({ ...v, partyBold: this.state.partyBold }),
+                                valueComponent: (v) => {
+                                        return this.state.partyBold ? <b>{v.children}</b> : <div>{v.children}</div>;
+                                }
                         } as Column<President>,
                         {
-                                field: m => m.birth_year, cellComponent: (v) => {
+                                field: m => m.birth_year, valueComponent: (v) => {
                                         return this.state.yearBold ? <b>{v.children}</b> : <div>{v.children}</div>;
-                                },
-                                pure: false
+                                }
                         } as Column<President>,
-                        { field: m => m.death_year, tdProps: { style: {color: 'red'}} },
+                        { field: m => m.death_year, tdAttributes: { style: { color: 'red' } } },
                         { field: m => m.took_office, textAlign: 'right', width: 140 },
                         { field: m => m.left_office },
 
@@ -78,11 +76,11 @@ export class CalculatedCellExample extends React.Component<{}, { nameHyperlink: 
                 this.setState(prev => ({ tableClassName: prev.tableClassName === 'table' ? 'table table-striped' : 'table' }));
         }
 
-        tableRowComponent(props: TableRowComponentProps<President>) {
-                const rowClassName = props.row.party === 'Republican' ? 'bg-danger' : (props.row.party === 'Democratic' ? 'bg-primary' : '');
-                const { columns, row, extraProps, ...rest } = props;
-                return <tr {...rest} className={rowClassName} />;
-        }
+        // tableRowComponent(props: RowComponentProps<President>) {
+        //         const rowClassName = props.row.party === 'Republican' ? 'bg-danger' : (props.row.party === 'Democratic' ? 'bg-primary' : '');
+        //         const { columns, row, ...rest } = props;
+        //         return <tr {...rest} className={rowClassName} />;
+        // }
         render() {
 
                 const { nameHyperlink, partyBold, yearBold, counter, tableClassName } = this.state;
@@ -112,7 +110,9 @@ export class CalculatedCellExample extends React.Component<{}, { nameHyperlink: 
                                         extraCellProps={{ nameHyperlink }}
                                         sorting={{ column: 'number' }}
                                         tableClassName={tableClassName}
-                                        tableRowComponent={this.tableRowComponent}
+                                        //rowComponent={this.tableRowComponent}
+                                        // tslint:disable-next-line:jsx-no-lambda
+                                        rowHtmlAttributes={p => ({ className: p.row.party === 'Republican' ? 'bg-danger' : (p.row.party === 'Democratic' ? 'bg-primary' : '') })}
                                 />
 
                         </div>

@@ -9,10 +9,10 @@ import { InternalPagingSortingExample } from './internal-paging-sorting';
 import { ExternalPagingExample } from './external-paging';
 import { ExternalPagingSortingExample } from './external-paging-sorting';
 
-import { CheckboxExample } from './checkboxes';
-import { FiltersExample } from './filters';
-import { HideColumnsExample } from './hideColumns';
-import { ServerDataExample } from './server-data';
+// import { CheckboxExample } from './checkboxes';
+// import { FiltersExample } from './filters';
+// import { HideColumnsExample } from './hideColumns';
+// import { ServerDataExample } from './server-data';
 
 interface ExamplesProps {
     selected: string;
@@ -20,7 +20,7 @@ interface ExamplesProps {
 }
 
 import 'react-select/dist/react-select.css';
-import { CustomRowExample } from './CustomRow';
+//import { CustomRowExample } from './CustomRow';
 import { CalculatedCellExample } from './calculatedCell';
 
 ReactPowerTable.defaultProps.tableClassName = 'table';
@@ -35,12 +35,12 @@ const examples = {
     'External Sorting': ExternalSortingExample,
     'External Paging': ExternalPagingExample,
     'External Paging/Sorting': ExternalPagingSortingExample,
-    'Checkboxes': CheckboxExample,
+    //'Checkboxes': CheckboxExample,
     'Calculated Cell': CalculatedCellExample,
-    'Filters': FiltersExample,
-    'Hide Columns': HideColumnsExample,
-    'Custom Row': CustomRowExample,
-    'Server Data': ServerDataExample
+    //'Filters': FiltersExample,
+    //'Hide Columns': HideColumnsExample,
+    //'Custom Row': CustomRowExample,
+    //'Server Data': ServerDataExample
 
 };
 class Examples extends React.Component<ExamplesProps, never> {

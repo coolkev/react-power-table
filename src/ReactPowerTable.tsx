@@ -1,168 +1,74 @@
 ﻿/** @module react-power-table */
 import * as React from 'react';
-import { transformColumn } from './Column';
-import { debuglog, makePure, shallowEqual } from './utils';
+import { getColumnCore } from './Column';
+import { debuglog, shallowEqual } from './utils';
 
-export const DataRowBuilderComponent: React.SFC<DataRowBuilderProps<any>> = (props) => {
-
-    const { row, columns, rowComponent: RowComponent, children, rowProps, ...extraCellProps } = props;
-
-    debuglog('DataRowComponent render', props);
-    const cells = columns.map((col) => {
-
-        const value = col.field(row);
-        const formattedValue = col.formatter ? col.formatter(value, row) : value;
-
-        const { includeExtraCellProps, tdComponent: TdComponent, cellComponent } = col;
-
-        const rowValueProps: CellProps = includeExtraCellProps ? { row, column: col, children: formattedValue, value, ...extraCellProps } : { row, column: col, children: formattedValue, value };
-
-        const tdProps = col.tdProps(rowValueProps);
-
-        const valueComponentProps = col.cellComponentProps ? col.cellComponentProps(rowValueProps) : rowValueProps;
-
-        return <TdComponent key={col.key} cellProps={tdProps} valueComponent={cellComponent} {...valueComponentProps} />;
-
-    });
-
-    return (
-        <RowComponent columns={columns} row={row} extraProps={extraCellProps}>
-            {cells}
-        </RowComponent>
-    );
-
-};
-DataRowBuilderComponent.displayName = 'DataRowBuilderComponent';
-
-export const DataRowBuilderPureComponent = makePure(DataRowBuilderComponent);
-
-export const HeaderRowBuilderComponent: React.ComponentType<HeaderRowBuilderProps> = (props) => {
-
-    const { columns, tableHeaderRowComponent: TableHeadRow, extraCellProps } = props;
-
-    debuglog('HeaderRowComponent render', props);
-
-    const header = columns.map((c) => {
-        const TableHeadCell = c.thComponent;
-        const TableHeaderCellValueComponent = c.headerComponent;
-
-        return <TableHeadCell key={c.key} column={c} extraProps={extraCellProps} {...c.thProps}><TableHeaderCellValueComponent column={c} extraProps={extraCellProps} /></TableHeadCell>;
-
-    });
-
-    return <TableHeadRow>{header}</TableHeadRow>;
-
-};
-
-HeaderRowBuilderComponent.displayName = 'HeaderRowBuilderComponent';
-export const HeaderRowBuilderPureComponent = makePure(HeaderRowBuilderComponent, { deeperCompareProps: 'extraCellProps' });
-
-/**
- * Primary table component
- */
-export class ReactPowerTable extends React.Component<GridProps<any>, never> {
+export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Component<PowerTableProps<TRow, TExtraProps>, never> {
 
     static displayName = 'ReactPowerTable';
 
-    static defaultProps: Partial<GridProps<any>> = {
+    static defaultProps: Partial<PowerTableProps> = {
         tableComponent: (props) => <table {...props} />,
-        tableHeaderComponent: (props) => <thead {...props} />,
-        tableHeaderRowComponent: (props) => <tr {...props} />,
-        tableHeaderCellComponent: (props) => {
-            const { children, column, extraProps, ...rest } = props;
-            debuglog('defaultProps tableHeaderCellComponent render', props);
-            return <th {...rest}>{children}</th>;
+        headComponent: ({ children }) => <thead children={children} />,
+        headRowComponent: ({ children, }) => <tr children={children} />,
+        headCellComponent: (props) => {
+            const { column, children, ...rest } = props;
+            //const attributes = column.headCellAttributes;
+            //debuglog('defaultProps tableHeaderCellComponent render', props);
+            return <th children={children} {...rest} />;
         },
-        tableHeaderCellValueComponent: (props) => {
-            //const { children, column, extraProps, ...rest } = props;
-            debuglog('defaultProps tableHeaderCellValueComponent render', props);
-            //debuglog('defaultProps thComponent render', props);
-            return <span>{props.column.headerText}</span>;
-        },
-        tableBodyComponent: (props) => <tbody>{props.children}</tbody>,
-        tableRowComponent: (props) => {
-            const { row, columns, extraProps, ...rest } = props;
-            return <tr{...rest} />;
-        },
-        defaultTdComponent: ((props) => {
-            debuglog('tableCellComponent render', props);
-            const { valueComponent: ValueComponent, cellProps, ...rest } = props;
 
-            return <td{...cellProps}><ValueComponent {...rest} /></td>;
-        }),
-        defaultCellComponent: ((props) => {
-            debuglog('tableCellValueComponent render', props);
-            return <div>{props.children}</div>;
-        }),
+        bodyComponent: ({ children }) => {
+
+            return <tbody children={children} />;
+        },
+        rowComponent: (props) => {
+            const { children, htmlAttributes } = props;
+
+            return <tr children={children} {...htmlAttributes} />;
+        },
+        // cellWrapper: ((props) => {
+        //     debuglog('cellWrapper render', props);
+        //     const { row, column, value, ...rest } = props;
+        //     return <td {...rest} />;
+        // }),
+        // cellComponent: ((props) => {
+        //     debuglog('tableCellComponent render', props);
+        //     const { children, htmlAttributes } = props;
+        //     return <td children={children} {...htmlAttributes} />;
+        // }),
+        tdComponent: ({ children, htmlAttributes }) => <td children={children} {...htmlAttributes} />,
+
+        // valueComponent: ((props) => {
+        //     debuglog('tableCellValueComponent render', props);
+        //     return <div>{props.children}</div>;
+        // }),
         //dataRowBuilder: DataRowBuilderPureComponent,
-        headerRowBuilder: HeaderRowBuilderComponent
+        //headerRowBuilder: HeaderRowBuilderComponent
     };
 
     //private originalColumns: Array<Column | string>;
-    private columns: Array<StrictColumn<any>>;
-    private visibleColumns: Array<StrictColumn<any>>;
+    private columns: Array<StrictColumn<TRow, {}, TExtraProps>>;
+    private visibleColumns: Array<StrictColumn<TRow>>;
 
-    private getRowKey: (row: any) => string | number;
+    private getRowKey: (row: TRow) => string | number;
 
-    constructor(props: GridProps<any>) {
+    constructor(props: PowerTableProps<TRow, TExtraProps>) {
         super(props);
         debuglog('constructor', props);
 
         this.transformProps(props);
-
+        this.getRowKey = this.getRowKey.bind(this);
     }
 
-    componentWillReceiveProps(nextProps: GridProps<any>) {
+    componentWillReceiveProps(nextProps: PowerTableProps<TRow, TExtraProps>) {
         debuglog('componentWillReceiveProps', nextProps);
 
         this.transformProps(nextProps, this.props);
 
     }
 
-    // shouldComponentUpdate(nextProps: GridProps<any>) {
-
-    //     const equal = shallowEqual(this.props, nextProps, 'extraCellProps');
-
-    //     if (equal) {
-    //         const equal2 = shallowEqual(this.props.extraCellProps, nextProps.extraCellProps);
-
-    //         if (!equal2) {
-    //             debuglog('shouldComponentUpdate returned true because extraCellProps changed', this.props.extraCellProps, nextProps.extraCellProps);
-    //             return true;
-    //         }
-    //     }
-    //     // if (result) {
-    //     //     const fields = distinct(Object.keys(this.props).concat(Object.keys(nextProps)));
-    //     //     for (const f of fields) {
-
-    //     //         const v1 = this.props[f];
-    //     //         const v2 = nextProps[f];
-
-    //     //         if (Array.isArray(v1) || Array.isArray(v2)) {
-    //     //             if (v1.length !== v2.length) {
-    //     //                 debuglog('returned true arrays different length field: ' + f, v1, v2);
-    //     //             }
-    //     //             for (let x = 0; x < v1.length; x++) {
-    //     //                 if (!shallowEqual(v1[x], v2[x])) {
-    //     //                     debuglog('returned true array values changed field: ' + f, v1[x], v2[x]);
-
-    //     //                 }
-    //     //             }
-
-    //     //         } else {
-    //     //             const result2 = shallowEqual(v1, v2);
-
-    //     //             if (!result2) {
-    //     //                 debuglog('returned true ' + f + ' changed', v1, v2);
-    //     //             }
-    //     //         }
-    //     //     }
-
-    //     // }
-
-    //     return !equal;
-    // }
-    private transformColumns(columns: Array<Column<any> | string>): Array<StrictColumn<any>> {
+    private transformColumns(columns: Array<Column<TRow, {}, TExtraProps> | string>): Array<StrictColumn<TRow, {}, TExtraProps>> {
         debuglog('Sorting.transformColumns', columns);
 
         if (this.columns && this.props.columns) {
@@ -173,22 +79,94 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         return columns.map((c) => this.transformColumn(c));
     }
 
-    private transformColumn(column: Column | string): StrictColumn {
+    private transformColumn(options: Column<TRow, {}, TExtraProps> | string): StrictColumn<TRow, {}, TExtraProps> {
 
-        const col = transformColumn(column);
+        debuglog('transformColumn', options);
+
+        const col = typeof options === 'string' ? { fieldName: options } as Column<TRow, {}, TExtraProps> : options;
+
+        //const { cellHtmlAttributes, headCellHtmlAttributes } = getCellAndHeaderProps(col);
+
+        //const valueOptions = {};
+
+        const { cssClass, maxWidth, width, headerCssClass, textAlign, tdAttributes, headCellHtmlAttributes } = col;
+
+        const headerProps = { style: { textAlign: 'left', whiteSpace: 'nowrap', ...(headCellHtmlAttributes && headCellHtmlAttributes.style) }, ...headCellHtmlAttributes };
+
+        const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (tdAttributes) === 'function' ? {} : { ...tdAttributes };
+        const cellPropsFunc = typeof (tdAttributes) === 'function' ? tdAttributes : undefined;
+
+        //var cssClassFunc: (row: T) => string;
+
+        if (width) {
+            cellStaticProps.style = { ...cellStaticProps.style, width };
+            headerProps.style = { ...headerProps.style, width };
+
+        }
+
+        if (maxWidth) {
+            cellStaticProps.style = { ...cellStaticProps.style, maxWidth };
+            headerProps.style = { ...headerProps.style, maxWidth };
+
+        }
+
+        if (textAlign) {
+            cellStaticProps.style = { ...cellStaticProps.style, textAlign };
+            headerProps.style = { ...headerProps.style, textAlign };
+        }
+
+        let actualCellAttributes: ((props: CellComponentProps<TRow, TExtraProps>) => React.HTMLProps<HTMLTableDataCellElement>);
+
+        if (typeof cssClass === 'function') {
+            actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row), className: cssClass(row) }) : (row) => ({ ...cellStaticProps, className: cssClass(row) });
+        } else if (typeof (cssClass) === 'string') {
+            cellStaticProps.className = cssClass;
+            actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
+        } else {
+            actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
+        }
+        if (headerCssClass) {
+            headerProps.className = headerCssClass;
+        }
+
+        const core = getColumnCore(options);
 
         return {
-            tdComponent: col.pure !== false ? makePure(this.props.defaultTdComponent) : this.props.defaultTdComponent,
-            cellComponent: col.pure !== false ? makePure(this.props.defaultCellComponent) : this.props.defaultCellComponent,
             includeExtraCellProps: this.props.alwaysIncludeExtraCellProps,
-            thComponent: this.props.tableHeaderCellComponent,
-            headerComponent: this.props.tableHeaderCellValueComponent,
-            ...col
-        };
+            value: { ...this.props.value, ...col.value },
+            cell: { ...this.props.cell, ...col.cell },
+            ...col,
+            ...core,
+            tdAttributes,
+            headCellHtmlAttributes
+        } as StrictColumn<TRow, {}, TExtraProps>;
+
+        //const col = transformColumn(column);
+
+        // if (!col.value) {
+        //     col.value
+        // }
+        // if (!col.valueComponent) {
+        //     col.valueComponent = makePure(this.props.valueComponent);
+
+        //     if (!col.cellComponent) {
+        //         col.cellComponent = makePure(this.props.cellComponent, { exclude: 'children' as any });
+        //     }
+        // }
+
+        // if (!col.cellComponent) {
+        //     col.cellComponent = this.props.cellComponent;
+        // }
+
+        // return {
+        //     includeExtraCellProps: this.props.alwaysIncludeExtraCellProps,
+        //     headCellComponent: this.props.headCellComponent,
+        //     ...col
+        // };
 
     }
 
-    transformProps(newProps: GridProps<any>, oldProps?: GridProps<any>) {
+    transformProps(newProps: PowerTableProps<TRow, TExtraProps>, oldProps?: PowerTableProps<TRow, TExtraProps>) {
 
         debuglog('transformProps', { newProps, oldProps });
 
@@ -207,72 +185,68 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
         }
 
     }
-    // const FgRed = "\x1b[31m";
-    // const FgGreen = "\x1b[32m";
-    // const Reset = "\x1b[0m";
-
-    // if (changes.length > 0) {
-    //     console.log(FgRed + 'ReactPowerTable.transformProps has changes' + Reset, changes);
-    // }
-    // else {
-    //     console.log(FgGreen + 'ReactPowerTable.transformProps does not have any changes' + Reset);
-
-    // }
-
     render() {
 
-        const { rows,
-            dataRowBuilder,
-            headerRowBuilder: HeaderRowBuilder,
+        const {
+            rows,
+            //dataRowBuilder,
+            headComponent: HeadComponent,
+            headRowComponent: HeadRow,
+            //headCellComponent: HeadCellComponent,
             tableComponent: Table,
-            tableHeaderComponent: TableHead,
-            tableHeaderRowComponent,
-            tableBodyComponent: TableBody,
-            tableRowComponent,
+            bodyComponent: BodyComponent,
+            rowComponent: RowComponent,
+            //tableHeaderComponent: TableHead,
+            //tableHeaderRowComponent,
+            //tableBodyComponent: TableBody,
+            //tableRowComponent,
             tableFooterComponent: TableFoot,
             tableClassName,
             tableProps,
             extraCellProps,
-            rowProps
-    } = this.props;
+            rowHtmlAttributes
+        } = this.props;
 
         const columns = this.columns;
 
         debuglog('ReactPowerTable.render()', this.props);
 
-        const allColumnsPure = columns.every(c => c.pure !== false);
-
-        const DataRowBuilder = dataRowBuilder || (allColumnsPure ? DataRowBuilderPureComponent : DataRowBuilderComponent);
-
-        const dataRows = rows.map((row) => {
-            const key = this.getRowKey(row);
-            const actualRowProps = rowProps && (typeof (rowProps) === 'function' ? rowProps({ row, columns, extraProps: extraCellProps, ...extraCellProps }) : rowProps);
-            debuglog('DataRow map');
-
-            return (
-                <DataRowBuilder key={key} columns={columns} row={row} rowComponent={tableRowComponent} {...extraCellProps} rowProps={actualRowProps} />
-            );
-
-        });
-
         const combinedTableProps = tableClassName ? { ...tableProps, className: tableClassName } : tableProps;
 
-        const headerRow = (
-            <HeaderRowBuilder
-                columns={columns}
-                extraCellProps={extraCellProps}
-                tableHeaderRowComponent={tableHeaderRowComponent}
+        const headerCells = columns.map(c => {
+            const { headCellComponent: HeadCellComponent, headCellHtmlAttributes } = c;
+            return <HeadCellComponent column={c} key={c.key} {...headCellHtmlAttributes}><span>{c.headerText}</span></HeadCellComponent>;
+        });
 
-            />
-        );
+        const dataRows = rows.map(row => {
+            const cells = columns.map(c => {
+                const { tdComponent: CellComponent, key, field, value: valueOptions, formatter, cellHtmlAttributes } = c;
+                const value = field(row);
+                const ValueComponent = valueOptions.component;
+
+                const formattedValue = formatter ? formatter(value, row) : value;
+
+                const cellComponentProps = { ...(c.includeExtraCellProps ? extraCellProps : undefined) as any, row, column: c, value } as CellComponentProps<TRow, TExtraProps>;
+                const htmlAttributes = cellHtmlAttributes(cellComponentProps);
+                return <CellComponent key={key} {...cellComponentProps} htmlAttributes={htmlAttributes}><ValueComponent {...cellComponentProps} children={formattedValue} /></CellComponent>;
+            });
+
+            const rowProps = { ...extraCellProps as any, row, columns } as RowComponentProps<TRow, TExtraProps>;
+            const actualRowHtmlAttributes = rowHtmlAttributes && (typeof (rowHtmlAttributes) === 'function' ? rowHtmlAttributes(rowProps) : rowHtmlAttributes);
+            return <RowComponent key={this.getRowKey(row)} {...rowProps} children={cells} htmlAttributes={actualRowHtmlAttributes} />;
+        });
 
         return (
             <Table {...combinedTableProps }>
-                <TableHead>
-                    {headerRow}
-                </TableHead>
+                <HeadComponent columns={columns}>
+                    <HeadRow columns={columns}>
+                        {headerCells}
+                    </HeadRow>
+                </HeadComponent>
 
-                {TableBody ? <TableBody>{dataRows}</TableBody> : dataRows}
+                <BodyComponent rows={rows} columns={columns}>
+                    {dataRows}
+                </BodyComponent>
 
                 {TableFoot && <TableFoot />}
             </Table >
@@ -282,28 +256,26 @@ export class ReactPowerTable extends React.Component<GridProps<any>, never> {
 
 }
 
-export interface GridProps<T = {}, TExtraProps = {}> {
+export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     /**
      * Columns to display in table
      */
-    columns: Array<Column<T, any, TExtraProps> | string>;
+    columns: Array<Column<TRow, any, TExtraProps> | string>;
 
     /**
      * Field name or function to provide unique key for each column
      */
-    keyColumn: string | ((row: T) => (string | number));
+    keyColumn: string | ((row: TRow) => (string | number));
 
     /**
      * Rows to display in table
      */
-    rows: T[];
+    rows: TRow[];
     //rowProps?: React.HTMLProps<HTMLTableRowElement> | ((row: T) => React.HTMLProps<HTMLTableRowElement>);
 
     loading?: boolean;
 
-    headerRowBuilder?: React.ComponentType<HeaderRowBuilderProps<T>>;
-
-    dataRowBuilder?: React.ComponentType<DataRowBuilderProps<T>>;
+    //dataRowBuilder?: React.ComponentType<DataRowBuilderProps<T>>;
     //components?: GridComponents<T>
 
     /** Customize the <table> tag. children are passed to props and must be rendered  */
@@ -314,35 +286,41 @@ export interface GridProps<T = {}, TExtraProps = {}> {
     tableClassName?: string;
 
     /** Customize the <thead> tag. children are passed to props and must be rendered  */
-    tableHeaderComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
+    headComponent?: HeadComponentType<TRow, TExtraProps>;
 
     /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
-    tableHeaderRowComponent?: React.ComponentType<React.HTMLProps<HTMLTableRowElement>>;
+    headRowComponent?: HeadRowComponentType<TRow, TExtraProps>;
 
     /** Customize the <th> tag that appears in <thead> > <tr>. children are passed to props and must be rendered
      * header cell can also be customize per column using Column.headerCellProps
      */
-    tableHeaderCellComponent?: React.ComponentType<HeaderComponentProps<T> & React.HTMLProps<HTMLTableHeaderCellElement>>;
+    headCellComponent?: HeadCellComponentType<TRow, TExtraProps>;
 
     /** Customize the component tag that renders in <thead> > <tr> > <th>.
      */
-    tableHeaderCellValueComponent?: React.ComponentType<HeaderComponentProps<T>>;
+    //tableHeaderCellValueComponent?: React.ComponentType<HeaderComponentProps<T>>;
 
     /** Customize the <tbody> tag. children are passed to props and must be rendered  */
-    tableBodyComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
+    bodyComponent?: BodyComponentType<TRow, TExtraProps>;
 
     /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
-    tableRowComponent?: React.ComponentType<TableRowComponentProps<T>> | React.SFC<TableRowComponentProps<T>>;
+    rowComponent?: RowComponentType<TRow, TExtraProps>;
 
-    rowProps?: StaticOrDynamicProps<TableRowComponentProps<T>, React.HTMLProps<HTMLTableRowElement>>;
+    rowHtmlAttributes?: StaticOrDynamicProps<RowComponentProps<TRow>, React.HTMLProps<HTMLTableRowElement>>;
     /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
-     * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps  *
+     * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps
      */
-    defaultTdComponent?: React.ComponentType<TdComponentProps<T, TExtraProps>>;
+    cell?: CellOptions<TRow, TExtraProps>;
 
-    /** This is the default cell value component that will be used if column specific cellComponent is not provided
+    //cellComponent?: CellComponentType<TRow, TExtraProps>;
+
+    //cellWrapper?: CellWrapperType<T, TExtraProps>;
+
+    /** Customize the html that appears in <tbody> > <tr> > <td>. children are passed to props and must be rendered
+     * value can also be customize per column using Column.valueComponent
      */
-    defaultCellComponent?: React.ComponentType<CellProps<T>>;
+    //valueComponent?: ValueComponentType<T, TExtraProps>;
+    value?: ValueOptions<TRow, TExtraProps>;
 
     tableFooterComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
 
@@ -354,6 +332,9 @@ export interface GridProps<T = {}, TExtraProps = {}> {
     alwaysIncludeExtraCellProps?: boolean;
 }
 
+export type StaticOrDynamicProps<TIn, TOut> = TOut | ((props: TIn) => TOut);
+export type DynamicProps<TIn, TOut> = ((props: TIn) => TOut);
+
 export interface StrictColumn<TRow = {}, TValue = {}, TExtraProps = {}> {
 
     key: string | number;
@@ -363,48 +344,43 @@ export interface StrictColumn<TRow = {}, TValue = {}, TExtraProps = {}> {
 
     headerText: string;
 
-    tdComponent?: React.ComponentType<CellProps<TRow, TValue, TExtraProps>>;
-    tdProps: DynamicProps<CellProps<TRow, TValue, TExtraProps>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
-
     formatter: (value: any, row?: TRow) => any;
-    cellComponent?: React.ComponentType<Partial<CellProps<TRow, TValue, TExtraProps>>>;
-    cellComponentProps: (props: CellProps<TRow, TValue, TExtraProps>) => any;
-    headerComponent?: React.ComponentType<HeaderComponentProps<TRow>>;
-    thComponent?: React.ComponentType<HeaderComponentProps<TRow> & React.ThHTMLAttributes<HTMLTableHeaderCellElement>>;
 
-    //thProps: React.HTMLProps<HTMLTableHeaderCellElement>;
-    thProps: React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
+    headCellComponent: HeadCellComponentType<TRow, TExtraProps>;
+    headCellHtmlAttributes: React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
 
-    pure?: boolean;
+    tdComponent: CellComponentType<TRow, TExtraProps>;
+    tdHtmlAttributes: DynamicProps<CellComponentProps<TRow, TExtraProps>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
+
+    //valueComponent: ValueComponentType<TRow, TExtraProps>;
+
     visible?: boolean;
 
     includeExtraCellProps?: boolean;
 
+    value?: ValueOptions<TRow, TExtraProps>;
 }
-
-export type StaticOrDynamicProps<TIn, TOut> = TOut | ((props: TIn) => TOut);
-export type DynamicProps<TIn, TOut> = ((props: TIn) => TOut);
 
 export interface Column<TRow = {}, TValue = {}, TExtraProps = {}> {
     key?: string | number;
     formatter?: (value: TValue, row?: TRow) => any;
-    cellComponent?: React.ComponentType<CellProps<TRow, TValue, TExtraProps>>;
-    cellComponentProps?: (props: CellProps<TRow, TValue, TExtraProps>) => CellProps<TRow, TValue, TExtraProps>;
-    tdComponent?: React.ComponentType<CellProps<TRow, TValue, TExtraProps>>;
-    tdProps?: StaticOrDynamicProps<CellProps<TRow, TValue, TExtraProps>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
 
-    headerComponent?: React.ComponentType<HeaderComponentProps<TRow>>;
-    thComponent?: React.ComponentType<HeaderComponentProps<TRow> & React.HTMLProps<HTMLTableHeaderCellElement>>;
+    headCellComponent?: HeadCellComponentType<TRow, TExtraProps>;
+    headCellHtmlAttributes?: React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
 
-    thProps?: React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
+    //tdComponent?: CellComponentType<TRow, TExtraProps>;
+    tdAttributes?: StaticOrDynamicProps<CellComponentProps<TRow, TExtraProps>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
+
+    valueComponent?: ValueComponentType<TRow, TExtraProps>;
+
+    valueProps?: ValueComponentProps<TRow, TExtraProps>;
 
     field?: ((row: TRow) => TValue);
     fieldName?: string;
     headerText?: string;
-    //cellProps?: React.HTMLProps<HTMLTableCellElement> | ((props: CellProps<TRow, TValue, TExtraProps>) => React.HTMLProps<HTMLTableCellElement>);
 
     headerCssClass?: string;
-    cssClass?: ((props: CellProps<TRow, TValue, TExtraProps>) => string) | string;
+    cssClass?: ((props: CellComponentProps<TRow, TExtraProps>) => string) | string;
     width?: number;
     maxWidth?: number;
     textAlign?: string;
@@ -418,92 +394,61 @@ export interface Column<TRow = {}, TValue = {}, TExtraProps = {}> {
      * Set to false if you are using a custom cellComponent and relying on state or other data not passed into the cellProps
      * default: true
      */
-    pure?: boolean;
+    //pure?: boolean;
 
     /**
      * Set to true to pass the extraCellProps into the cellComponentProps of each row
      * default: TableProps.alwaysIncludeExtraCellProps
      */
     includeExtraCellProps?: boolean;
-}
 
-export type CellProps<TRow = {}, TValue = {}, TExtraProps = {}> = {
-    row: TRow;
-    column: StrictColumn<TRow, TValue, TExtraProps>;
+    //cell?: CellOptions<TRow, TExtraProps>;
 
-    value: TValue;
-
-    children: React.ReactChild;
-    //extraProps?: TExtraProps;
-
-} & TExtraProps;
-
-//ReactPowerTable.defaultProps.tableHeaderCellComponent.displayName = 'tableHeaderCellComponent';
-
-export type TdComponentProps<T = {}, TExtraProps = {}> = CellProps<T, any, TExtraProps> & {
-    cellProps: React.HTMLProps<HTMLTableCellElement>;
-    valueComponent: React.ComponentType<Partial<CellProps<T, any, TExtraProps>>>;
-
-};
-
-export interface TableRowComponentProps<T = {}, TExtraProps = {}> {
-    columns: Array<StrictColumn<T>>;
-    row: T;
-
-    //rowProps: StaticOrDynamicProps<TableRowComponentProps<T>, React.HTMLProps<HTMLTableRowElement>>;
-    extraProps: TExtraProps;
+    //value?: ValueOptions<TRow, TExtraProps>;
 
 }
 
-export interface DataRowBuilderProps<T = {}> {
-    columns: StrictColumn[];
-    row: T;
-    rowComponent: React.ComponentType<TableRowComponentProps<any>>;
-    //extraCellProps: any;
+export interface ValueOptions<TRow = {}, TExtraProps = {}> {
+    component?: ValueComponentType<TRow, TExtraProps>;
+    props?: (props: ValueComponentProps<TRow, TExtraProps>) => ValueComponentProps<TRow, TExtraProps>;
+    htmlAttributes?: StaticOrDynamicProps<ValueComponentProps<TRow, TExtraProps>, React.HTMLAttributes<HTMLDivElement>>;
 
-    rowProps: React.HTMLAttributes<HTMLTableRowElement>;
-
-    //alwaysIncludeExtraCellProps: boolean;
-    //cells: DataRowCellProps[];
-}
-export interface HeaderRowBuilderProps<T = {}> {
-
-    columns: Array<StrictColumn<T>>;
-    tableHeaderRowComponent: React.ComponentType<React.Props<HTMLTableRowElement>>;
-    extraCellProps: any;
 }
 
-export interface HeaderComponentProps<T = {}, TExtraProps = {}> {
-    column: StrictColumn<T>;
+export interface CellOptions<TRow = {}, TExtraProps = {}> {
+    component?: CellComponentType<TRow, TExtraProps>;
+    props?: (props: CellComponentProps<TRow, TExtraProps>) => CellComponentProps<TRow, TExtraProps>;
+    htmlAttributes?: StaticOrDynamicProps<CellComponentProps<TRow, TExtraProps>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
 
-    extraProps: TExtraProps;
 }
-
 export type HeadComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
     columns: Array<StrictColumn<T, {}, TExtraProps>>;
 
-    rowComponent: React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
+    //rowComponent: React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
 };
+//} & React.HTMLAttributes<HTMLTableSectionElement>;
 export type HeadComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadComponentProps<T, TExtraProps>>;
 
 export type HeadRowComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
     columns: Array<StrictColumn<T, {}, TExtraProps>>;
-
 };
+//} & React.HTMLAttributes<HTMLTableRowElement>;
 export type HeadRowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
 
 export type HeadCellComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
     column: StrictColumn<T, {}, TExtraProps>;
-
-};
+    //};
+} & React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
 export type HeadCellComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadCellComponentProps<T, TExtraProps>>;
 
 export type BodyComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
     rows: T[];
     columns: Array<StrictColumn<T, {}, TExtraProps>>;
 
-    rowComponent: React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
-};
+    //rowComponent: React.ComponentType<RowComponentProps<T, TExtraProps>>;
+
+    //rowKeyFunc: (row: T) => string | number;
+} & React.HTMLAttributes<HTMLTableSectionElement>;
 export type BodyComponentType<T = {}, TExtraProps = {}> = React.ComponentType<BodyComponentProps<T, TExtraProps>>;
 
 export type RowComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
@@ -511,98 +456,35 @@ export type RowComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
     columns: Array<StrictColumn<T, {}, TExtraProps>>;
 
 };
-export type RowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowComponentProps<T, TExtraProps>>;
+export type RowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowComponentProps<T, TExtraProps> & { htmlAttributes: React.HTMLAttributes<HTMLTableRowElement> }>;
 
 export type CellComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
 
     row: T;
     column: StrictColumn<T, {}, TExtraProps>;
 
-    valueComponent: ValueComponentType<T, TExtraProps>;
-};
-export type CellComponentType<T = {}, TExtraProps = {}> = React.ComponentType<CellComponentProps<T, TExtraProps>>;
+    value: any;
 
-export type ValueComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+    //valueComponent: ValueComponentType<T, TExtraProps>;
+};
+//} & React.TdHTMLAttributes<HTMLTableCellElement>;
+export type CellComponentType<T = {}, TExtraProps = {}> = React.ComponentType<CellComponentProps<T, TExtraProps> & { htmlAttributes: React.TdHTMLAttributes<HTMLTableCellElement> }>;
+
+// export type CellWrapperProps<T = {}, TExtraProps = {}> = TExtraProps & {
+//     row: T;
+//     column: StrictColumn<T, {}, TExtraProps>;
+
+//     value: any;
+
+// } & React.TdHTMLAttributes<HTMLTableCellElement>;
+// export type CellWrapperType<T = {}, TExtraProps = {}> = React.ComponentType<CellWrapperProps<T, TExtraProps>>;
+
+export type ValueComponentProps<T = {}, TExtraProps = {}, TValue = {}> = TExtraProps & {
 
     row: T;
     column: StrictColumn<T, {}, TExtraProps>;
+    value: TValue;
 
+    children: any;
 };
 export type ValueComponentType<T = {}, TExtraProps = {}> = React.ComponentType<ValueComponentProps<T, TExtraProps>>;
-
-export interface PowerTableProps<T = {}, TExtraProps = {}> {
-    /**
-     * Columns to display in table
-     */
-    columns: Array<Column<T, any, TExtraProps> | string>;
-
-    /**
-     * Field name or function to provide unique key for each column
-     */
-    keyColumn: string | ((row: T) => (string | number));
-
-    /**
-     * Rows to display in table
-     */
-    rows: T[];
-    //rowProps?: React.HTMLProps<HTMLTableRowElement> | ((row: T) => React.HTMLProps<HTMLTableRowElement>);
-
-    loading?: boolean;
-
-    dataRowBuilder?: React.ComponentType<DataRowBuilderProps<T>>;
-    //components?: GridComponents<T>
-
-    /** Customize the <table> tag. children are passed to props and must be rendered  */
-    tableComponent?: React.ComponentType<React.HTMLProps<HTMLTableElement>>;
-
-    /** Inject custom props into the tableComponent  */
-    tableProps?: React.HTMLProps<HTMLTableElement>;
-    tableClassName?: string;
-
-    /** Customize the <thead> tag. children are passed to props and must be rendered  */
-    headComponent?: HeadComponentType<T, TExtraProps>;
-
-    /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
-    headRowComponent?: HeadRowComponentType<T, TExtraProps>;
-
-    /** Customize the <th> tag that appears in <thead> > <tr>. children are passed to props and must be rendered
-     * header cell can also be customize per column using Column.headerCellProps
-     */
-    headCellComponent?: HeadCellComponentType<T, TExtraProps>;
-
-    /** Customize the component tag that renders in <thead> > <tr> > <th>.
-     */
-    //tableHeaderCellValueComponent?: React.ComponentType<HeaderComponentProps<T>>;
-
-    /** Customize the <tbody> tag. children are passed to props and must be rendered  */
-    bodyComponent?: BodyComponentType<T, TExtraProps>;
-
-    /** Customize the <tr> tag that appears in <thead>. children are passed to props and must be rendered  */
-    rowComponent?: RowComponentType<T, TExtraProps>;
-
-    rowProps?: StaticOrDynamicProps<TableRowComponentProps<T>, React.HTMLProps<HTMLTableRowElement>>;
-    /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
-     * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps
-     */
-    cellComponent?: CellComponentType<T, TExtraProps>;
-
-    /** Customize the html that appears in <tbody> > <tr> > <td>. children are passed to props and must be rendered
-     * value can also be customize per column using Column.valueComponent
-     */
-    valueComponent?: ValueComponentType<T, TExtraProps>;
-
-    //defaultTdComponent?: React.ComponentType<TdComponentProps<T, TExtraProps>>;
-
-    /** This is the default cell value component that will be used if column specific cellComponent is not provided
-     */
-    //defaultCellComponent?: React.ComponentType<CellProps<T>>;
-
-    tableFooterComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
-
-    extraCellProps?: TExtraProps;
-    /**
-     * Set to true to pass the extraCellProps into the cellComponentProps of each row
-     * default: false
-     */
-    alwaysIncludeExtraCellProps?: boolean;
-}

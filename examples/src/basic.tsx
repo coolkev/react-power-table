@@ -4,6 +4,6 @@ import {ReactPowerTable} from '../../src/';
 
 export const BasicExample = () => {
 
-        return <ReactPowerTable columns={defaultColumns} keyColumn="number" rows={sampledata}  />;
+        return <ReactPowerTable columns={defaultColumns} keyColumn="number" rows={sampledata} />;
 
 };

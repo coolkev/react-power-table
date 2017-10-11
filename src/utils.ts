@@ -163,13 +163,15 @@ interface PureOptions<T> {
     deeperCompareProps?: keyof T | Array<keyof T>;
 
     exclude?: keyof T | Array<keyof T>;
+    //compareChildren?: boolean;
 }
 /** @internal */
-export function makePure<T>(Component: React.ComponentType<T>, options?: PureOptions<T>): React.ComponentClass<T> {
+export function makePure<T extends { children?: React.ReactNode }>(Component: React.ComponentType<T>, options?: PureOptions<T>): React.ComponentClass<T> {
 
     const componentName = options && options.componentName || Component.displayName || '(No Name)';
     const deeperCompareProps = options && options.deeperCompareProps ? (Array.isArray(options.deeperCompareProps) ? options.deeperCompareProps : [options.deeperCompareProps]) : [];
     const exclude = options && options.exclude ? (Array.isArray(options.exclude) ? options.exclude : [options.exclude]) : [];
+    //const compareChildren = options && options.compareChildren;
 
     if (!Component.displayName && options && options.componentName) {
         Component.displayName = componentName;
@@ -180,7 +182,9 @@ export function makePure<T>(Component: React.ComponentType<T>, options?: PureOpt
             static displayName = `PureWrapped(${componentName})`;
 
             shouldComponentUpdate(nextProps: T) {
-                const equal = shallowEqual(this.props, nextProps, ...deeperCompareProps, ...exclude);
+                const equal = shallowEqual(this.props, nextProps, ...deeperCompareProps, ...exclude
+                    //,...(compareChildren ? ['children' as any]: [])
+                );
                 if (!equal) {
                     debuglog(componentName + ' shouldComponentUpdate returned true because props changed', shallowDiff(this.props, nextProps, ...deeperCompareProps));
                     return true;
@@ -197,6 +201,34 @@ export function makePure<T>(Component: React.ComponentType<T>, options?: PureOpt
                         }
                     }
                 }
+
+                // if (compareChildren) {
+
+                //     return !compareChildrenRecursive(this.props.children, nextProps.children);
+                //     // const currentChildren = React.Children.toArray(this.props.children);
+                //     // const nextChildren = React.Children.toArray(nextProps.children);
+
+                //     // if (currentChildren.length !== nextChildren.length) {
+                //     //     return true;
+                //     // }
+
+                //     // for (let x = 0; x < currentChildren.length; x++) {
+                //     //     const currentChild = currentChildren[x];
+                //     //     const nextChild = nextChildren[x];
+
+                //     //     if (currentChild !== nextChild && React.isValidElement(currentChild) && React.isValidElement(nextChild)) {
+
+                //     //         if (currentChild.type !== nextChild.type || currentChild.key !== nextChild.key || !shallowEqual(currentChild.props, nextChild.props)) {
+
+                //     //             debuglog(componentName + ' shouldComponentUpdate returned true because child changed', { currentChild, nextChild });
+                //     //             return true;
+
+                //     //         }
+
+                //     //     }
+                //     // }
+
+                // }
 
                 return false;
             }
@@ -219,6 +251,39 @@ export function makePure<T>(Component: React.ComponentType<T>, options?: PureOpt
     }
 }
 
+/** returns true if children are equal */
+// function compareChildrenRecursive(current: React.ReactNode, next: React.ReactNode) {
+//     const currentChildren = React.Children.toArray(current);
+//     const nextChildren = React.Children.toArray(next);
+
+//     if (currentChildren.length !== nextChildren.length) {
+//         return true;
+//     }
+
+//     for (let x = 0; x < currentChildren.length; x++) {
+//         const currentChild = currentChildren[x];
+//         const nextChild = nextChildren[x];
+
+//         if (currentChild !== nextChild && React.isValidElement<{ children?: React.ReactNode }>(currentChild) && React.isValidElement<{ children?: React.ReactNode }>(nextChild)) {
+
+//             if (currentChild.type !== nextChild.type || currentChild.key !== nextChild.key || !shallowEqual(currentChild.props, nextChild.props, 'children')) {
+
+//                 debuglog('shouldComponentUpdate returned true because child changed', { currentChild, nextChild });
+//                 return false;
+
+//             }
+
+//             if (currentChild.props.children) {
+//                 if (!compareChildrenRecursive(currentChild.props.children, nextChild.props.children)) {
+//                     return false;
+//                 }
+//             }
+//         }
+
+//     }
+
+//     return true;
+// }
 export interface SortArrayOptions {
     descending?: boolean;
     caseInsensitive?: boolean;
