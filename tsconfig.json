@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedParameters": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noStrictGenericChecks": false,
     "removeComments": false,
     "sourceMap": true,
@@ -13,9 +13,9 @@
     "jsx": "react",
     "moduleResolution": "node",
     "alwaysStrict": true,
-    "allowJs": false,
-    "declaration": true,
+    "declaration": false,
     "stripInternal": true,
     "allowSyntheticDefaultImports": false
+    
   }
 }
