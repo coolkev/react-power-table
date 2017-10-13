@@ -32,7 +32,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
             });
         };
 
-        const loadOptions = (input) => this.queryHandler(input).then((opts) => {
+        const loadOptions = (input: string) => this.queryHandler(input).then((opts) => {
 
             return {
                 options: opts,

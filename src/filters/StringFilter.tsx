@@ -16,8 +16,8 @@ export class StringFilter extends PowerTable.FilterDefinition<string> {
 
     protected getOperations() {
         return {
-            contains: { key: 'contains', displayName: 'contains', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) > -1 },
-            notcontains: { key: 'notcontains', displayName: 'does not contain', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) === -1 },
+            contains: { key: 'contains', displayName: 'contains', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) > -1 } as PowerTable.OperationDefinition<string>,
+            notcontains: { key: 'notcontains', displayName: 'does not contain', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) === -1 } as PowerTable.OperationDefinition<string>,
             eq: this.defaultOperations.eq,
             ne: this.defaultOperations.ne,
         };

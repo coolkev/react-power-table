@@ -32,8 +32,8 @@ export class BooleanFilter extends FilterDefinition<boolean> {
         const falseName = verb[1] + ' ' + displayName;
 
         return {
-            eq: { key: 'eq', displayName: trueName, test: (source) => source },
-            ne: { key: 'ne', displayName: falseName, test: (source) => !source },
+            eq: { key: 'eq', displayName: trueName, test: (source) => source }  as OperationDefinition<boolean>,
+            ne: { key: 'ne', displayName: falseName, test: (source) => !source } as OperationDefinition<boolean>,
             ...(this.canBeNull && nullableOperations<boolean>()),
         };
     }

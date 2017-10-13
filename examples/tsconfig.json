@@ -8,12 +8,13 @@
     "removeComments": false,
     "sourceMap": true,
     "target": "es2015",
-    "module": "commonjs",
+    "module": "es2015",
     "jsx": "react",
     "alwaysStrict": true,
     "noEmitOnError": true,
-    "moduleResolution": "node"    ,
-    "declaration": false
+    "moduleResolution": "node",
+    "declaration": false,
+    "suppressImplicitAnyIndexErrors": true
   },
   "include": [
     "src/app.tsx"

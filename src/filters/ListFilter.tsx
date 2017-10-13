@@ -34,7 +34,7 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
                     {...rest}
                     value={props.value ? props.value : []}
                     multi
-                    options={items}
+                    options={this.items}
                     // tslint:disable-next-line:jsx-no-lambda
                     onChange={(e: Array<SelectOption<T>>) => props.onValueChange(e.map((m) => m.value))}
                     autofocus={autoFocus}

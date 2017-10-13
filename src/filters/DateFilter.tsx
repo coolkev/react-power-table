@@ -61,7 +61,7 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
         //this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
-    public handleChange(_value, formattedValue: string) {
+    public handleChange(_value: any, formattedValue: string) {
         this.props.onValueChange(formattedValue);
     }
 

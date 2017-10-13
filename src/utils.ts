@@ -8,7 +8,7 @@
 /**
  * Format a number with comma for thousands separator2
  */
-export function numberWithCommas(x) {
+export function numberWithCommas(x: any) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
@@ -20,7 +20,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * inlined Object.is polyfill to avoid requiring consumers ship their own
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
  */
-function is(x, y) {
+function is(x: any, y: any) {
     // SameValue algorithm
     if (x === y) {
         // Steps 1-5, 7-10
@@ -39,7 +39,7 @@ function is(x, y) {
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
  */
-export function shallowEqual<T>(objA: T, objB: T, ...excludeProps: Array<keyof T>) {
+export function shallowEqual<T extends any>(objA: T, objB: T, ...excludeProps: Array<keyof T>) {
     if (is(objA, objB)) {
         return true;
     }
@@ -82,7 +82,7 @@ export function shallowEqual<T>(objA: T, objB: T, ...excludeProps: Array<keyof T
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
  */
-export function shallowDiff<T>(objA: T, objB: T, ...excludeProps: Array<keyof T>) {
+export function shallowDiff<T extends any>(objA: T, objB: T, ...excludeProps: Array<keyof T>) {
     if (is(objA, objB)) {
         return [];
     }
@@ -100,7 +100,7 @@ export function shallowDiff<T>(objA: T, objB: T, ...excludeProps: Array<keyof T>
         return [{ 'objects do not have same keys': [keysA, keysB] }];
     }
 
-    const result = {};
+    const result = {} as any;
     if (excludeProps.length) {
         // Test for A's keys different from B.
         for (const key of keysA) {
@@ -154,7 +154,7 @@ export function shallowDiff<T>(objA: T, objB: T, ...excludeProps: Array<keyof T>
 export const debuglog = debugMode ? console.log : () => { };
 
 /** @internal */
-export function getComponentDisplayName(WrappedComponent: React.ComponentClass<any> | React.StatelessComponent<any>) {
+export function getComponentDisplayName(WrappedComponent: React.ComponentType<any>) {
     return WrappedComponent.displayName || (WrappedComponent as any).name || 'Component';
 }
 
@@ -166,7 +166,7 @@ interface PureOptions<T> {
     //compareChildren?: boolean;
 }
 /** @internal */
-export function makePure<T extends { children?: React.ReactNode }>(Component: React.ComponentType<T>, options?: PureOptions<T>): React.ComponentClass<T> {
+export function makePure<T extends { children?: React.ReactNode, [key: string]: any }>(Component: React.ComponentType<T>, options?: PureOptions<T>): React.ComponentClass<T> {
 
     const componentName = options && options.componentName || Component.displayName || '(No Name)';
     const deeperCompareProps = options && options.deeperCompareProps ? (Array.isArray(options.deeperCompareProps) ? options.deeperCompareProps : [options.deeperCompareProps]) : [];
@@ -190,9 +190,9 @@ export function makePure<T extends { children?: React.ReactNode }>(Component: Re
                     return true;
                 }
 
-                for (const key of deeperCompareProps as any) {
+                for (const key of deeperCompareProps) {
 
-                    if (!is(this.props[key], nextProps[key])) {
+                    if (!is(this.props[key as any], nextProps[key])) {
                         const innerEqual = shallowEqual(this.props[key], nextProps[key]);
 
                         if (!innerEqual) {

@@ -98,15 +98,13 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
             newFilterState.value = newFilterState.value.split(' ')[0];
         }
     }
-    public serializeValue(value: T, type?: string) {
+    public serializeValue(value: T, _type?: string) {
         return value.toString();
     }
 
     public deSerializeValue(value: string): T {
         return value as any;
     }
-
-    // protected abstract getOperations(): ObjectMap<OperationDefinition<T>>;
 
     public applyFilter<TData>(data: TData[], operation: OperationDefinition<T>, filterValue: T) {
 
@@ -120,7 +118,7 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
             test = BetweenApplyFilterTest(this.parseValue, filterValue as any as string);
         }
 
-        const result = data.filter((d) => {
+        const result = data.filter((d: any) => {
             const r = test(d[this.fieldName], parsedValue);
             // console.log('test ' + d[this.fieldName] + ' returned ' + result);
             return r;
@@ -190,11 +188,10 @@ export interface OperationDefinition<T = any> {
     key: string;
     displayName: string;
     appliedLabel?: (filter: AppliedFilter<T>) => string;
-    appliedLabelComponent?: React.ComponentClass<AppliedFilter<T>> | React.StatelessComponent<AppliedFilter<T>>;
-    filterComponent?: React.ComponentClass<FilterComponentProps<T>> | React.StatelessComponent<FilterComponentProps<T>> | ((props: FilterComponentProps<T>) => JSX.Element);
-    //filterComponent: React.ComponentClass<FilterComponentProps<T>> | React.StatelessComponent<FilterComponentProps<T>>;
+    appliedLabelComponent?: React.ComponentType<AppliedFilter<T>>;
+    filterComponent?: React.ComponentType<FilterComponentProps<T>>;
 
-    radioButtonLabel?: React.ComponentClass<RadioButtonLabelProps<T>> | React.StatelessComponent<RadioButtonLabelProps<T>>;
+    radioButtonLabel?: React.ComponentType<RadioButtonLabelProps<T>>;
     test(source: any, filterValue: T): boolean;
 }
 

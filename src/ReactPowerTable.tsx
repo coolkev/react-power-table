@@ -78,7 +78,6 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
     private getRowKey: (row: TRow) => string | number;
 
     private pureTdComponent: TdComponentType<TRow, TExtraProps>;
-    //private rowBuilderComponent: RowBuilderComponentType<TRow, TExtraProps>;
 
     constructor(props: PowerTableProps<TRow, TExtraProps>) {
         super(props);
@@ -117,7 +116,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
         const sharedStyle = { width, maxWidth, textAlign };
 
-        const actualThAttributes = {...thAttributes, style: { textAlign: 'left', whiteSpace: 'nowrap', ...(thAttributes && thAttributes.style), ...sharedStyle }, ...(headerCssClass && { className: headerCssClass }) };
+        const actualThAttributes = { ...thAttributes, style: { textAlign: 'left', whiteSpace: 'nowrap', ...(thAttributes && thAttributes.style), ...sharedStyle }, ...(headerCssClass && { className: headerCssClass }) };
 
         const tdAttributesStatic: React.TdHTMLAttributes<HTMLTableDataCellElement> = typeof (tdAttributes) === 'function' ? { style: sharedStyle } : { ...tdAttributes, style: { ...(tdAttributes && tdAttributes.style), ...sharedStyle } };
         const tdAttributesFunc = typeof (tdAttributes) === 'function' ? tdAttributes : undefined;
@@ -161,22 +160,12 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
             debuglog('transforming getRowKey');
 
-            this.getRowKey = typeof newProps.keyColumn === 'function' ? newProps.keyColumn : (row) => row[newProps.keyColumn as string];
+            this.getRowKey = typeof newProps.keyColumn === 'function' ? newProps.keyColumn : (row) => row[newProps.keyColumn as keyof TRow] as any;
         }
 
         if (!oldProps || newProps.tdComponent !== oldProps.tdComponent) {
             this.pureTdComponent = makePure(newProps.tdComponent, { componentName: 'pureTdComponent', exclude: ['children', 'row'] });
         }
-
-        // if (!oldProps || newProps.rowBuilder !== oldProps.rowBuilder || newProps.columns.every(m => m !== false) !== oldProps.columns.every(m => m !== false)) {
-
-        //     if (newProps.columns.every(m => m !== false)) {
-        //         this.rowBuilderComponent = makePure(newProps.rowBuilder, { componentName: 'pureRowBuilderComponent', deeperCompareProps: ['rowHtmlAttributes', 'extraCellProps'] });
-        //     } else {
-        //         this.rowBuilderComponent = newProps.rowBuilder;
-        //     }
-        // }
-
     }
     render() {
 
@@ -208,8 +197,6 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
             return <HeadCellComponent column={c} key={c.key} htmlAttributes={thAttributes}><HeaderComponent column={c} >{headerText}</HeaderComponent></HeadCellComponent>;
         });
 
-        //const RowBuilder = this.rowBuilderComponent;
-
         const rowBuilderProps = { columns, rowComponent, extraCellProps, tdComponent, pureTdComponent: this.pureTdComponent, defaultValueComponent: this.props.valueComponent };
         const dataRows = rows.map(row => {
 
@@ -223,8 +210,8 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
         return (
             <Table {...combinedTableProps }>
-                <HeadComponent columns={columns}>
-                    <HeadRow columns={columns}>
+                <HeadComponent columns={columns} {...extraCellProps}>
+                    <HeadRow columns={columns} {...extraCellProps}>
                         {headerCells}
                     </HeadRow>
                 </HeadComponent>
@@ -387,18 +374,14 @@ export interface Column<TRow = {}, TValue = any, TExtraProps = {}> extends Stric
 
 }
 
-export type HeadComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
-    columns: Array<StrictColumn<T, {}, TExtraProps>>;
+export type ColumnsAndExtraProps<TRow = {}, TExtraProps = {}> = TExtraProps & {
+    columns: Array<StrictColumn<TRow, {}, TExtraProps>>;
 
 };
 
-export type HeadComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadComponentProps<T, TExtraProps>>;
+export type HeadComponentType<T = {}, TExtraProps = {}> = React.ComponentType<ColumnsAndExtraProps<T, TExtraProps>>;
 
-export type HeadRowComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
-    columns: Array<StrictColumn<T, {}, TExtraProps>>;
-};
-
-export type HeadRowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadRowComponentProps<T, TExtraProps>>;
+export type HeadRowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<ColumnsAndExtraProps<T, TExtraProps>>;
 
 export type HeadCellComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
     column: StrictColumn<T, {}, TExtraProps>;
@@ -411,21 +394,17 @@ export type HeadCellInnerComponentProps<T = {}, TExtraProps = {}> = React.HTMLAt
 };
 export type HeadCellInnerComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadCellInnerComponentProps<T, TExtraProps>>;
 
-export type BodyComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+export type BodyComponentProps<T = {}, TExtraProps = {}> = ColumnsAndExtraProps<T, TExtraProps> & {
     rows: T[];
-    columns: Array<StrictColumn<T, {}, TExtraProps>>;
-
-} & React.HTMLAttributes<HTMLTableSectionElement>;
+};
 export type BodyComponentType<T = {}, TExtraProps = {}> = React.ComponentType<BodyComponentProps<T, TExtraProps>>;
 
-export type RowComponentProps<T = {}, TExtraProps = {}> = TExtraProps & {
+export type RowComponentProps<T = {}, TExtraProps = {}> = ColumnsAndExtraProps<T, TExtraProps> & {
     row: T;
-    columns: Array<StrictColumn<T, {}, TExtraProps>>;
-
 };
 export type RowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowComponentProps<T, TExtraProps> & { htmlAttributes: React.HTMLAttributes<HTMLTableRowElement> }>;
 
-export type RowBuilderComponentProps<TRow = {}, TExtraProps = {}> = TExtraProps & {
+export interface RowBuilderComponentProps<TRow = {}, TExtraProps = {}> {
     row: TRow;
     columns: Array<StrictColumn<TRow, {}, TExtraProps>>;
 
@@ -449,7 +428,8 @@ export type RowBuilderComponentProps<TRow = {}, TExtraProps = {}> = TExtraProps 
      * or use alwaysIncludeExtraCellProps to always include these props
      */
     extraCellProps: TExtraProps;
-};
+}
+
 export type RowBuilderComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowBuilderComponentProps<T, TExtraProps>>;
 
 export type TdComponentProps<T = {}, TExtraProps = {}> = ValueComponentProps<T, TExtraProps> & { htmlAttributes: React.TdHTMLAttributes<HTMLTableDataCellElement> };

@@ -36,10 +36,6 @@ export interface PagingGridProps {
 
     footerComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
 
-    //footerComponent?: React.ComponentClass<any> | React.StatelessComponent<any>;
-    // components?: {
-    //     foot?: React.ComponentClass<never> | React.StatelessComponent<never>;
-    // }
 }
 
 const TableFooterComponent = ({ columnCount = 0, pagingProps = null as PagingProps }) => (
