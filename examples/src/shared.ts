@@ -2,13 +2,13 @@
 import { Column } from '../../src/ReactPowerTable';
 
 export const defaultColumns: Array<Column<President>> = [
-    { field: m => m.number },
-    { field: m => m.president, headerText: 'name' },
-    { field: m => m.party },
-    { field: m => m.birth_year },
-    { field: m => m.death_year },
-    { field: m => m.took_office, textAlign: 'right', width: 140 },
-    { field: m => m.left_office },
+    { field: m => m.number, width: 80 },
+    { field: m => m.president, headerText: 'name', width: 140 },
+    { field: m => m.party, width: 120 },
+    { field: m => m.birth_year, width: 80 },
+    { field: m => m.death_year, width: 80 },
+    { field: m => m.took_office, textAlign: 'right', width: 80 },
+    { field: m => m.left_office, width: 80 },
 
 ];
 

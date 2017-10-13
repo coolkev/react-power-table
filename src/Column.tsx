@@ -1,6 +1,6 @@
-﻿import * as React from 'react';
-import { Column, StrictColumn, CellComponentProps } from './ReactPowerTable';
-import { debuglog } from './utils';
+﻿//import * as React from 'react';
+import { Column, } from './ReactPowerTable';
+//import { debuglog } from './utils';
 
 /** @internal */
 // export const defaultCellComponent = makePure((props: CellProps<any>) => {
@@ -10,65 +10,65 @@ import { debuglog } from './utils';
 // defaultCellComponent.displayName = 'defaultCellComponent';
 
 /** @internal */
-export function transformColumn<TRow, TExtraProps>(options: Column<TRow, {}, TExtraProps> | string): StrictColumn<TRow, {}, TExtraProps> {
+// export function transformColumn<TRow, TExtraProps>(options: Column<TRow, {}, TExtraProps> | string): StrictColumn<TRow, {}, TExtraProps> {
 
-    debuglog('transformColumn', options);
+//     debuglog('transformColumn', options);
 
-    const col = typeof options === 'string' ? { fieldName: options } as Column<TRow, {}, TExtraProps> : options;
+//     const col = typeof options === 'string' ? { fieldName: options } as Column<TRow, {}, TExtraProps> : options;
 
-    //const { cellHtmlAttributes, headCellHtmlAttributes } = getCellAndHeaderProps(col);
+//     //const { cellHtmlAttributes, headCellHtmlAttributes } = getCellAndHeaderProps(col);
 
-    const { cssClass, maxWidth, width, headerCssClass, textAlign, cellHtmlAttributes, headCellHtmlAttributes } = col;
+//     const { cssClass, maxWidth, width, headerCssClass, textAlign, cellHtmlAttributes, headCellHtmlAttributes } = col;
 
-    const headerProps = { style: { textAlign: 'left', whiteSpace: 'nowrap', ...(headCellHtmlAttributes && headCellHtmlAttributes.style) }, ...headCellHtmlAttributes };
+//     const headerProps = { style: { textAlign: 'left', whiteSpace: 'nowrap', ...(headCellHtmlAttributes && headCellHtmlAttributes.style) }, ...headCellHtmlAttributes };
 
-    const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (cellHtmlAttributes) === 'function' ? {} : { ...cellHtmlAttributes };
-    const cellPropsFunc = typeof (cellHtmlAttributes) === 'function' ? cellHtmlAttributes : undefined;
+//     const cellStaticProps: React.HTMLProps<HTMLTableDataCellElement> = typeof (cellHtmlAttributes) === 'function' ? {} : { ...cellHtmlAttributes };
+//     const cellPropsFunc = typeof (cellHtmlAttributes) === 'function' ? cellHtmlAttributes : undefined;
 
-    //var cssClassFunc: (row: T) => string;
+//     //var cssClassFunc: (row: T) => string;
 
-    if (width) {
-        cellStaticProps.style = { ...cellStaticProps.style, width };
-        headerProps.style = { ...headerProps.style, width };
+//     if (width) {
+//         cellStaticProps.style = { ...cellStaticProps.style, width };
+//         headerProps.style = { ...headerProps.style, width };
 
-    }
+//     }
 
-    if (maxWidth) {
-        cellStaticProps.style = { ...cellStaticProps.style, maxWidth };
-        headerProps.style = { ...headerProps.style, maxWidth };
+//     if (maxWidth) {
+//         cellStaticProps.style = { ...cellStaticProps.style, maxWidth };
+//         headerProps.style = { ...headerProps.style, maxWidth };
 
-    }
+//     }
 
-    if (textAlign) {
-        cellStaticProps.style = { ...cellStaticProps.style, textAlign };
-        headerProps.style = { ...headerProps.style, textAlign };
-    }
+//     if (textAlign) {
+//         cellStaticProps.style = { ...cellStaticProps.style, textAlign };
+//         headerProps.style = { ...headerProps.style, textAlign };
+//     }
 
-    let actualCellAttributes: ((props: CellComponentProps<TRow, TExtraProps>) => React.HTMLProps<HTMLTableDataCellElement>);
+//     let actualCellAttributes: ((props: CellComponentProps<TRow, TExtraProps>) => React.HTMLProps<HTMLTableDataCellElement>);
 
-    if (typeof cssClass === 'function') {
-        actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row), className: cssClass(row) }) : (row) => ({ ...cellStaticProps, className: cssClass(row) });
-    } else if (typeof (cssClass) === 'string') {
-        cellStaticProps.className = cssClass;
-        actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
-    } else {
-        actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
-    }
-    if (headerCssClass) {
-        headerProps.className = headerCssClass;
-    }
+//     if (typeof cssClass === 'function') {
+//         actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row), className: cssClass(row) }) : (row) => ({ ...cellStaticProps, className: cssClass(row) });
+//     } else if (typeof (cssClass) === 'string') {
+//         cellStaticProps.className = cssClass;
+//         actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
+//     } else {
+//         actualCellAttributes = cellPropsFunc ? (row) => ({ ...cellStaticProps, ...cellPropsFunc(row) }) : () => cellStaticProps;
+//     }
+//     if (headerCssClass) {
+//         headerProps.className = headerCssClass;
+//     }
 
-    const core = getColumnCore(options);
+//     const core = getColumnCore(options);
 
-    const result = {
-        ...col,
-        ...core,
-        tdHtmlAttributes,
-        headCellHtmlAttributes
-    } as StrictColumn<TRow, {}, TExtraProps>;
+//     const result = {
+//         ...col,
+//         ...core,
+//         tdHtmlAttributes,
+//         headCellHtmlAttributes
+//     } as StrictColumn<TRow, {}, TExtraProps>;
 
-    return result;
-}
+//     return result;
+// }
 
 // function getCellAndHeaderProps(options: Column<any>) {
 

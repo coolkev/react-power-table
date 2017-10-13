@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, GridProps, withInternalPaging, InternalPagingProps } from '../src/';
+import { ReactPowerTable, PowerTableProps, withInternalPaging, InternalPagingProps } from '../src/';
 import { defaultColumns, sampledata, President } from './shared';
 import { mount } from 'enzyme';
 
@@ -26,7 +26,7 @@ describe('withInternalPaging tests',
 
             const Table = withInternalPaging(ReactPowerTable);
 
-            const c: React.ReactElement<GridProps<President> & { paging?: Partial<InternalPagingProps> }> = <Table columns={columns} rows={rows} keyColumn="number" />;
+            const c: React.ReactElement<PowerTableProps<President> & { paging?: Partial<InternalPagingProps> }> = <Table columns={columns} rows={rows} keyColumn="number" />;
 
             const component = mount(c);
             expect(component.find('tbody').first().find('tr').length).toEqual(20);
@@ -44,7 +44,7 @@ describe('withInternalPaging tests',
 
             const Table = withInternalPaging(ReactPowerTable);
 
-            const c: React.ReactElement<GridProps<President> & { paging?: Partial<InternalPagingProps> }> = <Table columns={columns} rows={rows} keyColumn="number" />;
+            const c: React.ReactElement<PowerTableProps<President> & { paging?: Partial<InternalPagingProps> }> = <Table columns={columns} rows={rows} keyColumn="number" />;
 
             const component = mount(c);
             expect(component.find('tbody').first().find('tr').length).toEqual(20);

@@ -5,15 +5,12 @@ exports[`withInternalSorting tests change rows from props 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
         >
-          <span>
-            number
-          </span>
-           
+          number 
           <span
             class="sort-asc"
             style="width: 0px; height: 0px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid gray; position: absolute; margin-left: 5px;"
@@ -21,234 +18,198 @@ exports[`withInternalSorting tests change rows from props 1`] = `
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div>
-          <span>
-            name
-          </span>
+          name
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
-          <span>
-            party
-          </span>
+          party
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            birth_year
-          </span>
+          birth_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            death_year
-          </span>
+          death_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: right; white-space: nowrap; width: 140px;"
+        style="text-align: right; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px;"
         >
-          <span>
-            took_office
-          </span>
+          took_office
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            left_office
-          </span>
+          left_office
         </div>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
-        <div>
-          1
-        </div>
-      </td>
-      <td>
-        <div>
-          George Washington
-        </div>
-      </td>
-      <td>
-        <div>
-          No Party
-        </div>
-      </td>
-      <td>
-        <div>
-          1732
-        </div>
-      </td>
-      <td>
-        <div>
-          1799
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        1
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1789-04-30
-          </div>
-        </div>
+        George Washington
       </td>
-      <td>
-        <div>
-          1797-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        No Party
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1732
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1799
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1789-04-30
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1797-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          2
-        </div>
-      </td>
-      <td>
-        <div>
-          John Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Federalist
-        </div>
-      </td>
-      <td>
-        <div>
-          1735
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        2
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1797-03-04
-          </div>
-        </div>
+        John Adams
       </td>
-      <td>
-        <div>
-          1801-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Federalist
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1735
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1797-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1801-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          3
-        </div>
-      </td>
-      <td>
-        <div>
-          Thomas Jefferson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1743
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        3
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1801-03-04
-          </div>
-        </div>
+        Thomas Jefferson
       </td>
-      <td>
-        <div>
-          1809-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1743
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1801-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1809-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          4
-        </div>
-      </td>
-      <td>
-        <div>
-          James Madison
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1751
-        </div>
-      </td>
-      <td>
-        <div>
-          1836
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        4
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1809-03-04
-          </div>
-        </div>
+        James Madison
       </td>
-      <td>
-        <div>
-          1817-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1751
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1836
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1809-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1817-03-04
       </td>
     </tr>
   </tbody>
@@ -260,15 +221,12 @@ exports[`withInternalSorting tests change sort from props 1`] = `
   <thead>
     <tr>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
         >
-          <span>
-            number
-          </span>
-           
+          number 
           <span
             class="sort-desc"
             style="width: 0px; height: 0px; border-left: 5px solid transparent; border-right: 5px solid transparent; position: absolute; margin-left: 5px; border-top: 5px solid gray;"
@@ -276,277 +234,235 @@ exports[`withInternalSorting tests change sort from props 1`] = `
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div>
-          <span>
-            name
-          </span>
+          name
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
-          <span>
-            party
-          </span>
+          party
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            birth_year
-          </span>
+          birth_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            death_year
-          </span>
+          death_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: right; white-space: nowrap; width: 140px;"
+        style="text-align: right; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px;"
         >
-          <span>
-            took_office
-          </span>
+          took_office
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            left_office
-          </span>
+          left_office
         </div>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
-        <div>
-          5
-        </div>
-      </td>
-      <td>
-        <div>
-          James Monroe
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1758
-        </div>
-      </td>
-      <td>
-        <div>
-          1831
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        5
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1817-03-04
-          </div>
-        </div>
+        James Monroe
       </td>
-      <td>
-        <div>
-          1825-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1758
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1831
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1817-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1825-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          4
-        </div>
-      </td>
-      <td>
-        <div>
-          James Madison
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1751
-        </div>
-      </td>
-      <td>
-        <div>
-          1836
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        4
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1809-03-04
-          </div>
-        </div>
+        James Madison
       </td>
-      <td>
-        <div>
-          1817-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1751
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1836
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1809-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1817-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          3
-        </div>
-      </td>
-      <td>
-        <div>
-          Thomas Jefferson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1743
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        3
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1801-03-04
-          </div>
-        </div>
+        Thomas Jefferson
       </td>
-      <td>
-        <div>
-          1809-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1743
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1801-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1809-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          2
-        </div>
-      </td>
-      <td>
-        <div>
-          John Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Federalist
-        </div>
-      </td>
-      <td>
-        <div>
-          1735
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        2
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1797-03-04
-          </div>
-        </div>
+        John Adams
       </td>
-      <td>
-        <div>
-          1801-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Federalist
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1735
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1797-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1801-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          1
-        </div>
-      </td>
-      <td>
-        <div>
-          George Washington
-        </div>
-      </td>
-      <td>
-        <div>
-          No Party
-        </div>
-      </td>
-      <td>
-        <div>
-          1732
-        </div>
-      </td>
-      <td>
-        <div>
-          1799
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        1
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1789-04-30
-          </div>
-        </div>
+        George Washington
       </td>
-      <td>
-        <div>
-          1797-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        No Party
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1732
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1799
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1789-04-30
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1797-03-04
       </td>
     </tr>
   </tbody>
@@ -555,15 +471,12 @@ exports[`withInternalSorting tests change sort from props 1`] = `
 
 exports[`withInternalSorting tests change sort on th click 1`] = `
 <th
-  style="cursor: pointer; text-align: left; white-space: nowrap;"
+  style="white-space: nowrap; cursor: pointer; width: 80px;"
 >
   <div
     style="padding-right: 15px; position: relative;"
   >
-    <span>
-      number
-    </span>
-     
+    number 
     <span
       class="sort-asc"
       style="width: 0px; height: 0px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid gray; position: absolute; margin-left: 5px;"
@@ -574,12 +487,10 @@ exports[`withInternalSorting tests change sort on th click 1`] = `
 
 exports[`withInternalSorting tests change sort on th click 2`] = `
 <th
-  style="cursor: pointer; text-align: left; white-space: nowrap;"
+  style="white-space: nowrap; cursor: pointer; width: 140px;"
 >
   <div>
-    <span>
-      name
-    </span>
+    name
   </div>
 </th>
 `;
@@ -589,15 +500,12 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
   <thead>
     <tr>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
         >
-          <span>
-            number
-          </span>
-           
+          number 
           <span
             class="sort-asc"
             style="width: 0px; height: 0px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid gray; position: absolute; margin-left: 5px;"
@@ -605,277 +513,235 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div>
-          <span>
-            name
-          </span>
+          name
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
-          <span>
-            party
-          </span>
+          party
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            birth_year
-          </span>
+          birth_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            death_year
-          </span>
+          death_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: right; white-space: nowrap; width: 140px;"
+        style="text-align: right; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px;"
         >
-          <span>
-            took_office
-          </span>
+          took_office
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            left_office
-          </span>
+          left_office
         </div>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
-        <div>
-          1
-        </div>
-      </td>
-      <td>
-        <div>
-          George Washington
-        </div>
-      </td>
-      <td>
-        <div>
-          No Party
-        </div>
-      </td>
-      <td>
-        <div>
-          1732
-        </div>
-      </td>
-      <td>
-        <div>
-          1799
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        1
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1789-04-30
-          </div>
-        </div>
+        George Washington
       </td>
-      <td>
-        <div>
-          1797-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        No Party
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1732
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1799
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1789-04-30
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1797-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          2
-        </div>
-      </td>
-      <td>
-        <div>
-          John Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Federalist
-        </div>
-      </td>
-      <td>
-        <div>
-          1735
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        2
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1797-03-04
-          </div>
-        </div>
+        John Adams
       </td>
-      <td>
-        <div>
-          1801-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Federalist
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1735
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1797-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1801-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          3
-        </div>
-      </td>
-      <td>
-        <div>
-          Thomas Jefferson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1743
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        3
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1801-03-04
-          </div>
-        </div>
+        Thomas Jefferson
       </td>
-      <td>
-        <div>
-          1809-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1743
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1801-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1809-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          4
-        </div>
-      </td>
-      <td>
-        <div>
-          James Madison
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1751
-        </div>
-      </td>
-      <td>
-        <div>
-          1836
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        4
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1809-03-04
-          </div>
-        </div>
+        James Madison
       </td>
-      <td>
-        <div>
-          1817-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1751
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1836
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1809-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1817-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          5
-        </div>
-      </td>
-      <td>
-        <div>
-          James Monroe
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1758
-        </div>
-      </td>
-      <td>
-        <div>
-          1831
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        5
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1817-03-04
-          </div>
-        </div>
+        James Monroe
       </td>
-      <td>
-        <div>
-          1825-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1758
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1831
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1817-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1825-03-04
       </td>
     </tr>
   </tbody>
@@ -884,29 +750,24 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
 
 exports[`withInternalSorting tests change sort on th click 4`] = `
 <th
-  style="cursor: pointer; text-align: left; white-space: nowrap;"
+  style="white-space: nowrap; cursor: pointer; width: 80px;"
 >
   <div
     style="padding-right: 15px;"
   >
-    <span>
-      number
-    </span>
+    number
   </div>
 </th>
 `;
 
 exports[`withInternalSorting tests change sort on th click 5`] = `
 <th
-  style="cursor: pointer; text-align: left; white-space: nowrap;"
+  style="white-space: nowrap; cursor: pointer; width: 140px;"
 >
   <div
     style="padding-right: 15px; position: relative;"
   >
-    <span>
-      name
-    </span>
-     
+    name 
     <span
       class="sort-asc"
       style="width: 0px; height: 0px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid gray; position: absolute; margin-left: 5px;"
@@ -920,26 +781,21 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
   <thead>
     <tr>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px;"
         >
-          <span>
-            number
-          </span>
+          number
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
         >
-          <span>
-            name
-          </span>
-           
+          name 
           <span
             class="sort-asc"
             style="width: 0px; height: 0px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid gray; position: absolute; margin-left: 5px;"
@@ -947,268 +803,228 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
-          <span>
-            party
-          </span>
+          party
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            birth_year
-          </span>
+          birth_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            death_year
-          </span>
+          death_year
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: right; white-space: nowrap; width: 140px;"
+        style="text-align: right; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px;"
         >
-          <span>
-            took_office
-          </span>
+          took_office
         </div>
       </th>
       <th
-        style="cursor: pointer; text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
-          <span>
-            left_office
-          </span>
+          left_office
         </div>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
-        <div>
-          1
-        </div>
-      </td>
-      <td>
-        <div>
-          George Washington
-        </div>
-      </td>
-      <td>
-        <div>
-          No Party
-        </div>
-      </td>
-      <td>
-        <div>
-          1732
-        </div>
-      </td>
-      <td>
-        <div>
-          1799
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        1
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1789-04-30
-          </div>
-        </div>
+        George Washington
       </td>
-      <td>
-        <div>
-          1797-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        No Party
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1732
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1799
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1789-04-30
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1797-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          4
-        </div>
-      </td>
-      <td>
-        <div>
-          James Madison
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1751
-        </div>
-      </td>
-      <td>
-        <div>
-          1836
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        4
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1809-03-04
-          </div>
-        </div>
+        James Madison
       </td>
-      <td>
-        <div>
-          1817-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1751
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1836
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1809-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1817-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          5
-        </div>
-      </td>
-      <td>
-        <div>
-          James Monroe
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1758
-        </div>
-      </td>
-      <td>
-        <div>
-          1831
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        5
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1817-03-04
-          </div>
-        </div>
+        James Monroe
       </td>
-      <td>
-        <div>
-          1825-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1758
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1831
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1817-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1825-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          2
-        </div>
-      </td>
-      <td>
-        <div>
-          John Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Federalist
-        </div>
-      </td>
-      <td>
-        <div>
-          1735
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        2
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1797-03-04
-          </div>
-        </div>
+        John Adams
       </td>
-      <td>
-        <div>
-          1801-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Federalist
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1735
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1797-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1801-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          3
-        </div>
-      </td>
-      <td>
-        <div>
-          Thomas Jefferson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1743
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        3
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div
-          style="margin-right: 15px;"
-        >
-          <div>
-            1801-03-04
-          </div>
-        </div>
+        Thomas Jefferson
       </td>
-      <td>
-        <div>
-          1809-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1743
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right: 23px; width: 80px; text-align: right;"
+      >
+        1801-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1809-03-04
       </td>
     </tr>
   </tbody>
@@ -1216,281 +1032,264 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
 `;
 
 exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
-Array [
-  <span />,
-  <span />,
-  <span />,
-  <span />,
-  <span />,
-  <table>
-    <thead>
-      <tr>
-        <th
-          style="cursor:pointer;text-align:right;white-space:nowrap"
+<table>
+  <thead>
+    <tr>
+      <th
+        style="text-align:right;white-space:nowrap;cursor:pointer;width:80px"
+      >
+        <div
+          style="padding-right:15px;position:relative"
         >
-          <div
-            style="padding-right:15px;position:relative"
-          >
-            <span>
-              number
-            </span>
-             
-            <span
-              class="sort-asc"
-              style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
-            />
-          </div>
-        </th>
-        <th
-          style="cursor:pointer;text-align:left;white-space:nowrap"
+          number 
+          <span
+            class="sort-asc"
+            style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid gray;position:absolute;top:calc(50% - 3px);margin-left:5px"
+          />
+        </div>
+      </th>
+      <th
+        style="white-space:nowrap;cursor:pointer;width:140px"
+      >
+        <div>
+          name
+        </div>
+      </th>
+      <th
+        style="white-space:nowrap;cursor:pointer;width:120px"
+      >
+        <div>
+          party
+        </div>
+      </th>
+      <th
+        style="white-space:nowrap;cursor:pointer;width:80px"
+      >
+        <div>
+          birth_year
+        </div>
+      </th>
+      <th
+        style="white-space:nowrap;cursor:pointer;width:80px"
+      >
+        <div>
+          death_year
+        </div>
+      </th>
+      <th
+        style="text-align:right;white-space:nowrap;cursor:pointer;width:80px"
+      >
+        <div
+          style="padding-right:15px"
         >
-          <div>
-            <span>
-              name
-            </span>
-          </div>
-        </th>
-        <th
-          style="cursor:pointer;text-align:left;white-space:nowrap"
-        >
-          <div>
-            <span>
-              party
-            </span>
-          </div>
-        </th>
-        <th
-          style="cursor:pointer;text-align:left;white-space:nowrap"
-        >
-          <div>
-            <span>
-              birth_year
-            </span>
-          </div>
-        </th>
-        <th
-          style="cursor:pointer;text-align:left;white-space:nowrap"
-        >
-          <div>
-            <span>
-              death_year
-            </span>
-          </div>
-        </th>
-        <th
-          style="cursor:pointer;text-align:right;white-space:nowrap;width:140px"
-        >
-          <div
-            style="padding-right:15px"
-          >
-            <span>
-              took_office
-            </span>
-          </div>
-        </th>
-        <th
-          style="cursor:pointer;text-align:left;white-space:nowrap"
-        >
-          <div>
-            <span>
-              left_office
-            </span>
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <div>
-            George Washington
-          </div>
-        </td>
-        <td>
-          <div>
-            No Party
-          </div>
-        </td>
-        <td>
-          <div>
-            1732
-          </div>
-        </td>
-        <td>
-          <div>
-            1799
-          </div>
-        </td>
-        <td
-          style="width:140px;text-align:right"
-        >
-          <div
-            style="margin-right:15px"
-          >
-            <div>
-              1789-04-30
-            </div>
-          </div>
-        </td>
-        <td>
-          <div>
-            1797-03-04
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div>
-            John Adams
-          </div>
-        </td>
-        <td>
-          <div>
-            Federalist
-          </div>
-        </td>
-        <td>
-          <div>
-            1735
-          </div>
-        </td>
-        <td>
-          <div>
-            1826
-          </div>
-        </td>
-        <td
-          style="width:140px;text-align:right"
-        >
-          <div
-            style="margin-right:15px"
-          >
-            <div>
-              1797-03-04
-            </div>
-          </div>
-        </td>
-        <td>
-          <div>
-            1801-03-04
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div>
-            Thomas Jefferson
-          </div>
-        </td>
-        <td>
-          <div>
-            Democratic-Republican
-          </div>
-        </td>
-        <td>
-          <div>
-            1743
-          </div>
-        </td>
-        <td>
-          <div>
-            1826
-          </div>
-        </td>
-        <td
-          style="width:140px;text-align:right"
-        >
-          <div
-            style="margin-right:15px"
-          >
-            <div>
-              1801-03-04
-            </div>
-          </div>
-        </td>
-        <td>
-          <div>
-            1809-03-04
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div>
-            James Madison
-          </div>
-        </td>
-        <td>
-          <div>
-            Democratic-Republican
-          </div>
-        </td>
-        <td>
-          <div>
-            1751
-          </div>
-        </td>
-        <td>
-          <div>
-            1836
-          </div>
-        </td>
-        <td
-          style="width:140px;text-align:right"
-        >
-          <div
-            style="margin-right:15px"
-          >
-            <div>
-              1809-03-04
-            </div>
-          </div>
-        </td>
-        <td>
-          <div>
-            1817-03-04
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div>
-            James Monroe
-          </div>
-        </td>
-        <td>
-          <div>
-            Democratic-Republican
-          </div>
-        </td>
-        <td>
-          <div>
-            1758
-          </div>
-        </td>
-        <td>
-          <div>
-            1831
-          </div>
-        </td>
-        <td
-          style="width:140px;text-align:right"
-        >
-          <div
-            style="margin-right:15px"
-          >
-            <div>
-              1817-03-04
-            </div>
-          </div>
-        </td>
-        <td>
-          <div>
-            1825-03-04
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>,
-]
+          took_office
+        </div>
+      </th>
+      <th
+        style="white-space:nowrap;cursor:pointer;width:80px"
+      >
+        <div>
+          left_office
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        <span>
+          1
+        </span>
+      </td>
+      <td
+        style="width:140px"
+      >
+        George Washington
+      </td>
+      <td
+        style="width:120px"
+      >
+        No Party
+      </td>
+      <td
+        style="width:80px"
+      >
+        1732
+      </td>
+      <td
+        style="width:80px"
+      >
+        1799
+      </td>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        1789-04-30
+      </td>
+      <td
+        style="width:80px"
+      >
+        1797-03-04
+      </td>
+    </tr>
+    <tr>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        <span>
+          2
+        </span>
+      </td>
+      <td
+        style="width:140px"
+      >
+        John Adams
+      </td>
+      <td
+        style="width:120px"
+      >
+        Federalist
+      </td>
+      <td
+        style="width:80px"
+      >
+        1735
+      </td>
+      <td
+        style="width:80px"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        1797-03-04
+      </td>
+      <td
+        style="width:80px"
+      >
+        1801-03-04
+      </td>
+    </tr>
+    <tr>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        <span>
+          3
+        </span>
+      </td>
+      <td
+        style="width:140px"
+      >
+        Thomas Jefferson
+      </td>
+      <td
+        style="width:120px"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width:80px"
+      >
+        1743
+      </td>
+      <td
+        style="width:80px"
+      >
+        1826
+      </td>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        1801-03-04
+      </td>
+      <td
+        style="width:80px"
+      >
+        1809-03-04
+      </td>
+    </tr>
+    <tr>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        <span>
+          4
+        </span>
+      </td>
+      <td
+        style="width:140px"
+      >
+        James Madison
+      </td>
+      <td
+        style="width:120px"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width:80px"
+      >
+        1751
+      </td>
+      <td
+        style="width:80px"
+      >
+        1836
+      </td>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        1809-03-04
+      </td>
+      <td
+        style="width:80px"
+      >
+        1817-03-04
+      </td>
+    </tr>
+    <tr>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        <span>
+          5
+        </span>
+      </td>
+      <td
+        style="width:140px"
+      >
+        James Monroe
+      </td>
+      <td
+        style="width:120px"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width:80px"
+      >
+        1758
+      </td>
+      <td
+        style="width:80px"
+      >
+        1831
+      </td>
+      <td
+        style="padding-right:23px;width:80px;text-align:right"
+      >
+        1817-03-04
+      </td>
+      <td
+        style="width:80px"
+      >
+        1825-03-04
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;

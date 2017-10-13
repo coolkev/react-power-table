@@ -11,7 +11,7 @@ export interface SortSettings {
 
 }
 
-export interface SortableColumn<TRow = {}, TValue = {}, TExtraProps = {}> extends Column<TRow, TValue, TExtraProps> {
+export interface SortableColumn<TRow = {}, TValue = any, TExtraProps = {}> extends Column<TRow, TValue, TExtraProps> {
 
     sortable?: boolean;
     sortExpression?: ((row: TRow) => any) | string;
@@ -37,7 +37,7 @@ export interface InternalSortingProps<TRow = {}> {
 }
 
 function shouldTransformColumns<TRow, T extends PowerTableProps<TRow>>(currentProps: T & InternalSortingProps<TRow>, nextProps: Readonly<T & InternalSortingProps<TRow>>) {
-    return !shallowEqual(nextProps.columns, currentProps.columns) || nextProps.headCellComponent !== currentProps.headCellComponent || nextProps.cellComponent !== currentProps.cellComponent;
+    return !shallowEqual(nextProps.columns, currentProps.columns) || nextProps.thInnerComponent !== currentProps.thInnerComponent;
 }
 
 function transformColumn<T>(options: SortableColumn<T> | string, tableProps: PowerTableProps<T>, getCurrentSort: () => SortSettings, changeSort: (sort: SortSettings) => void) {
@@ -67,8 +67,8 @@ function transformColumn<T>(options: SortableColumn<T> | string, tableProps: Pow
         col.sortExpression = core.field;
     }
 
-    const { cellHtmlAttributes } = col;
-    if (col.textAlign === 'right' || (cellHtmlAttributes && typeof (cellHtmlAttributes) !== 'function' && cellHtmlAttributes.style && cellHtmlAttributes.style.textAlign === 'right')) {
+    const { tdAttributes } = col;
+    if (col.textAlign === 'right' || (tdAttributes && typeof (tdAttributes) !== 'function' && tdAttributes.style && tdAttributes.style.textAlign === 'right')) {
 
         //this is needed to pad right-aligned cells so they line up with header text right side and don't appear under the sort icon
         //const ValueComponent = col.valueComponent || tableProps.valueComponent;
@@ -76,22 +76,21 @@ function transformColumn<T>(options: SortableColumn<T> | string, tableProps: Pow
 
         //cellComponentProps(props)
         //col.valueComponent = (props) => <SortableCellComponentWrapper><ValueComponent {...(props) } /></SortableCellComponentWrapper>;
-        if (typeof (cellHtmlAttributes) === 'function') {
+        if (typeof (tdAttributes) === 'function') {
             col.tdAttributes = props => {
-                const attribs = cellHtmlAttributes(props);
-                return { ...attribs, style: { ...attribs && attribs.style, paddingRight: 15 } };
+                const attribs = tdAttributes(props);
+                return { ...attribs, style: { ...attribs && attribs.style, paddingRight: 23 } };
             };
 
         } else {
-            col.tdAttributes = { ...cellHtmlAttributes, style: { ...cellHtmlAttributes && cellHtmlAttributes.style, paddingRight: 15 } };
+            col.tdAttributes = { ...tdAttributes, style: { ...tdAttributes && tdAttributes.style, paddingRight: 23 } };
         }
-    }
 
-    const OriginalHeadCellComponent = col.headCellComponent || tableProps.headCellComponent;
+    }
 
     const divSortingStyle: React.CSSProperties = { paddingRight: 15, position: 'relative' };
 
-    const divDefaultSortingTyle = col.textAlign === 'right' || (col.headCellHtmlAttributes && col.headCellHtmlAttributes.style && col.headCellHtmlAttributes.style.textAlign === 'right') ? { paddingRight: 15 } : null;
+    const divDefaultSortingTyle = col.textAlign === 'right' || (col.thAttributes && col.thAttributes.style && col.thAttributes.style.textAlign === 'right') ? { paddingRight: 15 } : null;
 
     const onClick = () => {
         const currentSort = getCurrentSort();
@@ -100,8 +99,11 @@ function transformColumn<T>(options: SortableColumn<T> | string, tableProps: Pow
         changeSort({ column: col.sortKey, descending: sorting && !currentSort.descending });
     };
 
-    col.headCellComponent = props => {
-        const { children, ...extra } = props;
+    col.thAttributes = { ...col.thAttributes, onClick, style: { cursor: 'pointer', ...(col.thAttributes || {}).style } };
+
+    const OriginalHeadCellComponent = col.headerComponent || tableProps.thInnerComponent;
+    col.headerComponent = props => {
+        const { children } = props;
         const currentSort = getCurrentSort();
         const sorting = col.sortKey === currentSort.column;
         const sortAsc = sorting && !currentSort.descending;
@@ -119,9 +121,9 @@ function transformColumn<T>(options: SortableColumn<T> | string, tableProps: Pow
 
         debuglog('SortableHeaderComponent render');
 
-        return <OriginalHeadCellComponent {...extra } onClick={onClick} style={{ cursor: 'pointer', ...extra.style }} ><div style={divStyle}>{children}{sortComponent && ' '}{sortComponent}</div></OriginalHeadCellComponent>;
+        return <OriginalHeadCellComponent  {...props} style={divStyle}>{children}{sortComponent && ' '}{sortComponent}</OriginalHeadCellComponent>;
     };
-    col.headCellComponent.displayName = 'SortableHeaderComponentWrapper';
+
     return col;
 }
 

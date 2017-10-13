@@ -96,7 +96,7 @@ describe('withInternalSorting tests',
         test('sorting with custom cellcomponent', () => {
 
             const columns2 = columns.map(c => ({ ...c }));
-            columns2[0].tdComponent = p => <span>{p.row.name}</span>;
+            columns2[0].valueComponent = p => <span>{p.children}</span>;
             columns2[0].textAlign = 'right';
 
             const Table = withInternalSorting(ReactPowerTable);

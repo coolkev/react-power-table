@@ -378,18 +378,21 @@ export function objectMapToArray<T>(mapOrArray: { [key: string]: T } | T[]): T[]
 export class Lazy<T> {
 
     private _value: T;
-    private func: () => T;
-    constructor(func: () => T) {
+    private lazyValue: () => T;
+    constructor(private func: () => T) {
 
-        this.func = () => {
+        //const actualFunc = func;
 
-            this.func = () => this._value;
-            return this._value = func();
+        this.lazyValue = () => {
+
+            this._value = this.func();
+            this.lazyValue = () => this._value;
+            return this._value;
 
         };
     }
 
     public get value(): T {
-        return this.func();
+        return this.lazyValue();
     }
 }

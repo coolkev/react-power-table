@@ -23,7 +23,7 @@ export class CheckboxExample extends React.Component<never, CheckboxExampleState
 
         this.columns = [
             {
-                field: m => m.checked, tdComponent: (row) => {
+                field: m => m.checked, valueComponent: (row) => {
                     return <input type="checkbox" checked={row.value || false} onChange={e => this.checkChange(row.row, e.currentTarget.checked)} />;
                 },
                 headerComponent: () => {

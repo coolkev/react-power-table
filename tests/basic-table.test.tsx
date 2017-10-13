@@ -17,10 +17,10 @@ describe('basic tests',
 
         });
 
-        test('Render plain table with custom cellValueComponent', () => {
+        test('Render plain table with custom tdComponent', () => {
             const component = render(
                 // tslint:disable-next-line:jsx-no-lambda
-                <ReactPowerTable columns={columns} rows={rows} keyColumn="number" defaultCellComponent={(p) => <span>{p.value}</span> } />
+                <ReactPowerTable columns={columns} rows={rows} keyColumn="number" tdComponent={(p) => <span>{p.value}</span>} />
             );
 
             expect(component).toMatchSnapshot();
@@ -30,7 +30,7 @@ describe('basic tests',
         test('Render plain table with custom headerComponent', () => {
 
             const columns2 = columns.map(c => ({ ...c }));
-            columns2[0].headerComponent = p => <span>Test</span>;
+            columns2[0].headerComponent = () => <span>Test</span>;
 
             const component = render(
                 // tslint:disable-next-line:jsx-no-lambda
@@ -41,10 +41,10 @@ describe('basic tests',
 
         });
 
-        test('Render plain table with custom cellComponent', () => {
+        test('Render plain table with custom valueComponent', () => {
 
             const columns2 = columns.map(c => ({ ...c }));
-            columns2[0].tdComponent = p => <span>{p.row.name}</span>;
+            columns2[0].valueComponent = p => <span>{p.row.number}</span>;
 
             const component = render(
                 // tslint:disable-next-line:jsx-no-lambda
@@ -55,4 +55,31 @@ describe('basic tests',
 
         });
 
+        test('Render plain table with wrapper', () => {
+
+            const columns2 = columns.map(c => ({ ...c }));
+            columns2[0].wrapper = <b />;
+
+            const component = render(
+                // tslint:disable-next-line:jsx-no-lambda
+                <ReactPowerTable columns={columns2} rows={rows} keyColumn="number" />
+            );
+
+            expect(component).toMatchSnapshot();
+
+        });
+
+        test('Render plain table with wrapper func', () => {
+
+            const columns2 = columns.map(c => ({ ...c }));
+            columns2[0].wrapper = () => <b />;
+
+            const component = render(
+                // tslint:disable-next-line:jsx-no-lambda
+                <ReactPowerTable columns={columns2} rows={rows} keyColumn="number" />
+            );
+
+            expect(component).toMatchSnapshot();
+
+        });
     });

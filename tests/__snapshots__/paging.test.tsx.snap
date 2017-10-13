@@ -5,250 +5,240 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
   <thead>
     <tr>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           number
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 140px;"
       >
-        <span>
+        <div>
           name
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 120px;"
       >
-        <span>
+        <div>
           party
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           birth_year
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           death_year
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: right; white-space: nowrap; width: 140px;"
+        style="text-align: right; white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           took_office
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           left_office
-        </span>
+        </div>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
-        <div>
-          21
-        </div>
-      </td>
-      <td>
-        <div>
-          Chester A. Arthur
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1829
-        </div>
-      </td>
-      <td>
-        <div>
-          1886
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        21
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1881-09-19
-        </div>
+        Chester A. Arthur
       </td>
-      <td>
-        <div>
-          1885-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1829
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1886
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1881-09-19
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1885-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          22
-        </div>
-      </td>
-      <td>
-        <div>
-          Grover Cleveland
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1837
-        </div>
-      </td>
-      <td>
-        <div>
-          1908
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        22
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1885-03-04
-        </div>
+        Grover Cleveland
       </td>
-      <td>
-        <div>
-          1889-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1837
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1908
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1885-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1889-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          23
-        </div>
-      </td>
-      <td>
-        <div>
-          Benjamin Harrison
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1833
-        </div>
-      </td>
-      <td>
-        <div>
-          1901
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        23
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1889-03-04
-        </div>
+        Benjamin Harrison
       </td>
-      <td>
-        <div>
-          1893-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1833
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1901
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1889-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1893-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          24
-        </div>
-      </td>
-      <td>
-        <div>
-          Grover Cleveland
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1837
-        </div>
-      </td>
-      <td>
-        <div>
-          1908
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        24
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1893-03-04
-        </div>
+        Grover Cleveland
       </td>
-      <td>
-        <div>
-          1897-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1837
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1908
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1893-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1897-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          25
-        </div>
-      </td>
-      <td>
-        <div>
-          William McKinley
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1843
-        </div>
-      </td>
-      <td>
-        <div>
-          1901
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        25
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1897-03-04
-        </div>
+        William McKinley
       </td>
-      <td>
-        <div>
-          1901-09-14
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1843
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1901
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1897-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1901-09-14
       </td>
     </tr>
   </tbody>
@@ -357,250 +347,240 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
   <thead>
     <tr>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           number
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 140px;"
       >
-        <span>
+        <div>
           name
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 120px;"
       >
-        <span>
+        <div>
           party
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           birth_year
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           death_year
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: right; white-space: nowrap; width: 140px;"
+        style="text-align: right; white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           took_office
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           left_office
-        </span>
+        </div>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
-        <div>
-          21
-        </div>
-      </td>
-      <td>
-        <div>
-          Chester A. Arthur
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1829
-        </div>
-      </td>
-      <td>
-        <div>
-          1886
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        21
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1881-09-19
-        </div>
+        Chester A. Arthur
       </td>
-      <td>
-        <div>
-          1885-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1829
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1886
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1881-09-19
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1885-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          22
-        </div>
-      </td>
-      <td>
-        <div>
-          Grover Cleveland
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1837
-        </div>
-      </td>
-      <td>
-        <div>
-          1908
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        22
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1885-03-04
-        </div>
+        Grover Cleveland
       </td>
-      <td>
-        <div>
-          1889-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1837
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1908
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1885-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1889-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          23
-        </div>
-      </td>
-      <td>
-        <div>
-          Benjamin Harrison
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1833
-        </div>
-      </td>
-      <td>
-        <div>
-          1901
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        23
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1889-03-04
-        </div>
+        Benjamin Harrison
       </td>
-      <td>
-        <div>
-          1893-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1833
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1901
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1889-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1893-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          24
-        </div>
-      </td>
-      <td>
-        <div>
-          Grover Cleveland
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1837
-        </div>
-      </td>
-      <td>
-        <div>
-          1908
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        24
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1893-03-04
-        </div>
+        Grover Cleveland
       </td>
-      <td>
-        <div>
-          1897-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1837
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1908
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1893-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1897-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          25
-        </div>
-      </td>
-      <td>
-        <div>
-          William McKinley
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1843
-        </div>
-      </td>
-      <td>
-        <div>
-          1901
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        25
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1897-03-04
-        </div>
+        William McKinley
       </td>
-      <td>
-        <div>
-          1901-09-14
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1843
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1901
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1897-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1901-09-14
       </td>
     </tr>
   </tbody>
@@ -709,835 +689,795 @@ exports[`withInternalPaging tests render paging 1`] = `
   <thead>
     <tr>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           number
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 140px;"
       >
-        <span>
+        <div>
           name
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 120px;"
       >
-        <span>
+        <div>
           party
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           birth_year
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           death_year
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: right; white-space: nowrap; width: 140px;"
+        style="text-align: right; white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           took_office
-        </span>
+        </div>
       </th>
       <th
-        style="text-align: left; white-space: nowrap;"
+        style="white-space: nowrap; width: 80px;"
       >
-        <span>
+        <div>
           left_office
-        </span>
+        </div>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>
-        <div>
-          1
-        </div>
-      </td>
-      <td>
-        <div>
-          George Washington
-        </div>
-      </td>
-      <td>
-        <div>
-          No Party
-        </div>
-      </td>
-      <td>
-        <div>
-          1732
-        </div>
-      </td>
-      <td>
-        <div>
-          1799
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        1
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1789-04-30
-        </div>
+        George Washington
       </td>
-      <td>
-        <div>
-          1797-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        No Party
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1732
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1799
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1789-04-30
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1797-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          2
-        </div>
-      </td>
-      <td>
-        <div>
-          John Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Federalist
-        </div>
-      </td>
-      <td>
-        <div>
-          1735
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        2
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1797-03-04
-        </div>
+        John Adams
       </td>
-      <td>
-        <div>
-          1801-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Federalist
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1735
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1797-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1801-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          3
-        </div>
-      </td>
-      <td>
-        <div>
-          Thomas Jefferson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1743
-        </div>
-      </td>
-      <td>
-        <div>
-          1826
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        3
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1801-03-04
-        </div>
+        Thomas Jefferson
       </td>
-      <td>
-        <div>
-          1809-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1743
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1826
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1801-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1809-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          4
-        </div>
-      </td>
-      <td>
-        <div>
-          James Madison
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1751
-        </div>
-      </td>
-      <td>
-        <div>
-          1836
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        4
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1809-03-04
-        </div>
+        James Madison
       </td>
-      <td>
-        <div>
-          1817-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1751
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1836
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1809-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1817-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          5
-        </div>
-      </td>
-      <td>
-        <div>
-          James Monroe
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1758
-        </div>
-      </td>
-      <td>
-        <div>
-          1831
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        5
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1817-03-04
-        </div>
+        James Monroe
       </td>
-      <td>
-        <div>
-          1825-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1758
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1831
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1817-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1825-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          6
-        </div>
-      </td>
-      <td>
-        <div>
-          John Quincy Adams
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic-Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1767
-        </div>
-      </td>
-      <td>
-        <div>
-          1848
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        6
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1825-03-04
-        </div>
+        John Quincy Adams
       </td>
-      <td>
-        <div>
-          1829-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic-Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1767
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1848
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1825-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1829-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          7
-        </div>
-      </td>
-      <td>
-        <div>
-          Andrew Jackson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1767
-        </div>
-      </td>
-      <td>
-        <div>
-          1845
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        7
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1829-03-04
-        </div>
+        Andrew Jackson
       </td>
-      <td>
-        <div>
-          1837-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1767
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1845
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1829-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1837-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          8
-        </div>
-      </td>
-      <td>
-        <div>
-          Martin Van Buren
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1782
-        </div>
-      </td>
-      <td>
-        <div>
-          1862
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        8
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1837-03-04
-        </div>
+        Martin Van Buren
       </td>
-      <td>
-        <div>
-          1841-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1782
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1862
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1837-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1841-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          9
-        </div>
-      </td>
-      <td>
-        <div>
-          William Henry Harrison
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1773
-        </div>
-      </td>
-      <td>
-        <div>
-          1841
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        9
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1841-03-04
-        </div>
+        William Henry Harrison
       </td>
-      <td>
-        <div>
-          1841-04-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Whig
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1773
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1841
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1841-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1841-04-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          10
-        </div>
-      </td>
-      <td>
-        <div>
-          John Tyler
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1790
-        </div>
-      </td>
-      <td>
-        <div>
-          1862
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        10
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1841-04-04
-        </div>
+        John Tyler
       </td>
-      <td>
-        <div>
-          1845-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Whig
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1790
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1862
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1841-04-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1845-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          11
-        </div>
-      </td>
-      <td>
-        <div>
-          James K. Polk
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1795
-        </div>
-      </td>
-      <td>
-        <div>
-          1849
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        11
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1845-03-04
-        </div>
+        James K. Polk
       </td>
-      <td>
-        <div>
-          1849-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1795
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1849
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1845-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1849-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          12
-        </div>
-      </td>
-      <td>
-        <div>
-          Zachary Taylor
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1784
-        </div>
-      </td>
-      <td>
-        <div>
-          1850
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        12
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1849-03-04
-        </div>
+        Zachary Taylor
       </td>
-      <td>
-        <div>
-          1850-07-09
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Whig
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1784
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1850
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1849-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1850-07-09
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          13
-        </div>
-      </td>
-      <td>
-        <div>
-          Millard Fillmore
-        </div>
-      </td>
-      <td>
-        <div>
-          Whig
-        </div>
-      </td>
-      <td>
-        <div>
-          1800
-        </div>
-      </td>
-      <td>
-        <div>
-          1874
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        13
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1850-07-09
-        </div>
+        Millard Fillmore
       </td>
-      <td>
-        <div>
-          1853-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Whig
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1800
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1874
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1850-07-09
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1853-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          14
-        </div>
-      </td>
-      <td>
-        <div>
-          Franklin Pierce
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1804
-        </div>
-      </td>
-      <td>
-        <div>
-          1869
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        14
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1853-03-04
-        </div>
+        Franklin Pierce
       </td>
-      <td>
-        <div>
-          1857-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1804
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1869
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1853-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1857-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          15
-        </div>
-      </td>
-      <td>
-        <div>
-          James Buchanan
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1791
-        </div>
-      </td>
-      <td>
-        <div>
-          1868
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        15
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1857-03-04
-        </div>
+        James Buchanan
       </td>
-      <td>
-        <div>
-          1861-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1791
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1868
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1857-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1861-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          16
-        </div>
-      </td>
-      <td>
-        <div>
-          Abraham Lincoln
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1809
-        </div>
-      </td>
-      <td>
-        <div>
-          1865
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        16
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1861-03-04
-        </div>
+        Abraham Lincoln
       </td>
-      <td>
-        <div>
-          1865-04-15
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1809
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1865
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1861-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1865-04-15
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          17
-        </div>
-      </td>
-      <td>
-        <div>
-          Andrew Johnson
-        </div>
-      </td>
-      <td>
-        <div>
-          Democratic
-        </div>
-      </td>
-      <td>
-        <div>
-          1808
-        </div>
-      </td>
-      <td>
-        <div>
-          1875
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        17
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1865-04-15
-        </div>
+        Andrew Johnson
       </td>
-      <td>
-        <div>
-          1869-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Democratic
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1808
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1875
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1865-04-15
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1869-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          18
-        </div>
-      </td>
-      <td>
-        <div>
-          Ulysses S. Grant
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1822
-        </div>
-      </td>
-      <td>
-        <div>
-          1885
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        18
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1869-03-04
-        </div>
+        Ulysses S. Grant
       </td>
-      <td>
-        <div>
-          1877-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1822
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1885
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1869-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1877-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          19
-        </div>
-      </td>
-      <td>
-        <div>
-          Rutherford B. Hayes
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1822
-        </div>
-      </td>
-      <td>
-        <div>
-          1893
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        19
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1877-03-04
-        </div>
+        Rutherford B. Hayes
       </td>
-      <td>
-        <div>
-          1881-03-04
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1822
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1893
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1877-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1881-03-04
       </td>
     </tr>
     <tr>
-      <td>
-        <div>
-          20
-        </div>
-      </td>
-      <td>
-        <div>
-          James A. Garfield
-        </div>
-      </td>
-      <td>
-        <div>
-          Republican
-        </div>
-      </td>
-      <td>
-        <div>
-          1831
-        </div>
-      </td>
-      <td>
-        <div>
-          1881
-        </div>
+      <td
+        style="width: 80px;"
+      >
+        20
       </td>
       <td
-        style="width: 140px; text-align: right;"
+        style="width: 140px;"
       >
-        <div>
-          1881-03-04
-        </div>
+        James A. Garfield
       </td>
-      <td>
-        <div>
-          1881-09-19
-        </div>
+      <td
+        style="width: 120px;"
+      >
+        Republican
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1831
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1881
+      </td>
+      <td
+        style="width: 80px; text-align: right;"
+      >
+        1881-03-04
+      </td>
+      <td
+        style="width: 80px;"
+      >
+        1881-09-19
       </td>
     </tr>
   </tbody>
