@@ -21,6 +21,13 @@ function getValueProps<TRow, TExtraProps>(row: TRow, column: StrictColumn<TRow, 
     return valueProps ? valueProps(initialValueProps) : initialValueProps;
 
 }
+
+// export function ReactPowerTable2<TRow = {}, TExtraProps = {}>() {
+//     return ReactPowerTable as any as React.ComponentClass<PowerTableProps<TRow, TExtraProps>>;
+// }
+// export type ReactPowerTable2<TRow = {}, TExtraProps = {}> = React.ComponentClass<PowerTableProps<TRow, TExtraProps>>;
+
+/** @internal */
 export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Component<PowerTableProps<TRow, TExtraProps>, never> {
 
     static displayName = 'ReactPowerTable';

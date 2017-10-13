@@ -62,8 +62,6 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
         constructor(props: T & { paging: Partial<InternalPagingProps> }) {
             super(props);
 
-            //log('withInternalPaging constructor', props);
-
             const currentPage = props.paging && props.paging.currentPage || 1;
             const pageSize = props.paging && props.paging.pageSize || 20;
             const skip = (currentPage - 1) * pageSize;
@@ -137,17 +135,6 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
             const { paging, rows, ...extra } = this.props as InternalPagingGridProps & { paging: Partial<InternalPagingProps> };
             const { pageRows } = this.state;
 
-            //debuglog('Paging render() currentPage is ' + currentPage);
-
-            /*const components = { ...extra.components, foot: () => <tfoot>
-                <tr>
-                    <td colSpan={columnCount}>
-                        <Paging {...pagingProps} />
-                    </td>
-                </tr>
-            </tfoot> };*/
-
-            //return <PagingComponent rows={pageRows} {...extra} paging={{ currentPage: currentPage, pageSize: pageSize, pageSizes: pageSizes, gotoPage: this.gotoPage, totalRowCount: rows.length }} />
             return <WrappedComponent rows={pageRows} {...extra} footerComponent={this.renderFooter} />;
         }
     };
@@ -171,7 +158,6 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.Co
 
             const { paging, columns, footerComponent } = this.props;
 
-            //const pagingProps = this.props.paging;
             const columnCount = columns.filter((m) => m.visible !== false).length;
 
             const Footer: any = footerComponent ? footerComponent : TableFooterComponent;
@@ -186,20 +172,6 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.Co
 
         }
     };
-
-    // const WithPaging: React.StatelessComponent<T & { paging: PagingProps }> = props => {
-
-    //     const { paging, ...extra } = props as PagingGridProps & { paging: PagingProps };
-    //     const columnCount = props.columns.filter(m => m.visible !== false).length;
-    //     //const pagingProps = { ...paging };
-
-    //     return <WrappedComponent {...extra} tableFooterComponent={() => <TableFooterComponent columnCount={columnCount} pagingProps={paging} />} />;
-    // };
-
-    // WithPaging.displayName = `WithPaging(${getComponentDisplayName(WrappedComponent)})`;
-    // WithPaging.defaultProps = WrappedComponent.defaultProps as any;
-
-    // return WithPaging;
 
 }
 
