@@ -2,7 +2,7 @@ var babel = require("gulp-babel"),
     //glob = require("glob"),
     gulp = require("gulp"),
     gutil = require('gulp-util'),
-    //concat = require('gulp-concat'),
+    concat = require('gulp-concat'),
     sourcemaps = require("gulp-sourcemaps"),
     del = require('del'),
 
@@ -16,7 +16,10 @@ var babel = require("gulp-babel"),
     fs = require('fs'),
     tslint = require("gulp-tslint");
 
-gulp.task("build", ['lint'],function () {
+
+
+
+gulp.task("build:ts", ['lint'], function () {
 
     // const babelOptions = {
     //     "presets": [
@@ -36,20 +39,31 @@ gulp.task("build", ['lint'],function () {
     let typescriptCompile = gulp.src(["./src/**/*.ts?(x)"])
         //.pipe(sourcemaps.init())
         .pipe(tsProject());
-    return merge([typescriptCompile.js
-        .pipe(babel())
-        //.pipe(concat("Scripts/script.js"))
-        //.pipe(sourcemaps.write("./", { sourceRoot: "/src" }))
-        .pipe(gulp.dest("./dist")),
-    typescriptCompile.dts.pipe(gulp.dest('./@types')),
+    return merge([
+        typescriptCompile.js.pipe(babel()).pipe(gulp.dest("./dist")),
 
-    ]);
+        typescriptCompile.dts.pipe(gulp.dest('./@types'))]);
+
+
+
+});
+
+gulp.task("build", ['build:ts'], function () {
+
+    //var file = new gutil.File({ path: './ReactPowerTableType.d-ts' });
+    
+    return  gulp.src(['./@types/ReactPowerTable.d.ts', './ReactPowerTableType.d-ts'])
+        .pipe(concat('ReactPowerTable.d.ts'))
+        .pipe(gulp.dest('./@types/'));
+    //return gulp.src('./ReactPowerTableType.d-ts')
+      //  .pipe(append('./@types/ReactPowerTable.d.ts'));
 });
 
 
 
+
 gulp.task("lint", function () {
-   
+
     return gulp.src(["./src/**/*.ts?(x)"])
         .pipe(tslint({
             formatter: "verbose"
@@ -122,20 +136,20 @@ gulp.task('start', (cb) => {
 });
 
 gulp.task('start:web', (cb) => {
-    
-        var webpackConfig = require('./examples/webpack.config.js');
-        return new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(webpackConfig.devServer.port, 'localhost', function (err) {
-            if (err) {
-                cb(new gutil.PluginError('webpack-dev-server', err));
-            }
-            gutil.log('[webpack-dev-server]', 'http://localhost:8080/');
-        }).on('close', () => {
-            cb();
-        });
-    
-    
+
+    var webpackConfig = require('./examples/webpack.config.js');
+    return new WebpackDevServer(webpack(webpackConfig), webpackConfig.devServer).listen(webpackConfig.devServer.port, 'localhost', function (err) {
+        if (err) {
+            cb(new gutil.PluginError('webpack-dev-server', err));
+        }
+        gutil.log('[webpack-dev-server]', 'http://localhost:8080/');
+    }).on('close', () => {
+        cb();
     });
-    
+
+
+});
+
 // });
 // this is not working because each time it reloads, it compiles an additional time
 // gulp.task('start', (cb)=> {
