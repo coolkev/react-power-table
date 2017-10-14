@@ -8,5 +8,5 @@ bin/
 tests/coverage/
 /dist/
 /examples/dist/
-/@types/
+/types/
 .vscode/

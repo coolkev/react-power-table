@@ -34,7 +34,7 @@ gulp.task("build:ts", ['lint'], function () {
     //     ]
     // };
 
-    let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: '@types' });
+    let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: 'types' });
 
     let typescriptCompile = gulp.src(["./src/**/*.ts?(x)"])
         //.pipe(sourcemaps.init())
@@ -42,7 +42,7 @@ gulp.task("build:ts", ['lint'], function () {
     return merge([
         typescriptCompile.js.pipe(babel()).pipe(gulp.dest("./dist")),
 
-        typescriptCompile.dts.pipe(gulp.dest('./@types'))]);
+        typescriptCompile.dts.pipe(gulp.dest('./types'))]);
 
 
 
@@ -52,11 +52,9 @@ gulp.task("build", ['build:ts'], function () {
 
     //var file = new gutil.File({ path: './ReactPowerTableType.d-ts' });
     
-    return  gulp.src(['./@types/ReactPowerTable.d.ts', './ReactPowerTableType.d-ts'])
+    return  gulp.src(['./types/ReactPowerTable.d.ts', './ReactPowerTableType.d-ts'])
         .pipe(concat('ReactPowerTable.d.ts'))
-        .pipe(gulp.dest('./@types/'));
-    //return gulp.src('./ReactPowerTableType.d-ts')
-      //  .pipe(append('./@types/ReactPowerTable.d.ts'));
+        .pipe(gulp.dest('./types/'));
 });
 
 
@@ -72,7 +70,7 @@ gulp.task("lint", function () {
 
 });
 
-const buildFolders = ['dist', 'docs', 'examples/dist', '@types', 'tests-dist'];
+const buildFolders = ['dist', 'docs', 'examples/dist', 'types', 'tests-dist'];
 
 buildFolders.forEach(f => {
     gulp.task('clean:' + f, function () {
