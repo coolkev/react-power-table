@@ -233,6 +233,10 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
 }
 
+export function typedTable<TRow = {}, TExtraProps = {}>() {
+    return ReactPowerTable as any as React.ComponentClass<PowerTableProps<TRow, TExtraProps>>;
+}
+
 export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     /**
      * Columns to display in table
