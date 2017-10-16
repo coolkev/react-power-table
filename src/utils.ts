@@ -162,7 +162,7 @@ interface PureOptions<T> {
     componentName?: string;
     deeperCompareProps?: keyof T | Array<keyof T>;
 
-    exclude?: keyof T | Array<keyof T>;
+    exclude?: keyof T | Array<keyof T | 'children'>;
     //compareChildren?: boolean;
 }
 /** @internal */

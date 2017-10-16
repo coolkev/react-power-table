@@ -15,7 +15,7 @@ interface HideColumnsExampleState {
 
 const initialColumns = defaultColumns.map(c => {
         const core = getColumnCore(c);
-        return { ...c, fieldName: core.fieldName, headerText: core.headerText };
+        return { ...c, key: core.key, headerText: core.headerText };
 });
 // tslint:disable:jsx-no-lambda
 const Table = withInternalSorting(withInternalPaging(ReactPowerTable));
@@ -54,7 +54,7 @@ export class HideColumnsExample extends React.Component<never, HideColumnsExampl
 
                                 <div>Show Columns:
 
-                                {columns.map(c => <label key={c.fieldName} style={{ marginRight: 10 }}><input type="checkbox" checked={c.visible !== false} onChange={(e) => this.handleVisibleChange(c, e.currentTarget.checked)} /> {c.headerText}</label>)}
+                                {columns.map(c => <label key={c.key} style={{ marginRight: 10 }}><input type="checkbox" checked={c.visible !== false} onChange={(e) => this.handleVisibleChange(c, e.currentTarget.checked)} /> {c.headerText}</label>)}
                                 </div>
 
                                 <Table columns={this.state.columns} keyColumn="number" rows={sampledata} sorting={{ column: 'president' }} />

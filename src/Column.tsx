@@ -19,10 +19,10 @@ export function getColumnCore<T, TExtraProps>(col: Column<T, {}, TExtraProps> | 
         };
     }
 
-    const { field, fieldName, key } = col;
+    const { field, key } = col;
 
     if (typeof field === 'function') {
-        const actualFieldName = fieldName || getExpression(field);
+        const actualFieldName = getExpression(field);
         return {
             key: key || actualFieldName,
             field,
@@ -30,12 +30,12 @@ export function getColumnCore<T, TExtraProps>(col: Column<T, {}, TExtraProps> | 
             headerText: col.headerText || actualFieldName,
         };
     }
-    if (fieldName) {
+    if (typeof field === 'string') {
         return {
-            key: key || fieldName,
-            field: (row) => row[fieldName],
-            fieldName,
-            headerText: col.headerText || fieldName,
+            key: key || field,
+            field: (row) => row[field],
+            fieldName: field,
+            headerText: col.headerText || field,
 
         };
     }

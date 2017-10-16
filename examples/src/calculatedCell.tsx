@@ -36,7 +36,7 @@ export class CalculatedCellExample extends React.Component<{}, { nameHyperlink: 
                         { field: m => m.number },
                         { field: m => m.president, wrapper: v => v.nameHyperlink && <a href={'fakeurl/' + v.row.number} />, includeExtraCellProps: true },
                         { field: m => m.party, valueProps: v => ({ ...v, partyBold: this.state.partyBold }), wrapper: v => v['partyBold'] && <b />, },
-                        { field: m => m.birth_year, wrapper: v => this.state.yearBold && <b />, pure: false },
+                        { field: m => m.birth_year, wrapper: () => this.state.yearBold && <b />, pure: false, tdAttributes: cell => ({ style: { color: cell.value % 2 === 0 ? 'red' : null } }) } as Column<President, number>,
                         { field: m => m.death_year, tdAttributes: { style: { color: 'red' } } },
                         { field: m => m.took_office, textAlign: 'right', width: 140 },
                         { field: m => m.left_office },

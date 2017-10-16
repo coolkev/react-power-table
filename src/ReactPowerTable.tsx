@@ -3,20 +3,20 @@ import * as React from 'react';
 import { getColumnCore } from './Column';
 import { debuglog, shallowEqual, makePure } from './utils';
 
-function applyWrapper(wrapper: StaticOrDynamicProps<ValueComponentProps, JSX.Element>, valueProps: ValueComponentProps, valueElement: any) {
+function applyWrapper(wrapper: StaticOrDynamicProps<CellProps, JSX.Element>, valueProps: CellProps, valueElement: any) {
 
     const wrapperElement = typeof (wrapper) === 'function' ? wrapper(valueProps) : wrapper;
 
     return wrapperElement && React.cloneElement(wrapperElement, null, valueElement) || valueElement;
 }
 
-function getValueProps<TRow, TExtraProps>(row: TRow, column: StrictColumn<TRow, any, TExtraProps>, extraProps: TExtraProps) {
+function getValueProps<TRow, TExtraProps>(row: TRow, column: StrictColumn<TRow, any, TExtraProps>, extraProps: TExtraProps): CellProps<TRow, TExtraProps> {
     const { valueProps, formatter, field, includeExtraCellProps } = column;
     const value = field(row);
 
     const formattedValue = formatter ? formatter(value, row) : value;
 
-    const initialValueProps = { ...(includeExtraCellProps && extraProps as any), row, column, value, children: formattedValue };
+    const initialValueProps: CellProps<TRow, TExtraProps> = { ...(includeExtraCellProps && extraProps as any), row, column, value, formattedValue };
 
     return valueProps ? valueProps(initialValueProps) : initialValueProps;
 
@@ -60,7 +60,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
                 const tdHtmlAttributes = typeof (tdAttributes) === 'function' ? tdAttributes(valueProps) : tdAttributes;
 
                 const ValueComponent = valueComponent || defaultValueComponent;
-                const valueElement = ValueComponent ? <ValueComponent {...valueProps} /> : valueProps.children;
+                const valueElement = ValueComponent ? <ValueComponent {...valueProps} children={valueProps.formattedValue} /> : valueProps.formattedValue;
 
                 const children = wrapper ? applyWrapper(wrapper, valueProps, valueElement) : valueElement;
 
@@ -128,7 +128,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         const tdAttributesStatic: React.TdHTMLAttributes<HTMLTableDataCellElement> = typeof (tdAttributes) === 'function' ? { style: sharedStyle } : { ...tdAttributes, style: { ...(tdAttributes && tdAttributes.style), ...sharedStyle } };
         const tdAttributesFunc = typeof (tdAttributes) === 'function' ? tdAttributes : undefined;
 
-        let actualTdAttributes: ((props: ValueComponentProps<TRow, TExtraProps>) => React.TdHTMLAttributes<HTMLTableDataCellElement>);
+        let actualTdAttributes: ((props: CellProps<TRow, TExtraProps>) => React.TdHTMLAttributes<HTMLTableDataCellElement>);
 
         if (typeof cssClass === 'function') {
             actualTdAttributes = tdAttributesFunc ? (row) => ({ ...tdAttributesStatic, ...tdAttributesFunc(row), className: cssClass(row) }) : (row) => ({ ...tdAttributesStatic, className: cssClass(row) });
@@ -294,7 +294,7 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     /** Customize the html that appears in <tbody> > <tr> > <td>. children are passed to props and must be rendered
      * value can also be customize per column using Column.valueComponent
      */
-    valueComponent?: React.ComponentType<ValueComponentProps<TRow, TExtraProps>>;
+    valueComponent?: React.ComponentType<CellProps<TRow, TExtraProps>>;
 
     //valueProps?: DynamicProps<ValueComponentProps<TRow, TExtraProps>>;
 
@@ -313,12 +313,18 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
 export type StaticOrDynamicProps<TIn, TOut> = TOut | ((props: TIn) => TOut);
 export type DynamicProps<TIn, TOut = TIn> = ((props: TIn) => TOut);
 
-export interface StrictColumn<TRow = {}, TValue = any, TExtraProps = {}> {
+export interface StrictColumn<TRow = {}, TValue = any, TExtraProps = {}> extends ColumnBase<TRow, TValue, TExtraProps> {
+
+    key: string | number;
+
+    field: ((row: TRow) => TValue);
+    fieldName: string;
+
+}
+
+export interface ColumnBase<TRow = {}, TValue = any, TExtraProps = {}> {
 
     key?: string | number;
-
-    field?: ((row: TRow) => TValue);
-    fieldName?: string;
 
     headerText?: string;
     visible?: boolean;
@@ -336,7 +342,7 @@ export interface StrictColumn<TRow = {}, TValue = any, TExtraProps = {}> {
     /** Customize the html attributes set in the td element
      * formerly cellProps
      */
-    tdAttributes?: StaticOrDynamicProps<ValueComponentProps<TRow, TExtraProps, TValue>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
+    tdAttributes?: StaticOrDynamicProps<CellProps<TRow, TExtraProps, TValue>, React.TdHTMLAttributes<HTMLTableDataCellElement>>;
 
     formatter?: (value: any, row?: TRow) => any;
 
@@ -345,14 +351,14 @@ export interface StrictColumn<TRow = {}, TValue = any, TExtraProps = {}> {
      * and if that is not specified, it will just render the value for this cell directly inside the <td>
      * formerly cellComponent
      */
-    valueComponent?: React.ComponentType<ValueComponentProps<TRow, TExtraProps, TValue>>;
+    valueComponent?: React.ComponentType<CellProps<TRow, TExtraProps, TValue>>;
     //valueComponent?: React.ComponentClass<ValueComponentProps<TRow, TExtraProps, TValue>> | ((props: ValueComponentProps<TRow, TExtraProps, TValue>) => React.ReactNode);
 
     /** Customize the props passed to cellComponent for this column
      * use this instead of referencing arbitratry/external state directly inside valueComponent
      * formerlly cellComponentProps
      */
-    valueProps?: (props: ValueComponentProps<TRow, TExtraProps>) => ValueComponentProps<TRow, TExtraProps, TValue>;
+    valueProps?: (props: CellProps<TRow, TExtraProps>) => CellProps<TRow, TExtraProps, TValue>;
 
     /** Specify an element for which each valueComponent (or raw value) will be injected
      * examples:
@@ -360,19 +366,23 @@ export interface StrictColumn<TRow = {}, TValue = any, TExtraProps = {}> {
      *    { field: c => c.name, wrapper: v=> v.active ? <b/> : <span style={{textDecoration: 'line-through'}}/> }
      *    { field: c => c.name, wrapper: v=> <a href={'customer-detail/' + v.row.CustomerId}/> }
      */
-    wrapper?: StaticOrDynamicProps<ValueComponentProps<TRow, TExtraProps, TValue>, JSX.Element>;
+    wrapper?: StaticOrDynamicProps<CellProps<TRow, TExtraProps, TValue>, JSX.Element>;
 
     /** Columns are pure by default, meaning they will not be re-rendered unless their props change */
     pure?: boolean;
 }
 
-export interface Column<TRow = {}, TValue = any, TExtraProps = {}> extends StrictColumn<TRow, TValue, TExtraProps> {
+export interface Column<TRow = {}, TValue = any, TExtraProps = {}> extends ColumnBase<TRow, TValue, TExtraProps> {
+
+    key?: string | number;
+
+    field?: string | ((row: TRow) => TValue);
 
     /** Shortcut for setting the thAttributes.className attribute */
     headerCssClass?: string;
 
     /** Shortcut for setting the tdAttributes.className attribute - can be a static string, or a function that will be called for each row for this column */
-    cssClass?: ((props: ValueComponentProps<TRow, TExtraProps, TValue>) => string) | string;
+    cssClass?: ((props: CellProps<TRow, TExtraProps, TValue>) => string) | string;
 
     /** Shortcut for setting the thAttributes.style.width and tdAttributes.style.width */
     width?: number;
@@ -432,7 +442,7 @@ export interface RowBuilderComponentProps<TRow = {}, TExtraProps = {}> {
     /** Customize the html that appears in <tbody> > <tr> > <td>. children are passed to props and must be rendered
      * value can also be customize per column using Column.valueComponent
      */
-    defaultValueComponent: React.ComponentType<ValueComponentProps<TRow, TExtraProps>>;
+    defaultValueComponent: React.ComponentType<CellProps<TRow, TExtraProps>>;
 
     /**
      * Optional properties to pass down to valueProps for each column that has includeExtraCellProps set to true
@@ -443,13 +453,14 @@ export interface RowBuilderComponentProps<TRow = {}, TExtraProps = {}> {
 
 export type RowBuilderComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowBuilderComponentProps<T, TExtraProps>>;
 
-export type TdComponentProps<T = {}, TExtraProps = {}> = ValueComponentProps<T, TExtraProps> & { htmlAttributes: React.TdHTMLAttributes<HTMLTableDataCellElement> };
+export type TdComponentProps<T = {}, TExtraProps = {}> = CellProps<T, TExtraProps> & { htmlAttributes: React.TdHTMLAttributes<HTMLTableDataCellElement> };
 export type TdComponentType<T = {}, TExtraProps = {}> = React.ComponentType<TdComponentProps<T, TExtraProps>>;
-export type ValueComponentProps<T = {}, TExtraProps = {}, TValue = any> = TExtraProps & {
+export type CellProps<T = {}, TExtraProps = {}, TValue = any> = TExtraProps & {
 
     row: T;
     column: StrictColumn<T, {}, TExtraProps>;
     value: TValue;
+    formattedValue: any;
 
-    children?: React.ReactNode;
+    //children?: React.ReactNode;
 };

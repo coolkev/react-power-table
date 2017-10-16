@@ -36,13 +36,13 @@ export interface InternalSortingProps<TRow = {}> {
     };
 }
 
-function shouldTransformColumns<TRow, T extends PowerTableProps<TRow>>(currentProps: T & InternalSortingProps<TRow>, nextProps: Readonly<T & InternalSortingProps<TRow>>) {
+function shouldTransformColumns<TRow, T extends PowerTableProps<TRow>>(currentProps: Readonly<T & InternalSortingProps<TRow>>, nextProps: Readonly<T & InternalSortingProps<TRow>>) {
     return !shallowEqual(nextProps.columns, currentProps.columns) || nextProps.thInnerComponent !== currentProps.thInnerComponent;
 }
 
-function transformColumn<T>(options: SortableColumn<T> | string, tableProps: PowerTableProps<T>, getCurrentSort: () => SortSettings, changeSort: (sort: SortSettings) => void) {
+function transformColumn<TRow, T extends PowerTableProps<TRow>>(options: SortableColumn<TRow> | string, tableProps: T, getCurrentSort: () => SortSettings, changeSort: (sort: SortSettings) => void) {
 
-    const col: SortableColumn<T> = typeof (options) === 'string' ? { fieldName: options, key: options } : { ...options };
+    const col: SortableColumn<TRow> = typeof (options) === 'string' ? { field: options, key: options } : { ...options };
 
     col.sortable = col.sortable || col.sortable === undefined;
 
@@ -170,7 +170,7 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
             };
         }
         componentWillReceiveProps(nextProps: Readonly<T & InternalSortingProps<TRow>>) {
-            if (shouldTransformColumns(this.props, nextProps)) {
+            if (shouldTransformColumns<TRow, T>(this.props, nextProps)) {
                 this.columns = this.transformColumns(nextProps);
 
             }
@@ -195,10 +195,10 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
 
             if (this.columns && this.props.columns) {
                 //reuse the same column if it hasn't changed from the original
-                return columns.map((c, i) => shallowEqual(c, this.props.columns[i]) ? this.columns[i] : transformColumn(c, props, () => this.state.currentSort, this.changeSort));
+                return columns.map((c, i) => shallowEqual(c, this.props.columns[i]) ? this.columns[i] : transformColumn<TRow, T>(c, props, () => this.state.currentSort, this.changeSort));
 
             }
-            return columns.map((c) => transformColumn(c, props, () => this.state.currentSort, this.changeSort));
+            return columns.map((c) => transformColumn<TRow, T>(c, props, () => this.state.currentSort, this.changeSort));
         }
 
         private performSort(rows: TRow[], sort: SortSettings) {
@@ -283,7 +283,7 @@ export function withSorting<TRow, T extends PowerTableProps<TRow>>(WrappedCompon
 
         componentWillReceiveProps(nextProps: Readonly<T & ExternalSortingProps>) {
 
-            if (shouldTransformColumns(this.props, nextProps)) {
+            if (shouldTransformColumns<TRow, T>(this.props, nextProps)) {
                 this.columns = this.transformColumns(nextProps);
             }
         }
@@ -294,10 +294,10 @@ export function withSorting<TRow, T extends PowerTableProps<TRow>>(WrappedCompon
 
             if (this.columns && this.props.columns) {
                 //reuse the same column if it hasn't changed from the original
-                return columns.map((c, i) => c === this.props.columns[i] ? this.columns[i] : transformColumn(c, props, () => this.props.sorting, this.props.sorting.changeSort));
+                return columns.map((c, i) => c === this.props.columns[i] ? this.columns[i] : transformColumn<TRow, T>(c, props, () => this.props.sorting, this.props.sorting.changeSort));
 
             }
-            return columns.map((c) => transformColumn(c, props, () => this.props.sorting, this.props.sorting.changeSort));
+            return columns.map((c) => transformColumn<TRow, T>(c, props, () => this.props.sorting, this.props.sorting.changeSort));
         }
 
         render() {
