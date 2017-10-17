@@ -107,10 +107,10 @@ describe('basic re-render tests',
 
                 //expect(component.render()).toMatchSnapshot();
 
-                console.log('changing tableClassName to test');
+                //console.log('changing tableClassName to test');
 
                 component.setProps({ tableClassName: 'test' });
-                console.log('done changing tableClassName to test');
+                //console.log('done changing tableClassName to test');
 
                 expect(cellRenderCount).toBe(35);
                 expect(rowRenderCount).toBe(10);

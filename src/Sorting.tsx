@@ -11,7 +11,7 @@ export interface SortSettings {
 
 }
 
-export interface SortableColumn<TRow = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> extends Column<TRow, TExtraProps, TFormattedValue> {
+export interface SortableColumn<TRow = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> extends Column<TRow, TExtraProps, TValue, TFormattedValue> {
 
     sortable?: boolean;
     sortExpression?: ((row: TRow) => any) | string;
@@ -230,8 +230,6 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
             }), () => {
                 this.currentlySorting = false;
 
-                console.log('Sorting changeSort setState callback');
-
                 if (callback) {
                     callback();
                 }
@@ -241,7 +239,6 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
         }
 
         render() {
-            console.log('Sorting.render');
 
             const { sorting, columns, rows, ...extra } = this.props as PowerTableProps<TRow> & InternalSortingProps<T>;
 

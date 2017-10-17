@@ -12,7 +12,7 @@ export function numberWithCommas(x: any) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-const debugMode = true;
+const debugMode = false;
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 

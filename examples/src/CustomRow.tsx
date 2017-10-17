@@ -12,7 +12,6 @@ const Table = withInternalSorting((ReactPowerTable));
 const tableRowComponent: RowComponentType<President> = (props) => <tbody><tr className="tr-test" style={{ backgroundColor: props.row.number % 2 === 0 ? 'silver' : '' }}>{props.children}</tr></tbody>;
 
 export const CustomRowExample = () => {
-    console.log('examples.render()');
 
     //const tbodyComponent: (props) => React.ReactElement<any> = props => props.children;
 
