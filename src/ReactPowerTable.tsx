@@ -477,7 +477,7 @@ export type TdComponentType<T = {}, TExtraProps = {}> = React.ComponentType<TdCo
 export type CellProps<T = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> = TExtraProps & {
 
     row: T;
-    column: StrictColumn<T, {}, TExtraProps>;
+    column: StrictColumn<T, TExtraProps, TValue, TFormattedValue>;
     value: TValue;
     formattedValue: TFormattedValue;
 
