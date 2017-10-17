@@ -5,35 +5,35 @@ exports[`basic tests Render plain table 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:140px"
+        style="text-align:left;white-space:nowrap;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           death_year
@@ -47,7 +47,7 @@ exports[`basic tests Render plain table 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           left_office
@@ -250,35 +250,35 @@ exports[`basic tests Render plain table with custom headerComponent 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <span>
           Test
         </span>
       </th>
       <th
-        style="white-space:nowrap;width:140px"
+        style="text-align:left;white-space:nowrap;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           death_year
@@ -292,7 +292,7 @@ exports[`basic tests Render plain table with custom headerComponent 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           left_office
@@ -601,35 +601,35 @@ Array [
     <thead>
       <tr>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             number
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:140px"
+          style="text-align:left;white-space:nowrap;width:140px"
         >
           <div>
             name
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:120px"
+          style="text-align:left;white-space:nowrap;width:120px"
         >
           <div>
             party
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             birth_year
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             death_year
@@ -643,7 +643,7 @@ Array [
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             left_office
@@ -667,35 +667,35 @@ exports[`basic tests Render plain table with custom valueComponent 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:140px"
+        style="text-align:left;white-space:nowrap;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           death_year
@@ -709,7 +709,7 @@ exports[`basic tests Render plain table with custom valueComponent 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           left_office
@@ -922,35 +922,35 @@ exports[`basic tests Render plain table with wrapper 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:140px"
+        style="text-align:left;white-space:nowrap;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           death_year
@@ -964,7 +964,7 @@ exports[`basic tests Render plain table with wrapper 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           left_office
@@ -1177,35 +1177,35 @@ exports[`basic tests Render plain table with wrapper func 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:140px"
+        style="text-align:left;white-space:nowrap;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           death_year
@@ -1219,7 +1219,7 @@ exports[`basic tests Render plain table with wrapper func 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           left_office

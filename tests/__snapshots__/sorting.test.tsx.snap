@@ -5,7 +5,7 @@ exports[`withInternalSorting tests change rows from props 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
@@ -18,28 +18,28 @@ exports[`withInternalSorting tests change rows from props 1`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 140px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 120px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           death_year
@@ -55,7 +55,7 @@ exports[`withInternalSorting tests change rows from props 1`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           left_office
@@ -221,7 +221,7 @@ exports[`withInternalSorting tests change sort from props 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
@@ -234,28 +234,28 @@ exports[`withInternalSorting tests change sort from props 1`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 140px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 120px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           death_year
@@ -271,7 +271,7 @@ exports[`withInternalSorting tests change sort from props 1`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           left_office
@@ -471,7 +471,7 @@ exports[`withInternalSorting tests change sort from props 1`] = `
 
 exports[`withInternalSorting tests change sort on th click 1`] = `
 <th
-  style="white-space: nowrap; cursor: pointer; width: 80px;"
+  style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
 >
   <div
     style="padding-right: 15px; position: relative;"
@@ -487,7 +487,7 @@ exports[`withInternalSorting tests change sort on th click 1`] = `
 
 exports[`withInternalSorting tests change sort on th click 2`] = `
 <th
-  style="white-space: nowrap; cursor: pointer; width: 140px;"
+  style="text-align: left; white-space: nowrap; cursor: pointer; width: 140px;"
 >
   <div>
     name
@@ -500,7 +500,7 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
   <thead>
     <tr>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
@@ -513,28 +513,28 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 140px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 120px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           death_year
@@ -550,7 +550,7 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           left_office
@@ -750,7 +750,7 @@ exports[`withInternalSorting tests change sort on th click 3`] = `
 
 exports[`withInternalSorting tests change sort on th click 4`] = `
 <th
-  style="white-space: nowrap; cursor: pointer; width: 80px;"
+  style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
 >
   <div
     style="padding-right: 15px;"
@@ -762,7 +762,7 @@ exports[`withInternalSorting tests change sort on th click 4`] = `
 
 exports[`withInternalSorting tests change sort on th click 5`] = `
 <th
-  style="white-space: nowrap; cursor: pointer; width: 140px;"
+  style="text-align: left; white-space: nowrap; cursor: pointer; width: 140px;"
 >
   <div
     style="padding-right: 15px; position: relative;"
@@ -781,7 +781,7 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
   <thead>
     <tr>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div
           style="padding-right: 15px;"
@@ -790,7 +790,7 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 140px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 140px;"
       >
         <div
           style="padding-right: 15px; position: relative;"
@@ -803,21 +803,21 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 120px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 120px;"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           death_year
@@ -833,7 +833,7 @@ exports[`withInternalSorting tests change sort on th click 6`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; cursor: pointer; width: 80px;"
+        style="text-align: left; white-space: nowrap; cursor: pointer; width: 80px;"
       >
         <div>
           left_office
@@ -1049,28 +1049,28 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:140px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:120px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           death_year
@@ -1086,7 +1086,7 @@ exports[`withInternalSorting tests sorting with custom cellcomponent 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           left_office

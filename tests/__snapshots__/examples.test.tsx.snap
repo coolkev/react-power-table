@@ -5,35 +5,35 @@ exports[`examples tests example Basic 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:140px"
+        style="text-align:left;white-space:nowrap;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           death_year
@@ -47,7 +47,7 @@ exports[`examples tests example Basic 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           left_office
@@ -1681,14 +1681,14 @@ exports[`examples tests example Checkboxes 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap"
+        style="text-align:left;white-space:nowrap"
       >
         <input
           type="checkbox"
         />
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div
           style="padding-right:15px;position:relative"
@@ -1701,28 +1701,28 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:140px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:120px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           death_year
@@ -1738,7 +1738,7 @@ exports[`examples tests example Checkboxes 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           left_office
@@ -2694,7 +2694,7 @@ exports[`examples tests example Custom Row 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div
           style="padding-right:15px;position:relative"
@@ -2707,14 +2707,14 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:140px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party (not sortable)
@@ -2730,7 +2730,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           death_year
@@ -2746,7 +2746,7 @@ exports[`examples tests example Custom Row 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           left_office
@@ -4599,35 +4599,35 @@ exports[`examples tests example External Paging 1`] = `
     <thead>
       <tr>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             number
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:140px"
+          style="text-align:left;white-space:nowrap;width:140px"
         >
           <div>
             name
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:120px"
+          style="text-align:left;white-space:nowrap;width:120px"
         >
           <div>
             party
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             birth_year
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             death_year
@@ -4641,7 +4641,7 @@ exports[`examples tests example External Paging 1`] = `
           </div>
         </th>
         <th
-          style="white-space:nowrap;width:80px"
+          style="text-align:left;white-space:nowrap;width:80px"
         >
           <div>
             left_office
@@ -5498,7 +5498,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div
           style="padding-right:15px;position:relative"
@@ -5511,28 +5511,28 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:140px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:120px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           death_year
@@ -5548,7 +5548,7 @@ exports[`examples tests example External Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           left_office
@@ -6404,7 +6404,7 @@ exports[`examples tests example External Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div
           style="padding-right:15px;position:relative"
@@ -6417,28 +6417,28 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:140px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:120px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           death_year
@@ -6454,7 +6454,7 @@ exports[`examples tests example External Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           left_office
@@ -8128,7 +8128,7 @@ exports[`examples tests example Filters 1`] = `
       <thead>
         <tr>
           <th
-            style="white-space:nowrap;cursor:pointer;width:80px"
+            style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
           >
             <div
               style="padding-right:15px;position:relative"
@@ -8141,28 +8141,28 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </th>
           <th
-            style="white-space:nowrap;cursor:pointer;width:140px"
+            style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
           >
             <div>
               name
             </div>
           </th>
           <th
-            style="white-space:nowrap;cursor:pointer;width:120px"
+            style="text-align:left;white-space:nowrap;cursor:pointer;width:120px"
           >
             <div>
               party
             </div>
           </th>
           <th
-            style="white-space:nowrap;cursor:pointer;width:80px"
+            style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
           >
             <div>
               birth_year
             </div>
           </th>
           <th
-            style="white-space:nowrap;cursor:pointer;width:80px"
+            style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
           >
             <div>
               death_year
@@ -8178,7 +8178,7 @@ exports[`examples tests example Filters 1`] = `
             </div>
           </th>
           <th
-            style="white-space:nowrap;cursor:pointer;width:80px"
+            style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
           >
             <div>
               left_office
@@ -9103,14 +9103,14 @@ exports[`examples tests example Hide Columns 1`] = `
     <thead>
       <tr>
         <th
-          style="white-space:nowrap;cursor:pointer;width:80px"
+          style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
         >
           <div>
             number
           </div>
         </th>
         <th
-          style="white-space:nowrap;cursor:pointer;width:140px"
+          style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
         >
           <div
             style="padding-right:15px;position:relative"
@@ -9123,21 +9123,21 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </th>
         <th
-          style="white-space:nowrap;cursor:pointer;width:120px"
+          style="text-align:left;white-space:nowrap;cursor:pointer;width:120px"
         >
           <div>
             party
           </div>
         </th>
         <th
-          style="white-space:nowrap;cursor:pointer;width:80px"
+          style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
         >
           <div>
             birth_year
           </div>
         </th>
         <th
-          style="white-space:nowrap;cursor:pointer;width:80px"
+          style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
         >
           <div>
             death_year
@@ -9153,7 +9153,7 @@ exports[`examples tests example Hide Columns 1`] = `
           </div>
         </th>
         <th
-          style="white-space:nowrap;cursor:pointer;width:80px"
+          style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
         >
           <div>
             left_office
@@ -10000,35 +10000,35 @@ exports[`examples tests example Internal Paging 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:140px"
+        style="text-align:left;white-space:nowrap;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           death_year
@@ -10042,7 +10042,7 @@ exports[`examples tests example Internal Paging 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:80px"
+        style="text-align:left;white-space:nowrap;width:80px"
       >
         <div>
           left_office
@@ -10898,7 +10898,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div
           style="padding-right:15px;position:relative"
@@ -10911,28 +10911,28 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:140px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:120px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:120px"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           death_year
@@ -10948,7 +10948,7 @@ exports[`examples tests example Internal Paging/Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           left_office
@@ -11804,7 +11804,7 @@ exports[`examples tests example Internal Sorting 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div
           style="padding-right:15px;position:relative"
@@ -11817,28 +11817,28 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:140px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:140px"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space:nowrap;width:120px"
+        style="text-align:left;white-space:nowrap;width:120px"
       >
         <div>
           party (not sortable)
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           death_year
@@ -11854,7 +11854,7 @@ exports[`examples tests example Internal Sorting 1`] = `
         </div>
       </th>
       <th
-        style="white-space:nowrap;cursor:pointer;width:80px"
+        style="text-align:left;white-space:nowrap;cursor:pointer;width:80px"
       >
         <div>
           left_office

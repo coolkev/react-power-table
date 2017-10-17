@@ -5,35 +5,35 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 140px;"
+        style="text-align: left; white-space: nowrap; width: 140px;"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 120px;"
+        style="text-align: left; white-space: nowrap; width: 120px;"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           death_year
@@ -47,7 +47,7 @@ exports[`withInternalPaging tests change currentPage from click 1`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           left_office
@@ -347,35 +347,35 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 140px;"
+        style="text-align: left; white-space: nowrap; width: 140px;"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 120px;"
+        style="text-align: left; white-space: nowrap; width: 120px;"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           death_year
@@ -389,7 +389,7 @@ exports[`withInternalPaging tests change currentPage from props 1`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           left_office
@@ -689,35 +689,35 @@ exports[`withInternalPaging tests render paging 1`] = `
   <thead>
     <tr>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           number
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 140px;"
+        style="text-align: left; white-space: nowrap; width: 140px;"
       >
         <div>
           name
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 120px;"
+        style="text-align: left; white-space: nowrap; width: 120px;"
       >
         <div>
           party
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           birth_year
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           death_year
@@ -731,7 +731,7 @@ exports[`withInternalPaging tests render paging 1`] = `
         </div>
       </th>
       <th
-        style="white-space: nowrap; width: 80px;"
+        style="text-align: left; white-space: nowrap; width: 80px;"
       >
         <div>
           left_office
