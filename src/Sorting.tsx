@@ -11,7 +11,7 @@ export interface SortSettings {
 
 }
 
-export interface SortableColumn<TRow = {}, TValue = any, TExtraProps = {}> extends Column<TRow, TValue, TExtraProps> {
+export interface SortableColumn<TRow = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> extends Column<TRow, TExtraProps, TFormattedValue> {
 
     sortable?: boolean;
     sortExpression?: ((row: TRow) => any) | string;

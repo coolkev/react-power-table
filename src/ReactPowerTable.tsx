@@ -80,8 +80,8 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         }
     };
 
-    private columns: Array<StrictColumn<TRow, {}, TExtraProps>>;
-    private visibleColumns: Array<StrictColumn<TRow, {}, TExtraProps>>;
+    private columns: Array<StrictColumn<TRow, TExtraProps>>;
+    private visibleColumns: Array<StrictColumn<TRow, TExtraProps>>;
 
     private getRowKey: (row: TRow) => string | number;
 
@@ -103,7 +103,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
     }
 
-    private transformColumns(columns: Array<Column<TRow, {}, TExtraProps> | string>): Array<StrictColumn<TRow, {}, TExtraProps>> {
+    private transformColumns(columns: Array<Column<TRow, TExtraProps> | string>): Array<StrictColumn<TRow, TExtraProps>> {
         debuglog('Sorting.transformColumns', columns);
 
         if (this.columns && this.props.columns) {
@@ -114,11 +114,11 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         return columns.map((c) => this.transformColumn(c));
     }
 
-    private transformColumn(options: Column<TRow, any, TExtraProps> | string): StrictColumn<TRow, any, TExtraProps> {
+    private transformColumn(options: Column<TRow, TExtraProps> | string): StrictColumn<TRow, TExtraProps> {
 
         debuglog('transformColumn', options);
 
-        const col = typeof options === 'string' ? { fieldName: options } as Column<TRow, {}, TExtraProps> : options;
+        const col = typeof options === 'string' ? { fieldName: options } as Column<TRow, TExtraProps> : options;
 
         const { cssClass, maxWidth, width, headerCssClass, textAlign, tdAttributes, thAttributes, } = col;
 
@@ -160,7 +160,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
             ...core,
             tdAttributes: actualTdAttributes,
             thAttributes: actualThAttributes,
-        } as StrictColumn<TRow, {}, TExtraProps>;
+        } as StrictColumn<TRow, TExtraProps>;
 
     }
 
@@ -256,7 +256,7 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     /**
      * Columns to display in table
      */
-    columns: Array<Column<TRow, any, TExtraProps> | string>;
+    columns: Array<Column<TRow, TExtraProps> | string>;
 
     /**
      * Field name or function to provide unique key for each column
@@ -330,7 +330,7 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
 export type StaticOrDynamicProps<TIn, TOut> = TOut | ((props: TIn) => TOut);
 export type DynamicProps<TIn, TOut = TIn> = ((props: TIn) => TOut);
 
-export interface StrictColumn<TRow = {}, TValue = any, TExtraProps = {}> extends ColumnBase<TRow, TValue, TExtraProps> {
+export interface StrictColumn<TRow = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> extends ColumnBase<TRow, TExtraProps, TValue, TFormattedValue> {
 
     key: string | number;
 
@@ -339,7 +339,7 @@ export interface StrictColumn<TRow = {}, TValue = any, TExtraProps = {}> extends
 
 }
 
-export interface ColumnBase<TRow = {}, TValue = any, TExtraProps = {}> {
+export interface ColumnBase<TRow = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> {
 
     key?: string | number;
 
@@ -389,7 +389,7 @@ export interface ColumnBase<TRow = {}, TValue = any, TExtraProps = {}> {
     pure?: boolean;
 }
 
-export interface Column<TRow = {}, TValue = any, TExtraProps = {}> extends ColumnBase<TRow, TValue, TExtraProps> {
+export interface Column<TRow = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> extends ColumnBase<TRow, TExtraProps, TValue, TFormattedValue> {
 
     key?: string | number;
 
@@ -399,7 +399,7 @@ export interface Column<TRow = {}, TValue = any, TExtraProps = {}> extends Colum
     headerCssClass?: string;
 
     /** Shortcut for setting the tdAttributes.className attribute - can be a static string, or a function that will be called for each row for this column */
-    cssClass?: ((props: CellProps<TRow, TExtraProps, TValue>) => string) | string;
+    cssClass?: ((props: CellProps<TRow, TExtraProps, TValue, TFormattedValue>) => string) | string;
 
     /** Shortcut for setting the thAttributes.style.width and tdAttributes.style.width */
     width?: number;
@@ -413,7 +413,7 @@ export interface Column<TRow = {}, TValue = any, TExtraProps = {}> extends Colum
 }
 
 export type ColumnsAndExtraProps<TRow = {}, TExtraProps = {}> = TExtraProps & {
-    columns: Array<StrictColumn<TRow, {}, TExtraProps>>;
+    columns: Array<StrictColumn<TRow, TExtraProps>>;
 
 };
 
@@ -444,7 +444,7 @@ export type RowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<Row
 
 export interface RowBuilderComponentProps<TRow = {}, TExtraProps = {}> {
     row: TRow;
-    columns: Array<StrictColumn<TRow, {}, TExtraProps>>;
+    columns: Array<StrictColumn<TRow, TExtraProps>>;
 
     rowComponent: RowComponentType<TRow, TExtraProps>;
     rowHtmlAttributes: React.HTMLProps<HTMLTableRowElement>;
@@ -474,12 +474,12 @@ export type TdComponentProps<T = {}, TExtraProps = {}> = CellProps<T, TExtraProp
     //htmlAttributes: React.TdHTMLAttributes<HTMLTableDataCellElement>
 };
 export type TdComponentType<T = {}, TExtraProps = {}> = React.ComponentType<TdComponentProps<T, TExtraProps>>;
-export type CellProps<T = {}, TExtraProps = {}, TValue = any> = TExtraProps & {
+export type CellProps<T = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> = TExtraProps & {
 
     row: T;
     column: StrictColumn<T, {}, TExtraProps>;
     value: TValue;
-    formattedValue: any;
+    formattedValue: TFormattedValue;
 
     //children?: React.ReactNode;
 };

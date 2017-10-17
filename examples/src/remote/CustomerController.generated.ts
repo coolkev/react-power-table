@@ -39,12 +39,12 @@ export default {
         LastOrderDate: new DataTypes.date(fields.LastOrderDate),
     },
     columns: {
-        FirstName: {fieldName: fields.FirstName.fieldName, headerText: fields.FirstName.displayName } as Column<CustomerViewModel, string>,
-        LastName: {fieldName: fields.LastName.fieldName, headerText: fields.LastName.displayName } as Column<CustomerViewModel, string>,
-        Age: {fieldName: fields.Age.fieldName, headerText: fields.Age.displayName } as Column<CustomerViewModel, number>,
-        OrderCount: {fieldName: fields.OrderCount.fieldName, headerText: fields.OrderCount.displayName } as Column<CustomerViewModel, number>,
-        FirstOrderDate: {fieldName: fields.FirstOrderDate.fieldName, headerText: fields.FirstOrderDate.displayName } as Column<CustomerViewModel, string>,
-        LastOrderDate: {fieldName: fields.LastOrderDate.fieldName, headerText: fields.LastOrderDate.displayName } as Column<CustomerViewModel, string>,
+        FirstName: { fieldName: fields.FirstName.fieldName, headerText: fields.FirstName.displayName } as Column<CustomerViewModel, {}, string>,
+        LastName: {fieldName: fields.LastName.fieldName, headerText: fields.LastName.displayName } as Column<CustomerViewModel, {}, string>,
+        Age: {fieldName: fields.Age.fieldName, headerText: fields.Age.displayName } as Column<CustomerViewModel, {}, number>,
+        OrderCount: {fieldName: fields.OrderCount.fieldName, headerText: fields.OrderCount.displayName } as Column<CustomerViewModel, {}, number>,
+        FirstOrderDate: {fieldName: fields.FirstOrderDate.fieldName, headerText: fields.FirstOrderDate.displayName } as Column<CustomerViewModel, {}, string>,
+        LastOrderDate: {fieldName: fields.LastOrderDate.fieldName, headerText: fields.LastOrderDate.displayName } as Column<CustomerViewModel, {}, string>,
     },
     keyColumn: 'CustomerID',
     defaultSort: {column: 'CustomerID', descending: false}

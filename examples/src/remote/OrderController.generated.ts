@@ -63,12 +63,12 @@ export default {
         Type: new DataTypes.list(fields.Type, filterOptions.Type),
     },
     columns: {
-        OrderID: {fieldName: fields.OrderID.fieldName, headerText: fields.OrderID.displayName } as Column<OrderViewModel, number>,
-        Customer: {fieldName: fields.Customer.fieldName, headerText: fields.Customer.displayName } as Column<OrderViewModel, CustomerEntityRef>,
-        Date: {fieldName: fields.Date.fieldName, headerText: fields.Date.displayName } as Column<OrderViewModel, string>,
-        OrderTotal: {fieldName: fields.OrderTotal.fieldName, headerText: fields.OrderTotal.displayName } as Column<OrderViewModel, number>,
-        DateUpdated: {fieldName: fields.DateUpdated.fieldName, headerText: fields.DateUpdated.displayName } as Column<OrderViewModel, string>,
-        Type: {fieldName: fields.Type.fieldName, headerText: fields.Type.displayName } as Column<OrderViewModel, OrderType>,
+        OrderID: {fieldName: fields.OrderID.fieldName, headerText: fields.OrderID.displayName } as Column<OrderViewModel, {}, number>,
+        Customer: {fieldName: fields.Customer.fieldName, headerText: fields.Customer.displayName } as Column<OrderViewModel, {}, CustomerEntityRef>,
+        Date: {fieldName: fields.Date.fieldName, headerText: fields.Date.displayName } as Column<OrderViewModel, {}, string>,
+        OrderTotal: {fieldName: fields.OrderTotal.fieldName, headerText: fields.OrderTotal.displayName } as Column<OrderViewModel, {}, number>,
+        DateUpdated: {fieldName: fields.DateUpdated.fieldName, headerText: fields.DateUpdated.displayName } as Column<OrderViewModel, {}, string>,
+        Type: {fieldName: fields.Type.fieldName, headerText: fields.Type.displayName } as Column<OrderViewModel, {}, OrderType>,
     },
     keyColumn: 'OrderID',
     defaultSort: {column: 'Date', descending: true}
