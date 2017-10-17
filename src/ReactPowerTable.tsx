@@ -255,7 +255,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
 }
 
-export function typedTable<TRow = {}, TExtraProps = {}>() {
+export function typedTable<TRow, TExtraProps = {}>() {
     return ReactPowerTable as any as React.ComponentClass<PowerTableProps<TRow, TExtraProps>>;
 }
 

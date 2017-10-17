@@ -1,11 +1,11 @@
 ﻿import * as React from 'react';
-import { sampledata, defaultColumns } from './shared';
-import { ReactPowerTable, withInternalPaging, withInternalSorting } from '../../src/';
+import { sampledata, defaultColumns, President } from './shared';
+import { typedTable, withInternalPaging, withInternalSorting } from '../../src/';
 
-const Table = withInternalSorting(withInternalPaging(ReactPowerTable));
+const Table = withInternalSorting(withInternalPaging(typedTable<President>()));
 
 export const InternalPagingSortingExample = () => {
 
-    return <Table columns={defaultColumns} keyColumn="number" rows={sampledata} sorting={{column: 'number'}}  />;
+    return <Table columns={defaultColumns} keyColumn="number" rows={sampledata} sorting={{ column: 'number' }} />;
 
 };

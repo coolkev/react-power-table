@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import { NumericInput } from './components/NumericInput';
 import { debuglog, getComponentDisplayName, numberWithCommas } from './utils';
+import { Column } from './ReactPowerTable';
 
 const linkStyle = { textDecoration: 'none' };
 const disabledStyle = { ...linkStyle, color: 'silver', cursor: 'default' };
@@ -26,13 +27,13 @@ export interface PagingProps extends InternalPagingProps {
     gotoPage(pagenum: number, pagesize?: number): void;
 }
 
-export interface InternalPagingGridProps extends PagingGridProps {
+export interface InternalPagingGridProps<TColumn> extends PagingGridProps<TColumn> {
     rows: any[];
 
 }
 
-export interface PagingGridProps {
-    columns: any[];
+export interface PagingGridProps<TColumn> {
+    columns: TColumn[];
 
     footerComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
     footerProps?: (props: any) => any;
@@ -49,7 +50,7 @@ const TableFooterComponent = ({ columnCount = 0, pagingProps = null as PagingPro
     </tfoot>
 );
 
-export function withInternalPaging<T extends InternalPagingGridProps>(WrappedComponent: React.ComponentType<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }> {
+export function withInternalPaging<TColumn extends Column, T extends InternalPagingGridProps<TColumn>>(WrappedComponent: React.ComponentType<T>): React.ComponentClass<T & { paging?: Partial<InternalPagingProps> }> {
 
     if (WrappedComponent.displayName && WrappedComponent.displayName.match(/^WithInternalSorting|WithSorting/)) {
         console.error('Warning: You are applying sorting after paging which will cause the sorting to only affect the current page. You should probably apply sorting first then paging');
@@ -145,7 +146,7 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
         // }
         render() {
 
-            const { paging, rows, footerComponent, ...extra } = this.props as InternalPagingGridProps & { paging: Partial<InternalPagingProps> };
+            const { paging, rows, footerComponent, ...extra } = this.props as InternalPagingGridProps<TColumn> & { paging: Partial<InternalPagingProps> };
             const { pageRows } = this.state;
 
             return <WrappedComponent rows={pageRows} {...extra} footerComponent={footerComponent} footerProps={this.getFooterProps} />;
@@ -153,7 +154,7 @@ export function withInternalPaging<T extends InternalPagingGridProps>(WrappedCom
     };
 }
 
-export function withPaging<T extends PagingGridProps>(WrappedComponent: React.ComponentType<T>): React.ComponentClass<T & { paging: PagingProps }> {
+export function withPaging<TColumn extends Column, T extends PagingGridProps<TColumn>>(WrappedComponent: React.ComponentType<T>): React.ComponentClass<T & { paging: PagingProps }> {
 
     return class extends React.Component<T & { paging: PagingProps }, never> {
 
@@ -190,7 +191,7 @@ export function withPaging<T extends PagingGridProps>(WrappedComponent: React.Co
         }
         render() {
 
-            const { paging, footerComponent, ...extra } = this.props as PagingGridProps & { paging: PagingProps };
+            const { paging, footerComponent, ...extra } = this.props as PagingGridProps<TColumn> & { paging: PagingProps };
 
             return <WrappedComponent {...extra} footerComponent={footerComponent} footerProps={this.getFooterProps} />;
 
