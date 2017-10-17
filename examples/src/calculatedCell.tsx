@@ -35,7 +35,7 @@ export class CalculatedCellExample extends React.Component<{}, { nameHyperlink: 
                 this.columns = [
                         { field: m => m.number },
                         { field: m => m.president, wrapper: v => v.nameHyperlink && <a href={'fakeurl/' + v.row.number} />, includeExtraCellProps: true },
-                        { field: m => m.party, valueProps: v => ({ ...v, partyBold: this.state.partyBold }), wrapper: v => v['partyBold'] && <b />, },
+                        { field: m => m.party, transformCellProps: v => ({ ...v, partyBold: this.state.partyBold }), wrapper: v => v['partyBold'] && <b />, },
                         { field: m => m.birth_year, wrapper: () => this.state.yearBold && <b />, pure: false, tdAttributes: cell => ({ style: { color: cell.value % 2 === 0 ? 'red' : null } }) } as Column<President, number>,
                         { field: m => m.death_year, tdAttributes: { style: { color: 'red' } } },
                         { field: m => m.took_office, textAlign: 'right', width: 140 },
@@ -106,3 +106,72 @@ export class CalculatedCellExample extends React.Component<{}, { nameHyperlink: 
                 );
         }
 }
+
+// export class CalculatedCellExample extends React.Component<never, { highlightEvenRows: boolean, counter: number }> {
+
+//         private columns: Array<Column<President, {}, { highlightEvenRows: boolean }>>;
+//         constructor(props: never) {
+//                 super(props);
+//                 this.state = { highlightEvenRows: false, counter: 1 };
+
+//                 this.handleHighlightChange = this.handleHighlightChange.bind(this);
+//                 this.incrementCounter = this.incrementCounter.bind(this);
+
+//                 this.columns = [
+//                         { field: row => row.president },
+
+//                         // bad - this will not work because the row data has not changed and this cell will not be re-rendered.
+//                         {
+//                                 field: row => row.birth_year, key: 'y1',
+//                                 tdAttributes: cell => this.state.highlightEvenRows && { style: { backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } },
+//                                 //wrapper: cell => this.state.highlightEvenRows  && <div style={{ backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } }/>,
+//                         } as Column<President, number, { highlightEvenRows: boolean }>,
+
+//                         // quick and dirty fix for this is to specify pure: false so this cell is always re-rendered
+//                         {
+//                                 field: row => row.birth_year, key: 'y2',
+//                                 tdAttributes: cell => this.state.highlightEvenRows && { style: { backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } },
+//                                 //wrapper: cell => this.state.highlightEvenRows  && <div style={{ backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } }/>,
+//                                 pure: false
+//                         } as Column<President, number, { highlightEvenRows: boolean }>,
+
+//                         // better fix is to customize the valueProps and pass the state in so component can remain pure:
+//                         {
+//                                 field: row => row.birth_year, key: 'y3',
+//                                 //tdAttributes: cell => cell.highlightEvenRows && { style: { backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } },
+//                                 wrapper: cell => cell.highlightEvenRows && <div style={{ backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } }/>,
+//                                 transformCellProps: cell => ({ ...cell, highlightEvenRows: this.state.highlightEvenRows })
+
+//                         } as Column<President, number, { highlightEvenRows: boolean }>,
+
+//                         // or another option is to pass highlightEvenRows into the table extraCellProps so it can be accessed by the columns that need it
+//                         {
+//                                 field: row => row.birth_year, key: 'y4',
+//                                 //tdAttributes: cell => cell.highlightEvenRows && { style: { backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } },
+//                                 wrapper: cell => cell.highlightEvenRows && <div style={{ backgroundColor: cell.value % 2 === 0 ? 'yellow' : null } }/>,
+//                                 includeExtraCellProps: true
+//                         } as Column<President, number, { highlightEvenRows: boolean }>
+//                 ];
+//         }
+
+//         handleHighlightChange(e) {
+//                 this.setState({ highlightEvenRows: e.currentTarget.checked });
+//         }
+
+//         incrementCounter() {
+//                 this.setState(prev => ({ counter: prev.counter + 1 }));
+//         }
+//         render() {
+//                 const { highlightEvenRows, counter } = this.state;
+
+//                 return (
+//                         <div>
+//                                 <label><input type="checkbox" checked={highlightEvenRows} onChange={this.handleHighlightChange} /> Highlight even rows</label>
+//                                 &nbsp;
+//                                 <button onClick={this.incrementCounter}>Dont Re-render {counter}</button>
+
+//                                 <ReactPowerTable rows={rows} columns={this.columns} keyColumn="number" extraCellProps={{highlightEvenRows}} />
+//                         </div>
+//                 );
+//         }
+// }
