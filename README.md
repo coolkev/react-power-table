@@ -43,17 +43,22 @@ Customize the props passed to the `<table>` element
 
 Customize the className of the `<table>` element
 
+#### rowHtmlAttributes
+`React.HTMLProps<HTMLTableRowElement>` | `rowProps => React.HTMLProps<HTMLTableRowElement>`
+
+Define attributes to be set on each `<tr>` element. Can be an object or a function that returns an object. Function is passed `rowProps: { row, columns }` for the current row.
+
 
 #### extraCellProps 
 `object`
 
-Optional properties to pass down to valueProps for each column that has `includeExtraCellProps` set to true 
+Optional properties to pass down to [CellProps](#cellprops) for each column that has `includeExtraCellProps` set to true 
 or use `alwaysIncludeExtraCellProps` to always include these props
 
 #### alwaysIncludeExtraCellProps 
 `boolean`
 
-Set to true to pass the extraCellProps into the valueProps of each row
+Set to true to pass the extraCellProps into the [CellProps](#cellprops) of each row
 
 
 ## Column Definition
@@ -62,6 +67,7 @@ The columns array passed to the `<ReactPowerTable/>` can be a simple array of st
 
 #### field 
 `string` | `row => any`
+
 At the very least, `field` must be defined for data to be rendered automatically in that cell, or just `key` can be used in cases where you do not want any data rendered automatically in that column.
 
 ```javascript
@@ -100,7 +106,7 @@ Specify the text-align for this column. Sets the `style="text-align: value"` for
 #### cssClass 
 `string | (CellProps => string)`
 
-Specify the className to use for this `<td/>` element for each row. Can be a string or a function that returns a string for the given [CellProps](#CellProps)
+Specify the className to use for this `<td/>` element for each row. Can be a string or a function that returns a string for the given [CellProps](#cellprops)
 
 #### visible 
 `boolean` (Default: true)
@@ -140,7 +146,7 @@ Customize the html attributes set in the `<th/>` element for this column.
 Customize the content rendered inside of the `<th/>` element for this column
 
 
-## Advanced Customizations
+## Advanced Column Customizations
 
 Each of the props/functions below will be passed a `CellProps` object:
 
@@ -190,8 +196,11 @@ A simpler alternative to `valueComponent` where you can just wrap the cell conte
 
 ```javascript
 const columns = [
-    { field: row => row.name, wrapper: cell => <a href={'/person/' + cell.row.personId }/> }, // function -  age will be injected into a element using children, and href will be specific to this row's personId
-    { field: row => row.age, wrapper: <div className="special"/> } // static element - age will be injected into div using children
+    { field: row => row.name, wrapper: cell => <a href={'/person/' + cell.row.personId }/> }, 
+    // function -  age will be injected into a element using children, and href will be specific to this row's personId
+
+    { field: row => row.age, wrapper: <div className="special"/> } 
+    // static element - age will be injected into div using children
     
 ];
 ```
@@ -199,7 +208,7 @@ const columns = [
 
 
 
-#### valueProps
+#### transformCellProps
 `(props: CellProps) => CellProps`
 
 Function that allows you to customize or augment the `CellProps` object passed around to the customization functions. You can add your own component's state here so they get passed into your custom valueComponent and the valueComponent can remain pure. 
@@ -215,7 +224,7 @@ const columns = [
 #### pure
 `boolean`
 
-Cells are pure by default, so they will not be re-rendered unless the value (or props) for that cell change. If you are referencing some external state from within `tdAttributes`, `valueComponent` or `wrapper`, then you will need to either pass that state in using the `valueProps` or the Table `extraCellProps` or you can set `pure: false` so the cell will always get re-rendered.
+Cells are pure by default, so they will not be re-rendered unless the value (or props) for that cell change. If you are referencing some external state from within `tdAttributes`, `valueComponent` or `wrapper`, then you will need to either pass that state in using the [CellProps](#cellprops) or the Table `extraCellProps` or you can set `pure: false` so the cell will always get re-rendered.
 
 
 ## Pure by Default
@@ -243,8 +252,8 @@ class MyComponent extends React.Component {
             // quick and dirty fix for this is to specify pure: false so this cell is always re-rendered
             { field: row => row.age, tdAttributes: cell => this.state.highlightEvenRows && {style: {backgroundColor: cell.value % 2===0 ? 'yellow' : null }, pure: false } 
 
-            // better fix is to customize the valueProps and pass the state in so component can remain pure:
-            { field: row => row.age, tdAttributes: cell => cell.highlightEvenRows && {style: {backgroundColor: cell.value % 2===0 ? 'yellow' : null }, valueProps: cell=> ({...cell, highlightEvenRows: this.state.highlightEvenRows }) } 
+            // better fix is to customize the CellProps and pass the state in so component can remain pure:
+            { field: row => row.age, tdAttributes: cell => cell.highlightEvenRows && {style: {backgroundColor: cell.value % 2===0 ? 'yellow' : null }, transformCellProps: cell=> ({...cell, highlightEvenRows: this.state.highlightEvenRows }) } 
             
             // or another option is to pass highlightEvenRows into the table extraCellProps so it can be accessed by the columns that need it
             { field: row => row.age, tdAttributes: cell => cell.highlightEvenRows && {style: {backgroundColor: cell.value % 2===0 ? 'yellow' : null }, includeExtraCellProps: true } 
@@ -266,3 +275,70 @@ class MyComponent extends React.Component {
     }
 }
 ```
+
+
+
+## Table Components
+
+All of the components used in the top-level ReactPowerTable component can be overriden to customize the rendering. Most of these components are passed children props which contain the child elements so you can omit rendering the children or change how they are rendered.
+
+#### tableComponent
+`Component (React.HTMLProps<HTMLTableElement>)`
+
+Customize the `<table>` tag. Children are passed to props and must be rendered.
+
+
+#### headComponent
+`props: {columns, children}`
+
+Customize the `<thead>` tag. Children are passed to props and must be rendered.
+
+
+#### headRowComponent
+`props: {columns, children}`
+
+Customize the `<tr>` tag that is rendered in `<thead>`. Children are passed to props and must be rendered.
+
+#### thComponent
+`props: {column, htmlAttributes, children}`
+
+Customize the `<th>` tag. Children are passed to props and must be rendered.
+
+#### thInnerComponent
+
+Customize the content that is rendered inside the `<th>`. Defaults to a `<div/>`
+
+#### bodyComponent
+`props: {columns, rows, children}`
+
+Customize the `<tbody>` tag. Children are passed to props and must be rendered.
+
+#### rowComponent
+`props: {columns, row, children}`
+
+Customize the `<tr>` tag that is rendered in `<tbody>`. Children are passed to props and must be rendered.
+
+
+#### tdComponent
+`props: CellProps & { children }`
+
+Customize the `<td>` tag. Children are passed to props and must be rendered.
+
+
+#### valueComponent
+`props: CellProps & { children }`
+
+Customize the content that is rendered inside the `<td>`. Children default to the formattedValue of the `CellProps`
+
+
+
+#### footerComponent
+
+Customize the `<tfoot>` tag. 
+
+
+
+#### footerProps
+
+Customize the props passed into the `footerComponent`
+

@@ -10,15 +10,15 @@ function applyWrapper(wrapper: StaticOrDynamicProps<CellProps, JSX.Element>, val
     return wrapperElement && React.cloneElement(wrapperElement, null, valueElement) || valueElement;
 }
 
-function getValueProps<TRow, TExtraProps>(row: TRow, column: StrictColumn<TRow, any, TExtraProps>, extraProps: TExtraProps): CellProps<TRow, TExtraProps> {
-    const { valueProps, formatter, field, includeExtraCellProps } = column;
+function getCellProps<TRow, TExtraProps>(row: TRow, column: StrictColumn<TRow, any, TExtraProps>, extraProps: TExtraProps): CellProps<TRow, TExtraProps> {
+    const { transformCellProps, formatter, field, includeExtraCellProps } = column;
     const value = field(row);
 
     const formattedValue = formatter ? formatter(value, row) : value;
 
     const initialValueProps: CellProps<TRow, TExtraProps> = { ...(includeExtraCellProps && extraProps as any), row, column, value, formattedValue };
 
-    return valueProps ? valueProps(initialValueProps) : initialValueProps;
+    return transformCellProps ? transformCellProps(initialValueProps) : initialValueProps;
 
 }
 
@@ -55,27 +55,28 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
             const { columns, row, tdComponent, pureTdComponent, defaultValueComponent, extraCellProps, rowComponent: RowComponent, rowHtmlAttributes } = props;
             const cells = columns.map(c => {
                 const { tdAttributes, valueComponent, key, wrapper } = c;
-                const valueProps = getValueProps(row, c, extraCellProps);
-
-                const tdHtmlAttributes = typeof (tdAttributes) === 'function' ? tdAttributes(valueProps) : tdAttributes;
+                const cellProps = getCellProps(row, c, extraCellProps);
 
                 const ValueComponent = valueComponent || defaultValueComponent;
-                const valueElement = ValueComponent ? <ValueComponent {...valueProps} children={valueProps.formattedValue} /> : valueProps.formattedValue;
+                const valueElement = ValueComponent ? <ValueComponent {...cellProps} children={cellProps.formattedValue} /> : cellProps.formattedValue;
 
-                const children = wrapper ? applyWrapper(wrapper, valueProps, valueElement) : valueElement;
+                const children = wrapper ? applyWrapper(wrapper, cellProps, valueElement) : valueElement;
 
                 const TdComponent = c.pure === false ? tdComponent : pureTdComponent;
 
-                return <TdComponent key={key} {...valueProps} htmlAttributes={tdHtmlAttributes}>{children}</TdComponent>;
+                return <TdComponent key={key} {...cellProps}>{children}</TdComponent>;
             });
 
             const rowProps = { ...extraCellProps as any, row, columns } as RowComponentProps;
             const actualRowHtmlAttributes = rowHtmlAttributes && (typeof (rowHtmlAttributes) === 'function' ? rowHtmlAttributes(rowProps) : rowHtmlAttributes);
             return <RowComponent {...rowProps} children={cells} htmlAttributes={actualRowHtmlAttributes} />;
         },
-        tdComponent: ({ children, htmlAttributes, value }) => {
+        tdComponent: (props) => {
+            const { column, children, value } = props;
             debuglog('tdComponent render', value);
-            return <td children={children} {...htmlAttributes} />;
+            const tdHtmlAttributes = typeof (column.tdAttributes) === 'function' ? column.tdAttributes(props) : column.tdAttributes;
+
+            return <td children={children} {...tdHtmlAttributes} />;
         }
     };
 
@@ -121,11 +122,22 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
         const { cssClass, maxWidth, width, headerCssClass, textAlign, tdAttributes, thAttributes, } = col;
 
-        const sharedStyle = { width, maxWidth, textAlign };
+        const sharedStyle: React.CSSProperties = {};
 
+        if (width !== undefined) {
+            sharedStyle.width = width;
+        }
+
+        if (maxWidth !== undefined) {
+            sharedStyle.maxWidth = maxWidth;
+        }
+
+        if (textAlign !== undefined) {
+            sharedStyle.textAlign = textAlign;
+        }
         const actualThAttributes = { ...thAttributes, style: { textAlign: 'left', whiteSpace: 'nowrap', ...(thAttributes && thAttributes.style), ...sharedStyle }, ...(headerCssClass && { className: headerCssClass }) };
 
-        const tdAttributesStatic: React.TdHTMLAttributes<HTMLTableDataCellElement> = typeof (tdAttributes) === 'function' ? { style: sharedStyle } : { ...tdAttributes, style: { ...(tdAttributes && tdAttributes.style), ...sharedStyle } };
+        const tdAttributesStatic: React.TdHTMLAttributes<HTMLTableDataCellElement> = typeof (tdAttributes) === 'function' ? sharedStyle && { style: sharedStyle } : { ...tdAttributes, style: { ...(tdAttributes && tdAttributes.style), ...sharedStyle } };
         const tdAttributesFunc = typeof (tdAttributes) === 'function' ? tdAttributes : undefined;
 
         let actualTdAttributes: ((props: CellProps<TRow, TExtraProps>) => React.TdHTMLAttributes<HTMLTableDataCellElement>);
@@ -187,6 +199,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
             thComponent: HeadCellComponent,
             tdComponent,
             footerComponent: TableFoot,
+            footerProps,
             tableClassName,
             tableProps,
             extraCellProps,
@@ -215,6 +228,8 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
         const body = BodyComponent && <BodyComponent rows={rows} columns={columns}>{dataRows}</BodyComponent> || dataRows;
 
+        const actualFooterProps = TableFoot && footerProps && footerProps({ columns, ...extraCellProps as any });
+
         return (
             <Table {...combinedTableProps }>
                 <HeadComponent columns={columns} {...extraCellProps}>
@@ -225,7 +240,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
                 {body}
 
-                {TableFoot && <TableFoot />}
+                {TableFoot && <TableFoot {...actualFooterProps} />}
             </Table >
         );
 
@@ -285,6 +300,8 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     rowHtmlAttributes?: StaticOrDynamicProps<RowComponentProps<TRow, TExtraProps>, React.HTMLProps<HTMLTableRowElement>>;
 
     footerComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
+
+    footerProps?: (props: ColumnsAndExtraProps<TRow, TExtraProps>) => ColumnsAndExtraProps<TRow, TExtraProps>;
 
     /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
      * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps
@@ -358,7 +375,7 @@ export interface ColumnBase<TRow = {}, TValue = any, TExtraProps = {}> {
      * use this instead of referencing arbitratry/external state directly inside valueComponent
      * formerlly cellComponentProps
      */
-    valueProps?: (props: CellProps<TRow, TExtraProps>) => CellProps<TRow, TExtraProps, TValue>;
+    transformCellProps?: (props: CellProps<TRow, TExtraProps>) => CellProps<TRow, TExtraProps, TValue>;
 
     /** Specify an element for which each valueComponent (or raw value) will be injected
      * examples:
@@ -453,7 +470,9 @@ export interface RowBuilderComponentProps<TRow = {}, TExtraProps = {}> {
 
 export type RowBuilderComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowBuilderComponentProps<T, TExtraProps>>;
 
-export type TdComponentProps<T = {}, TExtraProps = {}> = CellProps<T, TExtraProps> & { htmlAttributes: React.TdHTMLAttributes<HTMLTableDataCellElement> };
+export type TdComponentProps<T = {}, TExtraProps = {}> = CellProps<T, TExtraProps> & {
+    //htmlAttributes: React.TdHTMLAttributes<HTMLTableDataCellElement>
+};
 export type TdComponentType<T = {}, TExtraProps = {}> = React.ComponentType<TdComponentProps<T, TExtraProps>>;
 export type CellProps<T = {}, TExtraProps = {}, TValue = any> = TExtraProps & {
 
