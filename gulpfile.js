@@ -21,18 +21,17 @@ var babel = require("gulp-babel"),
 
 gulp.task("build:ts", ['lint'], function () {
 
-    // const babelOptions = {
-    //     "presets": [
-    //         [
-    //             "latest",
-    //             {
-    //               "es2015": {
-    //                 "modules": false
-    //               }
-    //             }
-    //         ]
-    //     ]
-    // };
+    const babelOptions = {
+        "presets": [
+            [
+                "env",
+                {
+                    "modules": false                  
+                }
+            ]
+        ],
+        "plugins": ["transform-runtime"]
+    };
 
     let tsProject = typescript.createProject('./tsconfig.json', { declaration: true, declarationDir: 'types' });
 
@@ -40,7 +39,7 @@ gulp.task("build:ts", ['lint'], function () {
         //.pipe(sourcemaps.init())
         .pipe(tsProject());
     return merge([
-        typescriptCompile.js.pipe(babel()).pipe(gulp.dest("./dist")),
+        typescriptCompile.js.pipe(babel(babelOptions)).pipe(gulp.dest("./dist")),
 
         typescriptCompile.dts.pipe(gulp.dest('./types'))]);
 
