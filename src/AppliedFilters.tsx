@@ -31,6 +31,10 @@ export interface AppliedFilterProps {
 
 }
 
+const defaultAppliedFilterLabelComponent = (props: filters.AppliedFilter<any>) => {
+    const appliedLabel = props.operation.appliedLabel || props.filter.appliedLabel || filters.FilterDefinition.defaultAppliedFilterLabel;
+    return <span>{appliedLabel(props)}</span>;
+};
 /**
  * @internal
  */
@@ -57,12 +61,7 @@ export class AppliedFilter extends React.Component<AppliedFilterProps, never> {
     public render() {
         const { appliedFilter } = this.props;
 
-        let AppliedLabelComponent = appliedFilter.operation.appliedLabelComponent || appliedFilter.filter.appliedLabelComponent;
-
-        if (!AppliedLabelComponent) {
-            const appliedLabel = appliedFilter.operation.appliedLabel || appliedFilter.filter.appliedLabel || filters.FilterDefinition.defaultAppliedFilterLabel;
-            AppliedLabelComponent = (props: filters.AppliedFilter<any>) => <span>{appliedLabel(props)}</span>;
-        }
+        const AppliedLabelComponent = appliedFilter.operation.appliedLabelComponent || appliedFilter.filter.appliedLabelComponent || defaultAppliedFilterLabelComponent;
 
         return (
             <div className="well well-sm" style={{ marginBottom: 10 }} key={appliedFilter.filter.fieldName}>

@@ -145,7 +145,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         let actualTdAttributes: ((props: CellProps<TRow, TExtraProps>) => React.TdHTMLAttributes<HTMLTableDataCellElement>);
 
         if (typeof cssClass === 'function') {
-            actualTdAttributes = tdAttributesFunc ? (row) => ({ ...tdAttributesStatic, ...tdAttributesFunc(row), className: cssClass(row) }) : (row) => ({ ...tdAttributesStatic, className: cssClass(row) });
+            actualTdAttributes = tdAttributesFunc ? ((row) => ({ ...tdAttributesStatic, ...tdAttributesFunc(row), className: cssClass(row) })) : ((row) => ({ ...tdAttributesStatic, className: cssClass(row) }));
         } else if (typeof (cssClass) === 'string') {
             tdAttributesStatic.className = cssClass;
             actualTdAttributes = tdAttributesFunc ? (row) => ({ ...tdAttributesStatic, ...tdAttributesFunc(row) }) : () => tdAttributesStatic;
