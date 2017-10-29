@@ -2,16 +2,20 @@
 
 var webpack = require('webpack');
 var path = require('path');
+var ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+//var HappyPack = require('happypack');
 
 var isDevBuild = process.argv.indexOf('--env.prod') < 0 && process.argv.indexOf('-p') < 0 && process.env.NODE_ENV != 'production';
 
 console.log('isDevBuild=' + isDevBuild);
+console.log('config file=' + path.resolve(__dirname, "tsconfig.json"));
 
 function prependHotLoader(entry) {
 
   if (isDevBuild) {
     return [
-
+      'babel-polyfill',
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:8080',
       // bundle the client for webpack-dev-server
@@ -22,7 +26,7 @@ function prependHotLoader(entry) {
     ];
   }
 
-  return entry;
+  return ['babel-polyfill', entry];
 }
 
 
@@ -42,7 +46,34 @@ var plugins = [
       // this assumes your vendor imports exist in the node_modules directory
       return module.context && module.context.indexOf('node_modules') !== -1;
     }
-  })];
+  }),
+  new ForkTsCheckerWebpackPlugin(),
+  // new ForkTsCheckerWebpackPlugin({
+  //   checkSyntacticErrors: true
+  // }),
+  new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true }),
+
+  // new HappyPack({
+  //   id: 'ts',
+  //   threads: 2,
+  //   loaders: [
+  //     {
+  //       loader: 'babel-loader', query: {
+  //         "presets": [["env", {
+  //           "modules": false
+  //         }
+  //         ],
+  //           "react"
+  //         ], "plugins": ["react-hot-loader/babel"]
+  //       }
+  //     },
+  //     {
+  //       path: 'ts-loader',
+  //       query: { happyPackMode: true }
+  //     },
+  //   ]
+  // }),
+];
 
 if (!isDevBuild) {
   plugins = plugins.concat([
@@ -87,12 +118,26 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/, exclude: /(node_modules)/, use: [
+          //{ loader: 'awesome-typescript-loader', query: { "configFileName": path.resolve(__dirname, "tsconfig.json") } }
           {
+          
+
             loader: 'babel-loader', query: {
-              "presets": [["env", { "modules": false }]],  "plugins": ["react-hot-loader/babel"]
+              "presets": [["env", {
+                "modules": false
+              },
+              ]], "plugins": ["react-hot-loader/babel"]
             }
           },
-          { loader: 'awesome-typescript-loader', query: { "configFileName": path.resolve(__dirname, "tsconfig.json") } }
+          {
+            loader: 'ts-loader',
+            options: {
+              // disable type checker - we will use it in fork plugin
+              transpileOnly: true,
+
+            }
+          },
+          //{loader: 'happypack/loader?id=ts'}
         ]
       },
 
