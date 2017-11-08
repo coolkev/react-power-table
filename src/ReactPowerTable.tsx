@@ -23,6 +23,16 @@ function getCellProps<TRow, TExtraProps>(row: TRow, internalColumn: InternalColu
 
 }
 
+function mergeAttributes(...attributes: Array<React.HTMLProps<any>>) {
+
+    return attributes.reduce((prev, current) => {
+        if (prev.style || current.style) {
+            return { ...prev, ...current, style: { ...prev.style, ...current.style } };
+
+        }
+        return { ...prev, ...current };
+    }, {});
+}
 // export function ReactPowerTable2<TRow = {}, TExtraProps = {}>() {
 //     return ReactPowerTable as any as React.ComponentClass<PowerTableProps<TRow, TExtraProps>>;
 // }
@@ -145,12 +155,12 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         let actualTdAttributes: ((props: CellProps<TRow, TExtraProps>) => React.TdHTMLAttributes<HTMLTableDataCellElement>);
 
         if (typeof cssClass === 'function') {
-            actualTdAttributes = tdAttributesFunc ? ((row) => ({ ...tdAttributesStatic, ...tdAttributesFunc(row), className: cssClass(row) })) : ((row) => ({ ...tdAttributesStatic, className: cssClass(row) }));
+            actualTdAttributes = tdAttributesFunc ? ((row) => mergeAttributes(tdAttributesStatic, tdAttributesFunc(row), { className: cssClass(row) })) : ((row) => ({ ...tdAttributesStatic, className: cssClass(row) }));
         } else if (typeof (cssClass) === 'string') {
             tdAttributesStatic.className = cssClass;
-            actualTdAttributes = tdAttributesFunc ? (row) => ({ ...tdAttributesStatic, ...tdAttributesFunc(row) }) : () => tdAttributesStatic;
+            actualTdAttributes = tdAttributesFunc ? (row) => mergeAttributes(tdAttributesStatic, tdAttributesFunc(row)) : () => tdAttributesStatic;
         } else {
-            actualTdAttributes = tdAttributesFunc ? (row) => ({ ...tdAttributesStatic, ...tdAttributesFunc(row) }) : () => tdAttributesStatic;
+            actualTdAttributes = tdAttributesFunc ? (row) => mergeAttributes(tdAttributesStatic, tdAttributesFunc(row)) : () => tdAttributesStatic;
         }
 
         const core = getColumnCore(options);

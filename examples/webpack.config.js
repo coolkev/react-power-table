@@ -51,7 +51,7 @@ var plugins = [
   // new ForkTsCheckerWebpackPlugin({
   //   checkSyntacticErrors: true
   // }),
-  new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true }),
+  new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true, skipSuccessful: true }),
 
   // new HappyPack({
   //   id: 'ts',
