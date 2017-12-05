@@ -34,7 +34,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
     constructor(props: AddEditFilterProps) {
         super(props);
 
-        const value = props.initialValue || props.filter.defaultValue || '';
+        const value = props.initialValue === undefined ? (props.filter.defaultValue === undefined ? '' : props.filter.defaultValue) : props.initialValue;
 
         this.state = { value, operationKey: props.initialOperation.key };
 
