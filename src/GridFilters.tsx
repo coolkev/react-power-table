@@ -11,6 +11,8 @@ export interface GridFiltersProps {
     appliedFilters: AppliedFilter[];
     onFiltersChange: (newFilters: AppliedFilter[]) => void;
 
+    onlyShowUnused?: boolean;
+
 }
 
 interface AppliedFilterDTO {
@@ -22,7 +24,7 @@ interface AppliedFilterDTO {
 interface GridFiltersState {
 
     addingFilter?: boolean;
-    editingFilter?: AppliedFilterDTO;
+    editingFilter?: AppliedFilter;
 
 }
 
@@ -44,12 +46,10 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
     public render() {
 
         const { editingFilter } = this.state;
-        const { appliedFilters, availableFilters } = this.props;
+        const { appliedFilters, availableFilters, onlyShowUnused } = this.props;
 
         if (editingFilter) {
-            const { columnKey, operationKey, value } = editingFilter;
-            const filter = Array.isArray(availableFilters) ? availableFilters.find((f) => f.fieldName === columnKey) : availableFilters[columnKey];
-            const operation = filter.operations[operationKey];
+            const { filter, operation, value } = editingFilter;
 
             return (
                 <div>
@@ -66,7 +66,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         }
 
         const children = this.state.addingFilter
-            ? <AddSelectFilter cancelAddFilter={this.hideAddFilter} appliedFilters={appliedFilters} availableFilters={availableFilters} onApplyFilter={this.applyNewfilter} />
+            ? <AddSelectFilter cancelAddFilter={this.hideAddFilter} appliedFilters={appliedFilters} availableFilters={availableFilters} onApplyFilter={this.applyNewfilter} onlyShowUnused={onlyShowUnused} />
             : <div><a href="#" onClick={this.showAddFilter}><span className="glyphicon glyphicon-plus" style={{ marginRight: 5 }} />Add Filter</a></div>;
 
         return (
@@ -93,9 +93,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
     }
 
     private applyNewfilter(filter: AppliedFilter) {
-        //const isValid = filter.filter.isValid(filter.value);
-        //console.log('GridFilters.applyNewfilter', { filter });
-        //if (isValid) {
+
         const newFilters = [...this.props.appliedFilters, filter];
 
         this.props.onFiltersChange(newFilters);
@@ -106,14 +104,14 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
     }
 
     private removeFilter(filter: AppliedFilter) {
-        const newFilters = this.props.appliedFilters.filter((m) => m.filter.fieldName !== filter.filter.fieldName);
+        const newFilters = this.props.appliedFilters.filter((m) => m !== filter);
 
         this.props.onFiltersChange(newFilters);
     }
 
     private handleRemoveEditFilter() {
         const toRemove = this.state.editingFilter;
-        const newFilters = this.props.appliedFilters.filter((m) => m.filter.fieldName !== toRemove.columnKey);
+        const newFilters = this.props.appliedFilters.filter((m) => m !== toRemove);
 
         this.props.onFiltersChange(newFilters);
 
@@ -123,14 +121,8 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
     }
     private editFilter(filter: AppliedFilter) {
 
-        const filterDto: AppliedFilterDTO = {
-            columnKey: filter.filter.fieldName,
-            operationKey: filter.operation.key,
-            value: filter.value,
-        };
-
         this.setState({
-            editingFilter: filterDto,
+            editingFilter: filter,
             addingFilter: false,
         });
     }

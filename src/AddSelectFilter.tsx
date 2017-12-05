@@ -17,6 +17,8 @@ export interface AddFilterProps {
     appliedFilters: PowerTable.AppliedFilter[];
     onApplyFilter: (filter: PowerTable.AppliedFilter) => void;
 
+    onlyShowUnused?: boolean;
+
 }
 
 /**
@@ -67,7 +69,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
     }
     render() {
 
-        const { availableFilters, appliedFilters } = this.props;
+        const { availableFilters, appliedFilters, onlyShowUnused } = this.props;
 
         const { searchText, selectedFilterKey } = this.state;
 
@@ -93,10 +95,10 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
 
         const filters = objectMapToArray(availableFilters);
 
-        const unusedFilters = filters.filter((m) => appliedFilters.every((c) => c.filter.fieldName !== m.fieldName));
+        const visibleFilters = onlyShowUnused ? filters.filter((m) => appliedFilters.every((c) => c.filter.fieldName !== m.fieldName)) : filters;
 
         const regex = new RegExp(searchText, 'i');
-        const showFilters = searchText ? unusedFilters.filter((m) => m.displayName.match(regex)) : unusedFilters;
+        const showFilters = searchText ? visibleFilters.filter((m) => m.displayName.match(regex)) : visibleFilters;
 
         // const onSelectFilter = (e: React.) => {
         //     e.preventDefault();
