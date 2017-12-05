@@ -4,7 +4,7 @@ import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefiniti
 
 //const dataType = 'int';
 export class IntFilter extends FilterDefinition<number> {
-    public operations = this.defaultOperations;
+    public operations = this.getOperations();
 
     //static readonly dataType = dataType;
     constructor(options: FilterDefinitionOptionsOrFieldName) {
@@ -15,14 +15,20 @@ export class IntFilter extends FilterDefinition<number> {
 
             const { value, onValueChange, filter, operation, ...rest } = props;
 
-            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" {...rest} />;
+            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} onValueChangeInvalid={onValueChange} autoFocus className="form-control input-sm" {...rest} />;
         };
 
     }
 
-    // protected getOperations() {
-    //     return this.defaultOperations;
-    // }
+    protected getOperations() {
+
+        return {
+            ...this.defaultOperations,
+            eq: { ...this.defaultOperations.eq, isValid: (v: number) => v !== '' as any } as OperationDefinition<number>,
+            ne: { ...this.defaultOperations.ne, isValid: (v: number) => v !== '' as any } as OperationDefinition<number>,
+            //between: this.defaultOperations.between
+        };
+    }
 
     parseValue(str: string) {
         return parseInt(str, 10);

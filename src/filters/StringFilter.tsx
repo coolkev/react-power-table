@@ -16,8 +16,8 @@ export class StringFilter extends PowerTable.FilterDefinition<string> {
 
     protected getOperations() {
         return {
-            contains: { key: 'contains', displayName: 'contains', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) > -1 } as PowerTable.OperationDefinition<string>,
-            notcontains: { key: 'notcontains', displayName: 'does not contain', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) === -1 } as PowerTable.OperationDefinition<string>,
+            contains: { key: 'contains', displayName: 'contains', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) > -1, isValid: v => v !== '' },
+            notcontains: { key: 'notcontains', displayName: 'does not contain', test: (source, value) => source.indexOf && source.toLowerCase().indexOf(value) === -1, isValid: v => v !== '' },
             eq: this.defaultOperations.eq,
             ne: this.defaultOperations.ne,
         };
@@ -40,6 +40,10 @@ export class StringFilter extends PowerTable.FilterDefinition<string> {
         return super.applyFilter(data, operation, valueLower);
     }
 
+    // public isValid(value: string) {
+
+    //     return value !== '';
+    // }
 }
 
 class StringFilterComponent extends React.Component<PowerTable.FilterComponentProps<string>, never> {
@@ -57,7 +61,7 @@ class StringFilterComponent extends React.Component<PowerTable.FilterComponentPr
 
         const { value } = this.props;
 
-        return <FormControl value={value} autoFocus onChange={this.handleChange}  />;
+        return <span className={this.props.invalid ? 'has-error' : null}><FormControl value={value} autoFocus onChange={this.handleChange} /></span>;
     }
 
 }

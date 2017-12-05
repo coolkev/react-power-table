@@ -3,7 +3,7 @@ import { NumericInput } from '../components/NumericInput';
 import { FilterDefinition, FilterDefinitionOptionsOrFieldName, OperationDefinition } from './FilterDefinition';
 
 export class DecimalFilter extends FilterDefinition<number> {
-    public operations = this.defaultOperations;
+    public operations = this.getOperations();
 
     constructor(options: FilterDefinitionOptionsOrFieldName) {
 
@@ -13,16 +13,22 @@ export class DecimalFilter extends FilterDefinition<number> {
 
             const { value, onValueChange, filter, operation, ...rest } = props;
 
-            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} autoFocus className="form-control input-sm" allowDecimal {...rest} />;
+            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} onValueChangeInvalid={onValueChange} autoFocus className="form-control input-sm" allowDecimal {...rest} />;
         };
 
     }
 
     //public readonly operations = this.defaultOperations;
 
-    // protected getOperations(): ObjectMap<OperationDefinition<number>> {
-    //     return this.defaultOperations;
-    // }
+    protected getOperations() {
+
+        return {
+            ...this.defaultOperations,
+            eq: { ...this.defaultOperations.eq, isValid: (v: number) => v !== '' as any } as OperationDefinition<number>,
+            ne: { ...this.defaultOperations.ne, isValid: (v: number) => v !== '' as any } as OperationDefinition<number>,
+            //between: this.defaultOperations.between
+        };
+    }
 
     parseValue(str: string) {
         return parseFloat(str);

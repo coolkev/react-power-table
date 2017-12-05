@@ -77,8 +77,8 @@ class Examples extends React.Component<ExamplesProps, never> {
 
 export class ExamplesApp extends React.Component<{}, {}> {
 
-    constructor() {
-        super();
+    constructor(props: {}) {
+        super(props);
         this.reload = this.reload.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
     }

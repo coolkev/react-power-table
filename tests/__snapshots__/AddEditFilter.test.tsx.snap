@@ -1830,25 +1830,27 @@ exports[`AddEditFilter tests add filter left_office eq 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <span
-        class=""
-      >
-        <input
-          autocomplete="on"
-          class="form-control"
-          placeholder="MM/DD/YYYY"
-          style="width: 100%;"
-          type="text"
-          value=""
-        />
-        <div
-          style="position: relative;"
-        />
-        <input
-          data-formattedvalue=""
-          type="hidden"
-          value=""
-        />
+      <span>
+        <span
+          class=""
+        >
+          <input
+            autocomplete="on"
+            class="form-control"
+            placeholder="MM/DD/YYYY"
+            style="width: 100%;"
+            type="text"
+            value=""
+          />
+          <div
+            style="position: relative;"
+          />
+          <input
+            data-formattedvalue=""
+            type="hidden"
+            value=""
+          />
+        </span>
       </span>
     </div>
   </div>
@@ -1996,25 +1998,27 @@ exports[`AddEditFilter tests add filter left_office gt 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <span
-        class=""
-      >
-        <input
-          autocomplete="on"
-          class="form-control"
-          placeholder="MM/DD/YYYY"
-          style="width: 100%;"
-          type="text"
-          value=""
-        />
-        <div
-          style="position: relative;"
-        />
-        <input
-          data-formattedvalue=""
-          type="hidden"
-          value=""
-        />
+      <span>
+        <span
+          class=""
+        >
+          <input
+            autocomplete="on"
+            class="form-control"
+            placeholder="MM/DD/YYYY"
+            style="width: 100%;"
+            type="text"
+            value=""
+          />
+          <div
+            style="position: relative;"
+          />
+          <input
+            data-formattedvalue=""
+            type="hidden"
+            value=""
+          />
+        </span>
       </span>
     </div>
   </div>
@@ -2117,25 +2121,27 @@ exports[`AddEditFilter tests add filter left_office lt 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <span
-        class=""
-      >
-        <input
-          autocomplete="on"
-          class="form-control"
-          placeholder="MM/DD/YYYY"
-          style="width: 100%;"
-          type="text"
-          value=""
-        />
-        <div
-          style="position: relative;"
-        />
-        <input
-          data-formattedvalue=""
-          type="hidden"
-          value=""
-        />
+      <span>
+        <span
+          class=""
+        >
+          <input
+            autocomplete="on"
+            class="form-control"
+            placeholder="MM/DD/YYYY"
+            style="width: 100%;"
+            type="text"
+            value=""
+          />
+          <div
+            style="position: relative;"
+          />
+          <input
+            data-formattedvalue=""
+            type="hidden"
+            value=""
+          />
+        </span>
       </span>
     </div>
   </div>
@@ -2933,7 +2939,7 @@ exports[`AddEditFilter tests add filter party in 1`] = `
                 aria-haspopup="false"
                 aria-owns=""
                 role="combobox"
-                style="width: 5px; box-sizing: content-box;"
+                style="box-sizing: content-box; width: 5px;"
                 value=""
               />
               <div
@@ -3046,7 +3052,7 @@ exports[`AddEditFilter tests add filter party notin 1`] = `
                 aria-haspopup="false"
                 aria-owns=""
                 role="combobox"
-                style="width: 5px; box-sizing: content-box;"
+                style="box-sizing: content-box; width: 5px;"
                 value=""
               />
               <div
@@ -3104,10 +3110,12 @@ exports[`AddEditFilter tests add filter president contains 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <input
-        class="form-control"
-        value=""
-      />
+      <span>
+        <input
+          class="form-control"
+          value=""
+        />
+      </span>
     </div>
   </div>
   <div>
@@ -3224,10 +3232,12 @@ exports[`AddEditFilter tests add filter president eq 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <input
-        class="form-control"
-        value=""
-      />
+      <span>
+        <input
+          class="form-control"
+          value=""
+        />
+      </span>
     </div>
   </div>
   <div>
@@ -3329,10 +3339,12 @@ exports[`AddEditFilter tests add filter president ne 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <input
-        class="form-control"
-        value=""
-      />
+      <span>
+        <input
+          class="form-control"
+          value=""
+        />
+      </span>
     </div>
   </div>
   <div
@@ -3389,10 +3401,12 @@ exports[`AddEditFilter tests add filter president notcontains 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <input
-        class="form-control"
-        value=""
-      />
+      <span>
+        <input
+          class="form-control"
+          value=""
+        />
+      </span>
     </div>
   </div>
   <div>
@@ -3464,25 +3478,27 @@ exports[`AddEditFilter tests add filter took_office eq 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <span
-        class=""
-      >
-        <input
-          autocomplete="on"
-          class="form-control"
-          placeholder="MM/DD/YYYY"
-          style="width: 100%;"
-          type="text"
-          value=""
-        />
-        <div
-          style="position: relative;"
-        />
-        <input
-          data-formattedvalue=""
-          type="hidden"
-          value=""
-        />
+      <span>
+        <span
+          class=""
+        >
+          <input
+            autocomplete="on"
+            class="form-control"
+            placeholder="MM/DD/YYYY"
+            style="width: 100%;"
+            type="text"
+            value=""
+          />
+          <div
+            style="position: relative;"
+          />
+          <input
+            data-formattedvalue=""
+            type="hidden"
+            value=""
+          />
+        </span>
       </span>
     </div>
   </div>
@@ -3600,25 +3616,27 @@ exports[`AddEditFilter tests add filter took_office gt 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <span
-        class=""
-      >
-        <input
-          autocomplete="on"
-          class="form-control"
-          placeholder="MM/DD/YYYY"
-          style="width: 100%;"
-          type="text"
-          value=""
-        />
-        <div
-          style="position: relative;"
-        />
-        <input
-          data-formattedvalue=""
-          type="hidden"
-          value=""
-        />
+      <span>
+        <span
+          class=""
+        >
+          <input
+            autocomplete="on"
+            class="form-control"
+            placeholder="MM/DD/YYYY"
+            style="width: 100%;"
+            type="text"
+            value=""
+          />
+          <div
+            style="position: relative;"
+          />
+          <input
+            data-formattedvalue=""
+            type="hidden"
+            value=""
+          />
+        </span>
       </span>
     </div>
   </div>
@@ -3691,25 +3709,27 @@ exports[`AddEditFilter tests add filter took_office lt 1`] = `
     <div
       style="margin-left: 20px;"
     >
-      <span
-        class=""
-      >
-        <input
-          autocomplete="on"
-          class="form-control"
-          placeholder="MM/DD/YYYY"
-          style="width: 100%;"
-          type="text"
-          value=""
-        />
-        <div
-          style="position: relative;"
-        />
-        <input
-          data-formattedvalue=""
-          type="hidden"
-          value=""
-        />
+      <span>
+        <span
+          class=""
+        >
+          <input
+            autocomplete="on"
+            class="form-control"
+            placeholder="MM/DD/YYYY"
+            style="width: 100%;"
+            type="text"
+            value=""
+          />
+          <div
+            style="position: relative;"
+          />
+          <input
+            data-formattedvalue=""
+            type="hidden"
+            value=""
+          />
+        </span>
       </span>
     </div>
   </div>

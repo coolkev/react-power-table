@@ -5,13 +5,15 @@ const valueDelimiter = ' ';
 
 export const BetweenFilterComponent = (props: PowerTable.FilterComponentProps<any>) => {
 
-    const { value, onValueChange, ...rest } = props;
+    const { value, onValueChange, invalid, ...rest } = props;
 
     const values = value.toString().split(valueDelimiter);
     const min = values[0];
     const max = values.length >= 2 ? values[1] : '';
     const FilterComponent = props.filter.filterComponent;
 
+    const invalid1 = invalid && !props.operation.isValid(min + valueDelimiter + min);
+    const invalid2 = invalid && !props.operation.isValid(max + valueDelimiter + max);
     /* tslint:disable:jsx-no-lambda */
     return (
         <div>
@@ -19,13 +21,13 @@ export const BetweenFilterComponent = (props: PowerTable.FilterComponentProps<an
                 <tbody>
                     <tr>
                         <td>
-                            <FilterComponent value={min} onValueChange={(v) => onValueChange(v + valueDelimiter + max)} placeholder="min" {...rest} />
+                            <FilterComponent value={min} onValueChange={(v) => onValueChange(v + valueDelimiter + max)} placeholder="min" {...rest} invalid={invalid1} />
                         </td>
                         <td style={{ padding: '0 5px' }}>
                             and
                        </td>
                         <td>
-                            <FilterComponent value={max} onValueChange={(v) => onValueChange(min + valueDelimiter + v)} placeholder="max" {...rest} autoFocus={false} />
+                            <FilterComponent value={max} onValueChange={(v) => onValueChange(min + valueDelimiter + v)} placeholder="max" {...rest} invalid={invalid2} autoFocus={false} />
                         </td>
                     </tr>
                 </tbody>

@@ -5,12 +5,18 @@ function defaultOperations<T>() {
 
     const result = {
         eq: { key: 'eq', displayName: 'is equal to', test: (source, filterValue) => source === filterValue } as OperationDefinition<T>,
-        ne: { key: 'ne', displayName: 'is not equal to', test: (source, filterValue) => source === filterValue } as OperationDefinition<T>,
-        lt: { key: 'lt', displayName: 'is less than', test: (source, filterValue) => source < filterValue } as OperationDefinition<T>,
-        gt: { key: 'gt', displayName: 'is greater than', test: (source, filterValue) => source > filterValue } as OperationDefinition<T>,
+        ne: { key: 'ne', displayName: 'is not equal to', test: (source, filterValue) => source !== filterValue } as OperationDefinition<T>,
+        lt: { key: 'lt', displayName: 'is less than', test: (source, filterValue) => source < filterValue, isValid: v => v !== '' as any } as OperationDefinition<T>,
+        gt: { key: 'gt', displayName: 'is greater than', test: (source, filterValue) => source > filterValue, isValid: v => v !== '' as any } as OperationDefinition<T>,
         between: {
             key: 'between', displayName: 'is between', filterComponent: BetweenFilterComponent, appliedLabel: BetweenAppliedFilterLabel,
             test: (source, filterValue) => source >= filterValue && source <= filterValue,
+            isValid: v => {
+                //console.log('between isValid', v);
+                const values = v.toString().split(' ');
+
+                return values.length === 2 && values[0] !== '' && values[1] !== '';
+            }
         } as OperationDefinition<T>,
 
     };
@@ -54,7 +60,7 @@ export type FilterDefinitionOptionsOrFieldName = FilterDefinitionOptions | strin
 
 // export type FilterDefinitionOptionsOrFieldName = FilterDefinitionOptions | string;
 
-export abstract class FilterDefinition<T = any> implements FilterDefinitionOptions {
+export abstract class FilterDefinition<T = any, TOperations extends ObjectMap<OperationDefinition<T>> = {}> implements FilterDefinitionOptions {
 
     public fieldName: string;
     public displayName: string;
@@ -67,7 +73,8 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
 
     public appliedLabel?: (filter: AppliedFilter<T>) => string;
     public appliedLabelComponent?: React.ComponentType<AppliedFilter<T>>;
-    public operations: ObjectMap<OperationDefinition<T>>;
+    //public operations: TOperations;
+    public abstract readonly operations: TOperations;
     private readonly lazyDefaultOperations = new Lazy(() => this.canBeNull ? { ...defaultOperations<T>(), ...nullableOperations<T>() } : defaultOperations<T>());
 
     public static readonly defaultAppliedFilterLabel = (filter: AppliedFilter<any>) => {
@@ -92,6 +99,11 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
         // this.operations = operations;
 
     }
+
+    // protected getOperations(): TOperations {
+
+    //     return this.defaultOperations as any as TOperations;
+    // }
 
     public onOperationChange(prevOperationKey: string, newFilterState: OnChangeOperationProps) {
         if (prevOperationKey === 'between' && newFilterState.operationKey !== prevOperationKey && typeof newFilterState.value === 'string') {
@@ -163,6 +175,9 @@ export abstract class FilterDefinition<T = any> implements FilterDefinitionOptio
 
     // }
 
+    // public isValid(value: T) {
+    //     return true;
+    // }
 }
 
 // export namespace PowerTable {
@@ -193,6 +208,8 @@ export interface OperationDefinition<T = any> {
 
     radioButtonLabel?: React.ComponentType<RadioButtonLabelProps<T>>;
     test(source: any, filterValue: T): boolean;
+
+    isValid?(value: T): boolean;
 }
 
 export interface AppliedFilter<T = any> {
@@ -211,6 +228,8 @@ export interface FilterComponentProps<T> extends AppliedFilter<T> {
     autoFocus?: boolean;
     disabled?: boolean;
     placeholder?: string;
+
+    invalid?: boolean;
     //onEnterKeyPress: () => void;
 }
 export interface RadioButtonLabelProps<T> {

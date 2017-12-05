@@ -75,7 +75,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
 
             const filter = Array.isArray(availableFilters) ? availableFilters.find((f) => f.fieldName === selectedFilterKey) : availableFilters[selectedFilterKey];
 
-            const initialOperation = objectMapToArray(filter.operations)[0];
+            const initialOperation = objectMapToArray(filter.operations)[0] as PowerTable.OperationDefinition;
 
             return (
                 <div>

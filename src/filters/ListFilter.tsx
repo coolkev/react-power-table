@@ -27,7 +27,7 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
         }
 
         this.filterComponent = (props) => {
-            const { autoFocus, value, onValueChange, children, filter, operation, ...rest } = props;
+            const { autoFocus, value, onValueChange, children, filter, operation, invalid, ...rest } = props;
 
             return (
                 <Select
@@ -38,6 +38,7 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
                     // tslint:disable-next-line:jsx-no-lambda
                     onChange={(e: Array<SelectOption<T>>) => props.onValueChange(e.map((m) => m.value))}
                     autofocus={autoFocus}
+                    className={invalid ? 'has-error ' + rest.className : rest.className}
                 />);
         };
         this.filterComponent.defaultProps = {
@@ -52,12 +53,14 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
                 displayName: 'is any of',
                 test: (sourceValue: any, filterValue) => filterValue.indexOf(sourceValue) > -1,
                 appliedLabel: (filter) => filter.filter.displayName + ' is ' + getSelectedLabels(filter.value, this.items).join(' or '),
+                isValid: v => v as any !== '' && v.length !== 0,
             },
-             notin: {
+            notin: {
                 key: 'notin',
                 displayName: 'is not any of',
                 test: (sourceValue: any, filterValue) => filterValue.indexOf(sourceValue) === -1,
                 appliedLabel: (filter) => filter.filter.displayName + ' is not ' + getSelectedLabels(filter.value, this.items).join(' or '),
+                isValid: v => v as any !== '' && v.length !== 0,
             },
         };
     }

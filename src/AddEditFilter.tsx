@@ -22,6 +22,7 @@ export interface AddEditFilterState {
     operationKey: string;
     value: any;
 
+    invalid?: boolean;
 }
 
 /**
@@ -59,7 +60,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
     }
 
     private handleFilterValueChange(value: string) {
-        debuglog('AddEditFilter.filterValueChange', value);
+        //console.log('AddEditFilter.filterValueChange', value);
         this.setState({
             value,
         });
@@ -68,7 +69,15 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
     private applyFilter() {
         const operation = this.props.filter.operations[this.state.operationKey];
 
-        this.props.onApplyFilter({ filter: this.props.filter, operation, value: this.state.value });
+        //console.log('AddEditFilter.applyFilter', { filter: this.props.filter, operation, value: this.state.value });
+        const isValid = operation.isValid === undefined || operation.isValid(this.state.value);
+        //console.log('GridFilters.applyNewfilter', { filter: this.props.filter, isValid });
+        if (isValid) {
+            this.props.onApplyFilter({ filter: this.props.filter, operation, value: this.state.value });
+        }
+        if (isValid !== !this.state.invalid) {
+            this.setState({ invalid: !isValid });
+        }
     }
 
     private handleKeyPress(e: React.KeyboardEvent<any>) {
@@ -81,7 +90,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
         const filter = this.props.filter;
 
-        const { value, operationKey } = this.state;
+        const { value, operationKey, invalid } = this.state;
 
         const opComponents = Object.keys(filter.operations).map((opKey) => {
             const op = filter.operations[opKey];
@@ -91,7 +100,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
                 const SelectedFilterComponent = op.filterComponent || filter.filterComponent;
 
                 if (SelectedFilterComponent) {
-                    children = <div style={{ marginLeft: 20 }} onKeyPress={this.handleKeyPress}><SelectedFilterComponent filter={filter} operation={op} value={value} onValueChange={this.handleFilterValueChange} /></div>;
+                    children = <div style={{ marginLeft: 20 }} onKeyPress={this.handleKeyPress}><SelectedFilterComponent filter={filter} operation={op} value={value} onValueChange={this.handleFilterValueChange} invalid={invalid} /></div>;
                 }
             }
 

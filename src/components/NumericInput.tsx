@@ -4,8 +4,10 @@ export interface NumericInputProps extends React.HTMLProps<HTMLInputElement> {
 
     initialValue: number | string;
     onValueChange: (newValue: number) => void;
+    onValueChangeInvalid?: (newValue: any) => void;
     allowDecimal?: boolean;
     //onEnterKeyPress?: () => void;
+    invalid?: boolean;
 }
 
 interface NumericInputState {
@@ -39,6 +41,8 @@ export const NumericInput: React.ComponentClass<NumericInputProps> = class exten
         const isValid = !isNaN(ivalue);
         if (isValid) {
             this.props.onValueChange(ivalue);
+        } else if (this.props.onValueChangeInvalid) {
+            this.props.onValueChangeInvalid(e.currentTarget.value);
         }
 
         this.setState({ value: e.currentTarget.value });
@@ -61,9 +65,9 @@ export const NumericInput: React.ComponentClass<NumericInputProps> = class exten
     }
     render() {
 
-        const { initialValue, onValueChange, allowDecimal, ...rest } = this.props;
+        const { initialValue, onValueChange, onValueChangeInvalid, allowDecimal, invalid, ...rest } = this.props;
 
-        return <span className={this.isValid() ? null : 'has-error'}><input type="text" {...rest} value={this.state.value} onKeyPress={this.onKeyPress} onChange={this.onChange} /></span>;
+        return <span className={!invalid && this.isValid() ? null : 'has-error'}><input type="text" {...rest} value={this.state.value} onKeyPress={this.onKeyPress} onChange={this.onChange} /></span>;
 
     }
 };

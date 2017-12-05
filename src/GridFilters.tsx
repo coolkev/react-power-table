@@ -92,13 +92,16 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
     }
 
     private applyNewfilter(filter: AppliedFilter) {
-
+        //const isValid = filter.filter.isValid(filter.value);
+        //console.log('GridFilters.applyNewfilter', { filter });
+        //if (isValid) {
         const newFilters = [...this.props.appliedFilters, filter];
 
         this.props.onFiltersChange(newFilters);
         this.setState({
-            addingFilter: false,
-        });
+                addingFilter: false,
+            });
+        //}
     }
 
     private removeFilter(filter: AppliedFilter) {

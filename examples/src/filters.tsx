@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes, groupBy, sortArray, numberWithCommas, AppliedFilter, GridFilters } from '../../src/';
 import { sampledata, defaultColumns, partyList } from './shared';
+import { DecimalFilter } from '../../src/filters/DecimalFilter';
 
 // //if coming in from DTO
 // const availDTO = [

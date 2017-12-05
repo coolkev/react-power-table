@@ -39,16 +39,16 @@ export class DateFilter extends FilterDefinition<string> {
 
     protected getOperations() {
         const result = {
-            eq: this.defaultOperations.eq,
-            lt: { ...this.defaultOperations.lt, displayName: 'is before' } as OperationDefinition<string>,
-            gt: { ...this.defaultOperations.gt, displayName: 'is after' } as OperationDefinition<string>,
+            eq: { ...this.defaultOperations.eq, isValid: (v) => v !== '' },
+            lt: { ...this.defaultOperations.lt, displayName: 'is before', isValid: (v) => v !== '' } as OperationDefinition<string>,
+            gt: { ...this.defaultOperations.gt, displayName: 'is after', isValid: (v) => v !== '' } as OperationDefinition<string>,
             between: this.defaultOperations.between,
         };
 
         if (this.canBeNull) {
             return { ...result, ...nullableOperations<string>() };
         }
-        return result;
+        return result as typeof result;
     }
 
 }
@@ -72,13 +72,12 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
     // }
     public render() {
 
-        const { value, onValueChange, operation, ...rest } = this.props;
+        const { value, onValueChange, operation, invalid, ...rest } = this.props;
 
         const dateValue = value ? (new Date(value)).toISOString() : '';
 
-        return <DatePicker value={dateValue} onChange={this.handleChange} showClearButton={false} {...rest} />;
+        return <span  className={invalid ? 'has-error' : null}><DatePicker value={dateValue} onChange={this.handleChange} showClearButton={false} {...rest} /></span>;
 
-        //return <FormControl value={value} autoFocus onChange={this.handleChange} onKeyPress={this.handleKeyPress} />;
     }
 
 }
