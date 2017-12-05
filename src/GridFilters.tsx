@@ -49,7 +49,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         const { appliedFilters, availableFilters, onlyShowUnused } = this.props;
 
         if (editingFilter) {
-            const { filter, operation, value } = editingFilter;
+            const { filter, operation, value, key } = editingFilter;
 
             return (
                 <div>
@@ -57,7 +57,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
 
                     <div>
 
-                        <AddEditFilter filter={filter} initialOperation={operation} initialValue={value} onApplyFilter={this.applyEditFilter} onRemoveFilter={this.handleRemoveEditFilter} />
+                        <AddEditFilter filter={filter} initialOperation={operation} initialValue={value} onApplyFilter={this.applyEditFilter} onRemoveFilter={this.handleRemoveEditFilter} filterKey={key} />
 
                     </div>
 
@@ -94,7 +94,9 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
 
     private applyNewfilter(filter: AppliedFilter) {
 
-        const newFilters = [...this.props.appliedFilters, filter];
+        const count = filter.key ? 1 : this.props.appliedFilters.filter(m => m.filter.fieldName === filter.filter.fieldName).length + 1;
+        const key = filter.key || filter.filter.fieldName + (count === 1 ? '' : count);
+        const newFilters = [...this.props.appliedFilters, { ...filter, key }];
 
         this.props.onFiltersChange(newFilters);
         this.setState({
@@ -137,7 +139,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
 
     private applyEditFilter(filter: AppliedFilter) {
 
-        const newFilters = this.props.appliedFilters.map((m) => m.filter.fieldName !== filter.filter.fieldName ? m : filter);
+        const newFilters = this.props.appliedFilters.map((m) => m.key !== filter.key ? m : filter);
 
         this.props.onFiltersChange(newFilters);
         this.setState({

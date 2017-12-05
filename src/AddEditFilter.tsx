@@ -13,6 +13,7 @@ export interface AddEditFilterProps {
     initialValue?: any;
     onApplyFilter: (filter: filters.AppliedFilter<any>) => void;
     onRemoveFilter?: () => void;
+    filterKey?: string;
 }
 
 /**
@@ -74,7 +75,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         const isValid = operation.isValid === undefined || operation.isValid(this.state.value);
         //console.log('GridFilters.applyNewfilter', { filter: this.props.filter, isValid });
         if (isValid) {
-            this.props.onApplyFilter({ filter: this.props.filter, operation, value: this.state.value });
+            this.props.onApplyFilter({ filter: this.props.filter, operation, value: this.state.value, key: this.props.filterKey });
         }
         if (isValid !== !this.state.invalid) {
             this.setState({ invalid: !isValid });

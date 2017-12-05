@@ -217,6 +217,8 @@ export interface AppliedFilter<T = any> {
     operation: OperationDefinition<T>;
     value: T;
 
+    key: string;
+
 }
 
 export interface FilterComponentProps<T> extends AppliedFilter<T> {

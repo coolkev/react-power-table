@@ -15,7 +15,7 @@ export const AppliedFilters = (props: AppliedFiltersProps) => {
 
     return (
         <div className="small">
-            {props.appliedFilters.map((appliedFilter) => <AppliedFilter appliedFilter={appliedFilter} key={appliedFilter.filter.fieldName} onEditFilter={props.editFilter} onRemoveFilter={props.removeFilter} />)}
+            {props.appliedFilters.map((appliedFilter) => <AppliedFilter appliedFilter={appliedFilter} key={appliedFilter.key} onEditFilter={props.editFilter} onRemoveFilter={props.removeFilter} />)}
         </div>
     );
 };
