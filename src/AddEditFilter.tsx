@@ -122,7 +122,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
                 <div style={{ marginTop: 20 }}>
                     <Button bsStyle="primary" bsSize="sm" onClick={this.applyFilter}>Apply Filter</Button>
 
-                    &nbsp;
+                    {this.props.onRemoveFilter && ' '}
 
                     {this.props.onRemoveFilter && <Button bsSize="sm" bsStyle="danger" onClick={this.removeFilter}>Remove Filter</Button>}
 
