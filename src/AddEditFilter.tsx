@@ -12,6 +12,7 @@ export interface AddEditFilterProps {
     initialOperation: filters.OperationDefinition<any>;
     initialValue?: any;
     onApplyFilter: (filter: filters.AppliedFilter<any>) => void;
+    onRemoveFilter?: () => void;
 }
 
 /**
@@ -41,7 +42,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         this.handleFilterValueChange = this.handleFilterValueChange.bind(this);
         this.applyFilter = this.applyFilter.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
-
+        this.removeFilter = this.removeFilter.bind(this);
     }
 
     private selectedOperationChange(e: React.FormEvent<Radio & HTMLInputElement>) {
@@ -80,6 +81,10 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         }
     }
 
+    private removeFilter() {
+        this.props.onRemoveFilter();
+    }
+
     private handleKeyPress(e: React.KeyboardEvent<any>) {
         if (e.charCode === 13) {
             this.applyFilter();
@@ -116,6 +121,11 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
 
                 <div style={{ marginTop: 20 }}>
                     <Button bsStyle="primary" bsSize="sm" onClick={this.applyFilter}>Apply Filter</Button>
+
+                    &nbsp;
+
+                    {this.props.onRemoveFilter && <Button bsSize="sm" bsStyle="danger" onClick={this.removeFilter}>Remove Filter</Button>}
+
                 </div>
 
             </div>);

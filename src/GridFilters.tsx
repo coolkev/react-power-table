@@ -38,6 +38,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         this.cancelEditFilter = this.cancelEditFilter.bind(this);
         this.applyEditFilter = this.applyEditFilter.bind(this);
         this.showAddFilter = this.showAddFilter.bind(this);
+        this.handleRemoveEditFilter = this.handleRemoveEditFilter.bind(this);
     }
 
     public render() {
@@ -56,7 +57,7 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
 
                     <div>
 
-                        <AddEditFilter filter={filter} initialOperation={operation} initialValue={value} onApplyFilter={this.applyEditFilter} />
+                        <AddEditFilter filter={filter} initialOperation={operation} initialValue={value} onApplyFilter={this.applyEditFilter} onRemoveFilter={this.handleRemoveEditFilter} />
 
                     </div>
 
@@ -99,8 +100,8 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
 
         this.props.onFiltersChange(newFilters);
         this.setState({
-                addingFilter: false,
-            });
+            addingFilter: false,
+        });
         //}
     }
 
@@ -110,6 +111,16 @@ class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersS
         this.props.onFiltersChange(newFilters);
     }
 
+    private handleRemoveEditFilter() {
+        const toRemove = this.state.editingFilter;
+        const newFilters = this.props.appliedFilters.filter((m) => m.filter.fieldName !== toRemove.columnKey);
+
+        this.props.onFiltersChange(newFilters);
+
+        this.setState({
+            editingFilter: null
+        });
+    }
     private editFilter(filter: AppliedFilter) {
 
         const filterDto: AppliedFilterDTO = {
