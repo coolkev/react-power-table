@@ -1,9 +1,8 @@
 
 import * as React from 'react';
 import { getColumnCore, getExpression } from './Column';
-import { Column, PowerTableProps, RowComponentType, RowComponentProps, HeadCellInnerComponentType } from './ReactPowerTable';
+import { Column, PowerTableProps, RowComponentType, RowComponentProps, HeadCellInnerComponentType, HeadCellInnerComponentProps } from './ReactPowerTable';
 import { debuglog, getComponentDisplayName, shallowEqual, sortArray } from './utils';
-import { HeadCellInnerComponentProps } from '../types/index';
 
 export interface SortSettings {
 
