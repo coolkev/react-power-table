@@ -1,8 +1,9 @@
 
 import * as React from 'react';
 import { getColumnCore, getExpression } from './Column';
-import { Column, PowerTableProps, RowComponentType, RowComponentProps } from './ReactPowerTable';
+import { Column, PowerTableProps, RowComponentType, RowComponentProps, HeadCellInnerComponentType } from './ReactPowerTable';
 import { debuglog, getComponentDisplayName, shallowEqual, sortArray } from './utils';
+import { HeadCellInnerComponentProps } from '../types/index';
 
 export interface SortSettings {
 
@@ -88,10 +89,6 @@ function transformColumn<TRow, T extends PowerTableProps<TRow>>(options: Sortabl
 
     }
 
-    const divSortingStyle: React.CSSProperties = { paddingRight: 15, position: 'relative' };
-
-    const divDefaultSortingTyle = col.textAlign === 'right' || (col.thAttributes && col.thAttributes.style && col.thAttributes.style.textAlign === 'right') ? { paddingRight: 15 } : null;
-
     const onClick = () => {
         const currentSort = getCurrentSort();
         const sorting = col.sortKey === currentSort.column;
@@ -101,31 +98,43 @@ function transformColumn<TRow, T extends PowerTableProps<TRow>>(options: Sortabl
 
     col.thAttributes = { ...col.thAttributes, onClick, style: { cursor: 'pointer', ...(col.thAttributes || {}).style } };
 
-    const OriginalHeadCellComponent = col.headerComponent || tableProps.thInnerComponent;
-    col.headerComponent = props => {
-        const { children } = props;
-        const currentSort = getCurrentSort();
-        const sorting = col.sortKey === currentSort.column;
-        const sortAsc = sorting && !currentSort.descending;
+    const originalHeaderComponentProps = (col.headerComponentProps || tableProps.thInnerComponentProps) as (props: HeadCellInnerComponentProps<TRow>) => HeadCellInnerComponentProps<TRow>;
+    col.headerComponentProps = (props) => {
+        const originalProps = originalHeaderComponentProps(props);
 
-        let divStyle: React.CSSProperties;
-        let sortComponent: JSX.Element;
-
-        if (sorting) {
-            divStyle = divSortingStyle;
-            sortComponent = sortAsc ? defaultSortAscComponent : defaultSortDescComponent;
-
-        } else {
-            divStyle = divDefaultSortingTyle;
-        }
-
-        debuglog('SortableHeaderComponent render');
-
-        return <OriginalHeadCellComponent  {...props} style={divStyle}>{children}{sortComponent && ' '}{sortComponent}</OriginalHeadCellComponent>;
+        return { ...originalProps, getCurrentSort, originalHeadCellComponent };
     };
+
+    const originalHeadCellComponent = col.headerComponent || tableProps.thInnerComponent;
+    col.headerComponent = SortableHeaderComponent;
 
     return col;
 }
+
+const divSortingStyle: React.CSSProperties = { paddingRight: 15, position: 'relative' };
+
+const SortableHeaderComponent = (props: HeadCellInnerComponentProps & { getCurrentSort?: () => SortSettings, originalHeadCellComponent?: HeadCellInnerComponentType }) => {
+    const { children, getCurrentSort, originalHeadCellComponent: OriginalHeadCellComponent, ...rest } = props;
+    const currentSort = props.getCurrentSort();
+    const sorting = (props.column as SortableColumn).sortKey === currentSort.column;
+    const sortAsc = sorting && !currentSort.descending;
+    let divStyle: React.CSSProperties;
+    let sortComponent: JSX.Element;
+
+    if (sorting) {
+        divStyle = divSortingStyle;
+        sortComponent = sortAsc ? defaultSortAscComponent : defaultSortDescComponent;
+
+    } else {
+        const col = props.column;
+
+        divStyle = col.textAlign === 'right' || (col.thAttributes && col.thAttributes.style && col.thAttributes.style.textAlign === 'right') ? { paddingRight: 15 } : null;
+    }
+
+    debuglog('SortableHeaderComponent render');
+
+    return <OriginalHeadCellComponent  {...rest} style={divStyle}>{children}{sortComponent && ' '}{sortComponent}</OriginalHeadCellComponent>;
+};
 
 export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(WrappedComponent: React.ComponentType<T>): React.ComponentClass<T & InternalSortingProps<TRow>> {
 
@@ -189,16 +198,19 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
 
         }
 
+        private getCurrentSort = () => {
+            return this.state.currentSort;
+        }
         private transformColumns(props: Readonly<T>): Array<SortableColumn<TRow>> {
             const { columns } = props;
             debuglog('Sorting.transformColumns', columns);
 
             if (this.columns && this.props.columns) {
                 //reuse the same column if it hasn't changed from the original
-                return columns.map((c, i) => shallowEqual(c, this.props.columns[i]) ? this.columns[i] : transformColumn<TRow, T>(c, props, () => this.state.currentSort, this.changeSort));
+                return columns.map((c, i) => shallowEqual(c, this.props.columns[i]) ? this.columns[i] : transformColumn<TRow, T>(c, props, this.getCurrentSort, this.changeSort));
 
             }
-            return columns.map((c) => transformColumn<TRow, T>(c, props, () => this.state.currentSort, this.changeSort));
+            return columns.map((c) => transformColumn<TRow, T>(c, props, this.getCurrentSort, this.changeSort));
         }
 
         private performSort(rows: TRow[], sort: SortSettings) {
@@ -278,6 +290,9 @@ export function withSorting<TRow, T extends PowerTableProps<TRow>>(WrappedCompon
 
         }
 
+        private getCurrentSort = () => {
+            return this.props.sorting;
+        }
         componentWillReceiveProps(nextProps: Readonly<T & ExternalSortingProps>) {
 
             if (shouldTransformColumns<TRow, T>(this.props, nextProps)) {
@@ -291,7 +306,7 @@ export function withSorting<TRow, T extends PowerTableProps<TRow>>(WrappedCompon
 
             if (this.columns && this.props.columns) {
                 //reuse the same column if it hasn't changed from the original
-                return columns.map((c, i) => c === this.props.columns[i] ? this.columns[i] : transformColumn<TRow, T>(c, props, () => this.props.sorting, this.props.sorting.changeSort));
+                return columns.map((c, i) => c === this.props.columns[i] ? this.columns[i] : transformColumn<TRow, T>(c, props, this.getCurrentSort, this.props.sorting.changeSort));
 
             }
             return columns.map((c) => transformColumn<TRow, T>(c, props, () => this.props.sorting, this.props.sorting.changeSort));

@@ -38,7 +38,10 @@ function mergeAttributes(...attributes: Array<React.HTMLProps<any>>) {
 // }
 // export type ReactPowerTable2<TRow = {}, TExtraProps = {}> = React.ComponentClass<PowerTableProps<TRow, TExtraProps>>;
 
-/** @internal */
+export interface ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.ComponentClass<PowerTableProps<TRow, TExtraProps>> {
+
+}
+
 export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Component<PowerTableProps<TRow, TExtraProps>, never> {
 
     static displayName = 'ReactPowerTable';
@@ -48,8 +51,9 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         headComponent: ({ children }) => <thead children={children} />,
         headRowComponent: ({ children, }) => <tr children={children} />,
         thComponent: ({ children, htmlAttributes }) => <th children={children} {...htmlAttributes} />,
+        thInnerComponentProps: p => p,
         thInnerComponent: (props) => {
-            const { column, children, ...attributes } = props;
+            const { column, children, extraCellProps, ...attributes } = props;
             return <div {...attributes}>{children}</div>;
         },
 
@@ -169,6 +173,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
             ...core,
             includeExtraCellProps: col.includeExtraCellProps !== undefined && col.includeExtraCellProps !== null ? col.includeExtraCellProps : this.props.alwaysIncludeExtraCellProps,
             headerComponent: col.headerComponent || this.props.thInnerComponent,
+            headerComponentProps: col.headerComponentProps || this.props.thInnerComponentProps,
             valueComponent: col.valueComponent || this.props.valueComponent,
             tdAttributes: actualTdAttributes,
             thAttributes: actualThAttributes,
@@ -230,8 +235,10 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         const combinedTableProps = tableClassName ? { ...tableProps, className: tableClassName } : tableProps;
 
         const headerCells = internalColumns.map(c => {
-            const { column, thAttributes, headerText, headerComponent: HeaderComponent } = c;
-            return <HeadCellComponent column={column} key={c.key} htmlAttributes={thAttributes}><HeaderComponent column={column} >{headerText}</HeaderComponent></HeadCellComponent>;
+            const { column, thAttributes, headerText, headerComponent: HeaderComponent, headerComponentProps } = c;
+
+            const thCellProps = headerComponentProps({ column, extraCellProps, children: headerText });
+            return <HeadCellComponent column={column} key={c.key} htmlAttributes={thAttributes}><HeaderComponent {...thCellProps} /></HeadCellComponent>;
         });
 
         const rowBuilderProps = { columns: internalColumns, rowComponent, extraCellProps, tdComponent, pureTdComponent: this.pureTdComponent };
@@ -248,7 +255,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         const actualFooterProps = TableFoot && footerProps && footerProps({ internalColumns, ...extraCellProps as any });
 
         return (
-            <Table {...combinedTableProps }>
+            <Table {...combinedTableProps}>
                 <HeadComponent columns={originalColumns} {...extraCellProps}>
                     <HeadRow columns={originalColumns} {...extraCellProps}>
                         {headerCells}
@@ -306,6 +313,8 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     /** Default Component that is rendered inside header th for each column */
     thInnerComponent?: HeadCellInnerComponentType<TRow, TExtraProps>;
 
+    thInnerComponentProps?: (props: HeadCellInnerComponentProps<TRow, TExtraProps>) => HeadCellInnerComponentProps<TRow, TExtraProps>;
+
     /** Customize the <tbody> tag. children are passed to props and must be rendered  */
     bodyComponent?: BodyComponentType<TRow, TExtraProps>;
 
@@ -357,7 +366,6 @@ export type DynamicProps<TIn, TOut = TIn> = ((props: TIn) => TOut);
 
 // }
 
-/** @internal */
 export interface InternalColumn<TRow = {}, TExtraProps = {}, TValue = any, TFormattedValue = TValue> {
 
     key: string | number;
@@ -373,6 +381,7 @@ export interface InternalColumn<TRow = {}, TExtraProps = {}, TValue = any, TForm
     thAttributes: React.ThHTMLAttributes<HTMLTableHeaderCellElement>;
 
     headerComponent: HeadCellInnerComponentType<TRow, TExtraProps>;
+    headerComponentProps: DynamicProps<HeadCellInnerComponentProps<TRow, TExtraProps>>;
     valueComponent: React.ComponentType<CellProps<TRow, TExtraProps, TValue>>;
 
     visible: boolean;
@@ -411,6 +420,9 @@ export interface Column<TRow = {}, TExtraProps = {}, TValue = any, TFormattedVal
 
     /** Component that is rendered inside header th for this column */
     headerComponent?: HeadCellInnerComponentType<TRow, TExtraProps>;
+
+    /** Customize the props that are passed to the headerComponent */
+    headerComponentProps?: (props: HeadCellInnerComponentProps<TRow, TExtraProps>) => HeadCellInnerComponentProps<TRow, TExtraProps>;
 
     /** Customize the html attributes set in the td element
      * formerly cellProps
@@ -462,6 +474,7 @@ export type HeadCellComponentType<T = {}, TExtraProps = {}> = React.ComponentTyp
 
 export type HeadCellInnerComponentProps<T = {}, TExtraProps = {}> = React.HTMLAttributes<HTMLDivElement> & {
     column: Column<T, {}, TExtraProps>;
+    extraCellProps?: TExtraProps;
 };
 export type HeadCellInnerComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadCellInnerComponentProps<T, TExtraProps>>;
 
@@ -475,13 +488,12 @@ export type RowComponentProps<T = {}, TExtraProps = {}> = ColumnsAndExtraProps<T
 };
 export type RowComponentType<T = {}, TExtraProps = {}> = React.ComponentType<RowComponentProps<T, TExtraProps> & { htmlAttributes: React.HTMLAttributes<HTMLTableRowElement> }>;
 
-/** @internal */
 export interface RowBuilderComponentProps<TRow = {}, TExtraProps = {}> {
     row: TRow;
     columns: Array<InternalColumn<TRow, TExtraProps>>;
 
     rowComponent: RowComponentType<TRow, TExtraProps>;
-    rowHtmlAttributes: React.HTMLProps<HTMLTableRowElement>;
+    rowHtmlAttributes: StaticOrDynamicProps<RowComponentProps<TRow, TExtraProps>, React.HTMLProps<HTMLTableRowElement>>;
 
     /** Customize the <td> tag that appears in <tbody> > <tr>. children are passed to props and must be rendered
      * table cell can also be customize per column using Column.cellProps, Column.cellComponent and Column.cellComponentProps
