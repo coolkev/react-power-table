@@ -53,7 +53,7 @@ function transformColumn<TRow, T extends PowerTableProps<TRow>>(options: Sortabl
     }
 
     if (typeof col.sortExpression === 'function') {
-        col.sortKey = getExpression(col.sortExpression);
+        col.sortKey = col.sortKey || getExpression(col.sortExpression);
         col.sortExpression = col.sortExpression;
     } else if (typeof (col.sortExpression) === 'string') {
         const sortField = col.sortExpression;
