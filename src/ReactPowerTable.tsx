@@ -15,7 +15,11 @@ function getCellProps<TRow, TExtraProps>(row: TRow, internalColumn: InternalColu
     const { transformCellProps, formatter } = column;
     const value = field(row);
 
-    const formattedValue = formatter ? formatter(value, row) : value;
+    let formattedValue = formatter ? formatter(value, row) : value;
+
+    if (formattedValue === undefined) {
+        formattedValue = null;
+    }
 
     const initialValueProps: CellProps<TRow, TExtraProps> = { ...(includeExtraCellProps && extraProps as any), row, column, value, formattedValue };
 
