@@ -36,6 +36,7 @@ describe('AppliedFilters tests',
             const presidentFilter = availableFilters.find(m => m.fieldName === 'president') as FilterDefinition<string>;
 
             const applied: AppliedFilter<any> = {
+                key: 'president',
                 filter: presidentFilter,
                 operation: presidentFilter.operations.contains,
                 value: 'george'
@@ -53,6 +54,7 @@ describe('AppliedFilters tests',
             const filter = availableFilters[0] as FilterDefinition<number>;
 
             const applied: AppliedFilter<any> = {
+                key: 'president',
                 filter,
                 operation: filter.operations.between,
                 value: '20-30'

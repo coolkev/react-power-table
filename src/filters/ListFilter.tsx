@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import Select from 'react-select';
 import * as PowerTable from './FilterDefinition';
+import { nullableOperations } from './FilterDefinition';
 //import { CustomSelectValue } from '../components/CustomSelectValue';
 
 export interface SelectOption<T extends string | number> {
@@ -62,6 +63,7 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
                 appliedLabel: (filter) => filter.filter.displayName + ' is not ' + getSelectedLabels(filter.value, this.items).join(' or '),
                 isValid: v => v as any !== '' && v.length !== 0,
             },
+            ...(this.canBeNull && nullableOperations<T[]>())
         };
     }
 

@@ -155,7 +155,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         if (textAlign !== undefined) {
             sharedStyle.textAlign = textAlign;
         }
-        const actualThAttributes = { ...thAttributes, style: { textAlign: 'left', whiteSpace: 'nowrap', ...(thAttributes && thAttributes.style), ...sharedStyle }, ...(headerCssClass && { className: headerCssClass }) };
+        const actualThAttributes = { ...thAttributes, style: { textAlign: textAlign || 'left', whiteSpace: 'nowrap', ...(thAttributes && thAttributes.style), ...sharedStyle }, ...(headerCssClass && { className: headerCssClass }) };
 
         const tdAttributesStatic: React.TdHTMLAttributes<HTMLTableDataCellElement> = typeof (tdAttributes) === 'function' ? sharedStyle && { style: sharedStyle } : { ...tdAttributes, style: { ...(tdAttributes && tdAttributes.style), ...sharedStyle } };
         const tdAttributesFunc = typeof (tdAttributes) === 'function' ? tdAttributes : undefined;
