@@ -34,7 +34,8 @@ export class TimeFilter extends FilterDefinition<string> {
 class TimeFilterComponent extends React.Component<FilterComponentProps<string> & { options: Array<Option<string>> }, never> {
 
     static defaultProps = {
-        options: [...new Array(48)].map((_, i) => getTimeOption(i))
+        options: [...new Array(48)].map((_, i) => getTimeOption(i)),
+        style: { minWidth: 110 }
     } as Partial<FilterComponentProps<string> & { options: Array<Option<string>> }>;
 
     constructor(props: FilterComponentProps<string> & { options: Array<Option<string>> }) {
