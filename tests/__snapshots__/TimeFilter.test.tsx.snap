@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeFilter tests can format timespan 0 1`] = `
+Object {
+  "label": "12:00 AM",
+  "value": "00:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 1 1`] = `
+Object {
+  "label": "12:30 AM",
+  "value": "00:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 2 1`] = `
+Object {
+  "label": "1:00 AM",
+  "value": "01:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 3 1`] = `
+Object {
+  "label": "1:30 AM",
+  "value": "01:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 4 1`] = `
+Object {
+  "label": "2:00 AM",
+  "value": "02:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 5 1`] = `
+Object {
+  "label": "2:30 AM",
+  "value": "02:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 6 1`] = `
+Object {
+  "label": "3:00 AM",
+  "value": "03:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 7 1`] = `
+Object {
+  "label": "3:30 AM",
+  "value": "03:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 8 1`] = `
+Object {
+  "label": "4:00 AM",
+  "value": "04:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 9 1`] = `
+Object {
+  "label": "4:30 AM",
+  "value": "04:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 10 1`] = `
+Object {
+  "label": "5:00 AM",
+  "value": "05:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 11 1`] = `
+Object {
+  "label": "5:30 AM",
+  "value": "05:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 12 1`] = `
+Object {
+  "label": "6:00 AM",
+  "value": "06:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 13 1`] = `
+Object {
+  "label": "6:30 AM",
+  "value": "06:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 14 1`] = `
+Object {
+  "label": "7:00 AM",
+  "value": "07:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 15 1`] = `
+Object {
+  "label": "7:30 AM",
+  "value": "07:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 16 1`] = `
+Object {
+  "label": "8:00 AM",
+  "value": "08:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 17 1`] = `
+Object {
+  "label": "8:30 AM",
+  "value": "08:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 18 1`] = `
+Object {
+  "label": "9:00 AM",
+  "value": "09:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 19 1`] = `
+Object {
+  "label": "9:30 AM",
+  "value": "09:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 20 1`] = `
+Object {
+  "label": "10:00 AM",
+  "value": "10:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 21 1`] = `
+Object {
+  "label": "10:30 AM",
+  "value": "10:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 22 1`] = `
+Object {
+  "label": "11:00 AM",
+  "value": "11:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 23 1`] = `
+Object {
+  "label": "11:30 AM",
+  "value": "11:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 24 1`] = `
+Object {
+  "label": "12:00 PM",
+  "value": "12:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 25 1`] = `
+Object {
+  "label": "12:30 PM",
+  "value": "12:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 26 1`] = `
+Object {
+  "label": "1:00 PM",
+  "value": "13:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 27 1`] = `
+Object {
+  "label": "1:30 PM",
+  "value": "13:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 28 1`] = `
+Object {
+  "label": "2:00 PM",
+  "value": "14:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 29 1`] = `
+Object {
+  "label": "2:30 PM",
+  "value": "14:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 30 1`] = `
+Object {
+  "label": "3:00 PM",
+  "value": "15:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 31 1`] = `
+Object {
+  "label": "3:30 PM",
+  "value": "15:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 32 1`] = `
+Object {
+  "label": "4:00 PM",
+  "value": "16:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 33 1`] = `
+Object {
+  "label": "4:30 PM",
+  "value": "16:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 34 1`] = `
+Object {
+  "label": "5:00 PM",
+  "value": "17:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 35 1`] = `
+Object {
+  "label": "5:30 PM",
+  "value": "17:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 36 1`] = `
+Object {
+  "label": "6:00 PM",
+  "value": "18:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 37 1`] = `
+Object {
+  "label": "6:30 PM",
+  "value": "18:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 38 1`] = `
+Object {
+  "label": "7:00 PM",
+  "value": "19:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 39 1`] = `
+Object {
+  "label": "7:30 PM",
+  "value": "19:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 40 1`] = `
+Object {
+  "label": "8:00 PM",
+  "value": "20:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 41 1`] = `
+Object {
+  "label": "8:30 PM",
+  "value": "20:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 42 1`] = `
+Object {
+  "label": "9:00 PM",
+  "value": "21:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 43 1`] = `
+Object {
+  "label": "9:30 PM",
+  "value": "21:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 44 1`] = `
+Object {
+  "label": "10:00 PM",
+  "value": "22:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 45 1`] = `
+Object {
+  "label": "10:30 PM",
+  "value": "22:30:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 46 1`] = `
+Object {
+  "label": "11:00 PM",
+  "value": "23:00:00",
+}
+`;
+
+exports[`TimeFilter tests can format timespan 47 1`] = `
+Object {
+  "label": "11:30 PM",
+  "value": "23:30:00",
+}
+`;

@@ -7,6 +7,7 @@ import { IntFilter } from './IntFilter';
 import { ListFilter } from './ListFilter';
 import { RemoteListFilter, RemoteListOptionProvider } from './RemoteListFilter';
 import { StringFilter } from './StringFilter';
+import { TimeFilter } from './TimeFilter';
 
 export * from './FilterDefinition';
 
@@ -20,6 +21,7 @@ const types = {
     int: IntFilter,
     list: ListFilter,
     remotelist: RemoteListFilter,
+    timespan: TimeFilter,
 };
 type types = typeof types & { [key: string]: FilterDefinition<any> };
 
@@ -28,6 +30,8 @@ export function getFilterDefinition(type: 'boolean', options: FilterDefinitionOp
 export function getFilterDefinition(type: 'boolean', options: FilterDefinitionOptionsOrFieldName): BooleanFilter;
 export function getFilterDefinition(type: 'date', options: FilterDefinitionOptionsOrFieldName & { canBeNull: true }): DateFilter & { operations: { 'notnull': OperationDefinition<string>, 'null': OperationDefinition<string> } };
 export function getFilterDefinition(type: 'date', options: FilterDefinitionOptionsOrFieldName): DateFilter;
+export function getFilterDefinition(type: 'time', options: FilterDefinitionOptionsOrFieldName & { canBeNull: true }): TimeFilter & { operations: { 'notnull': OperationDefinition<string>, 'null': OperationDefinition<string> } };
+export function getFilterDefinition(type: 'time', options: FilterDefinitionOptionsOrFieldName): TimeFilter;
 export function getFilterDefinition(type: 'decimal', options: FilterDefinitionOptionsOrFieldName & { canBeNull: true }): DecimalFilter & { operations: { 'notnull': OperationDefinition<number>, 'null': OperationDefinition<number> } };
 export function getFilterDefinition(type: 'decimal', options: FilterDefinitionOptionsOrFieldName): DecimalFilter;
 export function getFilterDefinition(type: 'int', options: FilterDefinitionOptionsOrFieldName & { canBeNull: true }): IntFilter & { operations: { 'notnull': OperationDefinition<number>, 'null': OperationDefinition<number> } };

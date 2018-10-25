@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
-import { FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition, AppliedFilter, RadioButtonLabelProps } from './FilterDefinition';
+import { FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from './FilterDefinition';
 
 export class DateFilter extends FilterDefinition<string> {
     public operations = this.getOperations();

@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, GridProps, withInternalSorting, InternalSortingProps, SortableColumn, InternalSortingState } from '../src/';
+import { ReactPowerTable, withInternalSorting, InternalSortingProps, SortableColumn, InternalSortingState } from '../src/';
 import { defaultColumns, sampledata } from './shared';
 import { mount, render } from 'enzyme';
 
