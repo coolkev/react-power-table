@@ -7,14 +7,17 @@
     "noUnusedLocals": false,
     "noStrictGenericChecks": false,
     "removeComments": false,
-    "sourceMap": true,
-    "target": "es2015",
-    "module": "commonjs",
+    //"sourceMap": true,
+    "target": "esnext",
+    //"module": "commonjs",
     "jsx": "react",
+    "noEmit": true,
     "moduleResolution": "node",
     "alwaysStrict": true,
     "declaration": false,
     "stripInternal": true,
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "isolatedModules": true
+  },
+  "include": ["src"]
 }

@@ -16,4 +16,4 @@ deploy:
     target_branch: gh-pages
     local_dir: gh-pages   
 script:
-  - gulp build examples coveralls gh-pages
+  - npm run build-all

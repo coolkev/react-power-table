@@ -13,20 +13,20 @@ console.log('config file=' + path.resolve(__dirname, "tsconfig.json"));
 
 function prependHotLoader(entry) {
 
-  if (isDevBuild) {
-    return [
-      'babel-polyfill',
-      'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:8080',
-      // bundle the client for webpack-dev-server
-      // and connect to the provided endpoint
-      'webpack/hot/only-dev-server',
+  // if (isDevBuild) {
+  //   return [
+  //     //'babel-polyfill',
+  //     'react-hot-loader/patch',
+  //     'webpack-dev-server/client?http://localhost:8080',
+  //     // bundle the client for webpack-dev-server
+  //     // and connect to the provided endpoint
+  //     'webpack/hot/only-dev-server',
 
-      entry
-    ];
-  }
+  //     entry
+  //   ];
+  // }
 
-  return ['babel-polyfill', entry];
+  return [entry];
 }
 
 
@@ -36,7 +36,7 @@ var plugins = [
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
   }),
-   new webpack.HotModuleReplacementPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
 
   // new webpack.NamedModulesPlugin(),
   // new webpack.optimize.CommonsChunkPlugin({
@@ -48,9 +48,9 @@ var plugins = [
   //   }
   // }),
   //new ForkTsCheckerWebpackPlugin(),
-  new ForkTsCheckerWebpackPlugin({
-    checkSyntacticErrors: true
-  }),
+  // new ForkTsCheckerWebpackPlugin({
+  //   checkSyntacticErrors: true
+  // }),
   //new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true, skipSuccessful: true }),
 
   // new HappyPack({
@@ -75,12 +75,12 @@ var plugins = [
   // }),
 ];
 
-if (!isDevBuild) {
-  plugins = plugins.concat([
-    new webpack.optimize.UglifyJsPlugin({
-      //sourceMap: options.devtool && (options.devtool.indexOf("sourcemap") >= 0 || options.devtool.indexOf("source-map") >= 0)
-    })]);
-}
+//if (!isDevBuild) {
+//  plugins = plugins.concat([
+//new webpack.optimize.UglifyJsPlugin({
+//sourceMap: options.devtool && (options.devtool.indexOf("sourcemap") >= 0 || options.devtool.indexOf("source-map") >= 0)
+//})]);
+//}
 
 module.exports = {
   mode: isDevBuild ? "none" : "production",
@@ -96,7 +96,7 @@ module.exports = {
   devtool: 'source-map',
   //devtool: false,
   entry: {
-    examples: prependHotLoader(path.resolve(__dirname, 'src/boot.tsx'))
+    examples: path.resolve(__dirname, 'src/boot.tsx')
   },
 
   stats: {
@@ -118,52 +118,36 @@ module.exports = {
 
     rules: [
       {
-        test: /\.tsx?$/, exclude: /(node_modules)/, use: [
-          //{ loader: 'awesome-typescript-loader', query: { "configFileName": path.resolve(__dirname, "tsconfig.json") } }
-          // {
-          
-
-          //   loader: 'babel-loader', query: {
-          //     "presets": [["env", {
-          //       "modules": false
-          //     },
-          //     ]], "plugins": ["react-hot-loader/babel"]
-          //   }
-          // },
-          // {
-          //   loader: 'ts-loader',
-          //   options: {
-          //     // disable type checker - we will use it in fork plugin
-          //     transpileOnly: true,
-
-          //   }
-          // },
-          {
-            loader: 'babel-loader',
-            options: {
-                presets: [["env",
-                    {
-                        modules: false,
-
-                    }]],
-                cacheDirectory: true,
-                babelrc: false,
-                plugins: isDevBuild ? ['react-hot-loader/babel'] : [],
-            },
-        },
-        {
-            loader: "ts-loader",
-            options: {
-
-                //configFile: isDevBuild ? 'tsconfig.dev.json' : undefined,
-                // disable type checker - we will use it in fork plugin
-                transpileOnly: true,
-
-            },
-        },
-
-        ]
+        test: /\.tsx?$/,
+          exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          // options: {
+          //   "presets": [
+          //     "@babel/typescript",
+          //     "@babel/env",
+          //     "@babel/react"
+          //   ],
+          //   "plugins": [
+          //     "@babel/proposal-class-properties",
+          //     "@babel/proposal-object-rest-spread"
+          //   ]
+          // }
+        }
       },
+      // {
+      //     loader: "ts-loader",
+      //     options: {
+
+      //         //configFile: isDevBuild ? 'tsconfig.dev.json' : undefined,
+      //         // disable type checker - we will use it in fork plugin
+      //         transpileOnly: true,
+
+      //     },
+      // },
+
+      //]
+      //},
 
       { test: /\.css(\?|$)/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }] },
 

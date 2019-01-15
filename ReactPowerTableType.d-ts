@@ -1,3 +1,0 @@
-
-//export declare type ReactPowerTable<TRow = {}, TExtraProps = {}> = React.ComponentClass<PowerTableProps<TRow, TExtraProps>>
-//export declare const ReactPowerTable = ReactPowerTable;
