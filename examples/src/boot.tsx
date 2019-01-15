@@ -1,13 +1,11 @@
 ﻿import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import { ExamplesApp } from './app';
+import { hot } from 'react-hot-loader/root';
+import ExamplesApp from './app';
 
 const render = Component => {
   ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
+      <Component />,
     document.getElementById('root')
   );
 };
@@ -15,8 +13,8 @@ const render = Component => {
 render(ExamplesApp);
 
 // Allow Hot Module Reloading
-declare var module: any;
+// declare var module: any;
 
-if (module.hot) {
-  module.hot.accept('./app', () => { render(ExamplesApp); });
-}
+// if (module.hot) {
+//   module.hot.accept('./app', () => { render(ExamplesApp); });
+// }

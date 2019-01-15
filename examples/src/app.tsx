@@ -22,6 +22,7 @@ interface ExamplesProps {
 }
 
 import 'react-select/dist/react-select.css';
+import { hot } from 'react-hot-loader/root';
 
 ReactPowerTable.defaultProps.tableClassName = 'table';
 
@@ -75,7 +76,7 @@ class Examples extends React.Component<ExamplesProps, never> {
     }
 }
 
-export class ExamplesApp extends React.Component<{}, {}> {
+class ExamplesApp extends React.Component<{}, {}> {
 
     constructor(props: {}) {
         super(props);
@@ -103,3 +104,5 @@ export class ExamplesApp extends React.Component<{}, {}> {
         return <Examples selected={selected} onSelect={this.handleSelect} />;
     }
 }
+
+export default hot(ExamplesApp);
