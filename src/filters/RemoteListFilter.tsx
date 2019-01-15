@@ -76,7 +76,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
                 loadOptions={this.loadOptions}
                 // tslint:disable-next-line:jsx-no-lambda
                 onChange={(e: Array<SelectOption<any>>) => props.onValueChange(e.map((m) => m.value))}
-                autofocus={autoFocus}
+                autoFocus={autoFocus}
                 className={invalid ? 'has-error ' + rest.className : rest.className}
             />);
 

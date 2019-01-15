@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { getColumnCore } from './Column';
 import { debuglog, shallowEqual, makePure } from './utils';
+import { TextAlignProperty, WhiteSpaceProperty } from 'csstype';
 
 function applyWrapper(wrapper: StaticOrDynamicProps<CellProps, JSX.Element>, valueProps: CellProps, valueElement: any) {
 
@@ -155,7 +156,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         if (textAlign !== undefined) {
             sharedStyle.textAlign = textAlign;
         }
-        const actualThAttributes = { ...thAttributes, style: { textAlign: textAlign || 'left', whiteSpace: 'nowrap', ...(thAttributes && thAttributes.style), ...sharedStyle }, ...(headerCssClass && { className: headerCssClass }) };
+        const actualThAttributes = { ...thAttributes, style: { textAlign: textAlign || 'left', whiteSpace: 'nowrap' as WhiteSpaceProperty, ...(thAttributes && thAttributes.style), ...sharedStyle }, ...(headerCssClass && { className: headerCssClass }) };
 
         const tdAttributesStatic: React.TdHTMLAttributes<HTMLTableDataCellElement> = typeof (tdAttributes) === 'function' ? sharedStyle && { style: sharedStyle } : { ...tdAttributes, style: { ...(tdAttributes && tdAttributes.style), ...sharedStyle } };
         const tdAttributesFunc = typeof (tdAttributes) === 'function' ? tdAttributes : undefined;
@@ -242,7 +243,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
             const { column, thAttributes, headerText, headerComponent: HeaderComponent, headerComponentProps } = c;
 
             const thCellProps = headerComponentProps({ column, extraCellProps, children: headerText });
-            return <HeadCellComponent column={column} key={c.key} htmlAttributes={thAttributes}><HeaderComponent {...thCellProps} /></HeadCellComponent>;
+            return <HeadCellComponent column={column} key={c.key} htmlAttributes={thAttributes} {...extraCellProps}><HeaderComponent {...thCellProps} /></HeadCellComponent>;
         });
 
         const rowBuilderProps = { columns: internalColumns, rowComponent, extraCellProps, tdComponent, pureTdComponent: this.pureTdComponent };
@@ -254,7 +255,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
             return <RowBuilder key={this.getRowKey(row)} row={row} rowHtmlAttributes={actualRowHtmlAttributes} {...rowBuilderProps} />;
         });
 
-        const body = BodyComponent && <BodyComponent rows={rows} columns={originalColumns}>{dataRows}</BodyComponent> || dataRows;
+        const body = BodyComponent && <BodyComponent rows={rows} columns={originalColumns} {...extraCellProps}>{dataRows}</BodyComponent> || dataRows;
 
         const actualFooterProps = TableFoot && footerProps && footerProps({ internalColumns, ...extraCellProps as any });
 
@@ -329,7 +330,7 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
 
     rowHtmlAttributes?: StaticOrDynamicProps<RowComponentProps<TRow, TExtraProps>, React.HTMLProps<HTMLTableRowElement>>;
 
-    footerComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
+    footerComponent?: React.ComponentType<ColumnsAndExtraProps<TRow, TExtraProps> & React.HTMLProps<HTMLTableSectionElement>>;
 
     footerProps?: (props: ColumnsAndExtraProps<TRow, TExtraProps>) => ColumnsAndExtraProps<TRow, TExtraProps>;
 
@@ -410,7 +411,7 @@ export interface Column<TRow = {}, TExtraProps = {}, TValue = any, TFormattedVal
     maxWidth?: number;
 
     /** Shortcut for setting the thAttributes.style.textAlign and tdAttributes.style.textAlign */
-    textAlign?: string;
+    textAlign?: TextAlignProperty;
 
     headerText?: string;
     visible?: boolean;

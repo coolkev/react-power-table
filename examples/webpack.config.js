@@ -36,22 +36,22 @@ var plugins = [
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
   }),
-  new webpack.HotModuleReplacementPlugin(),
+   new webpack.HotModuleReplacementPlugin(),
 
-  new webpack.NamedModulesPlugin(),
-  new webpack.optimize.CommonsChunkPlugin({
-    //name: 'vendor',
-    names: ['vendor'],
-    minChunks: function (module) {
-      // this assumes your vendor imports exist in the node_modules directory
-      return module.context && module.context.indexOf('node_modules') !== -1;
-    }
-  }),
-  new ForkTsCheckerWebpackPlugin(),
-  // new ForkTsCheckerWebpackPlugin({
-  //   checkSyntacticErrors: true
+  // new webpack.NamedModulesPlugin(),
+  // new webpack.optimize.CommonsChunkPlugin({
+  //   //name: 'vendor',
+  //   names: ['vendor'],
+  //   minChunks: function (module) {
+  //     // this assumes your vendor imports exist in the node_modules directory
+  //     return module.context && module.context.indexOf('node_modules') !== -1;
+  //   }
   // }),
-  new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true, skipSuccessful: true }),
+  //new ForkTsCheckerWebpackPlugin(),
+  new ForkTsCheckerWebpackPlugin({
+    checkSyntacticErrors: true
+  }),
+  //new ForkTsCheckerNotifierWebpackPlugin({ excludeWarnings: true, skipSuccessful: true }),
 
   // new HappyPack({
   //   id: 'ts',
@@ -83,6 +83,7 @@ if (!isDevBuild) {
 }
 
 module.exports = {
+  mode: isDevBuild ? "none" : "production",
   context: __dirname,
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -119,25 +120,48 @@ module.exports = {
       {
         test: /\.tsx?$/, exclude: /(node_modules)/, use: [
           //{ loader: 'awesome-typescript-loader', query: { "configFileName": path.resolve(__dirname, "tsconfig.json") } }
-          {
+          // {
           
 
-            loader: 'babel-loader', query: {
-              "presets": [["env", {
-                "modules": false
-              },
-              ]], "plugins": ["react-hot-loader/babel"]
-            }
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              // disable type checker - we will use it in fork plugin
-              transpileOnly: true,
+          //   loader: 'babel-loader', query: {
+          //     "presets": [["env", {
+          //       "modules": false
+          //     },
+          //     ]], "plugins": ["react-hot-loader/babel"]
+          //   }
+          // },
+          // {
+          //   loader: 'ts-loader',
+          //   options: {
+          //     // disable type checker - we will use it in fork plugin
+          //     transpileOnly: true,
 
-            }
-          },
-          //{loader: 'happypack/loader?id=ts'}
+          //   }
+          // },
+          {
+            loader: 'babel-loader',
+            options: {
+                presets: [["env",
+                    {
+                        modules: false,
+
+                    }]],
+                cacheDirectory: true,
+                babelrc: false,
+                plugins: isDevBuild ? ['react-hot-loader/babel'] : [],
+            },
+        },
+        {
+            loader: "ts-loader",
+            options: {
+
+                //configFile: isDevBuild ? 'tsconfig.dev.json' : undefined,
+                // disable type checker - we will use it in fork plugin
+                transpileOnly: true,
+
+            },
+        },
+
         ]
       },
 

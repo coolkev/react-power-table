@@ -222,6 +222,7 @@ exports[`AddSelectFilter tests select filter 2`] = `
             title=""
           >
             <input
+              checked=""
               type="radio"
               value="eq"
             />

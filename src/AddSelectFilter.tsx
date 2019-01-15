@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
-import * as FormControl from 'react-bootstrap/lib/FormControl';
+import FormControl from 'react-bootstrap/lib/FormControl';
 import { AddEditFilter } from './AddEditFilter';
 import { BackLink } from './components/BackLink';
-import * as PowerTable from './filters/FilterDefinition';
+import { FilterDefinition, AppliedFilter, OperationDefinition } from './filters/FilterDefinition';
 import { objectMapToArray } from './utils';
 
 /**
@@ -11,11 +11,11 @@ import { objectMapToArray } from './utils';
 export interface AddFilterProps {
     cancelAddFilter: () => void;
 
-    availableFilters: PowerTable.FilterDefinition[] | { [key: string]: PowerTable.FilterDefinition };
+    availableFilters: FilterDefinition[] | { [key: string]: FilterDefinition };
 
     //availableFilters: { [key: string]: PowerTable.FilterDefinition };
-    appliedFilters: PowerTable.AppliedFilter[];
-    onApplyFilter: (filter: PowerTable.AppliedFilter) => void;
+    appliedFilters: AppliedFilter[];
+    onApplyFilter: (filter: AppliedFilter) => void;
 
     onlyShowUnused?: boolean;
 
@@ -77,7 +77,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
 
             const filter = Array.isArray(availableFilters) ? availableFilters.find((f) => f.fieldName === selectedFilterKey) : availableFilters[selectedFilterKey];
 
-            const initialOperation = objectMapToArray(filter.operations)[0] as PowerTable.OperationDefinition;
+            const initialOperation = objectMapToArray(filter.operations)[0] as OperationDefinition;
 
             return (
                 <div>

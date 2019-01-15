@@ -1,7 +1,8 @@
 // THIS FILE IS GENERATED AUTOMATICALLY
 // ANY MANUAL EDITS TO THIS FILE WILL GET OVERWRITTEN
 
-import { DisplayValue, FieldDefinition, DataTypes, Column, SelectOption, getOptionProvider, executeQuery } from './remote-data';
+import { DisplayValue, FieldDefinition, DataTypes, SelectOption, getOptionProvider, executeQuery } from './remote-data';
+import { Column } from '../../../src';
 
 export interface CustomerViewModel {
     'CustomerID': DisplayValue<number>;

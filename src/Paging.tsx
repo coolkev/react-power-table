@@ -60,7 +60,7 @@ export function withInternalPaging<TColumn extends Column, T extends InternalPag
 
         static readonly displayName = `WithInternalPaging(${getComponentDisplayName(WrappedComponent)})`;
         //static defaultProps: Partial<T & { paging?: Partial<InternalPagingProps> }> = WrappedComponent.defaultProps as any;
-        static defaultProps: Partial<T & { paging?: Partial<InternalPagingProps> }>= { ...WrappedComponent.defaultProps as any, footerComponent: TableFooterComponent };
+        static defaultProps: Partial<T & { paging?: Partial<InternalPagingProps> }> = { ...WrappedComponent.defaultProps as any, footerComponent: TableFooterComponent };
 
         constructor(props: T & { paging: Partial<InternalPagingProps> }) {
             super(props);
@@ -149,7 +149,7 @@ export function withInternalPaging<TColumn extends Column, T extends InternalPag
             const { paging, rows, footerComponent, ...extra } = this.props as InternalPagingGridProps<TColumn> & { paging: Partial<InternalPagingProps> };
             const { pageRows } = this.state;
 
-            return <WrappedComponent rows={pageRows} {...extra} footerComponent={footerComponent} footerProps={this.getFooterProps} />;
+            return <WrappedComponent rows={pageRows} {...extra as any} footerComponent={footerComponent} footerProps={this.getFooterProps} />;
         }
     };
 }
@@ -193,7 +193,7 @@ export function withPaging<TColumn extends Column, T extends PagingGridProps<TCo
 
             const { paging, footerComponent, ...extra } = this.props as PagingGridProps<TColumn> & { paging: PagingProps };
 
-            return <WrappedComponent {...extra} footerComponent={footerComponent} footerProps={this.getFooterProps} />;
+            return <WrappedComponent {...extra as any} footerComponent={footerComponent} footerProps={this.getFooterProps} />;
 
         }
     };
@@ -256,7 +256,7 @@ export class Paging extends React.PureComponent<PagingProps, never> {
                             &nbsp;
 
                     <span>Page
-                    &nbsp;
+                                    &nbsp;
                         <NumericInput className="form-control input-sm" style={{ width: 60 }} initialValue={currentPage} onValueChange={this.gotoPage} />
                                 &nbsp;
                         of {numberWithCommas(pageCount)}</span>

@@ -15,7 +15,6 @@
     "alwaysStrict": true,
     "declaration": false,
     "stripInternal": true,
-    "allowSyntheticDefaultImports": false
-    
+    "esModuleInterop": true
   }
 }

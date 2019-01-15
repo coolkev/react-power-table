@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import * as FormControl from 'react-bootstrap/lib/FormControl';
+import FormControl from 'react-bootstrap/lib/FormControl';
 import * as PowerTable from './FilterDefinition';
 
 export class StringFilter extends PowerTable.FilterDefinition<string> {

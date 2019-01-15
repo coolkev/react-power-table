@@ -2,7 +2,7 @@
 // ANY MANUAL EDITS TO THIS FILE MAY GET OVERWRITTEN
 
 import { QueryOptions, SelectOption, QueryDTO, QueryResult, DisplayValue } from './interfaces';
-export { Column, DataTypes } from '../../../src/';
+export { DataTypes } from '../../../src/filters';
 export { SelectOption, DisplayValue };
 
 export function getOptionProvider(url: string, key: string) {

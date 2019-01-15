@@ -3,6 +3,7 @@ import * as React from 'react';
 import { getColumnCore, getExpression } from './Column';
 import { Column, PowerTableProps, RowComponentType, RowComponentProps, HeadCellInnerComponentType, HeadCellInnerComponentProps } from './ReactPowerTable';
 import { debuglog, getComponentDisplayName, shallowEqual, sortArray } from './utils';
+import { Omit } from 'react-bootstrap';
 
 export interface SortSettings {
 
@@ -255,7 +256,7 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
 
             const { sortedRows } = this.state;
 
-            return <WrappedComponent {...extra} columns={this.columns} rows={sortedRows} rowComponent={this.rowComponent} />;
+            return <WrappedComponent {...extra as any} columns={this.columns} rows={sortedRows} rowComponent={this.rowComponent} />;
 
         }
 
@@ -312,9 +313,9 @@ export function withSorting<TRow, T extends PowerTableProps<TRow>>(WrappedCompon
         }
 
         render() {
-            const { sorting, ...extra } = this.props as PowerTableProps<TRow> & ExternalSortingProps;
+            const { sorting, ...extra } = this.props;
 
-            return <WrappedComponent {...extra} columns={this.columns} />;
+            return <WrappedComponent {...extra as any} columns={this.columns} />;
         }
     };
 }

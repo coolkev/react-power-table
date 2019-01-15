@@ -3,6 +3,8 @@ import { GridFilters, DataTypes, AppliedFilter, FilterDefinition } from '../src/
 import { defaultColumns, sampledata, President } from './shared';
 import { mount } from 'enzyme';
 import { AppliedFilters } from '../src/AppliedFilters';
+import { StringFilter } from '../src/filters/StringFilter';
+import { IntFilter } from '../src/filters/IntFilter';
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
@@ -33,7 +35,7 @@ describe('AppliedFilters tests',
 
         test('one applied', () => {
 
-            const presidentFilter = availableFilters.find(m => m.fieldName === 'president') as FilterDefinition<string>;
+            const presidentFilter = availableFilters.find(m => m.fieldName === 'president') as StringFilter;
 
             const applied: AppliedFilter<any> = {
                 key: 'president',
@@ -51,7 +53,7 @@ describe('AppliedFilters tests',
 
         test('between filter applied', () => {
 
-            const filter = availableFilters[0] as FilterDefinition<number>;
+            const filter = availableFilters[0] as IntFilter;
 
             const applied: AppliedFilter<any> = {
                 key: 'president',

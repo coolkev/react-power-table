@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, GridProps } from '../src/ReactPowerTable';
+import { ReactPowerTable } from '../src/ReactPowerTable';
 import { defaultColumns, sampledata } from './shared';
 import { render } from 'enzyme';
 
