@@ -1,7 +1,7 @@
 {
   "name": "react-power-table",
   "author": "Kevin Lewis",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "description": "React Power Table",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
-    "@babel/preset-react":"^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/bootstrap": "^3.3.36",
     "@types/enzyme": "^2.8.10",
