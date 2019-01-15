@@ -55,7 +55,7 @@
     "fork-ts-checker-notifier-webpack-plugin": "^0.7.0",
     "fork-ts-checker-webpack-plugin": "^0.5.2",
     "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
+    "gulp-babel": "^7.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-coveralls": "^0.1.4",
     "gulp-tslint": "^8.1.2",

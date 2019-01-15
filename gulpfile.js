@@ -3,7 +3,7 @@ var babel = require("gulp-babel"),
     gulp = require("gulp"),
     gutil = require('gulp-util'),
     concat = require('gulp-concat'),
-    sourcemaps = require("gulp-sourcemaps"),
+    //sourcemaps = require("gulp-sourcemaps"),
     del = require('del'),
 
     typescript = require("gulp-typescript"),
@@ -13,20 +13,31 @@ var babel = require("gulp-babel"),
     WebpackDevServer = require('webpack-dev-server'),
     jestCli = require('jest-cli'),
     coveralls = require('gulp-coveralls'),
-    fs = require('fs'),
+    //fs = require('fs'),
     tslint = require("gulp-tslint");
 
 
 
 
-gulp.task("build:ts", ['lint'], function () {
+gulp.task("lint", function () {
+
+    return gulp.src(["./src/**/*.ts?(x)"])
+        .pipe(tslint({
+            formatter: "verbose"
+        }))
+        .pipe(tslint.report());
+
+});
+
+
+gulp.task("build:ts", gulp.series('lint', function () {
 
     const babelOptions = {
         "presets": [
             [
                 "env",
                 {
-                    "modules": false                  
+                    "modules": false
                 }
             ]
         ],
@@ -45,29 +56,18 @@ gulp.task("build:ts", ['lint'], function () {
 
 
 
-});
+}));
 
-gulp.task("build", ['build:ts'], function () {
+gulp.task("build", gulp.series('build:ts', function () {
 
     //var file = new gutil.File({ path: './ReactPowerTableType.d-ts' });
-    
-    return  gulp.src(['./types/ReactPowerTable.d.ts', './ReactPowerTableType.d-ts'])
+
+    return gulp.src(['./types/ReactPowerTable.d.ts', './ReactPowerTableType.d-ts'])
         .pipe(concat('ReactPowerTable.d.ts'))
         .pipe(gulp.dest('./types/'));
-});
+}));
 
 
-
-
-gulp.task("lint", function () {
-
-    return gulp.src(["./src/**/*.ts?(x)"])
-        .pipe(tslint({
-            formatter: "verbose"
-        }))
-        .pipe(tslint.report());
-
-});
 
 const buildFolders = ['dist', 'docs', 'examples/dist', 'types', 'tests-dist'];
 
@@ -100,7 +100,7 @@ gulp.task("examples", function () {
 
 
 function runJest(options, cb) {
-    jestCli.runCLI(options, [__dirname], function (result) {
+    return jestCli.runCLI(options, [__dirname], function (result) {
 
         if (result.numFailedTests || result.numFailedTestSuites) {
             cb(new gutil.PluginError('gulp-jest', { message: 'Tests Failed' }));
@@ -184,30 +184,30 @@ gulp.task('start:web', (cb) => {
 
 gulp.task("test", function (cb) {
 
-    runJest({ silent: true }, cb);
+    return runJest({ silent: true }, cb);
 
 });
 
 gulp.task("test:coverage", function (cb) {
 
     //process.env.NODE_ENV = 'test';
-    runJest({ silent: true, coverage: true }, cb);
+    return runJest({ silent: true, coverage: true }, cb);
 
 });
 
 
 
-gulp.task("coveralls", ['test:coverage'], function () {
+gulp.task("coveralls", gulp.series('test:coverage', function () {
     return gulp.src('tests/coverage/lcov.info')
         .pipe(coveralls());
-});
+}));
 
 
-gulp.task("gh-pages", ['examples'], function () {
+gulp.task("gh-pages", gulp.series('examples', function () {
     return gulp
         .src(['examples/index.html', 'examples/dist/*.js?(.map)'], { base: 'examples' })
         .pipe(gulp.dest('gh-pages/'));
-});
+}));
 
 
 
@@ -220,4 +220,4 @@ gulp.task("gh-pages", ['examples'], function () {
 
 
 
-gulp.task('default', ['build']);
+gulp.task('default', gulp.series('build'));

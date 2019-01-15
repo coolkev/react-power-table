@@ -14,7 +14,8 @@
     "noEmitOnError": true,
     "moduleResolution": "node",
     "declaration": false,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "esModuleInterop": true
   },
   "include": [
     "src/app.tsx"
