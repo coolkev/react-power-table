@@ -3,7 +3,6 @@ import * as React from 'react';
 import { getColumnCore, getExpression } from './Column';
 import { Column, PowerTableProps, RowComponentType, RowComponentProps, HeadCellInnerComponentType, HeadCellInnerComponentProps } from './ReactPowerTable';
 import { debuglog, getComponentDisplayName, shallowEqual, sortArray } from './utils';
-import { Omit } from 'react-bootstrap';
 
 export interface SortSettings {
 

@@ -24,7 +24,7 @@ export function getColumnCore<T, TExtraProps>(col: Column<T, {}, TExtraProps> | 
     if (typeof field === 'function') {
         const actualFieldName = getExpression(field);
         return {
-            key: key || actualFieldName,
+            key: key || actualFieldName || '',
             field,
             fieldName: actualFieldName,
             headerText: col.headerText || actualFieldName,
@@ -32,7 +32,7 @@ export function getColumnCore<T, TExtraProps>(col: Column<T, {}, TExtraProps> | 
     }
     if (typeof field === 'string') {
         return {
-            key: key || field,
+            key: key || field || '',
             field: (row) => row[field],
             fieldName: field,
             headerText: col.headerText || field,
@@ -59,7 +59,7 @@ export function getExpression(func: (row: any) => any): string {
 
     const expr = func.toString();
 
-    const myregexp = /(?:return|\w+ => ).*\.(\w+);?/;
+    const myregexp = /(?:return|\w+\s*=>\s*).*\.(\w+);?/;
     const match = myregexp.exec(expr);
     if (match != null) {
         return match[1];
