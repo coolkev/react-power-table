@@ -1,10 +1,10 @@
-﻿import * as React from 'react';
-import { ReactPowerTable, RowComponentProps, PowerTableProps } from '../src/ReactPowerTable';
-import { defaultColumns, sampledata } from './shared';
-import { mount } from 'enzyme';
-import { makePure } from '../src/utils';
-import { withInternalSorting } from '../src/Sorting';
+﻿import { mount } from 'enzyme';
+import * as React from 'react';
+import { PowerTableProps, ReactPowerTable } from '../src/';
 import { withInternalPaging } from '../src/Paging';
+import { withInternalSorting } from '../src/Sorting';
+import { makePure } from '../src/utils';
+import { defaultColumns, sampledata } from './shared';
 
 const columns = defaultColumns;
 const rows = sampledata.slice(0, 5);

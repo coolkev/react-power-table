@@ -1,11 +1,10 @@
-﻿import * as React from 'react';
-import { GridFilters, DataTypes, AppliedFilter } from '../src/';
-import { defaultColumns, sampledata, President } from './shared';
-import { mount } from 'enzyme';
+﻿import { mount } from 'enzyme';
+import * as React from 'react';
+import { DataTypes } from '../src/';
 import { AddSelectFilter } from '../src/AddSelectFilter';
 
 //const columns = defaultColumns;
-const rows = sampledata.slice(0, 25);
+//const rows = sampledata.slice(0, 25);
 
 const availableFilters = [
     new DataTypes.int('number'),

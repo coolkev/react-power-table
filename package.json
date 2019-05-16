@@ -12,7 +12,7 @@
   "types": "./types/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config examples/webpack.config.js --hot",
-    "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build": "babel src --out-dir dist --extensions \".ts,.tsx\" --env-name production",
     "build-examples": "webpack --config examples/webpack.config.js",
     "test": "jest --colors --coverage",
     "test-report": "jest --coverage --coverageReporters=text-lcov | coveralls",
@@ -63,7 +63,7 @@
     "style-loader": "^0.19.0",
     "ts-jest": "^23.10.5",
     "tslint": "^5.7.0",
-    "tslint-react": "^3.2.0",
+    "tslint-react": "^4.0.0",
     "typescript": "^3.2.2",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",

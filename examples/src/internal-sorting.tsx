@@ -2,7 +2,7 @@
 import { ReactPowerTable, withInternalSorting, SortableColumn } from '../../src/';
 import { sampledata, defaultColumns, President } from './shared';
 
-const columns = [...defaultColumns];
+const columns = [...defaultColumns] as Array<SortableColumn<President, { testExtra: boolean }>>;
 
 columns[2] = {
     ...columns[2], sortable: false, headerText: 'party (not sortable)'

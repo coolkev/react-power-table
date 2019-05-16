@@ -17,7 +17,7 @@
     "declaration": false,
     "stripInternal": true,
     "esModuleInterop": true,
-    "isolatedModules": true
+    "isolatedModules": false
   },
   "include": ["src"]
 }

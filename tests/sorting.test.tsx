@@ -1,7 +1,7 @@
-﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting, InternalSortingProps, SortableColumn, InternalSortingState } from '../src/';
+﻿import { mount, render } from 'enzyme';
+import * as React from 'react';
+import { InternalSortingProps, InternalSortingState, ReactPowerTable, withInternalSorting } from '../src/';
 import { defaultColumns, sampledata } from './shared';
-import { mount, render } from 'enzyme';
 
 const columns = defaultColumns;
 const rows = sampledata.slice(0, 5);

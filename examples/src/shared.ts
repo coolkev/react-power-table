@@ -1,5 +1,5 @@
 
-import { Column } from '../../src/ReactPowerTable';
+import { Column } from '../../src/';
 
 export const defaultColumns: Array<Column<President>> = [
     //{ field: m => m.number, width: 80 },

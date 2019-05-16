@@ -1,7 +1,7 @@
-﻿import * as React from 'react';
-import { ReactPowerTable } from '../src/ReactPowerTable';
+﻿import { render } from 'enzyme';
+import * as React from 'react';
+import { ReactPowerTable } from '../src/';
 import { defaultColumns, sampledata } from './shared';
-import { render } from 'enzyme';
 
 const columns = defaultColumns;
 const rows = sampledata.slice(0, 5);

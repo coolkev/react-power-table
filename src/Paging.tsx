@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { NumericInput } from './components/NumericInput';
 import { debuglog, getComponentDisplayName, numberWithCommas } from './utils';
-import { Column } from './ReactPowerTable';
+import { Column } from "./Types";
 
 const linkStyle = { textDecoration: 'none' };
 const disabledStyle = { ...linkStyle, color: 'silver', cursor: 'default' };

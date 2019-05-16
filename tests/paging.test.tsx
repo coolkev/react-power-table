@@ -1,7 +1,7 @@
-﻿import * as React from 'react';
-import { ReactPowerTable, PowerTableProps, withInternalPaging, InternalPagingProps } from '../src/';
-import { defaultColumns, sampledata, President } from './shared';
-import { mount } from 'enzyme';
+﻿import { mount } from 'enzyme';
+import * as React from 'react';
+import { InternalPagingProps, PowerTableProps, ReactPowerTable, withInternalPaging } from '../src/';
+import { defaultColumns, President, sampledata } from './shared';
 
 const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);

@@ -1,10 +1,10 @@
-﻿import * as React from 'react';
-import { GridFilters, DataTypes, AppliedFilter, FilterDefinition } from '../src/';
-import { defaultColumns, sampledata, President } from './shared';
-import { mount } from 'enzyme';
+﻿import { mount } from 'enzyme';
+import * as React from 'react';
+import { AppliedFilter, DataTypes } from '../src/';
 import { AppliedFilters } from '../src/AppliedFilters';
-import { StringFilter } from '../src/filters/StringFilter';
 import { IntFilter } from '../src/filters/IntFilter';
+import { StringFilter } from '../src/filters/StringFilter';
+import { sampledata } from './shared';
 
 //const columns = defaultColumns;
 const rows = sampledata.slice(0, 25);
