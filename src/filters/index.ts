@@ -36,10 +36,10 @@ export function getFilterDefinition(type: 'decimal', options: FilterDefinitionOp
 export function getFilterDefinition(type: 'decimal', options: FilterDefinitionOptionsOrFieldName): DecimalFilter;
 export function getFilterDefinition(type: 'int', options: FilterDefinitionOptionsOrFieldName & { canBeNull: true }): IntFilter & { operations: { 'notnull': OperationDefinition<number>, 'null': OperationDefinition<number> } };
 export function getFilterDefinition(type: 'int', options: FilterDefinitionOptionsOrFieldName): IntFilter;
-export function getFilterDefinition(type: 'list', options: FilterDefinitionOptionsOrFieldName, items: Select.Option[]): ListFilter;
+export function getFilterDefinition(type: 'list', options: FilterDefinitionOptionsOrFieldName, items: ReadonlyArray<Select.Option>): ListFilter;
 export function getFilterDefinition(type: 'remotelist', options: FilterDefinitionOptionsOrFieldName, optionProvider: RemoteListOptionProvider): RemoteListFilter;
 
-export function getFilterDefinition(type: string, options: FilterDefinitionOptionsOrFieldName, items?: Select.Option[] | RemoteListOptionProvider) {
+export function getFilterDefinition(type: string, options: FilterDefinitionOptionsOrFieldName, items?: ReadonlyArray<Select.Option> | RemoteListOptionProvider) {
 
     return new types[type](options, items);
 }

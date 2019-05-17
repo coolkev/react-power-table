@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { NumericInput } from './components/NumericInput';
-import { debuglog, getComponentDisplayName, numberWithCommas } from './utils';
 import { Column } from "./Types";
+import { debuglog, getComponentDisplayName, numberWithCommas } from './utils';
 
 const linkStyle = { textDecoration: 'none' };
 const disabledStyle = { ...linkStyle, color: 'silver', cursor: 'default' };
@@ -19,7 +19,7 @@ export interface InternalPagingProps {
     /** 1-based index of current page */
     currentPage: number;
     pageSize: number;
-    pageSizes?: number[];
+    pageSizes?: ReadonlyArray<number>;
 
 }
 export interface PagingProps extends InternalPagingProps {
@@ -28,12 +28,12 @@ export interface PagingProps extends InternalPagingProps {
 }
 
 export interface InternalPagingGridProps<TColumn> extends PagingGridProps<TColumn> {
-    rows: any[];
+    rows: ReadonlyArray<any>;
 
 }
 
 export interface PagingGridProps<TColumn> {
-    columns: TColumn[];
+    columns: ReadonlyArray<TColumn>;
 
     footerComponent?: React.ComponentType<React.HTMLProps<HTMLTableSectionElement>>;
     footerProps?: (props: any) => any;
@@ -224,7 +224,7 @@ export class Paging extends React.PureComponent<PagingProps, never> {
 
         const props = this.props;
 
-        let pageSizes = props.pageSizes || [10, 20, 50, 100, 500];
+        let pageSizes = props.pageSizes ? [...props.pageSizes] : [10, 20, 50, 100, 500];
         const pageSize = props.pageSize || 20;
 
         if (pageSizes.indexOf(pageSize) === -1) {

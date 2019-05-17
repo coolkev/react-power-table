@@ -1,19 +1,19 @@
 ﻿import * as React from 'react';
 import * as Select from 'react-select';
-import { FilterDefinition, FilterDefinitionOptionsOrFieldName, ObjectMap, OperationDefinition, AppliedFilter, FilterComponentProps, nullableOperations } from './FilterDefinition';
+import { AppliedFilter, FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, ObjectMap, OperationDefinition } from './FilterDefinition';
 import { SelectOption } from './ListFilter';
 
-export type RemoteListOptionProvider = (input: string | number[], maxOptions?: number) => Promise<Array<SelectOption<any>>>;
+export type RemoteListOptionProvider = (input: string | ReadonlyArray<number>, maxOptions?: number) => Promise<Array<SelectOption<any>>>;
 
 const maxOptions = 20;
 
-export class RemoteListFilter extends FilterDefinition<number[]> {
+export class RemoteListFilter extends FilterDefinition<ReadonlyArray<number>> {
     loadOptions: (input: any) => Promise<{
         options: Array<SelectOption<any>>;
         complete: boolean;
     }>;
 
-    private queryHandler: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
+    private queryHandler: (input: string | ReadonlyArray<number>) => Promise<Array<SelectOption<any>>>;
     private cachedOptions: { [key: number]: string } = {};
     public operations = this.getOperations();
 
@@ -22,11 +22,11 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
 
         if (typeof options !== 'string' && options.canBeNull) {
             this.deSerializeValue = (value) => value === 'true' || value === 'false' ? [value === 'true'] as any : value.split(' ').map((m) => parseInt(m, 10));
-            this.serializeValue = (value) => Array.isArray(value) ? value.join(' ') : value;
+            this.serializeValue = (value) => Array.isArray(value) ? value.join(' ') : value as unknown as string;
 
         } else {
             this.deSerializeValue = (value) => value.split(' ').map((m) => parseInt(m, 10));
-            this.serializeValue = (value) => Array.isArray(value) ? value.join(' ') : value;
+            this.serializeValue = (value) => Array.isArray(value) ? value.join(' ') : value as unknown as string;
         }
 
         this.queryHandler = (input) => {
@@ -65,7 +65,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
 
     }
 
-    public filterComponent: React.SFC<FilterComponentProps<number[]>> = (props) => {
+    public filterComponent: React.SFC<FilterComponentProps<ReadonlyArray<number>>> = (props) => {
         const { autoFocus, value, onValueChange, children, filter, operation, invalid, ...rest } = props;
 
         return (
@@ -81,7 +81,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
             />);
 
     }
-    protected getOperations(): ObjectMap<OperationDefinition<number[]>> {
+    protected getOperations(): ObjectMap<OperationDefinition<ReadonlyArray<number>>> {
         return {
             in: {
                 key: 'in',
@@ -99,7 +99,7 @@ export class RemoteListFilter extends FilterDefinition<number[]> {
                 isValid: v => v as any !== '' && v.length !== 0,
 
             },
-            ...(this.canBeNull && nullableOperations<number[]>())
+            ...(this.canBeNull && nullableOperations<ReadonlyArray<number>>())
         };
     }
 
@@ -109,7 +109,7 @@ interface RemoteListFilterLabelProps {
 
     appliedFilter: AppliedFilter;
     selectedOptions: Array<SelectOption<any>>;
-    listOptionsProvider: (input: string | number[]) => Promise<Array<SelectOption<any>>>;
+    listOptionsProvider: (input: string | ReadonlyArray<number>) => Promise<Array<SelectOption<any>>>;
 }
 
 class RemoteListFilterLabel extends React.Component<RemoteListFilterLabelProps, { label: string }> {

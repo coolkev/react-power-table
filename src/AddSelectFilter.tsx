@@ -2,7 +2,7 @@
 import FormControl from 'react-bootstrap/lib/FormControl';
 import { AddEditFilter } from './AddEditFilter';
 import { BackLink } from './components/BackLink';
-import { FilterDefinition, AppliedFilter, OperationDefinition } from './filters/FilterDefinition';
+import { AppliedFilter, FilterDefinition, OperationDefinition } from './filters/FilterDefinition';
 import { objectMapToArray } from './utils';
 
 /**
@@ -11,10 +11,10 @@ import { objectMapToArray } from './utils';
 export interface AddFilterProps {
     cancelAddFilter: () => void;
 
-    availableFilters: FilterDefinition[] | { [key: string]: FilterDefinition };
+    availableFilters: ReadonlyArray<FilterDefinition> | { [key: string]: FilterDefinition };
 
     //availableFilters: { [key: string]: PowerTable.FilterDefinition };
-    appliedFilters: AppliedFilter[];
+    appliedFilters: ReadonlyArray<AppliedFilter>;
     onApplyFilter: (filter: AppliedFilter) => void;
 
     onlyShowUnused?: boolean;

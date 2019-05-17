@@ -8,7 +8,7 @@ export interface SelectOption<T extends string | number> {
     label: string;
     value: T;
 }
-export class ListFilter<T extends string | number = string> extends PowerTable.FilterDefinition<T[]> {
+export class ListFilter<T extends string | number = string> extends PowerTable.FilterDefinition<ReadonlyArray<T>> {
 
     private deserializeFunc?: (str: string) => T;
     public operations = this.getOperations();
@@ -47,7 +47,7 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
             autoFocus: true
         };
     }
-    private getOperations(): PowerTable.ObjectMap<PowerTable.OperationDefinition<T[]>> {
+    private getOperations(): PowerTable.ObjectMap<PowerTable.OperationDefinition<ReadonlyArray<T>>> {
         return {
             in: {
                 key: 'in',
@@ -63,20 +63,20 @@ export class ListFilter<T extends string | number = string> extends PowerTable.F
                 appliedLabel: (filter) => filter.filter.displayName + ' is not ' + getSelectedLabels(filter.value, this.items).join(' or '),
                 isValid: v => v as any !== '' && v.length !== 0,
             },
-            ...(this.canBeNull && nullableOperations<T[]>())
+            ...(this.canBeNull && nullableOperations<ReadonlyArray<T>>())
         };
     }
 
-    serializeValue(value: T[]) {
-        return Array.isArray(value) ? value.join(' ') : value;
+    serializeValue(value: ReadonlyArray<T>) {
+        return Array.isArray(value) ? value.join(' ') : value as unknown as string;
     }
 
-    deSerializeValue(value: string): T[] {
+    deSerializeValue(value: string): ReadonlyArray<T> {
         return value.split(' ').map((m) => this.deserializeFunc(m));
     }
 }
 
-function getSelectedLabels<T extends string | number>(values: T[], items: Array<SelectOption<T>>) {
+function getSelectedLabels<T extends string | number>(values: ReadonlyArray<T>, items: ReadonlyArray<SelectOption<T>>) {
     return values.map((m) => {
         const i = items.find((o) => (o.value === undefined ? o.label : o.value) === m);
 

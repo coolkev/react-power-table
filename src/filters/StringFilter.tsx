@@ -34,7 +34,7 @@ export class StringFilter extends PowerTable.FilterDefinition<string> {
         return value as any;
     }
 
-    public applyFilter<TData>(data: TData[], operation: PowerTable.OperationDefinition<string>, value: string) {
+    public applyFilter<TData>(data: ReadonlyArray<TData>, operation: PowerTable.OperationDefinition<string>, value: string) {
 
         const valueLower = value.toLowerCase();
         return super.applyFilter(data, operation, valueLower);

@@ -118,7 +118,7 @@ export abstract class FilterDefinition<T = any, TOperations extends ObjectMap<Op
         return value as any;
     }
 
-    public applyFilter<TData>(data: TData[], operation: OperationDefinition<T>, filterValue: T) {
+    public applyFilter<TData>(data: ReadonlyArray<TData>, operation: OperationDefinition<T>, filterValue: T) {
 
         let { test } = operation;
 

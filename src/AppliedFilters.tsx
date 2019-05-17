@@ -6,7 +6,7 @@ import * as filters from './filters';
  */
 export interface AppliedFiltersProps {
     //availableFilters: PowerTable.AvailableFiltersMap;
-    appliedFilters: filters.AppliedFilter[];
+    appliedFilters: ReadonlyArray<filters.AppliedFilter>;
     removeFilter: (filter: filters.AppliedFilter) => void;
     editFilter: (filter: filters.AppliedFilter) => void;
 

@@ -11,7 +11,7 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     /**
      * Rows to display in table
      */
-    rows: TRow[];
+    rows: ReadonlyArray<TRow>;
     /** Customize the <table> tag. children are passed to props and must be rendered  */
     tableComponent?: React.ComponentType<React.HTMLProps<HTMLTableElement>>;
     /** Inject custom props into the tableComponent  */
@@ -145,7 +145,7 @@ export type HeadCellInnerComponentProps<T = {}, TExtraProps = {}> = React.HTMLAt
 };
 export type HeadCellInnerComponentType<T = {}, TExtraProps = {}> = React.ComponentType<HeadCellInnerComponentProps<T, TExtraProps>>;
 export type BodyComponentProps<T = {}, TExtraProps = {}> = ColumnsAndExtraProps<T, TExtraProps> & {
-    rows: T[];
+    rows: ReadonlyArray<T>;
 };
 export type BodyComponentType<T = {}, TExtraProps = {}> = React.ComponentType<BodyComponentProps<T, TExtraProps>>;
 export type RowComponentProps<T = {}, TExtraProps = {}> = ColumnsAndExtraProps<T, TExtraProps> & {

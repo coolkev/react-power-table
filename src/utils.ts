@@ -288,10 +288,10 @@ export interface SortArrayOptions {
     descending?: boolean;
     caseInsensitive?: boolean;
 }
-export function sortArray<T, TKey>(array: T[], property: string, options?: SortArrayOptions): T[];
-export function sortArray<T, TKey>(array: T[], expression: (item: T) => TKey, options?: SortArrayOptions): T[];
-export function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((item: T) => TKey), options?: SortArrayOptions): T[];
-export function sortArray<T, TKey>(array: T[], expressionOrProperty: string | ((item: T) => TKey), options?: SortArrayOptions): T[] {
+export function sortArray<T, TKey>(array: ReadonlyArray<T>, property: string, options?: SortArrayOptions): T[];
+export function sortArray<T, TKey>(array: ReadonlyArray<T>, expression: (item: T) => TKey, options?: SortArrayOptions): T[];
+export function sortArray<T, TKey>(array: ReadonlyArray<T>, expressionOrProperty: string | ((item: T) => TKey), options?: SortArrayOptions): T[];
+export function sortArray<T, TKey>(array: ReadonlyArray<T>, expressionOrProperty: string | ((item: T) => TKey), options?: SortArrayOptions): T[] {
 
     const sortDirNum = options && options.descending ? -1 : 1;
 
@@ -367,7 +367,7 @@ export interface Group<T, TKey> {
     key: TKey; items: T[];
 }
 
-export function objectMapToArray<T>(mapOrArray: { [key: string]: T } | T[]): T[] {
+export function objectMapToArray<T>(mapOrArray: { [key: string]: T } | ReadonlyArray<T>): T[] {
 
     if (Array.isArray(mapOrArray)) {
         return mapOrArray;

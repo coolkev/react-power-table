@@ -7,9 +7,9 @@ import { AppliedFilter, FilterDefinition } from './filters/FilterDefinition';
 
 export interface GridFiltersProps {
 
-    availableFilters: FilterDefinition[] | { [key: string]: FilterDefinition };
-    appliedFilters: AppliedFilter[];
-    onFiltersChange: (newFilters: AppliedFilter[]) => void;
+    availableFilters: ReadonlyArray<FilterDefinition> | { [key: string]: FilterDefinition };
+    appliedFilters: ReadonlyArray<AppliedFilter>;
+    onFiltersChange: (newFilters: ReadonlyArray<AppliedFilter>) => void;
 
     onlyShowUnused?: boolean;
 

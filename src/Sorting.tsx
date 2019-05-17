@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { getColumnCore, getExpression } from './Column';
-import { Column, PowerTableProps, RowComponentType, RowComponentProps, HeadCellInnerComponentType, HeadCellInnerComponentProps } from "./Types";
+import { Column, HeadCellInnerComponentProps, HeadCellInnerComponentType, PowerTableProps, RowComponentProps, RowComponentType } from "./Types";
 import { debuglog, getComponentDisplayName, shallowEqual, sortArray } from './utils';
 
 export interface SortSettings {
@@ -21,13 +21,13 @@ export interface SortableColumn<TRow = {}, TExtraProps = {}, TValue = any, TForm
 
 /** @internal */
 export interface InternalSortingState<T> {
-    sortedRows?: T[];
+    sortedRows?: ReadonlyArray<T>;
     currentSort?: SortSettings;
 }
 
 export interface InternalSortingProps<TRow = {}> {
 
-    columns: Array<SortableColumn<TRow> | string>;
+    columns: ReadonlyArray<SortableColumn<TRow> | string>;
     sorting: SortSettings & {
 
         onSortChanging?: (sort: SortSettings) => void;
@@ -212,7 +212,7 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
             return columns.map((c) => transformColumn<TRow, T>(c, props, this.getCurrentSort, this.changeSort));
         }
 
-        private performSort(rows: TRow[], sort: SortSettings) {
+        private performSort(rows: ReadonlyArray<TRow>, sort: SortSettings) {
 
             const sortCol = this.columns.find((m) => m.sortKey === sort.column);
 
