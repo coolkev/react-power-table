@@ -3,7 +3,7 @@ export interface PowerTableProps<TRow = {}, TExtraProps = {}> {
     /**
      * Columns to display in table
      */
-    columns: Array<Column<TRow, TExtraProps> | string>;
+    columns: Array<Column<TRow, TExtraProps>>;
     /**
      * Field name or function to provide unique key for each column
      */

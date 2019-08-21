@@ -1,4 +1,4 @@
-﻿import { Column } from "./Types";
+﻿import { Column } from './Types';
 
 export interface ColumnCore<T> {
     key: string | number;
@@ -7,7 +7,7 @@ export interface ColumnCore<T> {
     headerText: string;
 }
 
-export function getColumnCore<T>(col: Column<T, any> | string): ColumnCore<T> {
+export function getColumnCore<T>(col: Column<T, any>): ColumnCore<T> {
 
     if (typeof (col) === 'string') {
         return {

@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { getColumnCore, getExpression } from './Column';
-import { Column, HeadCellInnerComponentProps, HeadCellInnerComponentType, PowerTableProps, RowComponentProps, RowComponentType } from "./Types";
+import { Column, HeadCellInnerComponentProps, HeadCellInnerComponentType, PowerTableProps, RowComponentProps, RowComponentType } from './Types';
 import { debuglog, getComponentDisplayName, shallowEqual, sortArray } from './utils';
 
 export interface SortSettings {
@@ -27,7 +27,7 @@ export interface InternalSortingState<T> {
 
 export interface InternalSortingProps<TRow = {}> {
 
-    columns: ReadonlyArray<SortableColumn<TRow> | string>;
+    columns: ReadonlyArray<SortableColumn<TRow>>;
     sorting: SortSettings & {
 
         onSortChanging?: (sort: SortSettings) => void;
@@ -40,7 +40,7 @@ function shouldTransformColumns<TRow, T extends PowerTableProps<TRow>>(currentPr
     return !shallowEqual(nextProps.columns, currentProps.columns) || nextProps.thInnerComponent !== currentProps.thInnerComponent;
 }
 
-function transformColumn<TRow, T extends PowerTableProps<TRow>>(options: SortableColumn<TRow> | string, tableProps: T, getCurrentSort: () => SortSettings, changeSort: (sort: SortSettings) => void) {
+function transformColumn<TRow, T extends PowerTableProps<TRow>>(options: SortableColumn<TRow>, tableProps: T, getCurrentSort: () => SortSettings, changeSort: (sort: SortSettings) => void) {
 
     const col: SortableColumn<TRow> = typeof (options) === 'string' ? { field: options, key: options } : { ...options };
 
@@ -251,7 +251,7 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
 
         render() {
 
-            const { sorting, columns, rows, ...extra } = this.props as PowerTableProps<TRow> & InternalSortingProps<T>;
+            const { sorting, columns, rows, ...extra } = this.props;
 
             const { sortedRows } = this.state;
 
@@ -264,7 +264,7 @@ export function withInternalSorting<TRow, T extends PowerTableProps<TRow>>(Wrapp
 
 export interface ExternalSortingProps {
 
-    columns: Array<SortableColumn | string>;
+    columns: SortableColumn[];
 
     sorting: SortSettings & {
 

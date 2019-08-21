@@ -1,9 +1,9 @@
 ﻿/** @module react-power-table */
+import { WhiteSpaceProperty } from 'csstype';
 import * as React from 'react';
 import { getColumnCore } from './Column';
-import { debuglog, shallowEqual, makePure } from './utils';
-import { WhiteSpaceProperty } from 'csstype';
-import { StaticOrDynamicProps, CellProps, InternalColumn, PowerTableProps, RowComponentProps, Column, TdComponentType } from './Types';
+import { CellProps, Column, InternalColumn, PowerTableProps, RowComponentProps, StaticOrDynamicProps, TdComponentType } from './Types';
+import { debuglog, makePure, shallowEqual } from './utils';
 
 function applyWrapper(wrapper: StaticOrDynamicProps<CellProps, JSX.Element>, valueProps: CellProps, valueElement: any) {
 
@@ -125,7 +125,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 
     }
 
-    private transformColumns(columns: Array<Column<TRow, TExtraProps> | string>): Array<InternalColumn<TRow, TExtraProps>> {
+    private transformColumns(columns: Array<Column<TRow, TExtraProps>>): Array<InternalColumn<TRow, TExtraProps>> {
         debuglog('Sorting.transformColumns', columns);
 
         if (this.columns && this.props.columns) {
@@ -136,7 +136,7 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
         return columns.map((c) => this.transformColumn(c));
     }
 
-    private transformColumn(options: Column<TRow, TExtraProps> | string): InternalColumn<TRow, TExtraProps> {
+    private transformColumn(options: Column<TRow, TExtraProps>): InternalColumn<TRow, TExtraProps> {
 
         debuglog('transformColumn', options);
 
@@ -282,5 +282,4 @@ export class ReactPowerTable<TRow = {}, TExtraProps = {}> extends React.Componen
 export function typedTable<TRow, TExtraProps = {}>() {
     return ReactPowerTable as any as React.ComponentClass<PowerTableProps<TRow, TExtraProps>>;
 }
-
 
