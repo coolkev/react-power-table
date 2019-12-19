@@ -4,9 +4,6 @@ import Radio from 'react-bootstrap/lib/Radio';
 import * as filters from './filters/FilterDefinition';
 import { debuglog } from './utils';
 
-/**
- * @internal
- */
 export interface AddEditFilterProps {
     filter: filters.FilterDefinition<any>;
     initialOperation: filters.OperationDefinition<any>;
@@ -16,9 +13,6 @@ export interface AddEditFilterProps {
     filterKey?: string;
 }
 
-/**
- * @internal
- */
 export interface AddEditFilterState {
 
     operationKey: string;
@@ -27,9 +21,6 @@ export interface AddEditFilterState {
     invalid?: boolean;
 }
 
-/**
- * @internal
- */
 export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEditFilterState> {
 
     constructor(props: AddEditFilterProps) {
@@ -114,7 +105,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         });
 
         return (
-            <div>
+            <div className="add-edit-filter">
                 <div style={{ margin: '10px 0' }}><b>{filter.displayName}</b>
                 </div>
 
@@ -133,10 +124,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
     }
 }
 
-/**
- * @internal
- */
-export interface FilterOperationProps extends React.Props<any> {
+interface FilterOperationProps extends React.Props<any> {
     operation: filters.OperationDefinition;
     filter: filters.FilterDefinition;
 
@@ -144,10 +132,7 @@ export interface FilterOperationProps extends React.Props<any> {
     onChange: React.EventHandler<React.FormEvent<Radio & HTMLInputElement>>;
 }
 
-/**
- * @internal
- */
-export const FilterOperation = (props: FilterOperationProps) => {
+const FilterOperation = (props: FilterOperationProps) => {
 
     const { operation, filter, onChange, selected, children } = props;
 

@@ -2,7 +2,7 @@
 
 exports[`AppliedFilters tests between filter applied 1`] = `
 <div
-  class="small"
+  class="applied-filters small"
 >
   <div
     class="well well-sm"
@@ -32,13 +32,13 @@ exports[`AppliedFilters tests between filter applied 1`] = `
 
 exports[`AppliedFilters tests none applied 1`] = `
 <div
-  class="small"
+  class="applied-filters small"
 />
 `;
 
 exports[`AppliedFilters tests one applied 1`] = `
 <div
-  class="small"
+  class="applied-filters small"
 >
   <div
     class="well well-sm"

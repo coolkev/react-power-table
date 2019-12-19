@@ -1,14 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddSelectFilter tests render gridfilters 1`] = `
-<div
-  class="flex-column"
->
+exports[`GridFilters tests render gridfilters 1`] = `
+<div>
   <div
-    class="small"
+    class="applied-filters small"
   />
   <div>
     <a
+      class="add-filter"
       href="#"
     >
       <span
@@ -21,17 +20,16 @@ exports[`AddSelectFilter tests render gridfilters 1`] = `
 </div>
 `;
 
-exports[`AddSelectFilter tests render gridfilters 2`] = `
-<div
-  class="flex-column"
->
+exports[`GridFilters tests render gridfilters 2`] = `
+<div>
   <div
-    class="small"
+    class="applied-filters small"
   />
   <div
-    class="flex-column"
+    class="add-select-filter"
   >
     <div
+      class="back-link"
       style="margin-bottom: 10px;"
     >
       <a
@@ -44,7 +42,9 @@ exports[`AddSelectFilter tests render gridfilters 2`] = `
         Back
       </a>
     </div>
-    <div>
+    <div
+      class="search-filters"
+    >
       <input
         class="form-control"
         placeholder="Filter by"
@@ -52,7 +52,7 @@ exports[`AddSelectFilter tests render gridfilters 2`] = `
       />
     </div>
     <div
-      class="small flex-column"
+      class="available-filters-container small"
     >
       <div
         style="margin: 10px 0px;"

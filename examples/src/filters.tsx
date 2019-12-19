@@ -1,8 +1,6 @@
 ﻿import * as React from 'react';
-import { ReactPowerTable, withInternalSorting, withInternalPaging, DataTypes, groupBy, sortArray, numberWithCommas, AppliedFilter, GridFilters } from '../../src/';
-import { sampledata, defaultColumns, partyList } from './shared';
-import { DecimalFilter } from '../../src/filters/DecimalFilter';
-import { formatTimeValue } from '../../src/filters/TimeFilter';
+import { AppliedFilter, DataTypes, GridFilters, numberWithCommas, ReactPowerTable, withInternalPaging, withInternalSorting } from '../../src/';
+import { defaultColumns, partyList, sampledata } from './shared';
 
 // //if coming in from DTO
 // const availDTO = [
@@ -95,7 +93,7 @@ export class FiltersExample extends React.Component<never, FiltersExampleState> 
                         <div className="small">
                             {numberWithCommas(filteredData.length) + ' Presidents'}
                             &nbsp;
-                    </div>
+                        </div>
 
                         <div style={{ marginTop: 10 }} />
 

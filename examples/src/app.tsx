@@ -1,28 +1,27 @@
 ﻿import * as React from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
+import 'react-select/dist/react-select.css';
 import { ReactPowerTable } from '../../src/';
 import { BasicExample } from './basic';
-import { InternalSortingExample } from './internal-sorting';
-import { ExternalSortingExample } from './external-sorting';
-import { InternalPagingExample } from './internal-paging';
-import { InternalPagingSortingExample } from './internal-paging-sorting';
+import { CalculatedCellExample } from './calculatedCell';
+import { CheckboxExample } from './checkboxes';
+import { CustomRowExample } from './CustomRow';
 import { ExternalPagingExample } from './external-paging';
 import { ExternalPagingSortingExample } from './external-paging-sorting';
-import { CalculatedCellExample } from './calculatedCell';
-
-import { CheckboxExample } from './checkboxes';
+import { ExternalSortingExample } from './external-sorting';
 import { FiltersExample } from './filters';
 import { HideColumnsExample } from './hideColumns';
-import { CustomRowExample } from './CustomRow';
+import { InternalPagingExample } from './internal-paging';
+import { InternalPagingSortingExample } from './internal-paging-sorting';
+import { InternalSortingExample } from './internal-sorting';
 import { ServerDataExample } from './server-data';
+
 
 interface ExamplesProps {
     selected: string;
     onSelect: (selected: any) => void;
 }
 
-import 'react-select/dist/react-select.css';
-import { hot } from 'react-hot-loader/root';
 
 ReactPowerTable.defaultProps.tableClassName = 'table';
 
@@ -76,7 +75,7 @@ class Examples extends React.Component<ExamplesProps, never> {
     }
 }
 
-class ExamplesApp extends React.Component<{}, {}> {
+export class ExamplesApp extends React.Component<{}, {}> {
 
     constructor(props: {}) {
         super(props);
@@ -105,4 +104,3 @@ class ExamplesApp extends React.Component<{}, {}> {
     }
 }
 
-export default hot(ExamplesApp);

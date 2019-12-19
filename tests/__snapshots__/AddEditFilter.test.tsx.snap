@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddEditFilter tests add filter assasinated eq: AddEditFilter tests add filter assasinated eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -54,7 +56,9 @@ exports[`AddEditFilter tests add filter assasinated eq: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests add filter assasinated ne: AddEditFilter tests add filter assasinated ne 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -107,7 +111,9 @@ exports[`AddEditFilter tests add filter assasinated ne: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests add filter birth_year eq: AddEditFilter tests add filter birth_year eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -218,7 +224,9 @@ exports[`AddEditFilter tests add filter birth_year eq: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter birth_year gt: AddEditFilter tests add filter birth_year gt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -329,7 +337,9 @@ exports[`AddEditFilter tests add filter birth_year gt: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter birth_year lt: AddEditFilter tests add filter birth_year lt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -440,7 +450,9 @@ exports[`AddEditFilter tests add filter birth_year lt: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter birth_year ne: AddEditFilter tests add filter birth_year ne 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -551,7 +563,9 @@ exports[`AddEditFilter tests add filter birth_year ne: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter death_year eq: AddEditFilter tests add filter death_year eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -692,7 +706,9 @@ exports[`AddEditFilter tests add filter death_year eq: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter death_year gt: AddEditFilter tests add filter death_year gt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -833,7 +849,9 @@ exports[`AddEditFilter tests add filter death_year gt: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter death_year lt: AddEditFilter tests add filter death_year lt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -974,7 +992,9 @@ exports[`AddEditFilter tests add filter death_year lt: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter death_year ne: AddEditFilter tests add filter death_year ne 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1115,7 +1135,9 @@ exports[`AddEditFilter tests add filter death_year ne: AddEditFilter tests add f
 `;
 
 exports[`AddEditFilter tests add filter death_year notnull: AddEditFilter tests add filter death_year notnull 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1246,7 +1268,9 @@ exports[`AddEditFilter tests add filter death_year notnull: AddEditFilter tests 
 `;
 
 exports[`AddEditFilter tests add filter death_year null: AddEditFilter tests add filter death_year null 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1377,7 +1401,9 @@ exports[`AddEditFilter tests add filter death_year null: AddEditFilter tests add
 `;
 
 exports[`AddEditFilter tests add filter empty eq: AddEditFilter tests add filter empty eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1488,7 +1514,9 @@ exports[`AddEditFilter tests add filter empty eq: AddEditFilter tests add filter
 `;
 
 exports[`AddEditFilter tests add filter empty gt: AddEditFilter tests add filter empty gt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1599,7 +1627,9 @@ exports[`AddEditFilter tests add filter empty gt: AddEditFilter tests add filter
 `;
 
 exports[`AddEditFilter tests add filter empty lt: AddEditFilter tests add filter empty lt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1710,7 +1740,9 @@ exports[`AddEditFilter tests add filter empty lt: AddEditFilter tests add filter
 `;
 
 exports[`AddEditFilter tests add filter empty ne: AddEditFilter tests add filter empty ne 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1821,7 +1853,9 @@ exports[`AddEditFilter tests add filter empty ne: AddEditFilter tests add filter
 `;
 
 exports[`AddEditFilter tests add filter left_office eq: AddEditFilter tests add filter left_office eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -1960,7 +1994,9 @@ exports[`AddEditFilter tests add filter left_office eq: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests add filter left_office gt: AddEditFilter tests add filter left_office gt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2099,7 +2135,9 @@ exports[`AddEditFilter tests add filter left_office gt: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests add filter left_office lt: AddEditFilter tests add filter left_office lt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2238,7 +2276,9 @@ exports[`AddEditFilter tests add filter left_office lt: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests add filter left_office notnull: AddEditFilter tests add filter left_office notnull 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2354,7 +2394,9 @@ exports[`AddEditFilter tests add filter left_office notnull: AddEditFilter tests
 `;
 
 exports[`AddEditFilter tests add filter left_office null: AddEditFilter tests add filter left_office null 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2470,7 +2512,9 @@ exports[`AddEditFilter tests add filter left_office null: AddEditFilter tests ad
 `;
 
 exports[`AddEditFilter tests add filter number eq: AddEditFilter tests add filter number eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2581,7 +2625,9 @@ exports[`AddEditFilter tests add filter number eq: AddEditFilter tests add filte
 `;
 
 exports[`AddEditFilter tests add filter number gt: AddEditFilter tests add filter number gt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2692,7 +2738,9 @@ exports[`AddEditFilter tests add filter number gt: AddEditFilter tests add filte
 `;
 
 exports[`AddEditFilter tests add filter number lt: AddEditFilter tests add filter number lt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2803,7 +2851,9 @@ exports[`AddEditFilter tests add filter number lt: AddEditFilter tests add filte
 `;
 
 exports[`AddEditFilter tests add filter number ne: AddEditFilter tests add filter number ne 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -2914,7 +2964,9 @@ exports[`AddEditFilter tests add filter number ne: AddEditFilter tests add filte
 `;
 
 exports[`AddEditFilter tests add filter party in: AddEditFilter tests add filter party in 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3013,7 +3065,9 @@ exports[`AddEditFilter tests add filter party in: AddEditFilter tests add filter
 `;
 
 exports[`AddEditFilter tests add filter party notin: AddEditFilter tests add filter party notin 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3112,7 +3166,9 @@ exports[`AddEditFilter tests add filter party notin: AddEditFilter tests add fil
 `;
 
 exports[`AddEditFilter tests add filter president contains: AddEditFilter tests add filter president contains 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3205,7 +3261,9 @@ exports[`AddEditFilter tests add filter president contains: AddEditFilter tests 
 `;
 
 exports[`AddEditFilter tests add filter president eq: AddEditFilter tests add filter president eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3298,7 +3356,9 @@ exports[`AddEditFilter tests add filter president eq: AddEditFilter tests add fi
 `;
 
 exports[`AddEditFilter tests add filter president ne: AddEditFilter tests add filter president ne 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3391,7 +3451,9 @@ exports[`AddEditFilter tests add filter president ne: AddEditFilter tests add fi
 `;
 
 exports[`AddEditFilter tests add filter president notcontains: AddEditFilter tests add filter president notcontains 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3484,7 +3546,9 @@ exports[`AddEditFilter tests add filter president notcontains: AddEditFilter tes
 `;
 
 exports[`AddEditFilter tests add filter took_office eq: AddEditFilter tests add filter took_office eq 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3593,7 +3657,9 @@ exports[`AddEditFilter tests add filter took_office eq: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests add filter took_office gt: AddEditFilter tests add filter took_office gt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3702,7 +3768,9 @@ exports[`AddEditFilter tests add filter took_office gt: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests add filter took_office lt: AddEditFilter tests add filter took_office lt 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >
@@ -3811,7 +3879,9 @@ exports[`AddEditFilter tests add filter took_office lt: AddEditFilter tests add 
 `;
 
 exports[`AddEditFilter tests between filter 1`] = `
-<div>
+<div
+  class="add-edit-filter"
+>
   <div
     style="margin: 10px 0px;"
   >

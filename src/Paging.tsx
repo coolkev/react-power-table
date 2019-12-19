@@ -200,82 +200,86 @@ export function withPaging<TColumn extends Column, T extends PagingGridProps<TCo
 
 }
 
-export class Paging extends React.PureComponent<PagingProps, never> {
+export const Paging = React.memo(({ pageSize = 20, pageSizes = [10, 20, 50, 100, 500], currentPage, totalRowCount, gotoPage }: PagingProps) => {
 
-    constructor(props: PagingProps) {
-        super(props);
 
-        this.gotoPage = this.gotoPage.bind(this);
+    const currentPageRef = React.useRef(currentPage);
+
+    const handleGotoPage = React.useCallback((page: number) => {
+        if (page >= 1 && page <= pageCount && page !== currentPageRef.current) {
+            gotoPage(page);
+        }
+    }, [gotoPage]);
+
+    React.useEffect(() => {
+        currentPageRef.current = currentPage;
+    }, [currentPage]);
+
+    const handleCurrentPageChange = React.useCallback((evt: React.FormEvent<HTMLInputElement>) => {
+
+        const value = parseInt(evt.currentTarget.value, 10);
+
+        if (!isNaN(value)) {
+            handleGotoPage(value);
+        }
+    }, []);
+
+    const pageCount = Math.ceil(totalRowCount / pageSize);
+
+
+    if (pageSizes.indexOf(pageSize) === -1) {
+        pageSizes = [...pageSizes, pageSize].sort((a, b) => b - a);
     }
 
-    gotoPage(page: number) {
-        if (page >= 1 && page <= this.pageCount && page !== this.props.currentPage) {
-            this.props.gotoPage(page);
-        }
+
+    const backStyle = currentPage === 1 ? disabledStyle : linkStyle;
+    const forwardStyle = currentPage === pageCount ? disabledStyle : linkStyle;
+
+    const gotoFirst = React.useCallback((e: React.MouseEvent) => { e.preventDefault(); handleGotoPage(1); }, [handleGotoPage]);
+    const gotoPrev = React.useCallback((e: React.MouseEvent) => { e.preventDefault(); handleGotoPage(currentPageRef.current - 1); }, [currentPageRef, handleGotoPage]);
+    const gotoNext = React.useCallback((e: React.MouseEvent) => { e.preventDefault(); handleGotoPage(currentPageRef.current + 1); }, [currentPageRef, handleGotoPage]);
+    const gotoLast = React.useCallback((e: React.MouseEvent) => { e.preventDefault(); handleGotoPage(pageCount); }, [handleGotoPage, pageCount]);
+
+
+    const handlePageSizeChange = React.useCallback((e: React.FormEvent<HTMLSelectElement>) => gotoPage(1, parseInt(e.currentTarget.value, 10)), [gotoPage]);
+
+    if (typeof (totalRowCount) === 'undefined') {
+        return null;
     }
 
-    get pageCount() {
-        const pageSize = this.props.pageSize || 20;
+    const rowCount = numberWithCommas(totalRowCount) + ' Records';
 
-        return Math.ceil(this.props.totalRowCount / pageSize);
-    }
-
-    render() {
-
-        const props = this.props;
-
-        let pageSizes = props.pageSizes ? [...props.pageSizes] : [10, 20, 50, 100, 500];
-        const pageSize = props.pageSize || 20;
-
-        if (pageSizes.indexOf(pageSize) === -1) {
-            pageSizes = [...pageSizes, pageSize];
-            pageSizes.sort((a, b) => b - a);
-        }
-        const pageCount = this.pageCount;
-
-        const currentPage = props.currentPage;
-
-        const backStyle = currentPage === 1 ? disabledStyle : linkStyle;
-        const forwardStyle = currentPage === pageCount ? disabledStyle : linkStyle;
-
-        if (typeof (props.totalRowCount) === 'undefined') {
-            return null;
-        }
-
-        const rowCount = numberWithCommas(props.totalRowCount) + ' Records';
-        /* tslint:disable:jsx-no-lambda */
-        return (
-            <table style={{ width: '100%' }} className="form-inline">
-                <tbody>
-                    <tr>
-                        <td style={{ width: '33%', fontWeight: 'bold' }}>{rowCount}</td>
-                        <td style={{ width: '34%', textAlign: 'center' }}>
-                            <a href="#" className="glyphicon glyphicon-fast-backward" style={backStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(1); }} />
-                            &nbsp;
-                    <a href="#" className="glyphicon glyphicon-backward" style={backStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(currentPage - 1); }} />
-                            &nbsp;
+    return (
+        <table style={{ width: '100%' }} className="form-inline">
+            <tbody>
+                <tr>
+                    <td style={{ width: '33%', fontWeight: 'bold' }}>{rowCount}</td>
+                    <td style={{ width: '34%', textAlign: 'center' }}>
+                        <a href="#" className="glyphicon glyphicon-fast-backward" style={backStyle} onClick={gotoFirst} />
+                        &nbsp;
+                    <a href="#" className="glyphicon glyphicon-backward" style={backStyle} onClick={gotoPrev} />
+                        &nbsp;
 
                     <span>Page
-                                    &nbsp;
-                        <NumericInput className="form-control input-sm" style={{ width: 60 }} initialValue={currentPage} onValueChange={this.gotoPage} />
-                                &nbsp;
+                                                                                                                    &nbsp;
+                        <NumericInput className="form-control input-sm" style={{ width: 60 }} value={currentPage} onChange={handleCurrentPageChange} />
+                            &nbsp;
                         of {numberWithCommas(pageCount)}</span>
-                            &nbsp;
+                        &nbsp;
 
-                    <a href="#" className="glyphicon glyphicon-forward" style={forwardStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(currentPage + 1); }} />
-                            &nbsp;
-                    <a href="#" className="glyphicon glyphicon-fast-forward" style={forwardStyle} onClick={(e) => { e.preventDefault(); this.gotoPage(pageCount); }} />
+                    <a href="#" className="glyphicon glyphicon-forward" style={forwardStyle} onClick={gotoNext} />
+                        &nbsp;
+                    <a href="#" className="glyphicon glyphicon-fast-forward" style={forwardStyle} onClick={gotoLast} />
 
-                        </td>
-                        <td style={{ width: '33%', textAlign: 'right' }}>Show:&nbsp;
-                       <select className="form-control input-sm" style={{ width: 80 }} value={pageSize} onChange={(e) => props.gotoPage(1, parseInt(e.currentTarget.value, 10))}>
-                                {pageSizes.map((m) => <option key={m} value={m}>{m}</option>)}
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        );
+                    </td>
+                    <td style={{ width: '33%', textAlign: 'right' }}>Show:&nbsp;
+                       <select className="form-control input-sm" style={{ width: 80 }} value={pageSize} onChange={handlePageSizeChange}>
+                            {pageSizes.map((m) => <option key={m} value={m}>{m}</option>)}
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    );
 
-    }
-}
+});

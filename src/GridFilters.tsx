@@ -15,139 +15,122 @@ export interface GridFiltersProps {
 
 }
 
-interface AppliedFilterDTO {
-    columnKey: string;
-    operationKey: string;
-    value: string;
-}
+export const GridFilters = React.memo(({ appliedFilters, ...props }: GridFiltersProps) => {
 
-interface GridFiltersState {
+    const [editing, setEditing] = React.useState<AppliedFilter>();
 
-    addingFilter?: boolean;
-    editingFilter?: AppliedFilter;
+    const handleEndEdit = React.useCallback(() => setEditing(undefined), [setEditing]);
 
-}
+    const appliedFiltersRef = React.useRef(appliedFilters);
+    appliedFiltersRef.current = appliedFilters;
 
-class GridFiltersInternal extends React.Component<GridFiltersProps, GridFiltersState> {
-
-    constructor(props: GridFiltersProps) {
-        super(props);
-        this.state = {};
-        this.hideAddFilter = this.hideAddFilter.bind(this);
-        this.applyNewfilter = this.applyNewfilter.bind(this);
-        this.removeFilter = this.removeFilter.bind(this);
-        this.editFilter = this.editFilter.bind(this);
-        this.cancelEditFilter = this.cancelEditFilter.bind(this);
-        this.applyEditFilter = this.applyEditFilter.bind(this);
-        this.showAddFilter = this.showAddFilter.bind(this);
-        this.handleRemoveEditFilter = this.handleRemoveEditFilter.bind(this);
-    }
-
-    public render() {
-
-        const { editingFilter } = this.state;
-        const { appliedFilters, availableFilters, onlyShowUnused } = this.props;
-
-        if (editingFilter) {
-            const { filter, operation, value, key } = editingFilter;
-
-            return (
-                <div>
-                    <BackLink onClick={this.cancelEditFilter} />
-
-                    <div>
-
-                        <AddEditFilter filter={filter} initialOperation={operation} initialValue={value} onApplyFilter={this.applyEditFilter} onRemoveFilter={this.handleRemoveEditFilter} filterKey={key} />
-
-                    </div>
-
-                </div>
-            );
-        }
-
-        const children = this.state.addingFilter
-            ? <AddSelectFilter cancelAddFilter={this.hideAddFilter} appliedFilters={appliedFilters} availableFilters={availableFilters} onApplyFilter={this.applyNewfilter} onlyShowUnused={onlyShowUnused} />
-            : <div><a href="#" onClick={this.showAddFilter}><span className="glyphicon glyphicon-plus" style={{ marginRight: 5 }} />Add Filter</a></div>;
+    if (editing) {
 
         return (
-            <div className="flex-column">
-
-                <AppliedFilters appliedFilters={appliedFilters} removeFilter={this.removeFilter} editFilter={this.editFilter} />
-
-                {children}
-            </div>
+            <EditFilter {...props} editing={editing} onEndEdit={handleEndEdit} appliedFiltersRef={appliedFiltersRef} />
         );
-
     }
-    private showAddFilter(e: React.SyntheticEvent<HTMLAnchorElement>) {
+
+    return <AddEditFilterInternal {...props} onEditFilter={setEditing} appliedFiltersRef={appliedFiltersRef} />;
+
+});
+GridFilters.displayName = 'GridFilters';
+
+
+type GridFiltersRefProps = Omit<GridFiltersProps, 'appliedFilters'> & { appliedFiltersRef: React.MutableRefObject<readonly AppliedFilter[]> };
+
+const EditFilter = React.memo(({ editing, appliedFiltersRef, onFiltersChange, onEndEdit }: { editing: AppliedFilter, onEndEdit: () => void } & Omit<GridFiltersRefProps, 'availableFilters' | 'onlyShowUnused'>) => {
+
+    const { filter, operation, value, key } = editing;
+
+    const applyEditFilter = React.useCallback((filter: AppliedFilter) => {
+
+        const newFilters = appliedFiltersRef.current.map(m => m.key !== filter.key ? m : filter);
+
+        onFiltersChange(newFilters);
+        onEndEdit();
+
+    }, [onFiltersChange, onEndEdit, appliedFiltersRef]);
+
+    const handleRemoveEditFilter = React.useCallback(() => {
+        const toRemove = editing;
+        const newFilters = appliedFiltersRef.current.filter(m => m !== toRemove);
+
+        onFiltersChange(newFilters);
+
+        onEndEdit();
+    }, [onFiltersChange, editing, appliedFiltersRef, onEndEdit]);
+
+    return (
+        <div className="edit-filter">
+            <BackLink onClick={onEndEdit} />
+
+            <div>
+
+                <AddEditFilter filter={filter} initialOperation={operation} initialValue={value} onApplyFilter={applyEditFilter} onRemoveFilter={handleRemoveEditFilter} filterKey={key} />
+
+            </div>
+
+        </div>
+    );
+});
+EditFilter.displayName = 'EditFilter';
+
+const AddEditFilterInternal = React.memo(({ appliedFiltersRef, availableFilters, onlyShowUnused, onFiltersChange, onEditFilter }: GridFiltersRefProps & { onEditFilter: (filter: AppliedFilter<any>) => void }) => {
+
+    const [adding, setAdding] = React.useState<boolean>();
+
+    const showAddFilter = React.useCallback((e: React.SyntheticEvent<HTMLAnchorElement>) => {
         e.preventDefault();
 
-        this.setState({
-            addingFilter: true,
-        });
-    }
-    private hideAddFilter() {
-        this.setState({
-            addingFilter: false,
-        });
-    }
+        setAdding(true);
+    }, [setAdding]);
+    const hideAddFilter = React.useCallback(() => {
+        setAdding(false);
+    }, [setAdding]);
 
-    private applyNewfilter(filter: AppliedFilter) {
+    const removeFilter = React.useCallback((filter: AppliedFilter) => {
+        const newFilters = appliedFiltersRef.current.filter(m => m !== filter);
 
-        const count = filter.key ? 1 : this.props.appliedFilters.filter(m => m.filter.fieldName === filter.filter.fieldName).length + 1;
+        onFiltersChange(newFilters);
+    }, [appliedFiltersRef, onFiltersChange]);
+
+    const editFilter = React.useCallback((filter: AppliedFilter) => {
+
+        onEditFilter(filter);
+        setAdding(false);
+    }, [onEditFilter, setAdding]);
+
+    const children = adding
+        ? <AddFilter appliedFiltersRef={appliedFiltersRef} availableFilters={availableFilters} onlyShowUnused={onlyShowUnused} onFiltersChange={onFiltersChange} onHide={hideAddFilter} />
+        : <div><a href="#" onClick={showAddFilter} className="add-filter"><span className="glyphicon glyphicon-plus" style={{ marginRight: 5 }} />Add Filter</a></div>;
+
+    return (
+        <div>
+
+            <AppliedFilters appliedFilters={appliedFiltersRef.current} removeFilter={removeFilter} editFilter={editFilter} />
+
+            {children}
+        </div>
+    );
+});
+AddEditFilterInternal.displayName = 'AddEditFilterInternal';
+
+const AddFilter = React.memo(({ appliedFiltersRef, availableFilters, onlyShowUnused, onFiltersChange, onHide }: { onHide: () => void } & GridFiltersRefProps) => {
+
+    const applyNewfilter = React.useCallback((filter: AppliedFilter) => {
+
+        const count = filter.key ? 1 : appliedFiltersRef.current.filter(m => m.filter.fieldName === filter.filter.fieldName).length + 1;
         const key = filter.key || filter.filter.fieldName + (count === 1 ? '' : count);
-        const newFilters = [...this.props.appliedFilters, { ...filter, key }];
+        const newFilters = [...appliedFiltersRef.current, { ...filter, key }];
 
-        this.props.onFiltersChange(newFilters);
-        this.setState({
-            addingFilter: false,
-        });
-        //}
-    }
+        onFiltersChange(newFilters);
 
-    private removeFilter(filter: AppliedFilter) {
-        const newFilters = this.props.appliedFilters.filter((m) => m !== filter);
+        onHide();
 
-        this.props.onFiltersChange(newFilters);
-    }
+    }, [onHide, appliedFiltersRef, onFiltersChange]);
 
-    private handleRemoveEditFilter() {
-        const toRemove = this.state.editingFilter;
-        const newFilters = this.props.appliedFilters.filter((m) => m !== toRemove);
+    return <AddSelectFilter cancelAddFilter={onHide} appliedFilters={appliedFiltersRef.current} availableFilters={availableFilters} onApplyFilter={applyNewfilter} onlyShowUnused={onlyShowUnused} />;
+});
 
-        this.props.onFiltersChange(newFilters);
-
-        this.setState({
-            editingFilter: null
-        });
-    }
-    private editFilter(filter: AppliedFilter) {
-
-        this.setState({
-            editingFilter: filter,
-            addingFilter: false,
-        });
-    }
-
-    private cancelEditFilter(e: React.SyntheticEvent<HTMLAnchorElement>) {
-        e.preventDefault();
-
-        this.setState({
-            editingFilter: null,
-        });
-    }
-
-    private applyEditFilter(filter: AppliedFilter) {
-
-        const newFilters = this.props.appliedFilters.map((m) => m.key !== filter.key ? m : filter);
-
-        this.props.onFiltersChange(newFilters);
-        this.setState({
-            editingFilter: null,
-        });
-
-    }
-
-}
-
-export const GridFilters: React.ComponentClass<GridFiltersProps> = GridFiltersInternal;
+AddFilter.displayName = 'AddFilter';

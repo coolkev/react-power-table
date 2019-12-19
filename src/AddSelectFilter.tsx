@@ -1,19 +1,16 @@
 ﻿import * as React from 'react';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import { AddEditFilter } from './AddEditFilter';
+import { ActionLink } from './components/ActionLink';
 import { BackLink } from './components/BackLink';
 import { AppliedFilter, FilterDefinition, OperationDefinition } from './filters/FilterDefinition';
 import { objectMapToArray } from './utils';
 
-/**
- * @internal
- */
 export interface AddFilterProps {
     cancelAddFilter: () => void;
 
     availableFilters: ReadonlyArray<FilterDefinition> | { [key: string]: FilterDefinition };
 
-    //availableFilters: { [key: string]: PowerTable.FilterDefinition };
     appliedFilters: ReadonlyArray<AppliedFilter>;
     onApplyFilter: (filter: AppliedFilter) => void;
 
@@ -21,17 +18,11 @@ export interface AddFilterProps {
 
 }
 
-/**
- * @internal
- */
 export interface AddFilterState {
     searchText: string;
     selectedFilterKey?: string;
 }
 
-/**
- * @internal
- */
 export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilterState> {
 
     constructor(props: AddFilterProps) {
@@ -58,8 +49,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
         });
     }
 
-    private backToPrev(e: React.SyntheticEvent<HTMLAnchorElement>) {
-        e.preventDefault();
+    private backToPrev() {
 
         if (this.state.selectedFilterKey) {
             this.setState({ selectedFilterKey: null });
@@ -80,7 +70,7 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
             const initialOperation = objectMapToArray(filter.operations)[0] as OperationDefinition;
 
             return (
-                <div>
+                <div className="add-filter">
                     <BackLink onClick={this.backToPrev} />
 
                     <div>
@@ -106,16 +96,16 @@ export class AddSelectFilter extends React.PureComponent<AddFilterProps, AddFilt
         // };
 
         return (
-            <div className="flex-column">
+            <div className="add-select-filter">
                 <BackLink onClick={this.backToPrev} />
 
-                <div><FormControl placeholder="Filter by" value={searchText} onChange={this.onSearchTextChanged} autoFocus /></div>
+                <div className="search-filters"><FormControl placeholder="Filter by" value={searchText} onChange={this.onSearchTextChanged} autoFocus /></div>
 
-                <div className="small flex-column">
+                <div className="available-filters-container small">
                     <div style={{ margin: '10px 0' }}><b>Available Filters</b></div>
                     <div className="available-filters">
                         <div className="list-group">
-                            {showFilters.map((m) => <a href="#" onClick={this.newFilterSelected} data-fieldname={m.fieldName} className="list-group-item" key={m.fieldName}>{m.displayName}</a>)}
+                            {showFilters.map((m) => <ActionLink onClick={this.newFilterSelected} data-fieldname={m.fieldName} className="list-group-item" key={m.fieldName}>{m.displayName}</ActionLink>)}
                         </div>
                     </div>
 

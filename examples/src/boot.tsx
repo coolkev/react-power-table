@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader/root';
-import ExamplesApp from './app';
+import { ExamplesApp } from './app';
 
 const render = Component => {
   ReactDOM.render(
@@ -10,7 +10,7 @@ const render = Component => {
   );
 };
 
-render(ExamplesApp);
+render(hot(ExamplesApp));
 
 // Allow Hot Module Reloading
 // declare var module: any;

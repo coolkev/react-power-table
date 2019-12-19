@@ -2,9 +2,10 @@
 
 exports[`AddSelectFilter tests add filter 1`] = `
 <div
-  class="flex-column"
+  class="add-select-filter"
 >
   <div
+    class="back-link"
     style="margin-bottom: 10px;"
   >
     <a
@@ -17,7 +18,9 @@ exports[`AddSelectFilter tests add filter 1`] = `
       Back
     </a>
   </div>
-  <div>
+  <div
+    class="search-filters"
+  >
     <input
       class="form-control"
       placeholder="Filter by"
@@ -25,7 +28,7 @@ exports[`AddSelectFilter tests add filter 1`] = `
     />
   </div>
   <div
-    class="small flex-column"
+    class="available-filters-container small"
   >
     <div
       style="margin: 10px 0px;"
@@ -97,9 +100,10 @@ exports[`AddSelectFilter tests add filter 1`] = `
 
 exports[`AddSelectFilter tests select filter 1`] = `
 <div
-  class="flex-column"
+  class="add-select-filter"
 >
   <div
+    class="back-link"
     style="margin-bottom: 10px;"
   >
     <a
@@ -112,7 +116,9 @@ exports[`AddSelectFilter tests select filter 1`] = `
       Back
     </a>
   </div>
-  <div>
+  <div
+    class="search-filters"
+  >
     <input
       class="form-control"
       placeholder="Filter by"
@@ -120,7 +126,7 @@ exports[`AddSelectFilter tests select filter 1`] = `
     />
   </div>
   <div
-    class="small flex-column"
+    class="available-filters-container small"
   >
     <div
       style="margin: 10px 0px;"
@@ -191,8 +197,11 @@ exports[`AddSelectFilter tests select filter 1`] = `
 `;
 
 exports[`AddSelectFilter tests select filter 2`] = `
-<div>
+<div
+  class="add-filter"
+>
   <div
+    class="back-link"
     style="margin-bottom: 10px;"
   >
     <a
@@ -206,7 +215,9 @@ exports[`AddSelectFilter tests select filter 2`] = `
     </a>
   </div>
   <div>
-    <div>
+    <div
+      class="add-edit-filter"
+    >
       <div
         style="margin: 10px 0px;"
       >

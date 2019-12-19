@@ -8101,14 +8101,13 @@ exports[`examples tests example Filters 1`] = `
       <div
         style="margin-top:10px"
       />
-      <div
-        class="flex-column"
-      >
+      <div>
         <div
-          class="small"
+          class="applied-filters small"
         />
         <div>
           <a
+            class="add-filter"
             href="#"
           >
             <span

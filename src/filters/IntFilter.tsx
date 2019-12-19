@@ -15,7 +15,14 @@ export class IntFilter extends FilterDefinition<number> {
 
             const { value, onValueChange, filter, operation, ...rest } = props;
 
-            return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} onValueChangeInvalid={onValueChange} autoFocus className="form-control input-sm" {...rest} />;
+            const handleChange = React.useCallback((evt: React.FormEvent<HTMLInputElement>) => {
+
+                const newValue = parseInt(evt.currentTarget.value, 10);
+
+                onValueChange(isNaN(newValue) ? evt.currentTarget.value : newValue as any);
+
+            }, [onValueChange]);
+            return <NumericInput type="number" value={value} onChange={handleChange} autoFocus className="form-control input-sm" {...rest} />;
         };
 
     }

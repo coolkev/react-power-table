@@ -16,12 +16,12 @@ const availableFilters = [
     new DataTypes.boolean({ fieldName: 'assasinated', displayName: 'was assasinated' }),
 
 ];
-describe('AddSelectFilter tests',
+describe('GridFilters tests',
     () => {
 
         test('render gridfilters', () => {
 
-            let filtersChanged = false;
+          let filtersChanged = false;
 
             const onFiltersChange = (_newFilters: Array<AppliedFilter<any>>) => filtersChanged = true;
             const c = <GridFilters availableFilters={availableFilters} appliedFilters={[]} onFiltersChange={onFiltersChange} />;
@@ -29,9 +29,11 @@ describe('AddSelectFilter tests',
 
             expect(component.render()).toMatchSnapshot();
 
-            expect(component.state('addingFilter')).toBeFalsy();
+            component.find('a.add-filter').simulate('click');
 
-            component.setState({ addingFilter: true });
+            //expect(component.state('addingFilter')).toBeFalsy();
+
+            //component.setState({ addingFilter: true });
 
             expect(component.render()).toMatchSnapshot();
 
