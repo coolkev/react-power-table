@@ -9,9 +9,9 @@ var plugins = [
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
   }),
-  new webpack.HotModuleReplacementPlugin(),
+  //new webpack.HotModuleReplacementPlugin(),
 
-  new webpack.NamedModulesPlugin(),
+  //new webpack.NamedModulesPlugin(),
 ];
 
 
@@ -23,11 +23,11 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/dist/',
   },
-
+  
   cache: true,
   devtool: 'source-map',
   entry: {
-    examples: path.resolve(__dirname, 'src/boot.tsx')
+    examples: ["react-hot-loader/patch", path.resolve(__dirname, 'src/boot.tsx')]
   },
 
   stats: {
@@ -38,6 +38,9 @@ module.exports = {
 
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.js', '.jsx', '.png', '.ts', '.tsx'],
+    alias: {
+      "react-dom": "@hot-loader/react-dom"
+    },
   },
 
   module: {
@@ -45,7 +48,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-          exclude: /(node_modules)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
         }
