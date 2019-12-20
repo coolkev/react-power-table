@@ -45,7 +45,7 @@ export const AppliedFilter = ({ appliedFilter, onRemoveFilter, onEditFilter }: A
     const AppliedLabelComponent = appliedFilter.operation.appliedLabelComponent || appliedFilter.filter.appliedLabelComponent || defaultAppliedFilterLabelComponent;
 
     return (
-        <div className="well well-sm" style={{ marginBottom: 10 }} key={appliedFilter.filter.fieldName}>
+        <div className="applied-filter well well-sm" style={{ marginBottom: 10 }} key={appliedFilter.filter.fieldName}>
             <button type="button" className="close" aria-label="Remove" onClick={handleRemoveFilter}><span aria-hidden="true">×</span></button>
             <ActionLink onClick={handleEditFilter}><AppliedLabelComponent {...appliedFilter} /></ActionLink>
         </div>
