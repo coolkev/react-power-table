@@ -21,7 +21,8 @@
     "lint": "tslint",
     "build-types": "tsc -d --declarationDir types --isolatedModules false --emitDeclarationOnly --noEmit false",
     "gh-pages": "mkdirp gh-pages/dist && cp examples/index.html gh-pages && cp examples/dist/*.js* gh-pages/dist",
-    "build-all": "npm run build && npm run build-types && npm run test-report && npm run build-examples && npm run gh-pages"
+    "build-all": "npm run build && npm run build-types && npm run build-examples && npm run gh-pages",
+    "build-all-andtest": "npm run build && npm run build-types && npm run test-report && npm run build-examples && npm run gh-pages"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
