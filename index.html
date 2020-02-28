@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React Power Table Examples</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="./dist/vendor.js"></script>
+    <!--<script src="../dist/main.js"></script>-->
+    <style>
+
+        table.table tr th, table.table tr td {
+            max-width: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .Select.has-error .Select-control {
+            border-color: #a94442;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="navbar-brand">React Power Table</div>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li role="presentation" class="active"><a role="button" href="/examples/">Examples</a></li>
+                    <li role="presentation" class=""><a role="button" href="https://github.com/coolkev/react-power-table/">Github</a></li>
+                    <li role="presentation" class=""><a role="button" href="https://travis-ci.org/coolkev/react-power-table">Travis CI</a></li>
+
+                    <li role="presentation" class=""><a role="button" href="https://coveralls.io/github/coolkev/react-power-table">Coveralls</a></li>
+                    <li role="presentation" class=""><a role="button" href="https://badge.fury.io/js/react-power-table">npm package</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+            <div id="root"></div>
+
+
+    </div>
+
+    <script src="./dist/examples.js"></script>
+
+</body>
+
+</html>
