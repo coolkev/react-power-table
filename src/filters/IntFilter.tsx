@@ -22,7 +22,7 @@ export class IntFilter extends FilterDefinition<number> {
                 onValueChange(isNaN(newValue) ? evt.currentTarget.value : newValue as any);
 
             }, [onValueChange]);
-            return <NumericInput type="number" value={value} onChange={handleChange} autoFocus className="form-control input-sm" {...rest} />;
+            return <NumericInput type="number" value={value} onChange={handleChange} autoFocus className="form-control form-control-sm" {...rest} />;
         };
 
     }

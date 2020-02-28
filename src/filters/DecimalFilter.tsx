@@ -19,8 +19,8 @@ export class DecimalFilter extends FilterDefinition<number> {
                 onValueChange(isNaN(newValue) ? evt.currentTarget.value : newValue as any);
 
             }, [onValueChange]);
-            return <NumericInput type="number" value={value} onChange={handleChange} autoFocus className="form-control input-sm" allowDecimal {...rest} />;
-            //return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} onValueChangeInvalid={onValueChange} autoFocus className="form-control input-sm" allowDecimal {...rest} />;
+            return <NumericInput type="number" value={value} onChange={handleChange} autoFocus className="form-control form-control-sm" allowDecimal {...rest} />;
+            //return <NumericInput type="number" initialValue={value} onValueChange={onValueChange} onValueChangeInvalid={onValueChange} autoFocus className="form-control form-control-sm" allowDecimal {...rest} />;
         };
 
     }

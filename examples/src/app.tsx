@@ -16,12 +16,10 @@ import { InternalPagingSortingExample } from './internal-paging-sorting';
 import { InternalSortingExample } from './internal-sorting';
 import { ServerDataExample } from './server-data';
 
-
 interface ExamplesProps {
     selected: string;
     onSelect: (selected: any) => void;
 }
-
 
 ReactPowerTable.defaultProps.tableClassName = 'table';
 
@@ -57,8 +55,8 @@ class Examples extends React.Component<ExamplesProps, never> {
 
                 <div className="row">
                     <div className="col-md-3">
-                        <Nav bsStyle="pills" stacked activeKey={selected} onSelect={this.props.onSelect}>
-                            {Object.keys(examples).map((name) => <NavItem key={name} eventKey={name}>{name}</NavItem>)}
+                        <Nav className="flex-column" variant="pills" activeKey={selected} onSelect={this.props.onSelect}>
+                            {Object.keys(examples).map((name) => <NavItem key={name}><Nav.Link eventKey={name}>{name}</Nav.Link></NavItem>)}
                         </Nav>
                     </div>
                     <div className="col-md-9">

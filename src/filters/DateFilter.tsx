@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
-import DatePicker from 'react-bootstrap-date-picker';
-import { FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition, AppliedFilter, RadioButtonLabelProps } from './FilterDefinition';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { FilterComponentProps, FilterDefinition, FilterDefinitionOptionsOrFieldName, nullableOperations, OperationDefinition } from './FilterDefinition';
 
 export class DateFilter extends FilterDefinition<string> {
     public operations = this.getOperations();
@@ -61,8 +62,8 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
         //this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
-    public handleChange(_value: any, formattedValue: string) {
-        this.props.onValueChange(formattedValue);
+    public handleChange(date: Date) {
+        this.props.onValueChange(date.toDateString());
     }
 
     // public handleKeyPress(e: React.KeyboardEvent<any>) {
@@ -74,9 +75,9 @@ class DateFilterComponent extends React.Component<FilterComponentProps<string>, 
 
         const { value, onValueChange, operation, invalid, ...rest } = this.props;
 
-        const dateValue = value ? (new Date(value)).toISOString() : '';
+        const dateValue = value ? (new Date(value)) : null;
 
-        return <span  className={invalid ? 'has-error' : null}><DatePicker value={dateValue} onChange={this.handleChange} showClearButton={false} {...rest} /></span>;
+        return <span  className={invalid ? 'has-error' : null}><DatePicker className="form-control  form-control-sm" selected={dateValue} onChange={this.handleChange} isClearable={false} placeholderText="MM/DD/YYYY" {...rest} /></span>;
 
     }
 

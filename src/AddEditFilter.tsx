@@ -1,6 +1,5 @@
 ﻿import * as React from 'react';
-import Button from 'react-bootstrap/lib/Button';
-import Radio from 'react-bootstrap/lib/Radio';
+import Button from 'react-bootstrap/Button';
 import * as filters from './filters/FilterDefinition';
 import { debuglog } from './utils';
 
@@ -37,7 +36,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
         this.removeFilter = this.removeFilter.bind(this);
     }
 
-    private selectedOperationChange(e: React.FormEvent<Radio & HTMLInputElement>) {
+    private selectedOperationChange(e: React.FormEvent<HTMLInputElement>) {
 
         const prevOperationKey = this.state.operationKey;
         const operationKey = e.currentTarget.value;
@@ -97,7 +96,7 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
                 const SelectedFilterComponent = op.filterComponent || filter.filterComponent;
 
                 if (SelectedFilterComponent) {
-                    children = <div style={{ marginLeft: 20 }} onKeyPress={this.handleKeyPress}><SelectedFilterComponent filter={filter} operation={op} value={value} onValueChange={this.handleFilterValueChange} invalid={invalid} /></div>;
+                    children = <div onKeyPress={this.handleKeyPress}><SelectedFilterComponent filter={filter} operation={op} value={value} onValueChange={this.handleFilterValueChange} invalid={invalid} /></div>;
                 }
             }
 
@@ -112,11 +111,11 @@ export class AddEditFilter extends React.PureComponent<AddEditFilterProps, AddEd
                 {opComponents.map((opComponent) => opComponent)}
 
                 <div style={{ marginTop: 20 }}>
-                    <Button bsStyle="primary" bsSize="sm" onClick={this.applyFilter}>Apply Filter</Button>
+                    <Button variant="primary" size="sm" onClick={this.applyFilter}>Apply Filter</Button>
 
                     {this.props.onRemoveFilter && ' '}
 
-                    {this.props.onRemoveFilter && <Button bsSize="sm" bsStyle="danger" onClick={this.removeFilter}>Remove Filter</Button>}
+                    {this.props.onRemoveFilter && <Button size="sm" variant="danger" onClick={this.removeFilter}>Remove Filter</Button>}
 
                 </div>
 
@@ -129,7 +128,7 @@ interface FilterOperationProps extends React.Props<any> {
     filter: filters.FilterDefinition;
 
     selected: boolean;
-    onChange: React.EventHandler<React.FormEvent<Radio & HTMLInputElement>>;
+    onChange: React.EventHandler<React.FormEvent<HTMLInputElement>>;
 }
 
 const FilterOperation = (props: FilterOperationProps) => {
@@ -137,12 +136,15 @@ const FilterOperation = (props: FilterOperationProps) => {
     const { operation, filter, onChange, selected, children } = props;
 
     return (
-        <div key={operation.key}>
-            <Radio checked={selected} onChange={onChange} value={operation.key}>
-                {filter.radioButtonLabel ? filter.radioButtonLabel({ filter, operation }) : operation.displayName}
+        <div style={{ marginTop: 10, marginBottom: 10 }}>
+            <div className="form-group form-check" key={operation.key}>
+                <label className="form-check-label" style={selected ? { marginBottom: 10 } : undefined}>
+                    <input type="radio" className="form-check-input" checked={selected} onChange={onChange} value={operation.key} />
+                    {filter.radioButtonLabel ? filter.radioButtonLabel({ filter, operation }) : operation.displayName}
+                </label>
 
-            </Radio>
-            {children}
+                {children}
+            </div>
         </div>
     );
 

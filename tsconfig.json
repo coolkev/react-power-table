@@ -12,6 +12,7 @@
     //"module": "commonjs",
     "jsx": "react",
     "noEmit": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "alwaysStrict": true,
     "declaration": false,

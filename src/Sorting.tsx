@@ -112,10 +112,10 @@ function transformColumn<TRow, T extends PowerTableProps<TRow>>(options: Sortabl
 
 const divSortingStyle: React.CSSProperties = { paddingRight: 15, position: 'relative' };
 
-const SortableHeaderComponent = (props: HeadCellInnerComponentProps & { getCurrentSort?: () => SortSettings, originalHeadCellComponent?: HeadCellInnerComponentType }) => {
+const SortableHeaderComponent = <T extends {}>(props: HeadCellInnerComponentProps<T> & { getCurrentSort?: () => SortSettings, originalHeadCellComponent?: HeadCellInnerComponentType<T> }) => {
     const { children, getCurrentSort, originalHeadCellComponent: OriginalHeadCellComponent, ...rest } = props;
     const currentSort = props.getCurrentSort();
-    const sorting = (props.column as SortableColumn).sortKey === currentSort.column;
+    const sorting = (props.column as SortableColumn<T>).sortKey === currentSort.column;
     const sortAsc = sorting && !currentSort.descending;
     let divStyle: React.CSSProperties;
     let sortComponent: JSX.Element;

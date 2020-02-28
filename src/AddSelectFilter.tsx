@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import FormControl from 'react-bootstrap/lib/FormControl';
+import FormControl from 'react-bootstrap/FormControl';
 import { AddEditFilter } from './AddEditFilter';
 import { ActionLink } from './components/ActionLink';
 import { BackLink } from './components/BackLink';

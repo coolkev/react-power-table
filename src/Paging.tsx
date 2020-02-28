@@ -262,7 +262,7 @@ export const Paging = React.memo(({ pageSize = 20, pageSizes = [10, 20, 50, 100,
 
                     <span>Page
                                                                                                                     &nbsp;
-                        <NumericInput className="form-control input-sm" style={{ width: 60 }} value={currentPage} onChange={handleCurrentPageChange} />
+                        <NumericInput className="form-control form-control-sm" style={{ width: 60 }} value={currentPage} onChange={handleCurrentPageChange} />
                             &nbsp;
                         of {numberWithCommas(pageCount)}</span>
                         &nbsp;
@@ -273,7 +273,7 @@ export const Paging = React.memo(({ pageSize = 20, pageSizes = [10, 20, 50, 100,
 
                     </td>
                     <td style={{ width: '33%', textAlign: 'right' }}>Show:&nbsp;
-                       <select className="form-control input-sm" style={{ width: 80 }} value={pageSize} onChange={handlePageSizeChange}>
+                       <select className="form-control form-control-sm" style={{ width: 80 }} value={pageSize} onChange={handlePageSizeChange}>
                             {pageSizes.map((m) => <option key={m} value={m}>{m}</option>)}
                         </select>
                     </td>

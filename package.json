@@ -25,10 +25,11 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "react": "^16.0.0 || ^15.4.2",
-    "react-bootstrap": "^0.31.3",
-    "react-bootstrap-date-picker": "coolkev/react-bootstrap-date-picker",
-    "react-dom": "^16.0.0 || ^15.4.2",
+    "@types/react-datepicker": "^2.11.0",
+    "react": "^16.13.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-datepicker": "^2.13.0",
+    "react-dom": "^16.13.0",
     "react-select": "^1.2.1"
   },
   "devDependencies": {
@@ -65,7 +66,7 @@
     "ts-jest": "^23.10.5",
     "tslint": "^5.7.0",
     "tslint-react": "^4.0.0",
-    "typescript": "~3.7.3",
+    "typescript": "~3.8.2",
     "webpack": "4.41.2",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
